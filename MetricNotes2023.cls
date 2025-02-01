@@ -13,7 +13,8 @@
 \RequirePackage{etoolbox,pifont,adjustbox,framed,capt-of}
 %\RequirePackage{dingbat} %for the eye 
 \RequirePackage{skull} %for rip
-\RequirePackage[backend=bibtex, style=ieee]{biblatex}
+%\RequirePackage[backend=bibtex, style=ieee]{biblatex} <-- stupid
+\RequirePackage[backend=bibtex]{biblatex}
 \RequirePackage{csquotes}
 
 \newcommand{\ourtitle}{Theorem}
