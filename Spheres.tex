@@ -1,0 +1,227 @@
+\documentclass{MetricNotes2023}
+
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{float}
+
+
+%inserting a figure:
+
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.5\textwidth]{pfigure_1}
+%\caption{The compound pendulum}
+%\end{figure}
+%\setcounter{MaxMatrixCols}{20}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+%\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{parskip}
+\usepackage{mathrsfs}
+
+% knots stuff
+
+\usepackage{tikz}
+\usetikzlibrary{cd}
+\usetikzlibrary{shapes,snakes}
+\usepackage{listings}
+
+%\graphicspath{ {figs/} }
+
+\usepackage{cleveref}
+\newcommand{\notimplies}{%
+  \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+
+%keyword: edit
+
+\def\summing{\ensuremath\sum^{\infty}_{n=1}}
+\def\summingo{\ensuremath\sum^{\infty}_{n=0}}
+\def\bb{\ensuremath\mathbb}
+\def\la{\ensuremath\langle}
+\def\ra{\ensuremath\rangle}
+\def\notto{\ensuremath\nrightarrow}
+\def\subq{\ensuremath\subseteq}
+
+\def\met{\ensuremath(X, d)}
+\def\metx{\ensuremath(X, d_X)}
+\def\mety{\ensuremath(Y, d_Y)}
+\def\topox{\ensuremath(X, \mathcal{T}_X)}
+\def\topoy{\ensuremath(Y, \mathcal{T}_Y)}
+
+\def\comp{\ensuremath\mathbb{C}}
+\def\real{\ensuremath\mathbb{R}}
+\def\rat{\ensuremath\mathbb{Q}}
+\def\inte{\ensuremath\mathbb{Z}}
+\def\nat{\ensuremath\mathbb{N}}
+\def\topo{\ensuremath\mathcal{T}}
+
+\def\A{\ensuremath\mathcal{\mathscr{A}_2}}
+
+\def\sequiv{\ensuremath\stackrel{\text{S}}{\sim}}
+\def\rr{\ensuremath\mathcal{R}}
+\def\com{\ensuremath\Delta}
+\def\id{\ensuremath\text{id}}
+\def\hopf{\ensuremath\mathcal{H}}
+\def\psip{\ensuremath\psi_{+}}
+\def\psin{\ensuremath\psi_{-}}
+\def\psipm{\ensuremath\psi_{\pm}}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\str}{str}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\lk}{lk}
+\DeclareMathOperator{\im}{im}
+
+\def\done{\begin{flushright}\vspace{-4.35ex}\(\qed\)\end{flushright}}
+
+\def\mlip{\ensuremath\abs f_\text{Lip}}
+
+
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+\DeclareSymbolFontAlphabet{\mathbbold}{bbold}
+
+% \limits\sum or \sum\limits (one of them) will put the text under the sum
+% [upquote=true] on \begin{lstlisting} will stop backticks being interpreted as quotes
+%[backend=bibtex, style=ieee]
+\usepackage{biblatex}
+\usepackage{csquotes}
+\addbibresource{References.bib}
+
+\author{\vspace{-5ex}}
+\title{Stable Homotopy Groups of Spheres [DRAFT]}
+\date{\vspace{-5ex}}
+
+\counterwithin{figure}{section}
+
+
+
+\begin{document}
+\maketitle
+%\input{titlepage.tex}
+
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert} 
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert} 
+\DeclarePairedDelimiter{\ang}{\langle}{\rangle} 
+
+\tableofcontents
+
+\pagebreak
+
+\section{Introduction}
+
+\begin{itemize}
+\item Define homotopy groups
+\item The Eilenberg-MacLane space is \(K(G, n)\), and it has the property that 
+\[\pi_i(K(G, n))=\begin{cases}
+\inte & i=n,\\
+0 & i\neq n.
+\end{cases}\]
+They're unique up to weak homotopy equivalence (i.e. if you have another one \(X\), there's a map between them which descends to an isomorphism on homotopy groups)
+\item Define suspension of a topological space
+\item Freudenthal's suspension theorem: if \(\pi_i(X)=0\) for \(i\leq k\) (i.e. \(X\) is \(k\)-connected) then the map 
+\begin{align*}
+\pi_n(X) \;\;&\to\;\; \pi_{n+1}(\Sigma X)\\
+[\gamma : S^n \to X] &\mapsto [\Sigma \gamma : \Sigma S^n=S^{n+1} \to \Sigma X]
+\end{align*}
+is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
+\item This implies \(\pi_{n+k}(S^n)\) depends only on \(k\) for \(n\geq k+2\)
+\item (Obviously be careful with basepoints above)
+\item Suppose \(X\) is \(k\)-connected. Then, for \(k\geq 0\), \(0=\pi_k(X)\cong \pi_{k+1}(\Sigma X)\), so whenever a space is \(k\)-connected its suspension is \(k+1\)-connected. 
+\item As you take suspensions, then, your successive bounds are \(n \leq 2k\), \(n+1\leq 2k+2\implies n \leq 2k+1\), \(n\leq 2k+2\), etc ... so the sequence \(\pi_n(X)\to \pi_{n+1}(\Sigma X)\to \cdots\) will eventually stabilise.  
+\item Thus, if you take the colimit of that direct system, it'll just equal the stable value, with the higher legs just being the inverse isomorphisms.
+\item \autocite{ass}, Cor 1.9 [not 100\% convinced of how this follows, but believing it for now]: if \(X\) is a CW complex of dimension \(d\) and \(Y\) a \((k-1)\)-connected space, then the suspension homomorphism \([X, Y]\to[\Sigma X, \Sigma Y]\) is bijective if \(d<2k-1\) and surjective if \(d=2k-1\). 
+\end{itemize}
+
+Miscellaneous facts I might need later:
+\begin{itemize}
+\item Cohomology [possibly only of pointed CW complexes] is representable, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
+\item There is an adjunction \(\Sigma \dashv \Omega\), where \(\Omega\) is the loop functor.
+\item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
+\item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
+\end{itemize}
+
+Algebraic background:
+
+\begin{definition}
+Let \(M, N\) be modules over a ring \(R\). A \textit{free resolution} \(F\) of \(M\) is an exact sequence 
+\[\cdots \to F_2 \to F_1 \to F_0 \to M \to 0,\]
+with each \(F_i\) a free \(R\)-module.
+\end{definition}
+
+Applying \(\Hom_R(-, N)\) gives us a chain complex
+\[\cdots \leftarrow \Hom_R(F_2, N) \leftarrow \Hom_R(F_1, N) \leftarrow \Hom_R(F_0, N) \leftarrow \Hom_R(M, N) \leftarrow 0.\]
+Dropping the term \(\Hom_R(M, N)\) [why?] we get the sequence
+\[\cdots \leftarrow \Hom_R(F_2, N) \leftarrow \Hom_R(F_1, N) \leftarrow \Hom_R(F_0, N) \leftarrow 0,\]
+and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain complex. 
+
+%we write \(H^n(F; G):=\ker f^*_{n+1}/\im f_n^*\). Any abelian group \(H\) has a free resolution of the form 
+%\[0 \to F_1 \to F_0 \to H \to 0\]
+%(the one you think it is). So we get a chain complex
+%\[0 \leftarrow F_1^* \leftarrow F_0^* \leftarrow H^* \leftarrow 0.\]
+%We have \(H^n(F; G)=0\) for \(n>1\). Define \(\Ext(H;G):=H^1(F;G)\). 
+
+\autocite{ass}, \autocite{suspension}, \autocite{hatcher}
+
+\section{The Steenrod algebra}
+
+The following is from \autocite{hatcher} 4L.
+
+\begin{itemize}
+\item There are maps \(Sq^i : H^n(-; \inte/2\inte)\to H^{n+i}(- ; \inte/2\inte)\) for each \(i\), and they satisfy the following properties: \begin{enumerate}
+\item \(Sq^i_X(f^*(\alpha))=f^*(Sq^i_Y(\alpha))\) for \(f : X \to Y\) (i.e. \(Sq^i\) is a natural transformation).
+\item \(Sq^i_X(\alpha + \beta)=Sq^i_X(\alpha)+Sq^i_X(\beta)\) (i.e. \(Sq_X^i\) respects the group operation for all \(X\)).
+\item \(Sq^i(\alpha \smile \beta)=\sum\limits_{0\leq j \leq i} (Sq^j(\alpha)\smile Sq^{i-j}(\beta))\) (the Cartan formula)
+\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the ``suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\)''
+\item \(Sq^i(\alpha)=\alpha^2\) if \(i=\abs{\alpha}\) and \(Sq^i(\alpha)=0\) if \(i> \abs{\alpha}\).
+\item \(Sq^0=\id.\)
+\item \(Sq^1\) is the ``\(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\)''. 
+\end{enumerate}
+\item Define \(Sq:=Sq^0+Sq^1+\cdots\). Then \(Sq(\alpha\smile \beta)=Sq(\alpha)\smile Sq(\beta)\) (since \((Sq(\alpha\smile \beta))_n=\sum_iSq^i(\alpha)\smile Sq^{n-i}(\beta)=(Sq(\alpha)\smile Sq(\beta))_n\)). Thus, \(Sq\) is a ring homomorphism. 
+\item Adem relations:
+\[Sq^aSq^b=\sum_j {b-j-1\choose a-2j}Sq^{a+b-j}Sq^j \quad \text{if } a<2b,\]
+where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \({m \choose 0}=1\) for \(m \geq 0\).
+\item The Steenrod algebra \(\mathscr{A}_2\) is the algebra over \(\inte/2\inte\) that is the quotient of the algebra of polynomials in the noncommuting variables \(Sq^1, Sq^2, ...\) by the two-sided ideal generated by the Adem relations. Thus, for every space \(X\), \(H^*(X; \inte/2\inte)\) is a module over \(\mathscr A_2\), via \(\alpha \cdot f = f(\alpha)\).
+\item \(\mathscr A_2\) is graded, and its elements of degree \(k\) are those that map \(H^n(X; \inte/2\inte)\) to \(H^{n_k}(X, \inte/2\inte)\) for all \(n\). [Presumably you've fixed a space \(X\) while you're doing all this?]
+\end{itemize}
+
+\autocite{stable_homotopy}, \autocite{cobordism}, 
+\autocite{ass}, \autocite{spectra}, \autocite{hatcher}
+
+\section{Spectra may not be your friends, but I can introduce you}
+
+\begin{itemize}
+\item \autocite{ass}: There is a category \(\mathcal{H}\) of finite [because the corollary wanted f.d. CW complexes] based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of base-point preserving maps \(X\to Y\).
+\item There is a category \textbf{St}(\(\mathcal{H}\)) of finite[?] based CW complexes, with \(\Hom(X, Y)=:\{X, Y\}\) the  set \(\colim_i [\Sigma^iX, \Sigma^iY]\) [it's just a colimit of sets, and \textbf{Set} is cocomplete, so we should be fine. \autocite{ass} says it's a group?] 
+\item There is a functor \(\mathcal{H}\to \textbf{St}(\mathcal{H})\). \autocite{ass} doesn't say what this is but it's presumably the one that is the identity on objects and sends \([f : X \to Y]\in [\Sigma^0X, \Sigma^0Y]\) to whatever it gets sent to in \(\{X, Y\}\) using the universal property of the colimit. Uniqueness makes it functorial, etc.
+\item We have a fully faithful functor \(\textbf{St}(\mathcal{H})\to \textbf{St}(\mathcal{H})\) given by the suspension on objects, and the unique isomorphism \(\{X, Y\}\to\{\Sigma X, \Sigma Y\}\) on maps (such an isomorphism exists, since both of those things are colimits for \([\Sigma^i X, \Sigma^i Y]\) - one of the sequences is cut off at the beginning, but it doesn't matter because both reach the stable value (see above discussion and \autocite{ass} 1.9), aka the colimit). 
+\item It's not an equivalence, because not every object is isomorphic to a suspension (e.g. anything not connected, since suspensions always connected [?])
+\item We can formally adjoin desuspensions \(\Sigma^{-n}X\) for all \(n\) [does this mean just putting the objects there and defining \(\Hom(Y, \Sigma^{-n}X):=\Hom(\Sigma^nY, X)\) and \(\Hom(\Sigma^{-n}X, Y):=\Hom(X, \Sigma^n Y)\)?], but this category does not have weak colimits (i.e. colimits w/o uniqueness property). [why does it not, and why do we even want that?]
+\item We instead consider formal sequences of desuspensions \(X_0 \to \Sigma^{-1}X_1 \to \cdots\), or sequences \((X_n)\) and maps \(\Sigma X_n \to X_{n+1}\), i.e. spectra. [and this fixes the problem?]
+\end{itemize}
+
+\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}
+
+\section{The Adams spectral sequence}
+
+\autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}
+
+\section{\(\Ext_A^s(\bb{F}_2, \bb{F}_2)_t\)}
+
+\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}
+
+\section{Methods of resolving ambiguities}
+
+\autocite{stable_homotopy}, \autocite{cobordism}
+
+\printbibliography
+
+\end{document}
