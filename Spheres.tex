@@ -149,6 +149,7 @@ Miscellaneous facts I might need later:
 \item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
 \item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
 \item ``Stable homotopy groups are a homology theory'' (whatever that means)
+\item Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\tilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
 \end{itemize}
 
 Algebraic background:
@@ -185,7 +186,7 @@ The following is from \autocite{hatcher} 4L.
 \item \(Sq^i_X(\alpha + \beta)=Sq^i_X(\alpha)+Sq^i_X(\beta)\) (i.e. \(Sq_X^i\) respects the group operation for all \(X\)).
 \item \(Sq^i(\alpha \smile \beta)=\sum\limits_{0\leq j \leq i} (Sq^j(\alpha)\smile Sq^{i-j}(\beta))\) (the Cartan formula)
 \item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the ``suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\)''
-\item \(Sq^i(\alpha)=\alpha^2\) if \(i=\abs{\alpha}\) and \(Sq^i(\alpha)=0\) if \(i> \abs{\alpha}\).
+\item \(Sq^i(\alpha)=\alpha^2\) if \(i=\abs{\alpha}\) and \(Sq^i(\alpha)=0\) if \(i> \abs{\alpha}\). [Hatcher doesn't explain this notation at all, but I think he means by \(\abs{\alpha}\) the degree of \(\alpha\) - this is what \autocite{stable_homotopy2} says in C2]
 \item \(Sq^0=\id.\)
 \item \(Sq^1\) is the ``\(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\)''. 
 \end{enumerate}
@@ -198,7 +199,7 @@ where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \
 \end{itemize}
 
 \autocite{stable_homotopy}, \autocite{cobordism}, 
-\autocite{ass}, \autocite{spectra}, \autocite{hatcher}
+\autocite{ass}, \autocite{spectra}, \autocite{hatcher}, \autocite{foundations}
 
 \section{Spectra may not be your friends, but I can introduce you}
 
@@ -212,11 +213,11 @@ where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \
 \item We instead consider formal sequences of desuspensions \(X_0 \to \Sigma^{-1}X_1 \to \cdots\), or sequences \((X_n)\) and maps \(\Sigma X_n \to X_{n+1}\), i.e. spectra. [and this fixes the problem?]
 \end{itemize}
 
-\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}
+\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}
 
 \section{The Adams spectral sequence}
 
-\autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}
+\autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{foundations}
 
 \section{\(\Ext_A^s(\bb{F}_2, \bb{F}_2)_t\)}
 
