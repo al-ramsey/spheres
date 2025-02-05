@@ -213,6 +213,25 @@ where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \
 \item We instead consider formal sequences of desuspensions \(X_0 \to \Sigma^{-1}X_1 \to \cdots\), or sequences \((X_n)\) and maps \(\Sigma X_n \to X_{n+1}\), i.e. spectra. [and this fixes the problem?]
 \end{itemize}
 
+\begin{definition}
+A \textit{spectrum} is a collection of pointed topological spaces \(\{X_n\}_{n\in \nat}\), together with basepoint-preserving maps \(\sigma_n : \Sigma X_n \to X_{n+1}\).
+\end{definition}
+
+\begin{example}
+Let \(X\) be a topological space. The \textit{suspension spectrum} of \(X\) has \(X_n=\Sigma^nX\) and \(\sigma_n=\id : \Sigma X_n \to X_{n+1}\).
+\end{example}
+
+[Define EM spectrum]
+
+\begin{definition}
+Let \(X=\{X_n\}\) be a spectrum. We define \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\), where the map \(\pi_{i+n}(X_n)\to \pi_{i+n+1}(X_{n+1})\) is given by the composition
+\[\pi_{i+n}(X_n)\xrightarrow{\Sigma}\pi_{i+n+1}(\Sigma X_n)\xrightarrow{(\sigma_n)_*}\pi_{i+n+1}(X_{n+1}).\]
+\end{definition}
+
+\begin{example}
+If \(X'\) is the suspension spectrum of a topological space \(X\), then \(\pi_i(X')\) is the \(i\)th stable homotopy group of \(X\). 
+\end{example}
+
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}
 
 \section{The Adams spectral sequence}
