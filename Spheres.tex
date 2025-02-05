@@ -40,6 +40,18 @@
 
 %keyword: edit
 
+\newcommand{\surj}{\rightarrow\mathrel{\mkern-14mu}\rightarrow}
+
+\newcommand{\xsurj}[2][]{%
+  \xrightarrow[#1]{#2}\mathrel{\mkern-14mu}\rightarrow
+}
+
+\newcommand\xmono[2][]{\ensurestackMath{\mathrel{%
+  \stackengine{1pt}{%
+    \stackengine{0pt}{\rightarrowtail}{\scriptstyle#2}{O}{c}{F}{F}{S}%
+  }{\scriptstyle#1}{U}{c}{F}{F}{S}%
+}}}
+
 \def\summing{\ensuremath\sum^{\infty}_{n=1}}
 \def\summingo{\ensuremath\sum^{\infty}_{n=0}}
 \def\bb{\ensuremath\mathbb}
@@ -47,19 +59,21 @@
 \def\ra{\ensuremath\rangle}
 \def\notto{\ensuremath\nrightarrow}
 \def\subq{\ensuremath\subseteq}
-
-\def\met{\ensuremath(X, d)}
-\def\metx{\ensuremath(X, d_X)}
-\def\mety{\ensuremath(Y, d_Y)}
-\def\topox{\ensuremath(X, \mathcal{T}_X)}
-\def\topoy{\ensuremath(Y, \mathcal{T}_Y)}
-
+\def\inj{\ensuremath\hookrightarrow}
+\def\xinj{\ensuremath\xhookrightarrow}
 \def\comp{\ensuremath\mathbb{C}}
 \def\real{\ensuremath\mathbb{R}}
 \def\rat{\ensuremath\mathbb{Q}}
 \def\inte{\ensuremath\mathbb{Z}}
 \def\nat{\ensuremath\mathbb{N}}
 \def\topo{\ensuremath\mathcal{T}}
+\def\del{\ensuremath\partial}
+
+\def\met{\ensuremath(X, d)}
+\def\metx{\ensuremath(X, d_X)}
+\def\mety{\ensuremath(Y, d_Y)}
+\def\topox{\ensuremath(X, \mathcal{T}_X)}
+\def\topoy{\ensuremath(Y, \mathcal{T}_Y)}
 
 \def\A{\ensuremath\mathcal{\mathscr{A}_2}}
 
@@ -71,15 +85,35 @@
 \def\psip{\ensuremath\psi_{+}}
 \def\psin{\ensuremath\psi_{-}}
 \def\psipm{\ensuremath\psi_{\pm}}
+
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\can}{can}
+\DeclareMathOperator{\charr}{char}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\coev}{coev}
+\DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\colim}{colim}
-\DeclareMathOperator{\trace}{trace}
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\str}{str}
+\DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\ev}{ev}
 \DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Gr}{Gr}
 \DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\lk}{lk}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\lk}{lk}
+\DeclareMathOperator{\mor}{mor}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\Open}{Open}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\str}{str}
+\DeclareMathOperator{\Sk}{Sk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\SPec}{Spec}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\cvec}{Vec}
 
 \def\done{\begin{flushright}\vspace{-4.35ex}\(\qed\)\end{flushright}}
 
@@ -213,6 +247,8 @@ where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \
 \item We instead consider formal sequences of desuspensions \(X_0 \to \Sigma^{-1}X_1 \to \cdots\), or sequences \((X_n)\) and maps \(\Sigma X_n \to X_{n+1}\), i.e. spectra. [and this fixes the problem?]
 \end{itemize}
 
+Below follows \autocite{hatcher5}, Section 5.2.
+
 \begin{definition}
 A \textit{spectrum} is a collection of pointed topological spaces \(\{X_n\}_{n\in \nat}\), together with basepoint-preserving maps \(\sigma_n : \Sigma X_n \to X_{n+1}\).
 \end{definition}
@@ -232,11 +268,27 @@ Let \(X=\{X_n\}\) be a spectrum. We define \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\),
 If \(X'\) is the suspension spectrum of a topological space \(X\), then \(\pi_i(X')\) is the \(i\)th stable homotopy group of \(X\). 
 \end{example}
 
-\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}
+\begin{definition}
+A CW spectrum is a spectrum \(X\) consisting of CW complexes \(X_n\) with the maps \(\Sigma X_n \inj X_{n+1}\) inclusions of subcomplexes. 
+\end{definition}
+
+[Define cells and dimension of a CW spectrum]
+
+\begin{definition}
+A spectrum \(X\) is \textit{connective} if its cells have dimensions which are bounded below.
+\end{definition}
+
+[The above is phrased exactly as in hatcher - presumably he means that there is some absolute bound below which no cell has dimension, rather than a bound dependent on each cell?]
+
+\begin{definition}
+A CW spectrum is \textit{finite} if it has only finitely many cells, and \textit{of finite type} if it has only finitely many cells in each dimension.
+\end{definition}
+
+\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
 
 \section{The Adams spectral sequence}
 
-\autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{foundations}
+\autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{foundations}, \autocite{hatcher5}
 
 \section{\(\Ext_A^s(\bb{F}_2, \bb{F}_2)_t\)}
 
