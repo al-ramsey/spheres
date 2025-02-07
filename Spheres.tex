@@ -292,9 +292,46 @@ A CW spectrum is \textit{finite} if it has only finitely many cells, and \textit
 
 \subsection{Spectral sequences}
 
-Some notes from \autocite{ass}:
+Some notes from \autocite{ass} (or maybe not)
 
+How about some notes from \autocite{spectral_sequences}:
 
+\begin{definition}
+A \textit{differential bigraded module} \(E\) over a ring \(R\) is a collection of \(R\)-modules \(\{E^{p, q}\}\), \(p, q\in \inte\), together with a map \(d : E^{p, q} \to E^{p+s, q-s+1}\) for each \(p, q\) and some fixed \(s \in \inte\), satisfying \(d^2=0\). 
+\end{definition}
+
+We can take the homology of \((E, d)\):
+\[H^{p, q}(E^{*, *}, d)=\ker(d : E^{p, q}\to E^{p+s, q-s+1})/\im(d : E^{p-s, q+s-1}\to E^{p, q}).\]
+
+\begin{definition}
+A \textit{spectral sequence} (of \textit{cohomological type}) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, 1-r)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
+\end{definition}
+
+\subsection{The Adams spectral sequence}
+
+Things I need before I can set it up (according to Hatcher \autocite{hatcher5}):
+
+Let \(X\) be a CW spectrum of finite type.
+
+\begin{itemize}
+\item Def: \(H^*(X)\).
+\item Def: EM spectrum.
+\item Fact: \(H^*(X)\) is finitely generated.
+\item Fact: \(H^*(X)\) is an \(\mathscr{A}\)-module. [We know that's true for a topological space]
+\item Fact: We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}\)-module such that there are at most finitely many in each \(H^n(X)\).
+\item Fact: There \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type.
+\item Fact: We can replace that map with an inclusion
+\item Fact: A quotient of connective spectra of finite type is again a connective spectrum of finite type.
+\item Def: A resolution of \(H^*(X)\).
+\item Prop: \autocite{hatcher5}, 5.46.
+\item Def: The functor \(\pi^Y_t(Z)=[\Sigma^tY, Z]\) for a finite spectrum \(Y\).
+\item Def: A cofibration.
+\item Def: A staircase diagram
+\item Def: A spectral sequence
+\item Fact: If \(Y\) is a finite spectrum and and \(Z\) is a connective spectrum of finite type, then \(\pi^Y_t(Z)\) is finitely generated.
+\item Fact: I can do this. I have all the necessary skills to pull this off. 
+\item Fact: I'm going to stop listing things I need to do and start actually doing them.
+\end{itemize}
 
 \autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{foundations}, \autocite{hatcher5}, \autocite{ass}
 
