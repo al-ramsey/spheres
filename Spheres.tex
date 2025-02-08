@@ -294,7 +294,7 @@ A CW spectrum is \textit{finite} if it has only finitely many cells, and \textit
 
 Some notes from \autocite{ass} (or maybe not)
 
-How about some notes from \autocite{spectral_sequences}:
+How about some notes from \autocite{spectral_sequences}, C2:
 
 \begin{definition}
 A \textit{differential bigraded module} \(E\) over a ring \(R\) is a collection of \(R\)-modules \(\{E^{p, q}\}\), \(p, q\in \inte\), together with a map \(d : E^{p, q} \to E^{p+s, q-s+1}\) for each \(p, q\) and some fixed \(s \in \inte\), satisfying \(d^2=0\). 
@@ -306,6 +306,62 @@ We can take the homology of \((E, d)\):
 \begin{definition}
 A \textit{spectral sequence} (of \textit{cohomological type}) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, 1-r)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
 \end{definition}
+
+We will sometimes write \(d^{p, q}_r\) for the differential \(d_r : E^{p, q}\to E^{p+r,q-s+1}\). 
+
+Consider the term \(E_2^{*, *}\). Define 
+\[Z_2^{p, q}:=\ker d_2^{p,q} \quad \text{and} \quad B_2^{p,q}:=\im d_2^{p-2,q+1}.\]
+The condition \(d^2=0\) implies that \(B_2^{p,q}\subq Z_2^{p,q}\subq E_2^{p,q}\), and by definition we have \(E_3^{p,q}\cong Z^{p,q}_2/B_2^{p,q}\). 
+
+Now, write 
+\[Z_3^{p, q}:=\ker d_3^{p,q} \quad \text{and} \quad B_3^{p,q}:=\im d_3^{p-3,q+2}.\]
+Since \(Z_3^{p,q}\subq E^{p,q}_3\), it can be written as \(\overline{Z}_3^{p,q}/B_2^{p,q}\) for some \(\overline{Z}_3^{p,q}\subq Z_2^{p,q}\). Similarly, \(B_3^{p,q}\cong \overline B_3^{p,q}/B_2^{p,q}\) for some \(\overline B_3^{p,q}\subq Z_2^{p,q}\). Thus,
+\[E_4^{p,q}\cong Z_3^{p,q}/B_3^{p,q}\cong \frac{\overline Z_2^{p,q}/B_2^{p,q}}{\overline B_3^{p,q}/B_2^{p,q}}\cong \overline Z_3^{p,q}/\overline B_3^{p,q}.\]
+
+Iterating this process, we present the spectral sequence as an infinite tower of submodules of \(E_2^{p,q}\):
+\[B_2^{p,q}\subq \overline B_3^{p,q}\subq \cdots \subq \overline B_n^{p,q}\subq \cdots \subq \overline Z_n^{p,q}\subq \cdots \subq \overline Z_3^{p,q}\subq Z_2^{p,q}\subq E_2^{p,q},\]
+with the property that \(E^{p,q}_{n+1}\cong \overline Z_n^{p,q}/\overline B_n^{p,q}\). The differential \(d_{n+1}^{p,q}\) can be taken as a map \(\overline Z^{p,q}_n/\overline B_n^{p,q}\to\overline Z_n^{p,q}/\overline B_n^{p,q}\) with kernel \(\overline Z_{n+1}^{p,q}/\overline B_n^{p,q}\) and image \(\overline B_{n+1}^{p,q}\). The short exact sequence induced by \(d_{n+1}\),
+\[0 \to \overline Z^{p,q}_{n+1}/\overline B_n^{p,q}\to \overline Z_n^{p,q}/\overline B_n^{p,q} \xrightarrow{d_{n+1}^{p,q}} \overline B_{n+1}^{p,q}/\overline{B}_n^{p,q}\to 0,\]
+gives rise to isomorphisms \(\overline{Z}_n^{p,q}/\overline{Z}_{n+1}^{p,q}\cong \overline{B}_{n+1}^{p,q}/\overline{B}_n ^{p,q}\) for all \(n\). Conversely, a tower of submodules of \(E_2\), together with a set of isomorphisms, gives rise to a spectral sequence. 
+
+\begin{definition}
+An element of \(E_2^{p,q}\) \textit{survives to the \(r\)th stage} if lies in \(\overline{Z}_r^{p,q}\), having been in the kernel of the previous \(r-2\) differentials, and is \textit{bounded by the \(r\)th stage} if it lies in \(\overline{B}_r^{p,q}\). The bigraded module \(E_r^{*,*}\) is called the \textit{\(E_r\)-term} of the spectral sequence. 
+\end{definition}
+
+We define 
+\[Z_\infty^{p,q}:= \bigcap_n \overline{Z}^{p,q}_n, \quad B_\infty^{p,q}:=\bigcup^n \overline{B}^{p,q}_n.\]
+From the tower of inclusions, we see that \(B_\infty^{p,q}\subq Z^{p,q}_\infty\), so we define \(E_\infty^{p,q}:=Z_\infty^{p,q}/B_\infty^{p,q}\). 
+
+\begin{definition}
+A spectral sequence \textit{collapses at the \(N\)th term} if the differentials \(d_r^{p,q}=0\) for \(r\geq N\). 
+\end{definition}
+
+From the short exact sequence 
+\[0 \to \overline Z^{p,q}_{r}/\overline B_{r-1}^{p,q}\to \overline Z_{r-1}^{p,q}/\overline B_{r-1}^{p,q} \xrightarrow{d_{r}^{p,q}} \overline B_{r}^{p,q}/\overline{B}_{r-1}^{p,q}\to 0,\]
+the condition \(d_r^{p,q}\) forces  \(\overline{Z}^{p,q}_r=\overline{Z}_{r-1}^{p,q}\) and \(\overline{B}^{p,q}_r=\overline{B}_{r-1}^{p,q}\). The tower of submodules becomes
+\[B_2^{p,q}\subq \overline B_3^{p,q}\subq \cdots \subq \overline B_{N-1}^{p,q}=B_N^{p,q}= \cdots=B_\infty^{p,q} \subq Z_\infty^{p,q}= \cdots = \overline Z_N^{p,q}=\overline Z^{p,q}_{N-1}\subq \cdots \subq \overline Z_3^{p,q}\subq Z_2^{p,q}\subq E_2^{p,q}.\]
+Thus, \(E_\infty^{p,q}=E_N^{p,q}\). 
+
+\subsection{Exact couples}
+
+(Following \autocite{spectral_sequences}, C2)
+
+\begin{definition}
+Let \(D, E\) be \(R\)-modules, and let \(i : D \to D\), \(j : D\to E\), \(k : E \to D\) be module homomorphisms. We call \(\mathcal{C}=\{D, E, i, j, k\}\) an \textit{exact couple} if the diagram below is exact.
+\[\begin{tikzcd}
+ D \arrow[rr, "i"] && D \arrow[dl, "j"] \\ 
+  & E \arrow[ul, "k"] &  
+ \end{tikzcd}\] 
+\end{definition}
+
+Let \(d:=jk\), and define the following:
+\begin{align*}
+E'&:=H(E, d)=\ker d/\im d\\
+D'&:=i(D)=\ker j\\
+i'&:=i|_{i(D)} : D'\to D'\\
+j'&:=i(x)\mapsto j(x)+dE : D'\to E'
+\end{align*}
+
 
 \subsection{The Adams spectral sequence}
 
@@ -327,13 +383,12 @@ Let \(X\) be a CW spectrum of finite type.
 \item Def: The functor \(\pi^Y_t(Z)=[\Sigma^tY, Z]\) for a finite spectrum \(Y\).
 \item Def: A cofibration.
 \item Def: A staircase diagram
-\item Def: A spectral sequence
 \item Fact: If \(Y\) is a finite spectrum and and \(Z\) is a connective spectrum of finite type, then \(\pi^Y_t(Z)\) is finitely generated.
 \item Fact: I can do this. I have all the necessary skills to pull this off. 
 \item Fact: I'm going to stop listing things I need to do and start actually doing them.
 \end{itemize}
 
-\autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{foundations}, \autocite{hatcher5}, \autocite{ass}
+\autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{foundations}, \autocite{hatcher5}, \autocite{ass}, \autocite{primer}
 
 \section{Calculating stable homotopy groups}
 
