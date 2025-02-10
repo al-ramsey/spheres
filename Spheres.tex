@@ -161,7 +161,6 @@
 0 & i\neq n.
 \end{cases}\]
 They're unique up to weak homotopy equivalence (i.e. if you have another one \(X\), there's a map between them which descends to an isomorphism on homotopy groups)
-\item Define suspension of a topological space
 \item Freudenthal's suspension theorem: if \(\pi_i(X)=0\) for \(i\leq k\) (i.e. \(X\) is \(k\)-connected) then the map 
 \begin{align*}
 \pi_n(X) \;\;&\to\;\; \pi_{n+1}(\Sigma X)\\
@@ -179,34 +178,11 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 Miscellaneous facts I might need later:
 \begin{itemize}
 \item Cohomology [possibly only of pointed CW complexes] is representable, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
-\item There is an adjunction \(\Sigma \dashv \Omega\), where \(\Omega\) is the loop functor.
 \item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
 \item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
 \item ``Stable homotopy groups are a homology theory'' (whatever that means)
 \item Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\tilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
 \end{itemize}
-
-Algebraic background:
-
-\begin{definition}
-Let \(M, N\) be modules over a ring \(R\). A \textit{free resolution} \(F\) of \(M\) is an exact sequence 
-\[\cdots \to F_2 \to F_1 \to F_0 \to M \to 0,\]
-with each \(F_i\) a free \(R\)-module.
-\end{definition}
-
-Applying \(\Hom_R(-, N)\) gives us a chain complex
-\[\cdots \leftarrow \Hom_R(F_2, N) \leftarrow \Hom_R(F_1, N) \leftarrow \Hom_R(F_0, N) \leftarrow \Hom_R(M, N) \leftarrow 0.\]
-Dropping the term \(\Hom_R(M, N)\) [why?] we get the sequence
-\[\cdots \leftarrow \Hom_R(F_2, N) \leftarrow \Hom_R(F_1, N) \leftarrow \Hom_R(F_0, N) \leftarrow 0,\]
-and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain complex. 
-
-%we write \(H^n(F; G):=\ker f^*_{n+1}/\im f_n^*\). Any abelian group \(H\) has a free resolution of the form 
-%\[0 \to F_1 \to F_0 \to H \to 0\]
-%(the one you think it is). So we get a chain complex
-%\[0 \leftarrow F_1^* \leftarrow F_0^* \leftarrow H^* \leftarrow 0.\]
-%We have \(H^n(F; G)=0\) for \(n>1\). Define \(\Ext(H;G):=H^1(F;G)\). 
-
-[these do not depend on the choice of free resolution of \(M\)]
 
 \autocite{ass}, \autocite{suspension}, \autocite{hatcher}
 
@@ -403,6 +379,54 @@ Let \(X\) be a CW spectrum of finite type.
 READ IF YOUR CALCULATIONS AREN'T WORKING:
 
 You are working modulo 2!!!
+
+\appendix 
+
+\section{Algebra}
+
+\subsection{Free resolutions}
+
+\begin{definition}
+Let \(M, N\) be modules over a ring \(R\). A \textit{free resolution} \(F\) of \(M\) is an exact sequence 
+\[\cdots \to F_2 \to F_1 \to F_0 \to M \to 0,\]
+with each \(F_i\) a free \(R\)-module.
+\end{definition}
+
+Applying \(\Hom_R(-, N)\) gives us a chain complex
+\[\cdots \leftarrow \Hom_R(F_2, N) \leftarrow \Hom_R(F_1, N) \leftarrow \Hom_R(F_0, N) \leftarrow \Hom_R(M, N) \leftarrow 0.\]
+Dropping the term \(\Hom_R(M, N)\) [why?] we get the sequence
+\[\cdots \leftarrow \Hom_R(F_2, N) \leftarrow \Hom_R(F_1, N) \leftarrow \Hom_R(F_0, N) \leftarrow 0,\]
+and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain complex. 
+
+%we write \(H^n(F; G):=\ker f^*_{n+1}/\im f_n^*\). Any abelian group \(H\) has a free resolution of the form 
+%\[0 \to F_1 \to F_0 \to H \to 0\]
+%(the one you think it is). So we get a chain complex
+%\[0 \leftarrow F_1^* \leftarrow F_0^* \leftarrow H^* \leftarrow 0.\]
+%We have \(H^n(F; G)=0\) for \(n>1\). Define \(\Ext(H;G):=H^1(F;G)\). 
+
+[these do not depend on the choice of free resolution of \(M\)]
+
+\section{Topology}
+
+\subsection{Basic constructions}
+
+\begin{itemize}
+\item Suspension and loops; the adjunction \(\Sigma \dashv \Omega\), where \(\Omega\) is the loop functor.
+\item Reduced suspension
+\item Smash product
+\item Wedge product
+\item `reduced cylinder'?
+\end{itemize}
+
+\subsection{Cell complexes}
+\begin{itemize}
+\item The product of cell complexes is a cell complex (maybe only if one of them is finite?)
+\item The smash product of (pointed?) cell complexes is a cell complex (maybe only if one is them is finite?)
+\item Cellular maps
+\item Quotient if a CW complex by a subcomplex is a CW complex, where the quotient map is cellular
+\item The reduced suspension of a pointed cell complex is a pointed cell complex.
+\item CW pairs?
+\end{itemize}
 
 \printbibliography
 
