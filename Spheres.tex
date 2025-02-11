@@ -213,6 +213,8 @@ where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \
 
 \section{Spectra may not be your friends, but I can introduce you}
 
+\subsection{Categorical nonsense}
+
 \begin{itemize}
 \item \autocite{ass}: There is a category \(\mathcal{H}\) of finite [because the corollary wanted f.d. CW complexes] based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of base-point preserving maps \(X\to Y\).
 \item There is a category \textbf{St}(\(\mathcal{H}\)) of finite[?] based CW complexes, with \(\Hom(X, Y)=:\{X, Y\}\) the  set \(\colim_i [\Sigma^iX, \Sigma^iY]\) [it's just a colimit of sets, and \textbf{Set} is cocomplete, so we should be fine. \autocite{ass} says it's a group?] [Also, how do these guys compose?]
@@ -222,6 +224,8 @@ where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \
 \item We can formally adjoin desuspensions \(\Sigma^{-n}X\) for all \(n\) [does this mean just putting the objects there and defining \(\Hom(Y, \Sigma^{-n}X):=\Hom(\Sigma^nY, X)\) and \(\Hom(\Sigma^{-n}X, Y):=\Hom(X, \Sigma^n Y)\)?], but this category does not have weak colimits (i.e. colimits w/o uniqueness property). [why does it not, and why do we even want that?]
 \item We instead consider formal sequences of desuspensions \(X_0 \to \Sigma^{-1}X_1 \to \cdots\), or sequences \((X_n)\) and maps \(\Sigma X_n \to X_{n+1}\), i.e. spectra. [and this fixes the problem?]
 \end{itemize}
+
+\subsection{Definitions and examples}
 
 Below follows \autocite{hatcher5}, Section 5.2.
 
@@ -261,6 +265,23 @@ A spectrum \(X\) is \textit{connective} if its cells have dimensions which are b
 \begin{definition}
 A CW spectrum is \textit{finite} if it has only finitely many cells, and \textit{of finite type} if it has only finitely many cells in each dimension.
 \end{definition}
+
+\subsection{Homology and cohomology}
+
+[From Hatcher: ``the inclusions \(\Sigma X_n \inj X_{n+1}\) induce inclusions \(C_*(X_n; G)\inj C_*(X_{n+1}; G)\) with a dimension shift to account for the suspension''. Below is my vague explanation of what I understand this to mean.
+
+\(C_i(X_n; G)\) is the free abelian group on maps \(\Delta^i \to X_n\). I claim \(\Sigma\Delta^i\cong \Delta^{i+1}\). If this is true, it gives a map
+\begin{align*}
+C_i(X_n;G) &\to C_{i+1}(\Sigma X_n; G)\\
+f &\mapsto \Sigma f.
+\end{align*}
+I claim this is an injection. If this is true, we also have an injection \(C_{i+1}(\Sigma X_n; G)\to C_{i+1}(X_{n+1}; G)\) induced by the structure map \(\sigma_n\), so we get an injection \(C_i(X_n;G)\inj C_{i+1}(X_{n+1};G)\), which indeed has a dimension shift.
+
+Some issues:
+\begin{itemize}
+\item Everything I've done above is unreduced and unpointed
+\item The way it's phrased, it seems to be that this is a morphism of chain complexes - i.e. these maps commute with the \(\del\)s. Why would they?
+\end{itemize}]
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
 
@@ -335,8 +356,29 @@ Let \(d:=jk\), and define the following:
 E'&:=H(E, d)=\ker d/\im d\\
 D'&:=i(D)=\ker j\\
 i'&:=i|_{i(D)} : D'\to D'\\
-j'&:=i(x)\mapsto j(x)+dE : D'\to E'
+j'&:=i(x)\mapsto j(x)+dE : D'\to E'\\
+k'&:=(e+dE)\mapsto k(e) : E' \to D'
 \end{align*}
+
+We call \(\mathcal{C}'=\{D', E'. i', j', k'\}\) the \textit{derived couple} of \(\mathcal{C}\). 
+
+\begin{proposition}[\autocite{spectral_sequences}, Prop 2.7]
+If \(\mathcal{C}=\{D, E, i, j, k\}\) is an exact couple, then \(\mathcal{C}'\) is also an exact couple.
+\end{proposition}
+
+\begin{theorem}[{\autocite{spectral_sequences}, Thm 2.8}]
+Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,1)\), \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of cohomological type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r)}\circ k^{(r)}\). 
+\end{theorem}
+
+A bigraded exact couple may be displayed in the following diagram, known as a \textit{staircase diagram}:
+
+\[\begin{tikzcd} 
+   &  \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] & \\
+ \cdots \arrow[r, swap, "k"] & D^{p+2, q-1} \arrow[d, "i"] \arrow[r, "j"] & E^{p+2,q-1}  \arrow[r, "k"] & D^{p+3,q-1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, swap, "k"] & D^{p+1,q} \arrow[d, "i"] \arrow[r, "j"] & E^{p+1,q}  \arrow[r, "k"] & D^{p+2,q} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, swap, "k"] & D^{p,q+1}  \arrow[d, "i"] \arrow[r, "j"] & E^{p,q+1}  \arrow[r, "k"] & D^{p+1,q+1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ & \vdots &  & \vdots & 
+\end{tikzcd}\]
 
 
 \subsection{The Adams spectral sequence}
@@ -408,11 +450,19 @@ and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain 
 
 \section{Topology}
 
-\subsection{Basic constructions}
+\subsection{Suspension}
 
 \begin{itemize}
 \item Suspension and loops; the adjunction \(\Sigma \dashv \Omega\), where \(\Omega\) is the loop functor.
 \item Reduced suspension
+\item \autocite{hatcher} 2.1 Ex 20 and 2.2 Ex 32: \(\tilde H_n(X)\cong \tilde H_{n+1}(SX)\), where \(S\) is the (non-reduced) suspension.  (MV?) 
+\item Hatcher also says on p219 that \(\tilde H^n(X;R)\cong \tilde H^{n+k}(\Sigma^kX;R)\), where \(\Sigma \) is reduced suspension.
+\item 
+\end{itemize}
+
+\subsection{Other basic constructions}
+
+\begin{itemize}
 \item Smash product
 \item Wedge product
 \item `reduced cylinder'?
@@ -426,6 +476,7 @@ and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain 
 \item Quotient if a CW complex by a subcomplex is a CW complex, where the quotient map is cellular
 \item The reduced suspension of a pointed cell complex is a pointed cell complex.
 \item CW pairs?
+\item For a CW complex \(X\), \(SX\simeq \Sigma X\).
 \end{itemize}
 
 \printbibliography
