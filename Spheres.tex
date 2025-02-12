@@ -155,12 +155,6 @@
 
 \begin{itemize}
 \item Define homotopy groups
-\item The Eilenberg-MacLane space is \(K(G, n)\), and it has the property that 
-\[\pi_i(K(G, n))=\begin{cases}
-\inte & i=n,\\
-0 & i\neq n.
-\end{cases}\]
-They're unique up to weak homotopy equivalence (i.e. if you have another one \(X\), there's a map between them which descends to an isomorphism on homotopy groups)
 \item Freudenthal's suspension theorem: if \(\pi_i(X)=0\) for \(i\leq k\) (i.e. \(X\) is \(k\)-connected) then the map 
 \begin{align*}
 \pi_n(X) \;\;&\to\;\; \pi_{n+1}(\Sigma X)\\
@@ -177,7 +171,7 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 
 Miscellaneous facts I might need later:
 \begin{itemize}
-\item Cohomology [possibly only of pointed CW complexes] is representable, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
+\item Cohomology [possibly only of pointed\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?? See \ref{C}.} CW complexes] is representable, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
 \item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
 \item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
 \item ``Stable homotopy groups are a homology theory'' (whatever that means)
@@ -196,7 +190,7 @@ The following is from \autocite{hatcher} 4L.
 \item \(Sq^i_X(\alpha + \beta)=Sq^i_X(\alpha)+Sq^i_X(\beta)\) (i.e. \(Sq_X^i\) respects the group operation for all \(X\)).
 \item \(Sq^i(\alpha \smile \beta)=\sum\limits_{0\leq j \leq i} (Sq^j(\alpha)\smile Sq^{i-j}(\beta))\) (the Cartan formula)
 \item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the ``suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\)''
-\item \(Sq^i(\alpha)=\alpha^2\) if \(i=\abs{\alpha}\) and \(Sq^i(\alpha)=0\) if \(i> \abs{\alpha}\). [Hatcher doesn't explain this notation at all, but I think he means by \(\abs{\alpha}\) the degree of \(\alpha\) - this is what \autocite{stable_homotopy2} says in C2]
+\item \(Sq^i(\alpha)=\alpha^2\) if \(i=\deg(\alpha)\) and \(Sq^i(\alpha)=0\) if \(i> \deg(\alpha)\). %[Hatcher doesn't explain this notation at all, but I think he means by \(\abs{\alpha}\) the degree of \(\alpha\) - this is what \autocite{stable_homotopy2} says in C2] N.B: I'm right, he defines in on p212 of AT
 \item \(Sq^0=\id.\)
 \item \(Sq^1\) is the ``\(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\)''. 
 \end{enumerate}
@@ -239,7 +233,11 @@ Let \(X\) be a topological space. The \textit{suspension spectrum} of \(X\), den
 
 We write \(\bb{S}:=\Sigma^\infty S^0\), and call \(\bb{S}\) the \textit{sphere spectrum}. 
 
-[Define EM spectrum]
+\begin{example}
+The \textit{Eilenberg-MacLane spectrum} has \(X_n\) a CW complex \(K(G,n)\) and \(\sigma_n : \Sigma K(G,n)\to K(G,n+1)\) is the adjoint of the CW approximation \(K(G, n)\to \Omega K(G,n+1)\).
+\end{example}
+
+[N.B. the important point of the above is not that it's `an' EM space rather than `the' (they're all homotopy equivalent). It's that a) we can definitely construct one that's a CW complex, and b) even though \(\Omega\)(a CW complex) is not necessarily a CW complex, we can make it one via CW approximation.]
 
 \begin{definition}
 Let \(X=\{X_n\}\) be a spectrum. We define \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\), where the map \(\pi_{i+n}(X_n)\to \pi_{i+n+1}(X_{n+1})\) is given by the composition
@@ -389,20 +387,20 @@ Let \(X\) be a CW spectrum of finite type.
 
 \begin{itemize}
 \item Def: \(H^*(X)\).
-\item Def: EM spectrum.
+\item Def: A wedge of spectra.
 \item Fact: \(H^*(X)\) is finitely generated.
 \item Fact: \(H^*(X)\) is an \(\mathscr{A}\)-module. [We know that's true for a topological space]
 \item Fact: We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}\)-module such that there are at most finitely many in each \(H^n(X)\).
 \item Fact: There \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type.
-\item Fact: We can replace that map with an inclusion
+\item Fact: We can replace that map with an inclusion.
+\item Def: A quotient of (connective) spectra.
 \item Fact: A quotient of connective spectra of finite type is again a connective spectrum of finite type.
 \item Def: A resolution of \(H^*(X)\).
 \item Prop: \autocite{hatcher5}, 5.46.
 \item Def: The functor \(\pi^Y_t(Z)=[\Sigma^tY, Z]\) for a finite spectrum \(Y\).
 \item Def: A cofibration.
-\item Def: A staircase diagram
 \item Fact: If \(Y\) is a finite spectrum and and \(Z\) is a connective spectrum of finite type, then \(\pi^Y_t(Z)\) is finitely generated.
-\item Fact: I can do this. I have all the necessary skills to pull this off. 
+\item Conjecture: I can do this. I have all the necessary skills to pull this off. 
 \item Fact: I'm going to stop listing things I need to do and start actually doing them.
 \end{itemize}
 
@@ -453,8 +451,16 @@ and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain 
 \subsection{Suspension}
 
 \begin{itemize}
-\item Suspension and loops; the adjunction \(\Sigma \dashv \Omega\), where \(\Omega\) is the loop functor.
-\item Reduced suspension
+\item Reduced suspension and loops; the adjunction \(\Sigma \dashv \Omega\), where \(\Omega\) is the loop functor.
+\end{itemize}
+
+\autocite{hatcher}, p395:
+
+\begin{remark}
+It follows that \(\pi_{n+1}(X)\cong \pi_n(\Omega X)\). In particular, \(\Omega K(G, n)\) is a \newline\(K(G, n-1)\). 
+\end{remark}
+
+\begin{itemize}
 \item \autocite{hatcher} 2.1 Ex 20 and 2.2 Ex 32: \(\tilde H_n(X)\cong \tilde H_{n+1}(SX)\), where \(S\) is the (non-reduced) suspension.  (MV?) 
 \item Hatcher also says on p219 that \(\tilde H^n(X;R)\cong \tilde H^{n+k}(\Sigma^kX;R)\), where \(\Sigma \) is reduced suspension.
 \end{itemize}
@@ -468,6 +474,12 @@ Let \((X, x_0), (Y, y_0)\) be pointed topological spaces, and consider their pro
 \begin{itemize}
 \item `Reduced cylinder'?
 \item Mapping cones?
+\item The Eilenberg-MacLane space is \(K(G, n)\), and it has the property that 
+\[\pi_i(K(G, n))=\begin{cases}
+G & i=n,\\
+0 & i\neq n.
+\end{cases}\]
+They're unique up to weak homotopy equivalence (i.e. if you have another one \(X\), there's a map between them which descends to an isomorphism on homotopy groups)
 \end{itemize}
 
 \subsection{Cell complexes}
@@ -479,7 +491,24 @@ Let \((X, x_0), (Y, y_0)\) be pointed topological spaces, and consider their pro
 \item The reduced suspension of a pointed cell complex is a pointed cell complex.
 \item CW pairs?
 \item For a CW complex \(X\), \(SX\simeq \Sigma X\).
-\item CW approximation
+\end{itemize}
+
+\begin{definition}
+Let \(X\) is a topological space. A \textit{CW approximation} to \(X\) is a CW complex \(Z\) equipped with a weak homotopy equivalence \(f : Z \to X\).
+\end{definition}
+
+\begin{theorem}[{\autocite{hatcher}, Prop 4.13}]
+Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-connected, \(Z\) can be chosen to have a single 0-cell, with all other cells attached by basepoint-preserving maps. 
+\end{theorem}
+
+\begin{itemize}
+\item In particular, \(\Omega K(G, n)\) has a CW approximation \(Z \to \Omega K(G, n)\), and since \(\Omega K(G,n)\) is a \(K(G,n-1)\), so is \(Z\). 
+\end{itemize}
+
+\section{Vague problems and Questions}\label{C}
+
+\begin{itemize}
+\item Is `pointed' (co)homology just reduced (co)homology? I've noticed `pointed things' (\(\Sigma, \Omega, \wedge\), ...) seem to happen to/in reduced (co)homology, and `unpointed things' (\(S, \times, ...\)) happen to/in normal (co)homology. I want to do pointed things. 
 \end{itemize}
 
 \printbibliography
