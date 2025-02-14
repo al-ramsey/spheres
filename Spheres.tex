@@ -64,6 +64,7 @@
 \def\nat{\ensuremath\mathbb{N}}
 \def\topo{\ensuremath\mathcal{T}}
 \def\del{\ensuremath\partial}
+\def\SIgma{\ensuremath\Sigma}
 
 \def\A{\ensuremath{\mathscr{A}_2}}
 
@@ -94,10 +95,10 @@
 \DeclareMathOperator{\ob}{ob}
 \DeclareMathOperator{\Open}{Open}
 \DeclareMathOperator{\Rep}{Rep}
-\DeclareMathOperator{\str}{str}
 \DeclareMathOperator{\Sk}{Sk}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\SPec}{Spec}
+\DeclareMathOperator{\str}{str}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\trace}{trace}
 \DeclareMathOperator{\cvec}{Vec}
@@ -251,14 +252,6 @@ A spectrum \(X\) is \textit{connective} if its cells have dimensions which are b
 A CW spectrum is \textit{finite} if it has only finitely many cells, and \textit{of finite type} if it has only finitely many cells in each dimension.
 \end{definition}
 
-\begin{definition}
-Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} of \(X\) is a sequence of subcomplexes \(\{X_n'\subq X_n\}\) satisfying \(\Sigma X_n'\subq X_{n+1}'\)
-\end{definition}
-
-\begin{definition}
-Let \(X=\{X_n\}\) be a CW spectrum, and \(X'=\{X_n'\}\) a subspectrum of \(X\). Then \(x'\) is \textit{cofinal} if, for each \(n\) and each cell \(e^i_\alpha\) of \(X_n\), the cell \(\Sigma^k e_\alpha^i\) belongs to \(X'_{n+k}\) for all sufficiently large \(k\).
-\end{definition}
-
 \subsection{Homology and cohomology}
 
 [From Hatcher: ``the inclusions \(\Sigma X_n \inj X_{n+1}\) induce inclusions \(C_*(X_n; G)\inj C_*(X_{n+1}; G)\) with a dimension shift to account for the suspension''. Below is my vague explanation of what I understand this to mean.
@@ -268,13 +261,37 @@ Let \(X=\{X_n\}\) be a CW spectrum, and \(X'=\{X_n'\}\) a subspectrum of \(X\). 
 C_i(X_n;G) &\to C_{i+1}(\Sigma X_n; G)\\
 f &\mapsto \Sigma f.
 \end{align*}
-I claim this is an injection. If this is true, we also have an injection \(C_{i+1}(\Sigma X_n; G)\to C_{i+1}(X_{n+1}; G)\) induced by the structure map \(\sigma_n\), so we get an injection \(C_i(X_n;G)\inj C_{i+1}(X_{n+1};G)\), which indeed has a dimension shift.
+This is an injection, by \ref{2502141442}. We also have an injection \(C_{i+1}(\Sigma X_n; G)\to C_{i+1}(X_{n+1}; G)\) induced by the structure map \(\sigma_n\), so we get an injection \(C_i(X_n;G)\inj C_{i+1}(X_{n+1};G)\), which indeed has a dimension shift.
 
 Some issues:
 \begin{itemize}
 \item Everything I've done above is unreduced and unpointed
-\item The way it's phrased, it seems to be that this is a morphism of chain complexes - i.e. these maps commute with the \(\del\)s. Why would they?
-\end{itemize}]
+\item The way it's phrased, it seems to be that this is a morphism of chain complexes - i.e. these maps commute with the \(\del\)s. Why would they?]
+\end{itemize}
+
+\begin{definition}
+Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} \(X'\) of \(X\) is a sequence of subcomplexes \(\{X_n'\subq X_n\}\) satisfying \(\Sigma X_n'\subq X_{n+1}'\). The subspectrum \(X'\) is \textit{cofinal} if, for each \(n\) and each cell \(e^i_\alpha\) of \(X_n\), the cell\footnote{Assuming it is actually a cell, see note in \ref{2502141508}.} \(\Sigma^k e_\alpha^i\) belongs to \(X'_{n+k}\) for all sufficiently large \(k\).
+\end{definition}
+
+[N.B. If \(\Sigma^ke^i_\alpha\) belongs to \(X'_{n+k}\) then \(\SIgma^{k+1}e^i_\alpha\) belongs to \(\Sigma X'_{n+k}\inj X'_{n+k+1}\) (I think!!), so if it happens once it'll happen for all time after that. Thus, if \(X'\), \(X''\) are cofinal spectra of \(X\) with \(\Sigma^k e_{\alpha}^i\) a cell of \(X_{n+k}'\) and \(\Sigma^l e_\alpha^i\) a cell of \(X_{n+l}''\) (\(l\geq k\)) then \(\Sigma^l e_\alpha^i\) is a cell of \(X_{n+l}'\) and therefore of \(X_{n+l}'\cap X_{n+l}''\). In other words, the intersection of two cofinal spectra is a cofinal spectrum.]
+
+\begin{definition}
+Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence of cellular\footnote{?} maps \(f_n : X_n \to Y_n\) such that the diagram below commutes.
+\[\begin{tikzcd}
+\Sigma X_n \arrow[r, "\sigma_n"] \arrow[d, swap, "\sigma f_n"]  & X_{n+1} \arrow[d, "f_{n+1}"]  \\
+\SIgma Y_n \arrow[r, swap, "\sigma_n"]  & Y_{n+1}
+\end{tikzcd}\]
+\end{definition}
+
+[this induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]
+
+\begin{definition}
+A \textit{map of CW spectra} \(f : X \to Y\) is a strict map \(f' : X' \to Y\) for some cofinal subspectrum \(X'\) of \(X\).
+\end{definition}
+
+[this also induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]
+
+Two maps \(f, g : X \to Y\) of CW spectra are regarded as the same if they take the same value on some common cofinal spectrum.
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
 
@@ -447,8 +464,14 @@ Let \(X\) be a topological space. The \textit{suspension} \(SX\) is the space \n
 \end{definition}
 
 \begin{definition}
-Let \(X\) be a pointed topological space. The \textit{reduced suspension} \(\Sigma X\) is the space \(SX/\sim\), where \([x_0, i]\sim [x_0, i']\) for all \(i,i'\in I\). 
+Let \(X\) be a pointed topological space. The \textit{reduced suspension} \(\Sigma X\) is the space \(SX/\sim\), where \([x_0, t]\sim [x_0, t']\) for all \(t,t'\in I\). 
 \end{definition}
+
+Given a map \(f : X \to Y\), we can define \(\Sigma f : \Sigma X \to \Sigma Y\) by \(\Sigma f[(x, t)]=[(fx, t)]\). This makes \(\Sigma \) into a functor \(\Sigma : \textbf{Top}\to \textbf{Top}\). 
+
+\begin{remark}\label{2502141442}
+\(\Sigma\) is faithful, since for any maps \(f, g : X\to Y\), if \(\Sigma f = \Sigma g\) then in particular \([(fx, \frac{1}{2})]=[(gx, \frac{1}{2})]\), so \(fx=gx\). 
+\end{remark}  
 
 \begin{itemize}
 \item Loops; the adjunction \(\Sigma \dashv \Omega\), where \(\Omega\) is the loop functor.
@@ -494,15 +517,16 @@ G & i=n,\\
 They're unique up to weak homotopy equivalence (i.e. if you have another one \(X\), there's a map between them which descends to an isomorphism on homotopy groups)
 \end{itemize}
 
-\subsection{Cell complexes}
+\subsection{Cell complexes}\label{2502141508}
 \begin{itemize}
 \item The product of cell complexes is a cell complex (maybe only if one of them is finite?)
 \item The smash product of (pointed?) cell complexes is a cell complex (maybe only if one is them is finite?) [\autocite{hatcher} says ``the smash product \(X\wedge Y\) is a cell complex if \(X\) and \(Y\) are cell complexes with \(x_0\) and \(y_0\) \(0\)-cells, assuming that we give \(X\times Y\) the cell-complex topology rather than the product topology in cases where these two topologies differ''.]
 \item Cellular maps
-\item Quotient if a CW complex by a subcomplex is a CW complex, where the quotient map is cellular
+\item Quotient of a CW complex by a subcomplex is a CW complex, where the quotient map is cellular
 \item The reduced suspension of a pointed cell complex is a pointed cell complex.
 \item CW pairs?
 \item For a CW complex \(X\), \(SX\simeq \Sigma X\).
+\item Something along the lines of ``the suspension of a cell is a cell of the suspension'' should be true.
 \end{itemize}
 
 \begin{definition}
