@@ -154,7 +154,7 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 
 Miscellaneous facts I might need later:
 \begin{itemize}
-\item Cohomology [possibly only of pointed\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?? See \ref{C}.} CW complexes] is representable, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
+\item Cohomology [possibly only of pointed\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?? See \ref{C}.} CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}?}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
 \item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
 \item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
 \item ``Stable homotopy groups are a homology theory'' (whatever that means)
@@ -301,6 +301,35 @@ A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where 
 \end{definition}
 
 Note that \(\Sigma(X_n\times_{\text{red}}I)=\Sigma X_n\times_{\text{red}}I\). The set of homotopy classes of maps \(X\to Y\) is denoted by \([X,Y]\). 
+
+[\autocite{stable_homotopy} says on p171 that ``\([\Sigma X, Z]\) is obviously a group, because in \(\Sigma X\) we have a spare suspension coordinate out in front to manipulate. And for the same reason, \([\Sigma^2 X, Z]\) is an abelian group. But now we can give \([X,Y]\) the structure of an abelian group, because \([X,Y]\) is in 1-1 correspondence with \([\Sigma^2X, \Sigma^2 Y]\) and we pull back the group structure on that. So now our sets of morphisms \([X,Y]\) are abelian groups, and it's easy to see that composition is bilinear''. 
+
+%Amazingly, this is actually more helpful that what \autocite{hatcher} has to say on the matter, but the bar is not high in this case.  
+
+\autocite{mazelgee} actually defines what all of the other sources seem to think is entirely trivial. Here's what I can reconstruct from it (:/) :
+
+Given \(f, g : \Sigma X \to Z\), define 
+\begin{align*}
+f \star g : \Sigma X &\to Z\\
+[x,t]&\mapsto \begin{cases}
+f[x,2t-1] & t \geq \frac{1}{2},\\
+g[x,2t] &t\leq \frac{1}{2}.
+\end{cases}
+\end{align*}
+This is well defined, because \(f[x,0]=f[x_0,0]=y_0=g[x_0,1]=g[x,1]\). Essentially, it's just because the maps are basepoint-preserving, and \([x,0]\) and \([x,1]\) are both just the basepoint.
+
+Various claims:
+\begin{itemize}
+\item This gives a group structure on \([\Sigma X, Z]\).
+
+\item There are two possible products on \([\Sigma^2 X, Z]\), and some variation on the Eckmann–Hilton argument works its magic to show it's actually commutative (and, apparently, automatically associative). 
+
+\item A spectrum is ``basically the same'' as some suspension spectrum\footnote{Or probably just the suspension of a spectrum, see \ref{C}.}, so understanding \([X, Z]\) is the same as understanding \([\Sigma X, Z]\), which is the same as understanding \([\Sigma^2 X, Z]\). 
+\item The stuff about normal CW complexes and their groups of maps translates to tell me the appropriate things about spectra and their groups of maps.
+\item After checking a lot of things, I can eventually conclude that \([X, Y]\) is an abelian group for spectra \(X, Y\). 
+\end{itemize}
+
+]
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
 
@@ -523,7 +552,7 @@ Observe that \(X\wedge (Y\wedge Z)\cong (X\wedge Y)\wedge Z\). Combining this wi
 G & i=n,\\
 0 & i\neq n.
 \end{cases}\]
-They're unique up to weak homotopy equivalence (i.e. if you have another one \(X\), there's a map between them which descends to an isomorphism on homotopy groups)
+They're unique up to weak homotopy equivalence (i.e. if you have another one \(X\), there's a map between them which descends to an isomorphism on homotopy groups). They can be taken to be CW complexes. 
 \end{itemize}
 
 \begin{definition}
@@ -571,6 +600,14 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \begin{itemize}
 \item Is `pointed' (co)homology just reduced (co)homology? I've noticed `pointed things' (\(\Sigma, \Omega, \wedge\), ...) seem to happen to/in reduced (co)homology, and `unpointed things' (\(S, \times, ...\)) happen to/in normal (co)homology. I want to do pointed things. 
+
+%\item \autocite{hatcher} says that defining cohomology of a spectrum as just \(\colim_n H^{i+n}(X_n)\) in the same way as for homotopy works for EM spectra and suspension spectra
+
+\item What does Hatcher mean when he says two spectra are `equivalent'?
+
+\item On p588 of \autocite{hatcher5}, he says ``every CW spectrum is equivalent to a suspension spectrum''. Does he actually mean that, or does he mean `equivalent to the suspension of a spectrum'? The former seems way too strong, although in fairness I still don't know what an equivalence of spectra actually \textit{is}. 
+
+\item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, so why does Hatcher say on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence? Is that just because I could take the role of \(\bb{S}\) and give it to some non-finite-type spectrum, or is there something I'm missing? Can I just take limits and be done with it?
 \end{itemize}
 
 \subsection{To do/other notes}
