@@ -265,9 +265,10 @@ This is an injection, by \ref{2502141442}. We also have an injection \(C_{i+1}(\
 
 Some issues:
 \begin{itemize}
-\item Everything I've done above is unreduced and unpointed
 \item The way it's phrased, it seems to be that this is a morphism of chain complexes - i.e. these maps commute with the \(\del\)s. Why would they?]
 \end{itemize}
+
+[Define \(H^*\) and \(H_*\) of a spectrum]
 
 \begin{definition}
 Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} \(X'\) of \(X\) is a sequence of subcomplexes \(\{X_n'\subq X_n\}\) satisfying \(\Sigma X_n'\subq X_{n+1}'\). The subspectrum \(X'\) is \textit{cofinal} if, for each \(n\) and each cell \(e^i_\alpha\) of \(X_n\), the cell\footnote{Assuming it is actually a cell, see note in \ref{2502141508}.} \(\Sigma^k e_\alpha^i\) belongs to \(X'_{n+k}\) for all sufficiently large \(k\).
@@ -276,7 +277,7 @@ Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} \(X'\) of \(X\) is a 
 [N.B. If \(\Sigma^ke^i_\alpha\) belongs to \(X'_{n+k}\) then \(\SIgma^{k+1}e^i_\alpha\) belongs to \(\Sigma X'_{n+k}\inj X'_{n+k+1}\) (I think!!), so if it happens once it'll happen for all time after that. Thus, if \(X'\), \(X''\) are cofinal spectra of \(X\) with \(\Sigma^k e_{\alpha}^i\) a cell of \(X_{n+k}'\) and \(\Sigma^l e_\alpha^i\) a cell of \(X_{n+l}''\) (\(l\geq k\)) then \(\Sigma^l e_\alpha^i\) is a cell of \(X_{n+l}'\) and therefore of \(X_{n+l}'\cap X_{n+l}''\). In other words, the intersection of two cofinal spectra is a cofinal spectrum.]
 
 \begin{definition}
-Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence of cellular\footnote{?} maps \(f_n : X_n \to Y_n\) such that the diagram below commutes.
+Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence of cellular maps \(f_n : X_n \to Y_n\) such that the diagram below commutes.
 \[\begin{tikzcd}
 \Sigma X_n \arrow[r, "\sigma_n"] \arrow[d, swap, "\sigma f_n"]  & X_{n+1} \arrow[d, "f_{n+1}"]  \\
 \SIgma Y_n \arrow[r, swap, "\sigma_n"]  & Y_{n+1}
@@ -292,6 +293,14 @@ A \textit{map of CW spectra} \(f : X \to Y\) is a strict map \(f' : X' \to Y\) f
 [this also induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]
 
 Two maps \(f, g : X \to Y\) of CW spectra are regarded as the same if they take the same value on some common cofinal spectrum.
+
+[check composition is well defined]
+
+\begin{definition}
+A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where \(X\times I\) is the spectrum with \((X\times I)_n=X_n\times_{\text{red}} I\).
+\end{definition}
+
+Note that \(\Sigma(X_n\times_{\text{red}}I)=\Sigma X_n\times_{\text{red}}I\). The set of homotopy classes of maps \(X\to Y\) is denoted by \([X,Y]\). 
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
 
@@ -517,11 +526,26 @@ G & i=n,\\
 They're unique up to weak homotopy equivalence (i.e. if you have another one \(X\), there's a map between them which descends to an isomorphism on homotopy groups)
 \end{itemize}
 
+\begin{definition}
+Let \(X\), \(Y\) be topological spaces, where \(X\)has a basepoint \(x_0\). Then the \textit{reduced product} \(X\times_{\text{red}}Y:=(X\times Y)/(x_0 \times Y)\). 
+\end{definition}
+
 \subsection{Cell complexes}\label{2502141508}
+
+\begin{definition}
+Let \(f : X \to Y\) be a map between CW complexes. Then \(f\) is \textit{cellular} if \(f(X_{(n)})\subq Y_{(n)}\) for all \(n\), where \(X_{(n)}\) is the \(n\)-skeleton of \(X\). 
+\end{definition}
+
+Cellular approximation theorem:
+
+%might not even need this but it looks useful
+\begin{theorem}[{\autocite{hatcher}, Thm 4.8}] 
+Let \(f : X \to Y\) be a map of CW complexes. Then \(f\) is homotopic to a cellular map.
+\end{theorem}
+
 \begin{itemize}
 \item The product of cell complexes is a cell complex (maybe only if one of them is finite?)
 \item The smash product of (pointed?) cell complexes is a cell complex (maybe only if one is them is finite?) [\autocite{hatcher} says ``the smash product \(X\wedge Y\) is a cell complex if \(X\) and \(Y\) are cell complexes with \(x_0\) and \(y_0\) \(0\)-cells, assuming that we give \(X\times Y\) the cell-complex topology rather than the product topology in cases where these two topologies differ''.]
-\item Cellular maps
 \item Quotient of a CW complex by a subcomplex is a CW complex, where the quotient map is cellular
 \item The reduced suspension of a pointed cell complex is a pointed cell complex.
 \item CW pairs?
