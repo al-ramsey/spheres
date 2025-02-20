@@ -154,7 +154,7 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 
 Miscellaneous facts I might need later:
 \begin{itemize}
-\item Cohomology [possibly only of pointed\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?? See \ref{C}.} CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}?}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
+\item Cohomology [possibly only of pointed\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?? See \ref{C}.} CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}? \autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups. So, it's over \textbf{Ab}? N.B: There's a lot of talk about `reduced cohomology theories', so a good next step would be to figure out what those are - if they only involve groups and not rings, maybe the cup product on \(H^*\) is not relevant here.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
 \item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
 \item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
 \item ``Stable homotopy groups are a homology theory'' (whatever that means)
@@ -193,8 +193,9 @@ where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \
 \subsection{Categorical nonsense}
 
 \begin{itemize}
-\item \autocite{ass}: There is a category \(\mathcal{H}\) of finite [because the corollary wanted f.d. CW complexes] based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of base-point preserving maps \(X\to Y\).
-\item There is a category \textbf{St}(\(\mathcal{H}\)) of finite[?] based CW complexes, with \(\Hom(X, Y)=:\{X, Y\}\) the  set \(\colim_i [\Sigma^iX, \Sigma^iY]\) [it's just a colimit of sets, and \textbf{Set} is cocomplete, so we should be fine. \autocite{ass} says it's a group?] [Also, how do these guys compose?]
+\item \autocite{ass}: There is a category \(\mathcal{H}\) of finite %[because the corollary wanted f.d. CW complexes] 
+based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of base-point preserving maps \(X\to Y\).
+\item There is a category \textbf{St}(\(\mathcal{H}\)) of finite based CW complexes, with \(\Hom(X, Y)=:\{X, Y\}\) the  set \(\colim_i [\Sigma^iX, \Sigma^iY]\) [it's just a colimit of sets, and \textbf{Set} is cocomplete, so we should be fine. \autocite{ass} says it's a group\footnote{The colimit is equal to the stable value (which exists, by the corollary). After \(\Sigma^2\), these guys are all groups, so the colimit also has a group structure inherited from whatever \([\Sigma^k X, \Sigma^k Y]\) it's equal to. N.B: Remarks about cocompleteness of \textbf{Set} are misleading because that doesn't actually matter - any sequence that stabilises in any category will have a filtered colimit equal to that stable value, you don't need any extra conditions.}] [Also, how do these guys compose?]
 \item There is a functor \(\mathcal{H}\to \textbf{St}(\mathcal{H})\). \autocite{ass} doesn't say what this is but it's presumably the one that is the identity on objects and sends \([f : X \to Y]\in [\Sigma^0X, \Sigma^0Y]\) to whatever it gets sent to in \(\{X, Y\}\) using the universal property of the colimit. Uniqueness makes it functorial, etc.
 \item We have a fully faithful functor \(\textbf{St}(\mathcal{H})\to \textbf{St}(\mathcal{H})\) given by the suspension on objects, and the unique isomorphism \(\{X, Y\}\to\{\Sigma X, \Sigma Y\}\) on maps (such an isomorphism exists, since both of those things are colimits for \([\Sigma^i X, \Sigma^i Y]\) - one of the sequences is cut off at the beginning, but it doesn't matter because both reach the stable value (see above discussion and \autocite{ass} 1.9), aka the colimit). 
 \item It's not an equivalence, because not every object is isomorphic to a suspension (e.g. anything not connected, since suspensions always connected [?])
@@ -287,14 +288,22 @@ Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence 
 [this induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]
 
 \begin{definition}
-A \textit{map of CW spectra} \(f : X \to Y\) is a strict map \(f' : X' \to Y\) for some cofinal subspectrum \(X'\) of \(X\).
+A \textit{map} of CW spectra \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal spectrum. 
 \end{definition}
 
 [this also induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]
 
-Two maps \(f, g : X \to Y\) of CW spectra are regarded as the same if they take the same value on some common cofinal spectrum.
-
 [check composition is well defined]
+
+[working definition of equivalence below:]
+
+\begin{definition}
+Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) and \(g : Y \to X\) such that \(fg=\id_{Y}\) and \(gf=\id_X\).
+\end{definition}
+
+[A spectrum is always equivalent to the suspension of some other spectrum]
+
+%We say that two maps \(f, g : X \to Y\) of CW spectra are equivalent if they take the same value on some common cofinal spectrum, 
 
 \begin{definition}
 A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where \(X\times I\) is the spectrum with \((X\times I)_n=X_n\times_{\text{red}} I\).
@@ -304,32 +313,13 @@ Note that \(\Sigma(X_n\times_{\text{red}}I)=\Sigma X_n\times_{\text{red}}I\). Th
 
 [\autocite{stable_homotopy} says on p171 that ``\([\Sigma X, Z]\) is obviously a group, because in \(\Sigma X\) we have a spare suspension coordinate out in front to manipulate. And for the same reason, \([\Sigma^2 X, Z]\) is an abelian group. But now we can give \([X,Y]\) the structure of an abelian group, because \([X,Y]\) is in 1-1 correspondence with \([\Sigma^2X, \Sigma^2 Y]\) and we pull back the group structure on that. So now our sets of morphisms \([X,Y]\) are abelian groups, and it's easy to see that composition is bilinear''. 
 
-%Amazingly, this is actually more helpful that what \autocite{hatcher} has to say on the matter, but the bar is not high in this case.  
-
-\autocite{mazelgee} actually defines what all of the other sources seem to think is entirely trivial. Here's what I can reconstruct from it (:/) :
-
-Given \(f, g : \Sigma X \to Z\), define 
-\begin{align*}
-f \star g : \Sigma X &\to Z\\
-[x,t]&\mapsto \begin{cases}
-f[x,2t-1] & t \geq \frac{1}{2},\\
-g[x,2t] &t\leq \frac{1}{2}.
-\end{cases}
-\end{align*}
-This is well defined, because \(f[x,0]=f[x_0,0]=y_0=g[x_0,1]=g[x,1]\). Essentially, it's just because the maps are basepoint-preserving, and \([x,0]\) and \([x,1]\) are both just the basepoint.
-
 Various claims:
 \begin{itemize}
-\item This gives a group structure on \([\Sigma X, Z]\).
 
-\item There are two possible products on \([\Sigma^2 X, Z]\), and some variation on the Eckmann–Hilton argument works its magic to show it's actually commutative (and, apparently, automatically associative). 
-
-\item A spectrum is ``basically the same'' as some suspension spectrum\footnote{Or probably just the suspension of a spectrum, see \ref{C}.}, so understanding \([X, Z]\) is the same as understanding \([\Sigma X, Z]\), which is the same as understanding \([\Sigma^2 X, Z]\). 
-\item The stuff about normal CW complexes and their groups of maps translates to tell me the appropriate things about spectra and their groups of maps.
-\item After checking a lot of things, I can eventually conclude that \([X, Y]\) is an abelian group for spectra \(X, Y\). 
+%\item A spectrum is equivalent\footnote{Whatever that means.} to some suspension spectrum\footnote{Or probably just the suspension of a spectrum, see \ref{C}.}, so understanding \([X, Z]\) is the same as understanding \([\Sigma X, Z]\), which is the same as understanding \([\Sigma^2 X, Z]\). 
+\item The stuff about normal CW complexes and their groups of maps (i.e. \ref{2502200937}) translates to tell me the appropriate things about spectra and their groups of maps.
+\item After checking a lot of things, I can eventually conclude that \([X, Y]\) is an abelian group for spectra \(X, Y\).]
 \end{itemize}
-
-]
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
 
@@ -511,6 +501,28 @@ Given a map \(f : X \to Y\), we can define \(\Sigma f : \Sigma X \to \Sigma Y\) 
 \(\Sigma\) is faithful, since for any maps \(f, g : X\to Y\), if \(\Sigma f = \Sigma g\) then in particular \([(fx, \frac{1}{2})]=[(gx, \frac{1}{2})]\), so \(fx=gx\). 
 \end{remark}  
 
+[below is reconstructed from  \autocite{mazelgee}]
+
+Given pointed maps \(f, g : \Sigma X \to Z\), define 
+\begin{align*}
+f \star g : \Sigma X &\to Z\\
+[x,t]&\mapsto \begin{cases}
+f[x,2t-1] & t \geq \frac{1}{2},\\
+g[x,2t] &t\leq \frac{1}{2}.
+\end{cases}
+\end{align*}
+This is well defined, since both \(f\) and \(g\) are basepoint-preserving. %\(f[x,0]=f[x_0,0]=y_0=g[x_0,1]=g[x,1]\). Essentially, it's just because the maps are basepoint-preserving, and \([x,0]\) and \([x,1]\) are both just the basepoint.
+
+\begin{remark}
+This defines a group structure on \([\Sigma X, Z]\), and thus \([\Sigma^i X, Z]\) is a group for all \(i\geq 1\). For \(i\geq 2\), these can be shown to be abelian, via the Eckmann-Hilton argument.
+\end{remark}
+
+\begin{remark}\label{2502200937}
+The homotopy groups \(\pi_i(Z)\) are a special case of the above construction, taking \(X:=S^{i-1}\). 
+\end{remark}
+
+%[There are two possible products on \([\Sigma^2 X, Z]\), and some variation on the Eckmann–Hilton argument works its magic to show it's actually commutative (and, apparently, automatically associative). ]
+
 \begin{itemize}
 \item Loops; the adjunction \(\Sigma \dashv \Omega\), where \(\Omega\) is the loop functor.
 \end{itemize}
@@ -607,7 +619,7 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \item On p588 of \autocite{hatcher5}, he says ``every CW spectrum is equivalent to a suspension spectrum''. Does he actually mean that, or does he mean `equivalent to the suspension of a spectrum'? The former seems way too strong, although in fairness I still don't know what an equivalence of spectra actually \textit{is}. 
 
-\item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, so why does Hatcher say on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence? Is that just because I could take the role of \(\bb{S}\) and give it to some non-finite-type spectrum, or is there something I'm missing? Can I just take limits and be done with it?
+\item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, so why does Hatcher say on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence? Is that just because I could take the role of \(\bb{S}\) and give it to some non-finite-type spectrum, or is there something I'm missing? Can I just take limits and be done with it?
 \end{itemize}
 
 \subsection{To do/other notes}
