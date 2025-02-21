@@ -321,6 +321,18 @@ Various claims:
 \item After checking a lot of things, I can eventually conclude that \([X, Y]\) is an abelian group for spectra \(X, Y\).]
 \end{itemize}
 
+[The suspension map \([X,Y]\to[\Sigma X, \Sigma Y]\) is an isomorphism of groups]
+
+[\ref{2502211419} and \ref{2502211420} are both true for CW spectra too]
+
+[Whitehead's theorem: a map between CW spectra that induces isomorphisms on all homotopy groups is a homotopy equivalence.]
+
+[Prop: If a CW spectrum \(X\) is \(n\)-connected in the sense that \(\pi_i(X)=0\) for \(i\leq n\), then \(X\) is homotopy equivalent to a CW spectrum with no cells of dimension \(\leq n\)]
+
+\begin{definition}
+Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum}\footnote{This definition comes from \autocite{local}, but I'm a little suspicious because the nLab page says a wedge sum should always identify the basepoints, but the basepoint of a spectra surely isn't given by just a basepoint from each \(X_n\)? That's the only thing being identified here.} is \(X\vee Y :=\{X_n \vee Y_n\}\). Note that \ref{2502211505} gives us an inclusion \(\Sigma(X_n\vee Y_n)\inj X_{n+1}\vee Y_{n+1}\). 
+\end{definition}
+
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
 
 \section{The Adams spectral sequence}
@@ -427,7 +439,7 @@ Let \(X\) be a CW spectrum of finite type.
 
 \begin{itemize}
 \item Def: \(H^*(X)\).
-\item Def: A wedge of spectra.
+%\item Def: A wedge of spectra (Hatcher doesn't trouble himself with defining this)
 \item Fact: \(H^*(X)\) is finitely generated.
 \item Fact: \(H^*(X)\) is an \(\mathscr{A}\)-module. [We know that's true for a topological space]
 \item Fact: We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}\)-module such that there are at most finitely many in each \(H^n(X)\).
@@ -556,6 +568,10 @@ Note that \(\Sigma X \cong X\wedge S^1\).
 Observe that \(X\wedge (Y\wedge Z)\cong (X\wedge Y)\wedge Z\). Combining this with the remarks above, we see that \(\Sigma^kX=X\wedge S^k\). 
 \end{remark}
 
+\begin{remark}\label{2502211505}
+Note that \(\Sigma(X\vee Y)\cong \Sigma X\vee \Sigma Y\).
+\end{remark}
+
 \begin{itemize}
 \item `Reduced mapping cylinder'?
 \item Mapping cones?
@@ -568,7 +584,7 @@ They're unique up to weak homotopy equivalence (i.e. if you have another one \(X
 \end{itemize}
 
 \begin{definition}
-Let \(X\), \(Y\) be topological spaces, where \(X\)has a basepoint \(x_0\). Then the \textit{reduced product} \(X\times_{\text{red}}Y:=(X\times Y)/(x_0 \times Y)\). 
+Let \(X\), \(Y\) be topological spaces, where \(X\) has a basepoint \(x_0\). Then the \textit{reduced product} \(X\times_{\text{red}}Y:=(X\times Y)/(x_0 \times Y)\). 
 \end{definition}
 
 \subsection{Cell complexes}\label{2502141508}
@@ -580,16 +596,20 @@ Let \(f : X \to Y\) be a map between CW complexes. Then \(f\) is \textit{cellula
 Cellular approximation theorem:
 
 %might not even need this but it looks useful
-\begin{theorem}[{\autocite{hatcher}, Thm 4.8}] 
+\begin{theorem}[{\autocite{hatcher}, Thm 4.8}]\label{2502211420}
 Let \(f : X \to Y\) be a map of CW complexes. Then \(f\) is homotopic to a cellular map.
 \end{theorem}
+
+\begin{lemma}[{\autocite{hatcher}, Prop 0.16}]\label{2502211419}
+Let \(A\subq X\) be CW complexes. Then the pair \((X, A)\) has the \textit{homotopy extension property}; that is, for any map \(f : X \to Y\) and homotopy \(h : A\times I \to Y\) such that \(h(a,0)=f|_A\), there is a homotopy \(\tilde h : X\times I \to Y\) extending \(h\). 
+\end{lemma}
 
 \begin{itemize}
 \item The product of cell complexes is a cell complex (maybe only if one of them is finite?)
 \item The smash product of (pointed?) cell complexes is a cell complex (maybe only if one is them is finite?) [\autocite{hatcher} says ``the smash product \(X\wedge Y\) is a cell complex if \(X\) and \(Y\) are cell complexes with \(x_0\) and \(y_0\) \(0\)-cells, assuming that we give \(X\times Y\) the cell-complex topology rather than the product topology in cases where these two topologies differ''.]
 \item Quotient of a CW complex by a subcomplex is a CW complex, where the quotient map is cellular
 \item The reduced suspension of a pointed cell complex is a pointed cell complex.
-\item CW pairs?
+%\item CW pairs? [they're literally just pairs of some CW complex and a subcomplex]
 \item For a CW complex \(X\), \(SX\simeq \Sigma X\).
 \item Something along the lines of ``the suspension of a cell is a cell of the suspension'' should be true.
 \end{itemize}
@@ -627,6 +647,7 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 \begin{itemize}
 \item READ IF YOUR CALCULATIONS AREN'T WORKING: You are working modulo 2!!!
 \item Be consistent with either cell complex or CW complex (eventually)
+\item There are two ways I can play the chapter on spectra. The first is to constantly draw analogues with CW complexes, carry over all the theorems and prove them in a similar way, really emphasising that these are the `stable' versions of CW complexes and we should definitely think about them that way. The other is really stupid I just realised so I'll just do the first thing I said. 
 \end{itemize}
 
 \printbibliography
