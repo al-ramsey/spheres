@@ -375,7 +375,7 @@ We can take the homology of \((E, d)\):
 \[H^{p, q}(E^{*, *}, d)=\ker(d : E^{p, q}\to E^{p+s, q-s+1})/\im(d : E^{p-s, q+s-1}\to E^{p, q}).\]
 
 \begin{definition}
-A \textit{spectral sequence} (of \textit{cohomological type}) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, 1-r)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
+A \textit{spectral sequence} (of \textit{cohomological type})\footnote{I think(?) I actually want one of homological type. I'll check this.} is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, 1-r)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
 \end{definition}
 
 We will sometimes write \(d^{p, q}_r\) for the differential \(d_r : E^{p, q}\to E^{p+r,q-s+1}\). 
@@ -454,6 +454,7 @@ A bigraded exact couple may be displayed in the following diagram, known as a \t
  & \vdots &  & \vdots & 
 \end{tikzcd}\]
 
+[Check this is actually the same staircase diagram that Hatcher is talking about]
 
 \subsection{The Adams spectral sequence}
 
@@ -465,8 +466,8 @@ Let \(X\) be a CW spectrum of finite type.
 \item Def: \(H^*(X)\).
 %\item Def: A wedge of spectra (Hatcher doesn't trouble himself with defining this)
 \item Fact: \(H^*(X)\) is finitely generated.
-\item Fact: \(H^*(X)\) is an \(\mathscr{A}\)-module. [We know that's true for a topological space]
-\item Fact: We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}\)-module such that there are at most finitely many in each \(H^n(X)\).
+\item Fact: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. [We know that's true for a topological space]
+\item Fact: We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\).
 \item Fact: There \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type.
 \item Fact: We can replace that map with an inclusion.
 \item Fact: A quotient of connective spectra of finite type is again a connective spectrum of finite type.
@@ -482,13 +483,35 @@ Let \(X\) be a CW spectrum of finite type.
 
 \section{Calculating stable homotopy groups}
 
-\(\Ext_A^s(\bb{F}_2, \bb{F}_2)_t\)
+\subsection{The \(E_2\) term}
 
-\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}
+[Some miscellaneous and vague rambling:
 
-\section{Methods of resolving ambiguities}
+\autocite{hatcher5} Prop 5.47 says that there is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\mathscr{A}_2}(H^*(\bb{S}), H^*(\bb{S}))\), and \(\{E_r, d_r\}\implies \pi^S_*\) modulo any odd torsion.
 
-\autocite{stable_homotopy}, \autocite{cobordism}
+At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules. Thus, assuming \(\bb{S}\) is of finite type (it is actually finite, since it takes the place of \(Y\) when constructing the Adams spectral sequence, but I should justify this), we have
+\begin{align*}
+H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\\
+&=\begin{cases}
+\inte/2\inte & i = 0,\\
+0 & \text{otherwise.}
+\end{cases}
+\end{align*}
+(since they're all just either \(0\) or \(\inte/2\inte\), at least eventually). So, \(H^(\bb{S})=\inte/2\inte\) in degree zero and nothing else.
+
+Lemma 5.49 says that if I have a minimal free resolution 
+\[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2 \to 0,\]
+where the \(F_i\) are \(\mathscr{A}_2\)-modules, then \(\Ext^{s,t}_{\mathscr{A}_2}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\mathscr{A}_2}(F_s, \bb{F}_2)\), where the left hand side is the group of \(\mathscr{A}_2\)-module homomorphisms \(F_s \to \bb{F}_2\) which lower the degree by \(t\). Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs. ]
+
+\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{hatcher5}.
+
+\subsection{Nontrivial differentials}
+
+[The point here is that (I claim) all differentials interacting with \(E^{s,t}\) for \(t-s=14\) are trivial, and thus computing the stable homotopy groups is purely mechanical, because everything that appears on this part of the \(E_2\) page has to survive to \(E_\infty\). Thus, the `ambiguity' at \(t-s=14\) is just the fact that this is the first time you need to actually compute differentials.
+
+For \(t-s<14\) there are only actually the ones emanating from \(E^{1, 2}\) and the \(d_2\) differential starting at \(E^{2, 10}\) to worry about, because all the others either enter or leave \(0\).]
+
+\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}.
 
 \appendix 
 
@@ -666,7 +689,11 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \item On p588 of \autocite{hatcher5}, he says ``every CW spectrum is equivalent to a suspension spectrum''. Does he actually mean that, or does he mean `equivalent to the suspension of a spectrum'? The former seems way too strong, although in fairness I still don't know what an equivalence of spectra actually \textit{is}. 
 
-\item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, so why does Hatcher say on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence? Is that just because I could take the role of \(\bb{S}\) and give it to some non-finite-type spectrum, or is there something I'm missing? Can I just take limits and be done with it?
+\item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, so why does Hatcher say on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence? Is that just because I could take the role of \(\bb{S}\) and give it to some non-finite-type spectrum (actually, it cannot be this!! Hatcher specifically says the spectrum \(Y\) has to be finite), or is there something I'm missing? Can I just take limits and be done with it?
+
+\item Suppose I have the \(E_2\) page for the appropriate spectral sequence. That in principle only gives me the `dots' and possibly the differentials if I've been clever. But if I just want to calculate, say, \(\pi^S_3\), I get \(\inte_2\) summands at \(E^{1, 4}, E^{2, 5},\) and \(E^{3, 6}\). So, that says I have a filtration 
+\[0 \subq \inte_2 \subq F^{2,5}\subq F^{1,4}=\pi^S_3,\]
+and \(F^{2,5}/\inte_2\cong \inte_2\), \(F^{1,4}/F^{2,5}\cong \inte_2\). So \(\pi^S_3\) has order 8 and a filtration by \(\inte_2\)'s, but that still doesn't tell me whether it's \(\inte_8, \inte_4\times \inte_2\) or \(\inte_2^3\)? Thm 5.47 of \autocite{hatcher5} tells me that \(F^{s,t}\) is the image of the map \(\pi_t(\bb{S}_s)\to \pi_3^S\), so do I have to go back to the constructing and figure out what that map actually is, or is there something algebraic I can do?
 \end{itemize}
 
 \subsection{To do}
@@ -683,7 +710,7 @@ Eventually:
 
 \begin{itemize}
 \item Be consistent with either cell complex or CW complex (eventually)
-\item Be consistent with \(\inte_2\) or \(\inte/2\inte\) (I'm trying to use the latter, but old habits die hard).
+\item Be consistent with \(\bb{F}_2\), \(\inte_2\), or \(\inte/2\inte\) (I'm trying to use the latter, but old habits die hard).
 \end{itemize}
 
 \subsection{Other notes}
