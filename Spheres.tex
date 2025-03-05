@@ -251,21 +251,21 @@ If \(X\) is a topological space, then \(\pi_i(\Sigma^\infty X)=\pi_i^S(X)\), the
 A CW spectrum is a spectrum \(X\) consisting of CW complexes \(X_n\) with the maps \(\Sigma X_n \inj X_{n+1}\) inclusions of subcomplexes. 
 \end{definition}
 
-[Define cells and dimension of a CW spectrum]
-
-[Insert brief but enlightening observation of the effect of suspension on cells of CW complexes here]
-
-[\autocite{hatcher} says on p12 (god, way to make me feel stupid) that ``in \(\Sigma X\) there is a single 0-cell and an \((n+1)\)-cell for each \(n\)-cell of \(X\) other than [the basepoint]''.]
-
 \begin{definition}
-A spectrum \(X\) is \textit{connective} if its cells have dimensions which are bounded below.
+Let \(X\) be a CW spectrum. Then the \textit{\(k\)-cells} of \(X\) are the equivalence classes of non-basepoint \(k+n\)-cells in \(X_n\), where two cells are equivalent if one is an \(m\)-fold suspension of the other. 
 \end{definition}
 
-[The above is phrased exactly as in hatcher - presumably he means that there is some absolute bound below which no cell has dimension, rather than a bound dependent on each cell?]
+%[Insert brief but enlightening observation of the effect of suspension on cells of CW complexes here]
+
+%[\autocite{hatcher} says on p12 (god, way to make me feel stupid) that ``in \(\Sigma X\) there is a single 0-cell and an \((n+1)\)-cell for each \(n\)-cell of \(X\) other than [the basepoint]''.]
 
 \begin{definition}
-A CW spectrum is \textit{finite} if it has only finitely many cells, and \textit{of finite type} if it has only finitely many cells in each dimension.
+A CW spectrum \(X\) is \textit{connective} if it has no cells below a given dimension. Further, \(X\) is \textit{finite} if it has only finitely many cells, and \textit{of finite type} if it has only finitely many cells in each dimension.
 \end{definition}
+
+\begin{example}
+If \(X\) is a finite (resp. finite type) CW complex, then \(\Sigma^\infty\) is a finite (resp. finite type) CW spectrum. In particular, \(\bb{S}^n\) is a finite CW spectrum with a unique cell in dimension 1.
+\end{example}
 
 \subsection{Homology and cohomology}
 
@@ -324,6 +324,8 @@ A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where 
 \end{definition}
 
 Note that \(\Sigma(X_n\times_{\text{red}}I)=\Sigma X_n\times_{\text{red}}I\). The set of homotopy classes of maps \(X\to Y\) is denoted by \([X,Y]\). 
+
+[Claim: (probably very obvious): \([\Sigma^\infty S^t, Z]=\pi_t(Z)\).]
 
 [\autocite{stable_homotopy} says on p171 that ``\([\Sigma X, Z]\) is obviously a group, because in \(\Sigma X\) we have a spare suspension coordinate out in front to manipulate. And for the same reason, \([\Sigma^2 X, Z]\) is an abelian group. But now we can give \([X,Y]\) the structure of an abelian group, because \([X,Y]\) is in 1-1 correspondence with \([\Sigma^2X, \Sigma^2 Y]\) and we pull back the group structure on that. So now our sets of morphisms \([X,Y]\) are abelian groups, and it's easy to see that composition is bilinear''. 
 
@@ -491,7 +493,7 @@ Let \(X\) be a CW spectrum of finite type.
 
 \autocite{hatcher5} Prop 5.47 says that there is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\mathscr{A}_2}(H^*(\bb{S}), H^*(\bb{S}))\), and \(\{E_r, d_r\}\implies \pi^S_*\) modulo any odd torsion.
 
-At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules. Thus, assuming \(\bb{S}\) is of finite type (it is actually finite, since it takes the place of \(Y\) when constructing the Adams spectral sequence, but I should justify this), we have
+At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules. Thus, since \(\bb{S}\) is of finite type (it is actually finite), we have
 \begin{align*}
 H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\\
 &=\begin{cases}
@@ -503,7 +505,9 @@ H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\
 
 Lemma 5.49 says that if I have a minimal free resolution 
 \[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2 \to 0,\]
-where the \(F_i\) are \(\mathscr{A}_2\)-modules, then \(\Ext^{s,t}_{\mathscr{A}_2}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\mathscr{A}_2}(F_s, \bb{F}_2)\), where the left hand side is the group of \(\mathscr{A}_2\)-module homomorphisms \(F_s \to \bb{F}_2\) which lower the degree by \(t\). Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs. ]
+where the \(F_i\) are \(\mathscr{A}_2\)-modules, then \(\Ext^{s,t}_{\mathscr{A}_2}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\mathscr{A}_2}(F_s, \bb{F}_2)\), where the left hand side is the group of \(\mathscr{A}_2\)-module homomorphisms \(F_s \to \bb{F}_2\) which lower the degree by \(t\). Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
+
+[Note: there is a multiplicative structure on the \(E_2\) page of the spectral sequence, which Hatcher says is there and then proceeds to never ever mention again. So I'll have to find another source for this bit. It should correspond to the composition product on \(\pi_*^S\), i.e. given \([f]\in \pi_i^S\), \([g]\in \pi_j^S\), we have \([f][g]=[g \circ \Sigma^j f]\in \pi_{i+j}^S\).]
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{hatcher5}.
 
@@ -660,10 +664,10 @@ Let \(A\subq X\) be CW complexes. Then the pair \((X, A)\) has the \textit{homot
 \item The product of cell complexes is a cell complex (maybe only if one of them is finite?)
 \item The smash product of (pointed?) cell complexes is a cell complex (maybe only if one is them is finite?) [\autocite{hatcher} says ``the smash product \(X\wedge Y\) is a cell complex if \(X\) and \(Y\) are cell complexes with \(x_0\) and \(y_0\) \(0\)-cells, assuming that we give \(X\times Y\) the cell-complex topology rather than the product topology in cases where these two topologies differ''.]
 \item Quotient of a CW complex by a subcomplex is a CW complex, where the quotient map is cellular
-\item The reduced suspension of a pointed cell complex is a pointed cell complex.
+%\item The reduced suspension of a pointed cell complex is a pointed cell complex.
 %\item CW pairs? [they're literally just pairs of some CW complex and a subcomplex]
 \item For a CW complex \(X\), \(SX\simeq \Sigma X\).
-\item Something along the lines of ``the suspension of a cell is a cell of the suspension'' should be true.
+\item The suspension of a pointed cell complex \((X, x_0)\) is another pointed cell complex \(\Sigma X\) with basepoint \(x_0\) and an \(n\)-cell for each non-basepoint \(n-1\) cell \(e^{n-1}_\alpha\) of \(X\).
 \end{itemize}
 
 \begin{definition}
