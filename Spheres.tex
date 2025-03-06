@@ -264,7 +264,7 @@ A CW spectrum \(X\) is \textit{connective} if it has no cells below a given dime
 \end{definition}
 
 \begin{example}
-If \(X\) is a finite (resp. finite type) CW complex, then \(\Sigma^\infty\) is a finite (resp. finite type) CW spectrum. In particular, \(\bb{S}^n\) is a finite CW spectrum with a unique cell in dimension 1.
+If \(X\) is a finite (resp. finite type) CW complex, then \(\Sigma^\infty\) is a finite (resp. finite type) CW spectrum. In particular, \(\bb{S}\) is a finite CW spectrum with a unique cell in dimension 1.
 \end{example}
 
 \subsection{Homology and cohomology}
@@ -485,9 +485,13 @@ Let \(X\) be a CW spectrum of finite type.
 
 \autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{foundations}, \autocite{hatcher5}, \autocite{ass}, \autocite{primer}
 
+\subsection{Multiplicative structure}
+
+\autocite{ass}
+
 \section{Calculating stable homotopy groups}
 
-\subsection{The \(E_2\) term}
+\subsection{The \(E_2\) page}
 
 [Some miscellaneous and vague rambling:
 
@@ -507,9 +511,13 @@ Lemma 5.49 says that if I have a minimal free resolution
 \[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2 \to 0,\]
 where the \(F_i\) are \(\mathscr{A}_2\)-modules, then \(\Ext^{s,t}_{\mathscr{A}_2}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\mathscr{A}_2}(F_s, \bb{F}_2)\), where the left hand side is the group of \(\mathscr{A}_2\)-module homomorphisms \(F_s \to \bb{F}_2\) which lower the degree by \(t\). Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
 
+\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{hatcher5}.
+
+\subsection{Resolving extensions}
+
 [Note: there is a multiplicative structure on the \(E_2\) page of the spectral sequence, which Hatcher says is there and then proceeds to never ever mention again. So I'll have to find another source for this bit. It should correspond to the composition product on \(\pi_*^S\), i.e. given \([f]\in \pi_i^S\), \([g]\in \pi_j^S\), we have \([f][g]=[g \circ \Sigma^j f]\in \pi_{i+j}^S\).]
 
-\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{hatcher5}.
+\autocite{ass}, in particular 6.1 and 6.2.
 
 \subsection{Nontrivial differentials}
 
@@ -680,6 +688,7 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \begin{itemize}
 \item In particular, \(\Omega K(G, n)\) has a CW approximation \(Z \to \Omega K(G, n)\), and since \(\Omega K(G,n)\) is a \(K(G,n-1)\), so is \(Z\). 
+\item Something along the lines of `compact \(\leftrightarrow\) finite number of cells'.
 \end{itemize}
 
 \section{Notes to self}\label{C}
