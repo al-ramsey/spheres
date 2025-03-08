@@ -22,6 +22,7 @@
 \usepackage{mathtools}
 \usepackage{parskip}
 \usepackage{mathrsfs}
+\usepackage{float}
 
 % knots stuff
 
@@ -117,7 +118,7 @@
 \addbibresource{References.bib}
 
 \author{\vspace{-5ex}}
-\title{Stable Homotopy Groups of Spheres [DRAFT]}
+\title{Something True and Beautiful [DRAFT]}
 \date{\vspace{-5ex}}
 
 \counterwithin{figure}{section}
@@ -192,10 +193,10 @@ The \textit{Steenrod algebra} \(\mathscr{A}_2\) is the algebra over \(\inte/2\in
 \end{itemize}
 
 \begin{definition}
-Write \(Sq^I\) for the monomial \(Sq^{i_1}Sq^{i_2}\cdots Sq^{i_n}\). Then \(Sq^I\) is \textit{admissible} if \(i_j\geq 2i_{j+1}\) for all \(0\leq j < n\). Note the admissible monomials are exactly those to which no Adem relations can be applied. 
+Write \(Sq^I\) for the monomial \(Sq^{i_1}Sq^{i_2}\cdots Sq^{i_n}\). Then \(Sq^I\) is \textit{admissible} if \(i_j\geq 2i_{j+1}\) for all \(0\leq j < n\). 
 \end{definition}
 
-Thus, \(\A\) is generated as a \(\inte/2\inte\) module by admissible monomials. 
+Note the admissible monomials are exactly those to which no Adem relations can be applied. Thus, \(\A\) is generated as a \(\inte/2\inte\) module by admissible monomials. 
 
 \autocite{stable_homotopy}, \autocite{cobordism}, 
 \autocite{ass}, \autocite{spectra}, \autocite{hatcher}, \autocite{foundations}
@@ -483,6 +484,24 @@ Let \(X\) be a CW spectrum of finite type.
 \item Fact: I'm going to stop listing things I need to do and start actually doing them.
 \end{itemize}
 
+[\autocite{hatcher5} Thm 5.47 says that there is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\mathscr{A}_2}(H^*(\bb{S}), H^*(\bb{S}))\), and \(\{E_r, d_r\}\implies \pi^S_*\) modulo any odd torsion.
+
+At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules. Thus, since \(\bb{S}\) is of finite type (it is actually finite), we have
+\begin{align*}
+H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\\
+&=\begin{cases}
+\inte/2\inte & i = 0,\\
+0 & \text{otherwise.}
+\end{cases}
+\end{align*}
+(since they're all just either \(0\) or \(\inte/2\inte\), at least eventually). So, \(H^*(\bb{S})=\inte/2\inte\) in degree zero and nothing else.]
+
+\begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]
+There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_*^S\) modulo torsion of odd order. 
+\end{theorem}
+
+
+
 \autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{foundations}, \autocite{hatcher5}, \autocite{ass}, \autocite{primer}
 
 \subsection{Multiplicative structure}
@@ -493,35 +512,62 @@ Let \(X\) be a CW spectrum of finite type.
 
 \subsection{The \(E_2\) page}
 
+
+\begin{lemma}[{\autocite{hatcher5}, Lem 5.49}]
+For a minimal free resolution 
+\[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2 \to 0\]
+of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\), where \(\Hom^t_{\A}(F_s, \bb{F}_2)\subq \Hom_{\A}(F_s, \bb{F}_2)\) consists of the morphisms which lower the degree by \(t\).
+\end{lemma}
+
 [Some miscellaneous and vague rambling:
 
-\autocite{hatcher5} Prop 5.47 says that there is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\mathscr{A}_2}(H^*(\bb{S}), H^*(\bb{S}))\), and \(\{E_r, d_r\}\implies \pi^S_*\) modulo any odd torsion.
-
-At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules. Thus, since \(\bb{S}\) is of finite type (it is actually finite), we have
-\begin{align*}
-H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\\
-&=\begin{cases}
-\inte/2\inte & i = 0,\\
-0 & \text{otherwise.}
-\end{cases}
-\end{align*}
-(since they're all just either \(0\) or \(\inte/2\inte\), at least eventually). So, \(H^*(\bb{S})=\inte/2\inte\) in degree zero and nothing else.
-
-Lemma 5.49 says that if I have a minimal free resolution 
-\[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2 \to 0,\]
-where the \(F_i\) are \(\mathscr{A}_2\)-modules, then \(\Ext^{s,t}_{\mathscr{A}_2}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\mathscr{A}_2}(F_s, \bb{F}_2)\), where the left hand side is the group of \(\mathscr{A}_2\)-module homomorphisms \(F_s \to \bb{F}_2\) which lower the degree by \(t\). Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
+Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{hatcher5}.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{ext3}
+\caption{Calculating the first 5 rows}
+\end{figure}
+
+\begin{lemma}[?]
+There are no nontrivial differentials for \(t-s\leq 13\). 
+\end{lemma}
+
 \subsection{Resolving extensions}
 
-[Note: there is a multiplicative structure on the \(E_2\) page of the spectral sequence, which Hatcher says is there and then proceeds to never ever mention again. So I'll have to find another source for this bit. It should correspond to the composition product on \(\pi_*^S\), i.e. given \([f]\in \pi_i^S\), \([g]\in \pi_j^S\), we have \([f][g]=[g \circ \Sigma^j f]\in \pi_{i+j}^S\).]
+[Note: there is a multiplicative structure on the \(E_2\) page of the spectral sequence, which Hatcher says is there and then proceeds to never ever mention again. So I'll have to find another source for this bit. It should correspond to the composition product on \(\pi_*^S\), i.e. given \([f]\in \pi_i^S\), \([g]\in \pi_j^S\), we have \([f][g]=[g \circ \Sigma^j f]\in \pi_{i+j}^S\).
 
 \autocite{ass}, in particular 6.1 and 6.2.
 
 Also, \autocite{spectral_sequences} has some cryptic remarks on p424 and p407 about this but doesn't actually really explain it, and in particular doesn't explain how you could know that some stable homotopy group \textit{isn't} cyclic (e.g. \(\pi_8^S\)).
 
-Some slightly less cryptic but irritatingly general and opaque comments are made in \autocite{cobordism}, in particular stemming from Lemma 3.1.3. If I just believe this lemma, assuming its \(a_0\) is the same as my \(\alpha^1_1\), and further believe the calculations done in \autocite{ass} in 6.2, then (I think!) this solves my problems. 
+Some slightly less cryptic but irritatingly general and opaque comments are made in \autocite{cobordism}, in particular stemming from Lemma 3.1.3. If I just believe this lemma, assuming its \(a_0\) is the same as my \(\alpha^1_1\), and further believe the calculations done in \autocite{ass} in 6.2, then (I think!) this solves my problems.]
+
+\begin{proposition}[{\autocite{ass}, Cor 6.5}]
+We have the following relations:
+\begin{align*}
+\alpha^i_i &= (\alpha_1^1)^i\\
+\alpha_4^2&=(\alpha^1_2)^2\\
+\alpha^2_5&=\alpha^1_1 \alpha^1_4\\
+\alpha^3_6&=(\alpha^1_1)^2 \alpha_4^1=(\alpha^1_2)^3.
+\end{align*}
+\end{proposition}
+
+\begin{proposition}[{\autocite{cobordism}, Lem 3.1.3(b)}]
+If \(x \in \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\) is a permanent cycle in the Adams spectral sequence represented by \(\alpha \in \pi_*^S\), then \(\alpha^1_1x\) is a permanent cycle represented by \(2 \alpha\). 
+\end{proposition}
+
+\begin{theorem}
+\begin{align*}
+\text{}_{(2)}\pi_i^S = \begin{cases}
+\inte/2\inte & i = 1, 2\\
+\inte/8\inte & i = 3\\
+0 & i = 4, 5.
+\end{cases}
+\end{align*}
+\end{theorem}
 
 \subsection{Nontrivial differentials}
 
