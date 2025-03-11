@@ -118,7 +118,8 @@
 \addbibresource{References.bib}
 
 \author{\vspace{-5ex}}
-\title{Something True and Beautiful [DRAFT]}
+%\title{Something True and Beautiful [DRAFT]}
+\title{Stable Homotopy Groups of Spheres  [DRAFT]}
 \date{\vspace{-5ex}}
 
 \counterwithin{figure}{section}
@@ -201,7 +202,8 @@ Note the admissible monomials are exactly those to which no Adem relations can b
 \autocite{stable_homotopy}, \autocite{cobordism}, 
 \autocite{ass}, \autocite{spectra}, \autocite{hatcher}, \autocite{foundations}
 
-\section{Spectra may not be your friends, but I can introduce you}
+%\section{Spectra may not be your friends, but I can introduce you}
+\section{Spectra}
 
 \subsection{Categorical nonsense}
 
@@ -279,12 +281,16 @@ f &\mapsto \Sigma f.
 \end{align*}
 This is an injection, by \ref{2502141442}. We also have an injection \(C_{i+1}(\Sigma X_n; G)\to C_{i+1}(X_{n+1}; G)\) induced by the structure map \(\sigma_n\), so we get an injection \(C_i(X_n;G)\inj C_{i+1}(X_{n+1};G)\), which indeed has a dimension shift.
 
-Some issues:
-\begin{itemize}
-\item The way it's phrased, it seems to be that this is a morphism of chain complexes - i.e. these maps commute with the \(\del\)s. Why would they?]
-\end{itemize}
+We then have that ``the union \(C_*(X ; G)\) of this increasing sequence of chain complexes is then a chain complex having one \(G\) summand for each cell of \(X\)''. I think that 
+\[C_n(X ; G)=\bigcup_{i\in \inte}C_{i+n}(X_i; G),\] 
+so that there's a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating suspensions of cells as equivalent to the cells themselves (since they include in), i.e. a \(G\) summand for every \(n\)-cell of \(X\), since that's how we defined them.
 
-[Define \(H^*\) and \(H_*\) of a spectrum]
+%Some issues:
+%\begin{itemize}
+%\item The way it's phrased, it seems to be that this is a morphism of chain complexes - i.e. these maps commute with the \(\del\)s. Why would they?]
+%\end{itemize} I don't think so?
+
+We define \(H^*\) and \(H_*\) to be the cohomology and homology of this chain complex, respectively.]
 
 \begin{definition}
 Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} \(X'\) of \(X\) is a sequence of subcomplexes \(\{X_n'\subq X_n\}\) satisfying \(\Sigma X_n'\subq X_{n+1}'\). The subspectrum \(X'\) is \textit{cofinal} if, for each \(n\) and each cell \(e^i_\alpha\) of \(X_n\), the cell\footnote{Assuming it is actually a cell, see note in \ref{2502141508}.} \(\Sigma^k e_\alpha^i\) belongs to \(X'_{n+k}\) for all sufficiently large \(k\).
@@ -345,6 +351,8 @@ Various claims:
 [Whitehead's theorem: a map between CW spectra that induces isomorphisms on all homotopy groups is a homotopy equivalence.]
 
 [Prop: If a CW spectrum \(X\) is \(n\)-connected in the sense that \(\pi_i(X)=0\) for \(i\leq n\), then \(X\) is homotopy equivalent to a CW spectrum with no cells of dimension \(\leq n\)]
+
+\subsection{Cofibration sequences}
 
 \begin{definition}
 Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum}\footnote{This definition comes from \autocite{local}, but I'm a little suspicious because the nLab page says a wedge sum should always identify the basepoints, but the basepoint of a spectra surely isn't given by just a basepoint from each \(X_n\)? That's the only thing being identified here.} is \(X\vee Y :=\{X_n \vee Y_n\}\). Note that \ref{2502211505} gives us an inclusion \(\Sigma(X_n\vee Y_n)\inj X_{n+1}\vee Y_{n+1}\). 
@@ -480,8 +488,8 @@ Let \(X\) be a CW spectrum of finite type.
 \item Def: The functor \(\pi^Y_t(Z)=[\Sigma^tY, Z]\) for a finite spectrum \(Y\).
 \item Def: A cofibration. [see : \autocite{hatcher}, p398.]
 \item Fact: If \(Y\) is a finite spectrum and and \(Z\) is a connective spectrum of finite type, then \(\pi^Y_t(Z)\) is finitely generated.
-\item Fact: I can do this. I have all the necessary skills to pull this off. 
-\item Fact: I'm going to stop listing things I need to do and start actually doing them.
+%\item Fact: I can do this. I have all the necessary skills to pull this off. 
+%\item Fact: I'm going to stop listing things I need to do and start actually doing them.
 \end{itemize}
 
 [\autocite{hatcher5} Thm 5.47 says that there is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\mathscr{A}_2}(H^*(\bb{S}), H^*(\bb{S}))\), and \(\{E_r, d_r\}\implies \pi^S_*\) modulo any odd torsion.
@@ -687,8 +695,6 @@ Note that \(\Sigma(X\vee Y)\cong \Sigma X\vee \Sigma Y\).
 \end{remark}
 
 \begin{itemize}
-\item `Reduced mapping cylinder'?
-\item Mapping cones?
 \item The Eilenberg-MacLane space is \(K(G, n)\), and it has the property that 
 \[\pi_i(K(G, n))=\begin{cases}
 G & i=n,\\
@@ -699,6 +705,16 @@ They're unique up to weak homotopy equivalence (i.e. if you have another one \(X
 
 \begin{definition}
 Let \(X\), \(Y\) be topological spaces, where \(X\) has a basepoint \(x_0\). Then the \textit{reduced product} \(X\times_{\text{red}}Y:=(X\times Y)/(x_0 \times Y)\). 
+\end{definition}
+
+\begin{definition}
+Let \(f : X \to Y\) be a map. The \textit{mapping cylinder} \(M_f\) is defined by \((X\times I)\sqcup Y/\sim\), where \((x,1)\sim f(x)\) for all \(x \in X\). 
+\end{definition}
+
+The mapping cylinder deformation retracts onto \(Y\) via \(h : M_f \times I\to M_f\); \(([x,t], s)\mapsto [x, t+s(1-t)]\). If \((X, x_0), (Y, y_0)\) are pointed spaces, the \textit{reduced mapping cylinder} is the quotient \(M_f/\sim\), where \([x_0, t]\sim [x_0, t']\) for all \( t\in I\).
+
+\begin{definition}
+Let \(f : X \to Y\) be a map. The \textit{mapping cone}\footnote{Why does Hatcher not insist this guy is reduced, like he does with the mapping cylinders?} \(C_f\) is defined to be \(Y\sqcup_f CX:=(Y\sqcup CX)/(f(x)\sim [x,1])\). 
 \end{definition}
 
 \subsection{Cell complexes}\label{2502141508}
@@ -725,7 +741,7 @@ Let \(A\subq X\) be CW complexes. Then the pair \((X, A)\) has the \textit{homot
 %\item The reduced suspension of a pointed cell complex is a pointed cell complex.
 %\item CW pairs? [they're literally just pairs of some CW complex and a subcomplex]
 \item For a CW complex \(X\), \(SX\simeq \Sigma X\).
-\item The suspension of a pointed cell complex \((X, x_0)\) is another pointed cell complex \(\Sigma X\) with basepoint \(x_0\) and an \(n\)-cell for each non-basepoint \(n-1\) cell \(e^{n-1}_\alpha\) of \(X\).
+\item The reduced suspension of a pointed cell complex \((X, x_0)\) is another pointed cell complex \(\Sigma X\) with basepoint \(x_0\) and an \(n\)-cell for each non-basepoint \(n-1\) cell \(e^{n-1}_\alpha\) of \(X\).
 \end{itemize}
 
 \begin{definition}
@@ -783,7 +799,7 @@ Eventually:
 
 \begin{itemize}
 \item READ IF YOUR CALCULATIONS AREN'T WORKING: You are working modulo 2!!!
-\item There are two ways I can play the chapter on spectra. The first is to constantly draw analogues with CW complexes, carry over all the theorems and prove them in a similar way, really emphasising that these are the `stable' versions of CW complexes and we should definitely think about them that way. The other is really stupid I just realised so I'll just do the first thing I said. 
+%\item There are two ways I can play the chapter on spectra. The first is to constantly draw analogues with CW complexes, carry over all the theorems and prove them in a similar way, really emphasising that these are the `stable' versions of CW complexes and we should definitely think about them that way. The other is really stupid I just realised so I'll just do the first thing I said. 
 \item If you have a bunch of maps between graded modules/algebras, they're graded homomorphisms. So they preserve degree. 
 \end{itemize}
 
