@@ -454,7 +454,7 @@ If \(\mathcal{C}=\{D, E, i, j, k\}\) is an exact couple, then \(\mathcal{C}'\) i
 \end{proposition}
 
 \begin{theorem}[{\autocite{spectral_sequences}, Thm 2.8}]
-Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,1)\), \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of cohomological type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r)}\circ k^{(r)}\). 
+Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,1)\)\footnote{This is the wrong index. For my purposes it should be \((-1, -1)\). So, the spectral sequence will not be of cohomological type, but hopefully the proof still goes through.}, \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of cohomological type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r)}\circ k^{(r)}\). 
 \end{theorem}
 
 A bigraded exact couple may be displayed in the following diagram, known as a \textit{staircase diagram}:
@@ -467,7 +467,7 @@ A bigraded exact couple may be displayed in the following diagram, known as a \t
  & \vdots &  & \vdots & 
 \end{tikzcd}\]
 
-[Check this is actually the same staircase diagram that Hatcher is talking about - I think it is just modulo some reindexing because the bigrading is a bit weird in the Adams spectral sequence.]
+[This is the same staircase diagram that Hatcher is talking about (set \(D^{*,*}=\pi_*^SX_*\) and \(E^{*,*}=\pi_*K_*\)) - just modulo some tweak of \(i\)'s bigrading because the bigrading is a bit weird in the Adams spectral sequence.]
 
 \subsection{The Adams spectral sequence}
 
