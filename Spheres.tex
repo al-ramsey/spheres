@@ -156,7 +156,7 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 
 Miscellaneous facts I might need later:
 \begin{itemize}
-\item Cohomology [possibly only of pointed\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?? See \ref{C}.} CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}? \autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups. So, it's over \textbf{Ab}? N.B: There's a lot of talk about `reduced cohomology theories', so a good next step would be to figure out what those are - if they only involve groups and not rings, maybe the cup product on \(H^*\) is not relevant here.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
+\item Cohomology [possibly only of pointed\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?} CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}? \autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups. So, it's over \textbf{Ab}? N.B: There's a lot of talk about `reduced cohomology theories', so a good next step would be to figure out what those are - if they only involve groups and not rings, maybe the cup product on \(H^*\) is not relevant here.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
 \item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
 \item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
 \item ``Stable homotopy groups are a homology theory'' (whatever that means)
@@ -239,7 +239,7 @@ We write \(\bb{S}:=\Sigma^\infty S^0\), and call \(\bb{S}\) the \textit{sphere s
 The \textit{Eilenberg-MacLane spectrum} has \(X_n\) a CW complex \(K(G,n)\) and \(\sigma_n : \Sigma K(G,n)\to K(G,n+1)\) is the adjoint of the CW approximation \(K(G, n)\to \Omega K(G,n+1)\).
 \end{example}
 
-[N.B. the important point of the above is not that it's `an' EM space rather than `the' (they're all homotopy equivalent). It's that a) we can definitely construct one that's a CW complex, and b) even though \(\Omega\)(a CW complex) is not necessarily a CW complex, we can make it one via CW approximation.]
+%[N.B. the important point of the above is not that it's `an' EM space rather than `the' (they're all homotopy equivalent). It's that a) we can definitely construct one that's a CW complex, and b) even though \(\Omega\)(a CW complex) is not necessarily a CW complex, we can make it one via CW approximation.]
 
 \begin{definition}
 Let \(X=\{X_n\}\) be a spectrum. We define \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\), where the map \(\pi_{i+n}(X_n)\to \pi_{i+n+1}(X_{n+1})\) is given by the composition
@@ -293,10 +293,10 @@ so that there's a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating
 We define \(H^*\) and \(H_*\) to be the cohomology and homology of this chain complex, respectively.]
 
 \begin{definition}
-Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} \(X'\) of \(X\) is a sequence of subcomplexes \(\{X_n'\subq X_n\}\) satisfying \(\Sigma X_n'\subq X_{n+1}'\). The subspectrum \(X'\) is \textit{cofinal} if, for each \(n\) and each cell \(e^i_\alpha\) of \(X_n\), the cell\footnote{Assuming it is actually a cell, see note in \ref{2502141508}.} \(\Sigma^k e_\alpha^i\) belongs to \(X'_{n+k}\) for all sufficiently large \(k\).
+Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} \(X'\) of \(X\) is a sequence of subcomplexes \(\{X_n'\subq X_n\}\) satisfying \(\Sigma X_n'\subq X_{n+1}'\). The subspectrum \(X'\) is \textit{cofinal} if, for each \(n\) and each cell \(e^i_\alpha\) of \(X_n\), the cell \(\Sigma^k e_\alpha^i\) belongs to \(X'_{n+k}\) for all sufficiently large \(k\).
 \end{definition}
 
-[N.B. If \(\Sigma^ke^i_\alpha\) belongs to \(X'_{n+k}\) then \(\SIgma^{k+1}e^i_\alpha\) belongs to \(\Sigma X'_{n+k}\inj X'_{n+k+1}\) (I think!!), so if it happens once it'll happen for all time after that. Thus, if \(X'\), \(X''\) are cofinal spectra of \(X\) with \(\Sigma^k e_{\alpha}^i\) a cell of \(X_{n+k}'\) and \(\Sigma^l e_\alpha^i\) a cell of \(X_{n+l}''\) (\(l\geq k\)) then \(\Sigma^l e_\alpha^i\) is a cell of \(X_{n+l}'\) and therefore of \(X_{n+l}'\cap X_{n+l}''\). In other words, the intersection of two cofinal spectra is a cofinal spectrum.]
+[If \(\Sigma^ke^i_\alpha\) belongs to \(X'_{n+k}\) then \(\SIgma^{k+1}e^i_\alpha\) belongs to \(\Sigma X'_{n+k}\inj X'_{n+k+1}\), so if it happens once it'll happen for all time after that. Thus, if \(X'\), \(X''\) are cofinal spectra of \(X\) with \(\Sigma^k e_{\alpha}^i\) a cell of \(X_{n+k}'\) and \(\Sigma^l e_\alpha^i\) a cell of \(X_{n+l}''\) (\(l\geq k\)) then \(\Sigma^l e_\alpha^i\) is a cell of \(X_{n+l}'\) and therefore of \(X_{n+l}'\cap X_{n+l}''\). In other words, the intersection of two cofinal spectra is a cofinal spectrum.]
 
 \begin{definition}
 Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence of cellular maps \(f_n : X_n \to Y_n\) such that the diagram below commutes.
@@ -376,9 +376,9 @@ Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum}\footnote{
 
 \subsection{Spectral sequences}
 
-Some notes from \autocite{ass} (or maybe not)
+[Maybe add some notes from \autocite{ass}]
 
-How about some notes from \autocite{spectral_sequences}, C2:
+[Some notes from \autocite{spectral_sequences}, C2 - just here as a placeholder/reference and I'll probably completely rewrite this bit.]
 
 \begin{definition}
 A \textit{differential bigraded module} \(E\) over a ring \(R\) is a collection of \(R\)-modules \(\{E^{p, q}\}\), \(p, q\in \inte\), together with a map \(d : E^{p, q} \to E^{p+s, q-s+1}\) for each \(p, q\) and some fixed \(s \in \inte\), satisfying \(d^2=0\). 
@@ -388,7 +388,7 @@ We can take the homology of \((E, d)\):
 \[H^{p, q}(E^{*, *}, d)=\ker(d : E^{p, q}\to E^{p+s, q-s+1})/\im(d : E^{p-s, q+s-1}\to E^{p, q}).\]
 
 \begin{definition}
-A \textit{spectral sequence} (of \textit{cohomological type})\footnote{I think(?) I actually want one of homological type. I'll check this.} is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, 1-r)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
+A \textit{spectral sequence} (of \textit{cohomological type}\footnote{I'll have to rewrite this section because the Adams spectral sequence is not a cohomological or a homological spectral sequence I don't think - the grading is \(d_r : E^{s,t}\to E^{s+r,t+r-1}\).}) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, 1-r)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
 \end{definition}
 
 We will sometimes write \(d^{p, q}_r\) for the differential \(d_r : E^{p, q}\to E^{p+r,q-s+1}\). 
@@ -461,13 +461,13 @@ A bigraded exact couple may be displayed in the following diagram, known as a \t
 
 \[\begin{tikzcd} 
    &  \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] & \\
- \cdots \arrow[r, swap, "k"] & D^{p+2, q-1} \arrow[d, "i"] \arrow[r, "j"] & E^{p+2,q-1}  \arrow[r, "k"] & D^{p+3,q-1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
- \cdots \arrow[r, swap, "k"] & D^{p+1,q} \arrow[d, "i"] \arrow[r, "j"] & E^{p+1,q}  \arrow[r, "k"] & D^{p+2,q} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
- \cdots \arrow[r, swap, "k"] & D^{p,q+1}  \arrow[d, "i"] \arrow[r, "j"] & E^{p,q+1}  \arrow[r, "k"] & D^{p+1,q+1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, "k"] & D^{p+2, q-1} \arrow[d, "i"] \arrow[r, "j"] & E^{p+2,q-1}  \arrow[r, "k"] & D^{p+3,q-1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, "k"] & D^{p+1,q} \arrow[d, "i"] \arrow[r, "j"] & E^{p+1,q}  \arrow[r, "k"] & D^{p+2,q} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, "k"] & D^{p,q+1}  \arrow[d, "i"] \arrow[r, "j"] & E^{p,q+1}  \arrow[r, "k"] & D^{p+1,q+1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  & \vdots &  & \vdots & 
 \end{tikzcd}\]
 
-[Check this is actually the same staircase diagram that Hatcher is talking about]
+[Check this is actually the same staircase diagram that Hatcher is talking about - I think it is just modulo some reindexing because the bigrading is a bit weird in the Adams spectral sequence.]
 
 \subsection{The Adams spectral sequence}
 
@@ -476,18 +476,18 @@ Things I need before I can set it up (according to Hatcher \autocite{hatcher5}):
 Let \(X\) be a CW spectrum of finite type.
 
 \begin{itemize}
-\item Def: \(H^*(X)\).
+%\item Def: \(H^*(X)\).
 %\item Def: A wedge of spectra (Hatcher doesn't trouble himself with defining this)
 \item Fact: \(H^*(X)\) is finitely generated.
 \item Fact: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. [We know that's true for a topological space]
 \item Fact: We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\).
-\item Fact: There \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type.
-\item Fact: We can replace that map with an inclusion.
+\item Fact: There \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type. [the first part probably follows from the fact that \(H^m(X; G)\cong [X, K(G,m)]\) naturally in \(m\) and \(X\).]
+\item Fact: We can replace that map with an inclusion [maybe via a mapping cylinder? What does Hatcher mean by replace - does he mean that the new map is homotopy equivalent to the old one?].
 \item Fact: A quotient of connective spectra of finite type is again a connective spectrum of finite type.
 \item Prop: \autocite{hatcher5}, 5.46.
-\item Def: The functor \(\pi^Y_t(Z)=[\Sigma^tY, Z]\) for a finite spectrum \(Y\).
+%\item Def: The functor \(\pi^Y_t(Z)=[\Sigma^tY, Z]\) for a finite spectrum \(Y\).
 \item Def: A cofibration. [see : \autocite{hatcher}, p398.]
-\item Fact: If \(Y\) is a finite spectrum and and \(Z\) is a connective spectrum of finite type, then \(\pi^Y_t(Z)\) is finitely generated.
+\item Fact: If \(Z\) is a connective spectrum of finite type, then \(\pi_t(Z)\) is finitely generated.
 %\item Fact: I can do this. I have all the necessary skills to pull this off. 
 %\item Fact: I'm going to stop listing things I need to do and start actually doing them.
 \end{itemize}
@@ -527,9 +527,7 @@ For a minimal free resolution
 of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\), where \(\Hom^t_{\A}(F_s, \bb{F}_2)\subq \Hom_{\A}(F_s, \bb{F}_2)\) consists of the morphisms which lower the degree by \(t\).
 \end{lemma}
 
-[Some miscellaneous and vague rambling:
-
-Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
+[Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{hatcher5}.
 
@@ -543,6 +541,8 @@ Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be 
 There are no nontrivial differentials for \(t-s\leq 13\). 
 \end{lemma}
 
+[Should follow from the Leibniz rule, but we need the multiplicative structure first]
+
 \subsection{Resolving extensions}
 
 [Note: there is a multiplicative structure on the \(E_2\) page of the spectral sequence, which Hatcher says is there and then proceeds to never ever mention again. So I'll have to find another source for this bit. It should correspond to the composition product on \(\pi_*^S\), i.e. given \([f]\in \pi_i^S\), \([g]\in \pi_j^S\), we have \([f][g]=[g \circ \Sigma^j f]\in \pi_{i+j}^S\).
@@ -551,7 +551,7 @@ There are no nontrivial differentials for \(t-s\leq 13\).
 
 Also, \autocite{spectral_sequences} has some cryptic remarks on p424 and p407 about this but doesn't actually really explain it, and in particular doesn't explain how you could know that some stable homotopy group \textit{isn't} cyclic (e.g. \(\pi_8^S\)).
 
-Some slightly less cryptic but irritatingly general and opaque comments are made in \autocite{cobordism}, in particular stemming from Lemma 3.1.3. If I just believe this lemma, assuming its \(a_0\) is the same as my \(\alpha^1_1\), and further believe the calculations done in \autocite{ass} in 6.2, then (I think!) this solves my problems.]
+Some slightly less cryptic comments are made in \autocite{cobordism}, in particular stemming from Lemma 3.1.3. If I just believe this lemma for the moment, assuming its \(a_0\) is the same as my \(\alpha^1_1\), and further believe the calculations done in \autocite{ass} in 6.2, then (I think!) this solves my problems.]
 
 \begin{proposition}[{\autocite{ass}, Cor 6.5}]
 We have the following relations:
@@ -579,7 +579,7 @@ If \(x \in \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\) is a permanent cycle in the Adams sp
 
 \subsection{Nontrivial differentials}
 
-[The point here is that (I claim\footnote{I think I have to use the multiplicative structure to justify this.}) all differentials interacting with \(E^{s,t}\) for \(t-s=14\) are trivial, and thus computing the stable homotopy groups is purely mechanical, because everything that appears on this part of the \(E_2\) page has to survive to \(E_\infty\). Thus, the `ambiguity' at \(t-s=14\) is just the fact that this is the first time you need to actually compute differentials.
+[The point here is that all differentials interacting with \(E^{s,t}\) for \(t-s=14\) are trivial, and thus computing the stable homotopy groups is purely mechanical, because everything that appears on this part of the \(E_2\) page has to survive to \(E_\infty\). Thus, the `ambiguity' at \(t-s=14\) is just the fact that this is the first time you need to actually compute differentials.
 
 For \(t-s<14\) there are only actually the ones emanating from \(E^{1, 2}\) and the \(d_2\) differential starting at \(E^{2, 10}\) to worry about, because all the others either enter or leave \(0\).]
 
@@ -762,7 +762,8 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 \subsection{Vague problems and Questions}
 
 \begin{itemize}
-\item Is `pointed' (co)homology just reduced (co)homology? I've noticed `pointed things' (\(\Sigma, \Omega, \wedge\), ...) seem to happen to/in reduced (co)homology, and `unpointed things' (\(S, \times, ...\)) happen to/in normal (co)homology. I want to do pointed things. 
+\item When am I supposed to be using reduced vs unreduced (co)homology? 
+%\item Is `pointed' (co)homology just reduced (co)homology? I've noticed `pointed things' (\(\Sigma, \Omega, \wedge\), ...) seem to happen to/in reduced (co)homology, and `unpointed things' (\(S, \times, ...\)) happen to/in normal (co)homology. I want to do pointed things. 
 
 %\item \autocite{hatcher} says that defining cohomology of a spectrum as just \(\colim_n H^{i+n}(X_n)\) in the same way as for homotopy works for EM spectra and suspension spectra
 
@@ -770,7 +771,7 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \item On p588 of \autocite{hatcher5}, he says ``every CW spectrum is equivalent to a suspension spectrum''. Does he actually mean that, or does he mean `equivalent to the suspension of a spectrum'? The former seems way too strong, although in fairness I still don't know what an equivalence of spectra actually \textit{is}. 
 
-\item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, so why does Hatcher say on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence? Is that just because I could take the role of \(\bb{S}\) and give it to some non-finite-type spectrum (actually, it cannot be this!! Hatcher specifically says the spectrum \(Y\) has to be finite), or is there something I'm missing? Can I just take limits and be done with it?
+\item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, so why does Hatcher say on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence? Is that just because I could take the role of \(\bb{S}\) and give it to some non-finite-type spectrum (actually, it cannot be this! Hatcher specifically says the spectrum \(Y\) has to be finite), or is there something I'm missing? Can I just take limits and be done with it?
 
 \item Suppose I have the \(E_2\) page for the appropriate spectral sequence. That in principle only gives me the `dots' and possibly the differentials if I've been clever. But if I just want to calculate, say, \(\pi^S_3\), I get \(\inte_2\) summands at \(E^{1, 4}_2, E^{2, 5}_2,\) and \(E^{3, 6}_2\). So, that says I have a filtration 
 \[0 \subq \inte_2 \subq F^{2,5}\subq F^{1,4}=\pi^S_3,\]
@@ -792,7 +793,7 @@ Eventually:
 
 \begin{itemize}
 \item Be consistent with either cell complex or CW complex (eventually)
-\item Be consistent with \(\bb{F}_2\), \(\inte_2\), or \(\inte/2\inte\) (I'm trying to use the latter, but old habits die hard).
+\item Be consistent with \(\bb{F}_2\)  or \(\inte/2\inte\) (don't use \(\inte_2\), that's bad).
 \end{itemize}
 
 \subsection{Other notes}
