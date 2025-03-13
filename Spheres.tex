@@ -363,7 +363,7 @@ Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum}\footnote{
 \begin{itemize}
 \item Def: closed subspectrum
 \item Def: quotient of spectra
-\item Fact: for spectra \(X, Y\) and a subspectrum \(A\subq X\) we have exact sequences
+\item Fact: for spectra \(X, Y\) and a subspectrum \(A\subq X\) we have exact sequences\footnote{Check if I actually need the first one.}
 \[\cdots \to [\Sigma X, Y]\to [\Sigma A, Y]\to [X/A,Y]\to[X,Y]\to[A,Y]\]
 \[[Y,A]\to[Y,X]\to[Y,X/A]\to[Y,\Sigma A]\to[Y,\Sigma X]\to\cdots\]
 \end{itemize}
@@ -613,7 +613,7 @@ and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain 
 
 A free resolution is \textit{minimal} if at each stage of its construction we choose the minimal number of free generators for \(F_i\) in each degree.
 
-[The above definition is stupid but I'm keeping it just for the moment.]
+[The above definition is bad but I'm keeping it just for the moment.]
 
 \section{Topology}
 
@@ -773,9 +773,10 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, so why does Hatcher say on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence? Is that just because I could take the role of \(\bb{S}\) and give it to some non-finite-type spectrum (actually, it cannot be this! Hatcher specifically says the spectrum \(Y\) has to be finite), or is there something I'm missing? Can I just take limits and be done with it?
 
-\item Suppose I have the \(E_2\) page for the appropriate spectral sequence. That in principle only gives me the `dots' and possibly the differentials if I've been clever. But if I just want to calculate, say, \(\pi^S_3\), I get \(\inte_2\) summands at \(E^{1, 4}_2, E^{2, 5}_2,\) and \(E^{3, 6}_2\). So, that says I have a filtration 
+\item Suppose I have the \(E_2\) page for the appropriate spectral sequence. That in principle only gives me the `dots' and possibly the differentials. But if I just want to calculate, say, \(\pi^S_3\), I get \(\inte_2\) summands at \(E^{1, 4}_2, E^{2, 5}_2,\) and \(E^{3, 6}_2\). So, that says I have a filtration 
 \[0 \subq \inte_2 \subq F^{2,5}\subq F^{1,4}=\pi^S_3,\]
 and \(F^{2,5}/\inte_2\cong \inte_2\), \(F^{1,4}/F^{2,5}\cong \inte_2\). So \(\pi^S_3\) has order 8 and a filtration by \(\inte_2\)'s, but that still doesn't tell me whether it's \(\inte_8, \inte_4\times \inte_2\) or \(\inte_2^3\)? Thm 5.47 of \autocite{hatcher5} tells me that \(F^{s,t}\) is the image of the map \(\pi_t(\bb{S}_s)\to \pi_3^S\), so do I have to go back to the constructing and figure out what that map actually is, or is there something algebraic I can do?\footnote{I think this related to something \autocite{ass} calls the Yoneda product on p47-50 and 61-62 - this is a multiplicative structure on \(E_2\) and should tell me something about the additive structure of \(\pi_*^S\).}
+\item Replacing maps by inclusions?
 \end{itemize}
 
 \subsection{To do}
@@ -794,6 +795,7 @@ Eventually:
 \begin{itemize}
 \item Be consistent with either cell complex or CW complex (eventually)
 \item Be consistent with \(\bb{F}_2\)  or \(\inte/2\inte\) (don't use \(\inte_2\), that's bad).
+\item Specialise the Adams spectral sequence (i.e. set \(Y=\bb{S}\))
 \end{itemize}
 
 \subsection{Other notes}
