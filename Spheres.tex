@@ -156,7 +156,8 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 
 Miscellaneous facts I might need later:
 \begin{itemize}
-\item Cohomology [possibly only of pointed\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?} CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}? \autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups. So, it's over \textbf{Ab}? N.B: There's a lot of talk about `reduced cohomology theories', so a good next step would be to figure out what those are - if they only involve groups and not rings, maybe the cup product on \(H^*\) is not relevant here.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
+\item Cohomology [possibly only of pointed%\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?} %I think it's just that it's reduced
+CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}? \autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups. So, it's over \textbf{Ab}? N.B: There's a lot of talk about `reduced cohomology theories', so a good next step would be to figure out what those are - if they only involve groups and not rings, maybe the cup product on \(H^*\) is not relevant here.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
 \item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
 \item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
 \item ``Stable homotopy groups are a homology theory'' (whatever that means)
@@ -355,7 +356,8 @@ Various claims:
 \subsection{Cofibration sequences}
 
 \begin{definition}
-Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum}\footnote{This definition comes from \autocite{local}, but I'm a little suspicious because the nLab page says a wedge sum should always identify the basepoints, but the basepoint of a spectra surely isn't given by just a basepoint from each \(X_n\)? That's the only thing being identified here.} is \(X\vee Y :=\{X_n \vee Y_n\}\). Note that \ref{2502211505} gives us an inclusion \(\Sigma(X_n\vee Y_n)\inj X_{n+1}\vee Y_{n+1}\). 
+Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum}%\footnote{This definition comes from \autocite{local}, but I'm a little suspicious because the nLab page says a wedge sum should always identify the basepoints, but the basepoint of a spectra surely isn't given by just a basepoint from each \(X_n\)? That's the only thing being identified here.} I think it's fine? just won't be an omega spectrum anymore, if that matters
+ is \(X\vee Y :=\{X_n \vee Y_n\}\). Note that \ref{2502211505} gives us an inclusion \(\Sigma(X_n\vee Y_n)\inj X_{n+1}\vee Y_{n+1}\). 
 \end{definition}
 
 [The rest of the section:
@@ -762,7 +764,6 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 \subsection{Vague problems and Questions}
 
 \begin{itemize}
-\item When am I supposed to be using reduced vs unreduced (co)homology? 
 %\item Is `pointed' (co)homology just reduced (co)homology? I've noticed `pointed things' (\(\Sigma, \Omega, \wedge\), ...) seem to happen to/in reduced (co)homology, and `unpointed things' (\(S, \times, ...\)) happen to/in normal (co)homology. I want to do pointed things. 
 
 %\item \autocite{hatcher} says that defining cohomology of a spectrum as just \(\colim_n H^{i+n}(X_n)\) in the same way as for homotopy works for EM spectra and suspension spectra
@@ -771,11 +772,9 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \item On p588 of \autocite{hatcher5}, he says ``every CW spectrum is equivalent to a suspension spectrum''. Does he actually mean that, or does he mean `equivalent to the suspension of a spectrum'? The former seems way too strong, although in fairness I still don't know what an equivalence of spectra actually \textit{is}. 
 
-\item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, so why does Hatcher say on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence? Is that just because I could take the role of \(\bb{S}\) and give it to some non-finite-type spectrum (actually, it cannot be this! Hatcher specifically says the spectrum \(Y\) has to be finite), or is there something I'm missing? Can I just take limits and be done with it?
-
-\item Suppose I have the \(E_2\) page for the appropriate spectral sequence. That in principle only gives me the `dots' and possibly the differentials. But if I just want to calculate, say, \(\pi^S_3\), I get \(\inte_2\) summands at \(E^{1, 4}_2, E^{2, 5}_2,\) and \(E^{3, 6}_2\). So, that says I have a filtration 
-\[0 \subq \inte_2 \subq F^{2,5}\subq F^{1,4}=\pi^S_3,\]
-and \(F^{2,5}/\inte_2\cong \inte_2\), \(F^{1,4}/F^{2,5}\cong \inte_2\). So \(\pi^S_3\) has order 8 and a filtration by \(\inte_2\)'s, but that still doesn't tell me whether it's \(\inte_8, \inte_4\times \inte_2\) or \(\inte_2^3\)? Thm 5.47 of \autocite{hatcher5} tells me that \(F^{s,t}\) is the image of the map \(\pi_t(\bb{S}_s)\to \pi_3^S\), so do I have to go back to the constructing and figure out what that map actually is, or is there something algebraic I can do?\footnote{I think this related to something \autocite{ass} calls the Yoneda product on p47-50 and 61-62 - this is a multiplicative structure on \(E_2\) and should tell me something about the additive structure of \(\pi_*^S\).}
+%\item Suppose I have the \(E_2\) page for the appropriate spectral sequence. That in principle only gives me the `dots' and possibly the differentials. But if I just want to calculate, say, \(\pi^S_3\), I get \(\inte_2\) summands at \(E^{1, 4}_2, E^{2, 5}_2,\) and \(E^{3, 6}_2\). So, that says I have a filtration 
+%\[0 \subq \inte_2 \subq F^{2,5}\subq F^{1,4}=\pi^S_3,\]
+%and \(F^{2,5}/\inte_2\cong \inte_2\), \(F^{1,4}/F^{2,5}\cong \inte_2\). So \(\pi^S_3\) has order 8 and a filtration by \(\inte_2\)'s, but that still doesn't tell me whether it's \(\inte_8, \inte_4\times \inte_2\) or \(\inte_2^3\)? Thm 5.47 of \autocite{hatcher5} tells me that \(F^{s,t}\) is the image of the map \(\pi_t(\bb{S}_s)\to \pi_3^S\), so do I have to go back to the constructing and figure out what that map actually is, or is there something algebraic I can do?\footnote{I think this related to something \autocite{ass} calls the Yoneda product on p47-50 and 61-62 - this is a multiplicative structure on \(E_2\) and should tell me something about the additive structure of \(\pi_*^S\).}
 \item Replacing maps by inclusions?
 \end{itemize}
 
@@ -804,6 +803,8 @@ Eventually:
 \item READ IF YOUR CALCULATIONS AREN'T WORKING: You are working modulo 2!!!
 %\item There are two ways I can play the chapter on spectra. The first is to constantly draw analogues with CW complexes, carry over all the theorems and prove them in a similar way, really emphasising that these are the `stable' versions of CW complexes and we should definitely think about them that way. The other is really stupid I just realised so I'll just do the first thing I said. 
 \item If you have a bunch of maps between graded modules/algebras, they're graded homomorphisms. So they preserve degree. 
+\item All (co)homology is supposed to be reduced.
+\item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Absolutely everything relevant to spheres in the construction of the Adams spectral sequence seems to only use spectra of finite type, but Hatcher says on p585 that we can't just take the inverse limit because it doesn't work for the `more general spectra' used when constructing the Adams spectral sequence. I believe this is because the Adams spectral sequence is defined for \(X\) not of finite type, though Hatcher only constructs it for finite type guys.
 \end{itemize}
 
 \printbibliography
