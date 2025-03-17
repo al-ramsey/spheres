@@ -516,6 +516,42 @@ There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s
 
 \subsection{Multiplicative structure}
 
+[Rough sketch, details to fill in once I have the shape of things:
+
+Fact: there is a multiplication 
+\[E^{s,t}_2\otimes E^{s',t'}_2\to E^{s+s', t+t'}_2,\]
+i.e. 
+\[F^{s,t}/F^{s+1, t+1}\otimes F^{s',t'}/F^{s'+1, t'+1}\to F^{s+s', t+t'}/F^{s+s'+1, t+t'+1}.\]
+
+Using \ref{2503171645shutupitsbeenalongterm} (which comes later but whatever, I'll reorder things), we get \(E_2^{s,t}=\Hom^t_{\A}(F_s, \bb{F}_2)\). So, if we have a minimal free resolution 
+\[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2\]
+of \(\bb{F}_2\) as an \(\A\)-module, and we have \(f \in \Hom^t_{\A}(F_s, \bb{F}_2), g \in \Hom^{t'}_{\A}(F_{s'}, \bb{F}_2)\), we multiply them as follows:
+
+First, we put these resolutions side by side.
+\[\begin{tikzcd}
+F_{s+s'} \arrow[r, dashrightarrow,""] \arrow[d, swap, ""]  & F_{s'}[t]  \arrow[d, ""] \arrow[r, "g"] & \bb{F}_2[t+t']  \\
+F_{s+s'-1} \arrow[r, dashrightarrow, ""] \arrow[d, ""] & F_{s'-1}[t] \arrow[d, ""] & \\
+\vdots \arrow[d, ""] & \vdots \arrow[d, ""] &   \\
+F_s \arrow[r, dashrightarrow, ""] \arrow[d, ""] \arrow[rd, "f"'] & F_0[t]  \arrow[d, twoheadrightarrow, ""] &   \\ 
+F_{s-1} \arrow[d] & \bb{F}_2[t] & \\
+\vdots \arrow[d] & & \\
+F_0  \arrow[d] & & \\
+\bb{F}_2 & & 
+\end{tikzcd}\]
+Then we inductively fill in the dotted arrows from the bottom up. So you can fill the first one because the modules are all free so you just need to say where the generator goes (a priori maybe there are infinitely many generators but it's ok because these are degree \(t\) maps and there are only finitely many in each degree), and the right map is surjective, so just do it the way you would do it. Likewise for the higher ones. 
+
+This thing is hopefully well-defined.
+
+A few other things:
+\begin{enumerate}
+\item We can check by other methods [elaborate] that \(\pi_0^S=\inte\). Now, \(E^{s,t}\) is actually supposed to converge to the associated graded of \(\inte_2\) (i.e. the 2-adics) I think? But either way, we know that for our filtration all the quotients are \(\inte/2\inte\). I claim then that the filtration must be \(\cdots 4\inte_2 \subq 2\inte_2 \subq \inte_2\). 
+\item If that's true then \(\iota=[1]\in \inte_2/2\inte_2\), and using the multiplication above we see \(\iota\) is a unit. We also have \(h_0=[2]\in 2\inte_2/4\inte_2\) so \(h_0=[2]=[2[1]]=[2\iota]\), so \(h_0\) acts on \(\iota\) by multiplication by 2.
+\item Now, for any \(\kappa\in E^{s,t}_2\), \(h_0\cdot \kappa = (\iota h_0)\cdot \kappa=2\kappa\). 
+\end{enumerate}
+The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\).
+
+All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]
+
 \autocite{ass}
 
 \section{Calculating stable homotopy groups}
@@ -523,7 +559,7 @@ There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s
 \subsection{The \(E_2\) page}
 
 
-\begin{lemma}[{\autocite{hatcher5}, Lem 5.49}]
+\begin{lemma}[{\autocite{hatcher5}, Lem 5.49}]\label{2503171645shutupitsbeenalongterm}
 For a minimal free resolution 
 \[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2 \to 0\]
 of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\), where \(\Hom^t_{\A}(F_s, \bb{F}_2)\subq \Hom_{\A}(F_s, \bb{F}_2)\) consists of the morphisms which lower the degree by \(t\).
@@ -795,6 +831,7 @@ Eventually:
 \item Be consistent with either cell complex or CW complex (eventually)
 \item Be consistent with \(\bb{F}_2\)  or \(\inte/2\inte\) (don't use \(\inte_2\), that's bad).
 \item Specialise the Adams spectral sequence (i.e. set \(Y=\bb{S}\))
+\item Remember that you have to hand in the tex file, so for the love of god change anything stupid that's hidden in the pdf.
 \end{itemize}
 
 \subsection{Other notes}
