@@ -812,6 +812,8 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 %\[0 \subq \inte_2 \subq F^{2,5}\subq F^{1,4}=\pi^S_3,\]
 %and \(F^{2,5}/\inte_2\cong \inte_2\), \(F^{1,4}/F^{2,5}\cong \inte_2\). So \(\pi^S_3\) has order 8 and a filtration by \(\inte_2\)'s, but that still doesn't tell me whether it's \(\inte_8, \inte_4\times \inte_2\) or \(\inte_2^3\)? Thm 5.47 of \autocite{hatcher5} tells me that \(F^{s,t}\) is the image of the map \(\pi_t(\bb{S}_s)\to \pi_3^S\), so do I have to go back to the constructing and figure out what that map actually is, or is there something algebraic I can do?\footnote{I think this related to something \autocite{ass} calls the Yoneda product on p47-50 and 61-62 - this is a multiplicative structure on \(E_2\) and should tell me something about the additive structure of \(\pi_*^S\).}
 \item Replacing maps by inclusions?
+\item I am definitely being told some lies about what the spectral sequence actually converges to. There's a strong implication/actual statement(!!) that at each \(i\) it's supposed to be a filtration of \(\pi_i^S\) modulo odd torsion, but I think this isn't true. I think it's actually the 2-completion\footnote{Whatever that means.} of \(\pi_i^S\). Cor 2.20 of \href{https://ncatlab.org/nlab/show/localization+of+abelian+groups}{this nLab page} says that that coincides with this for finite abelian groups, but for \(\pi_0^S\) it's supposed to be \(\inte_2\) (i.e. the 2-adic integers), not \(\inte\). I believe. Maybe get a source for this. Some people say it's the localisation at 2?? But I think that's also a lie. 
+
 \end{itemize}
 
 \subsection{To do}
