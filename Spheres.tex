@@ -214,7 +214,7 @@ based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of 
 \item There is a category \textbf{St}(\(\mathcal{H}\)) of finite based CW complexes, with \(\Hom(X, Y)=:\{X, Y\}\) the  set \(\colim_i [\Sigma^iX, \Sigma^iY]\) [it's just a colimit of sets, and \textbf{Set} is cocomplete, so we should be fine. \autocite{ass} says it's a group\footnote{The colimit is equal to the stable value (which exists, by the corollary). After \(\Sigma^2\), these guys are all groups, so the colimit also has a group structure inherited from whatever \([\Sigma^k X, \Sigma^k Y]\) it's equal to. N.B: Remarks about cocompleteness of \textbf{Set} are misleading because that doesn't actually matter - any sequence that stabilises in any category will have a filtered colimit equal to that stable value, you don't need any extra conditions.}] [Also, how do these guys compose?]
 \item There is a functor \(\mathcal{H}\to \textbf{St}(\mathcal{H})\). \autocite{ass} doesn't say what this is but it's presumably the one that is the identity on objects and sends \([f : X \to Y]\in [\Sigma^0X, \Sigma^0Y]\) to whatever it gets sent to in \(\{X, Y\}\) using the universal property of the colimit. Uniqueness makes it functorial, etc.
 \item We have a fully faithful functor \(\textbf{St}(\mathcal{H})\to \textbf{St}(\mathcal{H})\) given by the suspension on objects, and the unique isomorphism \(\{X, Y\}\to\{\Sigma X, \Sigma Y\}\) on maps (such an isomorphism exists, since both of those things are colimits for \([\Sigma^i X, \Sigma^i Y]\) - one of the sequences is cut off at the beginning, but it doesn't matter because both reach the stable value (see above discussion and \autocite{ass} 1.9), aka the colimit). 
-\item It's not an equivalence, because not every object is isomorphic to a suspension (e.g. anything not connected, since suspensions always connected [?])
+\item It's not an equivalence, because not every object is isomorphic to a suspension (e.g. anything not connected, since suspensions always connected)
 \item We can formally adjoin desuspensions \(\Sigma^{-n}X\) for all \(n\) [does this mean just putting the objects there and defining \(\Hom(Y, \Sigma^{-n}X):=\Hom(\Sigma^nY, X)\) and \(\Hom(\Sigma^{-n}X, Y):=\Hom(X, \Sigma^n Y)\)?], but this category does not have weak colimits (i.e. colimits w/o uniqueness property). [why does it not, and why do we even want that?]
 \item We instead consider formal sequences of desuspensions \(X_0 \to \Sigma^{-1}X_1 \to \cdots\), or sequences \((X_n)\) and maps \(\Sigma X_n \to X_{n+1}\), i.e. spectra. [and this fixes the problem?]
 \end{itemize}
@@ -237,8 +237,10 @@ Let \(X\) be a topological space. The \textit{suspension spectrum} of \(X\), den
 We write \(\bb{S}:=\Sigma^\infty S^0\), and call \(\bb{S}\) the \textit{sphere spectrum}. 
 
 \begin{example}
-The \textit{Eilenberg-MacLane spectrum} has \(X_n\) a CW complex \(K(G,n)\) and \(\sigma_n : \Sigma K(G,n)\to K(G,n+1)\) is the adjoint of the CW approximation \(K(G, n)\to \Omega K(G,n+1)\).
+The \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\) and \(\sigma_n : \Sigma K(G,m+n)\to K(G,m+n+1)\) is the adjoint of the CW approximation \(K(G, m+n)\to \Omega K(G,m+n+1)\).
 \end{example}
+
+%No it's ok Hatcher, just use the exact same notation for spaces and spectra, that's fine.
 
 %[N.B. the important point of the above is not that it's `an' EM space rather than `the' (they're all homotopy equivalent). It's that a) we can definitely construct one that's a CW complex, and b) even though \(\Omega\)(a CW complex) is not necessarily a CW complex, we can make it one via CW approximation.]
 
@@ -350,10 +352,6 @@ Various claims:
 
 [Prop: If a CW spectrum \(X\) is \(n\)-connected in the sense that \(\pi_i(X)=0\) for \(i\leq n\), then \(X\) is homotopy equivalent to a CW spectrum with no cells of dimension \(\leq n\)]
 
-\begin{theorem}[{\autocite{hatcher5}, Prop 5.45}]\label{2503221328}
-There are natural isomorphisms \(H^m(X;G)\cong [X,K(G,m)]\) for all CW spectra.
-\end{theorem}
-
 \subsection{Cofibration sequences}
 
 \begin{definition}
@@ -378,6 +376,16 @@ Note that a quotient of connective spectra of finite type is again a connective 
 \end{itemize}
 
 ]
+
+\subsection{Eilenberg-MacLane spectra}
+
+\begin{theorem}[{\autocite{hatcher5}, Prop 5.45}]\label{2503221328}
+There are natural isomorphisms \(H^m(X;G)\cong [X,K(G,m)]\) for all CW spectra.
+\end{theorem}
+
+\begin{proposition}[{\autocite{hatcher5}, Prop 5.46}]\label{2503231218}
+The natural map[?] \([X, \bigvee_i \bb{K}(G,n_i)]\) is an isomorphism if \(X\) is a connective spectrum of finite type and \(n_i\to \infty\) as \(i\to\infty\). 
+\end{proposition}
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
 
@@ -484,7 +492,7 @@ Let \(X\) be a connective CW spectrum of finite type.
 
 [Each \(H^i(X)\) is finitely generated: Hatcher says on p586 of \autocite{hatcher5} that \(H^i(X)=H^i(X_n)\) for sufficiently large \(n\) as long as \(X\) is of finite type (which I think should actually read \(H^{i+n}(X_n)\), but it doesn't matter for this particular point), and \(H^i(X_n)\) (or \(H^{i+n}(X_n)\)) is supposed to be finitely generated because all the \(H_j(X_n)\) are finitely generated\footnote{The cohomology groups are finitely generated if the homology ones are, see \autocite{hatcher} Cor 3.3.}, since \(X_n\) should have finitely many cells in each dimension (if it didn't, \(X\) certainly wouldn't).]
 
-[Claim: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. Either use \ref{2503221328} (i.e. \(H^m(X;G)\cong[X,K(G,m)]\)) to give the action, or the above mentioned fact that for spectra of finite type, \(H^i(X; G)=H^{i+n}(X_n;G)\). To define a map \(Sq^j : H^{i}(X;G)\to H^{i+j}(X;G)\) we can either hit \(H^{i+n}(X_n;G)\)with \(Sq^j\) and then push it along the sequence of cohomology groups until it's stable, or first push it along until \(H^{i+j+n}(X_n;G)\) is stable and then hit \(H^i(X_n;G)\) with \(Sq^i\). And these are the same thing, because of this handy commutative diagram:
+[Claim: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. Either use \ref{2503221328} (i.e. \(H^m(X;G)\cong[X,K(G,m)]\)) to give the action, or the above mentioned fact that for spectra of finite type, \(H^i(X; G)=H^{i+n}(X_n;G)\). To define a map \(Sq^j : H^{i}(X;G)\to H^{i+j}(X;G)\) we can either hit \(H^{i+n}(X_n;G)\) with \(Sq^j\) and then push it along the sequence of cohomology groups until it's stable, or first push it along until \(H^{i+j+n}(X_n;G)\) is stable and then hit \(H^i(X_n;G)\) with \(Sq^i\). And these are the same thing, because of this handy commutative diagram:
 \[\begin{tikzcd} 
  & H^{i+n}(X_n;G)  \arrow[dl, "\sigma"'] \arrow[dr, "Sq^j"] & \\ 
  H^{i+n+1}(\Sigma X_n;G) \arrow[d, "i^*"'] & & H^{i+j+n}(X_n;G) \arrow[d, "\sigma"] \\ 
@@ -495,15 +503,16 @@ which follows from the properties in Section  \ref{2503221247}. Is this an actua
 
 We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\) [since each \(H^n(X)\) is finitely generated, and that finite generating set would certainly also generate it as an \(\A\)-module (we could be more efficient, though)].
 
+[Claim: these \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type. Very confused about this - each \(\alpha_i\in H^{n_i}(X;G)\) gives a map \(X \to K(G,n_i)\) by \ref{2503221328}, but shouldn't they  come together to give a map into a product\footnote{And on that note, what is a product of spectra? Is it a reduced product? Are we allowed to do that?} of EM spaces, not a wedge sum? Isn't a wedge sum a sort of reduced \textit{coproduct}, not a product?? Is this something to do with the `fibrations and cofibrations are the same' nonsense?
+
+Vague idea: we have \ref{2503231218}, which tells us that \([X, \bigvee_i \bb{K}(G,n_i)]\cong \prod_i[X, \bb{K}(G,n_i)]\). Now, \(X\) is connective, so \(H^*(X;G)\) has some smallest degree. Let's just pretend it starts from zero for the moment, and we can reindex or whatever later. Let's say each \(H^k(X;G)\) has \(i_k\) generators \(\alpha_{i_0+\cdots+i_{k-1}+1}, ...,\alpha_{i_0+\cdots+i_k}\)  , and write \(n_0=\cdots=n_{i_0}\), \(n_{i_0+1}=\cdots= n_{i_0+i_1}\), etc., \(n_{i_0+i_1+\cdots+i_{k-1}+1}=\cdots = n_{i_0+i_1+\cdots+i_k}\). So, the \(\alpha_{i_0+\cdots+i_{k-1}+j}\in H^k(X;G)\) determine maps \(X\to \bb{K}(G,n_k)\). Putting all these maps together, one in each coordinate, gives an element of \(\prod_i[X, \bb{K}(G,n_i)]\), which by the proposition corresponds to an element of \([X, \bigvee_i \bb{K}(G,n_i)]\).] 
+
 \begin{itemize}
-\item Fact: These \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type. [the first part probably follows from \ref{2503221328}.]
-\item Fact: We can replace that map with an inclusion [maybe via a mapping cylinder? What does Hatcher mean by replace - does he mean that the new map is homotopy equivalent to the old one?].
-\item Prop: \autocite{hatcher5}, 5.46.
-%\item Def: The functor \(\pi^Y_t(Z)=[\Sigma^tY, Z]\) for a finite spectrum \(Y\).
+\item Fact: We can replace that map with an inclusion. [I sort of believe this - \ref{2503231306} and my comment at the end of Section \ref{2503231313} say we can do this for CW complexes, so I should check it for spectra. But it seems true (and I'm currently suffering from spectrum fatigue).]
+
 \item Def: A cofibration. [see : \autocite{hatcher}, p398.]
-\item Fact: If \(Z\) is a connective spectrum of finite type, then \(\pi_t(Z)\) is finitely generated.
-%\item Fact: I can do this. I have all the necessary skills to pull this off. 
-%\item Fact: I'm going to stop listing things I need to do and start actually doing them.
+
+\item Fact: If \(Z\) is a connective CW spectrum of finite type, then \(\pi_t(Z)\) is finitely generated. [Halfway down p586 of \autocite{hatcher5}, Hatcher says that ``for a connective CW spectrum [\(X\)] of finite type the groups \(\pi_{i+n}(X_n)\) do eventually stabilise by the Freudenthal theorem''. Since the homotopy groups are just the colimits of these guys, they're equal to the stable values. \autocite{hatcher}, Thm 5.7 says in particular that a simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups. Now, the \(X_n\) must eventually by simply-connected because otherwise \(X\) would not be connective [elaborate], and we've already seen the \(H_i\) are finitely generated, so yes, the \(\pi_i\) are also finitely generated.]
 \end{itemize}
 
 [\autocite{hatcher5} Thm 5.47 says that there is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\mathscr{A}_2}(H^*(\bb{S}), H^*(\bb{S}))\), and \(\{E_r, d_r\}\implies \pi^S_*\) modulo any odd torsion.
@@ -778,10 +787,12 @@ Let \(X\), \(Y\) be topological spaces, where \(X\) has a basepoint \(x_0\). The
 \end{definition}
 
 \begin{definition}
-Let \(f : X \to Y\) be a map. The \textit{mapping cylinder} \(M_f\) is defined by \((X\times I)\sqcup Y/\sim\), where \((x,1)\sim f(x)\) for all \(x \in X\). 
+Let \(f : X \to Y\) be a map. The \textit{mapping cylinder} \(M_f\) is defined by \(((X\times I)\sqcup Y)/\sim\), where \((x,1)\sim f(x)\) for all \(x \in X\). If \((X, x_0), (Y, y_0)\) are pointed spaces, the \textit{reduced mapping cylinder} is the quotient \(M_f/\sim\), where \([x_0, t]\sim [x_0, t']\) for all \( t\in I\).
 \end{definition}
 
-The mapping cylinder deformation retracts onto \(Y\) via \(h : M_f \times I\to M_f\); \(([x,t], s)\mapsto [x, t+s(1-t)]\). If \((X, x_0), (Y, y_0)\) are pointed spaces, the \textit{reduced mapping cylinder} is the quotient \(M_f/\sim\), where \([x_0, t]\sim [x_0, t']\) for all \( t\in I\).
+\begin{remark}\label{2503231306}
+The mapping cylinder deformation retracts onto \(Y\) via \(h : M_f \times I\to M_f\); \(([x,t], s)\mapsto [x, t+s(1-t)]\). 
+\end{remark}
 
 \begin{definition}
 Let \(f : X \to Y\) be a map. The \textit{mapping cone}\footnote{Why does Hatcher not insist this guy is reduced, like he does with the mapping cylinders?} \(C_f\) is defined to be \(Y\sqcup_f CX:=(Y\sqcup CX)/(f(x)\sim [x,1])\). 
@@ -845,8 +856,6 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 %\[0 \subq \inte_2 \subq F^{2,5}\subq F^{1,4}=\pi^S_3,\]
 %and \(F^{2,5}/\inte_2\cong \inte_2\), \(F^{1,4}/F^{2,5}\cong \inte_2\). So \(\pi^S_3\) has order 8 and a filtration by \(\inte_2\)'s, but that still doesn't tell me whether it's \(\inte_8, \inte_4\times \inte_2\) or \(\inte_2^3\)? Thm 5.47 of \autocite{hatcher5} tells me that \(F^{s,t}\) is the image of the map \(\pi_t(\bb{S}_s)\to \pi_3^S\), so do I have to go back to the constructing and figure out what that map actually is, or is there something algebraic I can do?\footnote{I think this related to something \autocite{ass} calls the Yoneda product on p47-50 and 61-62 - this is a multiplicative structure on \(E_2\) and should tell me something about the additive structure of \(\pi_*^S\).}
 
-\item Replacing maps by inclusions?
-
 \item I am definitely being told some lies about what the spectral sequence actually converges to. There's a strong implication/actual statement(!!) that at each \(i\) it's supposed to be a filtration of \(\pi_i^S\) modulo odd torsion, but I think this isn't true. I think it's actually the 2-completion\footnote{Whatever that means.} of \(\pi_i^S\). That coincides with the \(p\)-primary part for finite abelian groups, but for \(\pi_0^S\) it's supposed to be \(\inte_2\) (i.e. the 2-adic integers), not \(\inte\). I believe. Maybe get a source for this. Some people say it's the localisation at 2?? But I think that's also a lie. 
 
 \item The Leibniz rule is \(d_r(xy)=d_r(x)y\pm xd_r(y)\) (can't remember the sign). But anything I'm using that rule on is some generator of an \(\bb{F}_2\), right? So the sign shouldn't matter. But then, shouldn't the Yoneda product be graded commutative (and thus commutative, because again, in the target signs don't matter)? So why does \autocite{ass} have some comment (to find later) about how the Yoneda product is commutative ``in some range''?? 
@@ -892,9 +901,11 @@ Eventually:
 
 \item Make the \(\alpha^i_j\) notation not appalling.
 
+\item Ease notation by not writing \(G\) in e.g. \(H^*(X;G)\). Say we're taking coefficients in \(\bb{F}_2\), but actually a lot of the time it doesn't matter so maybe note that.
+
 \end{itemize}
 
-\subsection{Other notes}
+\subsection{Other notes}\label{2503231313}
 
 \begin{itemize}
 \item READ IF YOUR CALCULATIONS AREN'T WORKING: You are working modulo 2!!!
@@ -908,6 +919,8 @@ Eventually:
 \item Remember, once you know that \(d_2(h_4)=h_0h_3^2\), you know \(h_4\) \textit{doesn't survive to the third page}. So, for example, \(d_3(h_0h_4)\neq h_0d_3(h_4)\) because \(h_4\) doesn't exist anymore. That's why \(d_3(h_0h_4)\) can be nonzero. 
 
 \item As previously mentioned, we are working modulo 2!! What this also implies is that if anything is hit by any sort of differential, or has any nonzero differential coming out of it, it's completely killed by the next page. Because the summands are just a bunch of \(\bb{F}_2\)'s (so you don't need to worry about `how much' of something is killed, it all is). 
+
+\item Sometimes Hatcher says that you can replace any map of CW complexes by an inclusion. I think the point here is that if you have a map \(f : X \to Y\), \ref{2503231306} says that \(M_f\) deformation retracts onto \(Y\). So if you only care about \(X\) and \(Y\) up to homotopy equivalence, you can replace \(Y\) by \(M_f\) and then \(X\) definitely includes into \(M_f\). 
 \end{itemize}
 
 \printbibliography
