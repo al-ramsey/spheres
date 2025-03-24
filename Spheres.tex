@@ -384,7 +384,7 @@ There are natural isomorphisms \(H^m(X;G)\cong [X,K(G,m)]\) for all CW spectra.
 \end{theorem}
 
 \begin{proposition}[{\autocite{hatcher5}, Prop 5.46}]\label{2503231218}
-The natural map[?] \([X, \bigvee_i \bb{K}(G,n_i)]\) is an isomorphism if \(X\) is a connective spectrum of finite type and \(n_i\to \infty\) as \(i\to\infty\). 
+The natural map[?] \([X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\) is an isomorphism if \(X\) is a connective spectrum of finite type and \(n_i\to \infty\) as \(i\to\infty\). 
 \end{proposition}
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
@@ -507,9 +507,32 @@ We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-modul
 
 Vague idea: we have \ref{2503231218}, which tells us that \([X, \bigvee_i \bb{K}(G,n_i)]\cong \prod_i[X, \bb{K}(G,n_i)]\). Now, \(X\) is connective, so \(H^*(X;G)\) has some smallest degree. Let's just pretend it starts from zero for the moment, and we can reindex or whatever later. Let's say each \(H^k(X;G)\) has \(i_k\) generators \(\alpha_{i_0+\cdots+i_{k-1}+1}, ...,\alpha_{i_0+\cdots+i_k}\)  , and write \(n_0=\cdots=n_{i_0}\), \(n_{i_0+1}=\cdots= n_{i_0+i_1}\), etc., \(n_{i_0+i_1+\cdots+i_{k-1}+1}=\cdots = n_{i_0+i_1+\cdots+i_k}\). So, the \(\alpha_{i_0+\cdots+i_{k-1}+j}\in H^k(X;G)\) determine maps \(X\to \bb{K}(G,n_k)\). Putting all these maps together, one in each coordinate, gives an element of \(\prod_i[X, \bb{K}(G,n_i)]\), which by the proposition corresponds to an element of \([X, \bigvee_i \bb{K}(G,n_i)]\).] 
 
-\begin{itemize}
-\item Fact: We can replace that map with an inclusion. [I sort of believe this - \ref{2503231306} and my comment at the end of Section \ref{2503231313} say we can do this for CW complexes, so I should check it for spectra. But it seems true (and I'm currently suffering from spectrum fatigue).]
+We can replace that map with an inclusion. [I sort of believe this - \ref{2503231306} and my comment at the end of Section \ref{2503231313} say we can do this for CW complexes, so I should check it for spectra. But it seems true (and I'm currently suffering from spectrum fatigue).]
 
+[Set \(X_1=K_0/X\), and repeat the construction to get a diagram:
+\[\begin{tikzcd}[column sep=3ex] 
+ X \arrow[rr, ""]  & & K_0 \arrow[rr, ""] \arrow[dr, ""] & & K_1 \arrow[dr, ""] \arrow[rr, ""] & & K_2 \arrow[dr, ""] \arrow[rr, ""] & & \cdots \\ 
+  &&& K_0/X=X_1 \arrow[ur, ""] & & K_1/X_1=X_2 \arrow[ur, ""] & & K_2/X_2=X_3 \arrow[ur, ""] &  &
+ \end{tikzcd}\] 
+Taking cohomology, we get a diagram
+\[\begin{tikzcd}[column sep=1.5ex, row sep = 2ex, arrows=<-]
+ 0 \arrow[rr, ""] && H^*(X) \arrow[rr,""] & & H^*(K_0) \arrow[rr, ""] \arrow[dr, ""] & & H^*(K_1) \arrow[dr, ""] \arrow[rr, ""] & & H^*(K_2) \arrow[dr, ""] \arrow[rr, ""] & & \cdots \\ 
+  &&&&& H^*(X_1) \arrow[ur, ""] \arrow[dr] & & H^*(X_2) \arrow[ur, ""] \arrow[dr] & & H^*(X_3) \arrow[ur, ""] \arrow[dr] &  &\\
+&&&& 0 \arrow[ur] && 0 \arrow[ur] && 0 \arrow[ur] && 0
+ \end{tikzcd}\] 
+]
+
+\begin{itemize}
+\item Fact: \(K_0\) has finite type (and thus so do all the \(K_s\)'s)
+\item Fact: the top row of the diagram above is exact. [Suffices to show that we have exact sequences: 
+\[0 \leftarrow H^*(X_s)\leftarrow H^*(K_s),\]
+\[H^*(X) \leftarrow H^*(K_0) \leftarrow H^*(X_1)\leftarrow 0,\]
+\[H^*(K_s) \leftarrow H^*(K_{s+1}) \leftarrow H^*(X_{s+2})\leftarrow 0,\]
+and that the map \(H^*(K_0)\to H^*(X)\) is surjective. Actually, I think the first exact sequence will follow from \(H^*(K_0)\to H^*(X)\) being surjective, since they're all constructed in the same way.
+
+I'm extremely confused by the supposed surjectivity - going back to the sketch of the construction for CW complexes, the corresponding statement is supposed to be that if we choose generators \(\alpha_i\) for \(H^*(X)\) as an \(\A\)-module giving maps \(f_i : X \to K(G, \deg(\alpha_i))\), the product of these maps induces a surjection on \(H^*\). But I can't see how it does? So, we know by \autocite{hatcher}, Thm 4.57  that there are natural bijections \(T : [X, K(G,n)]\to H^n(X;G)\) with \(T[f]=f^*(\beta)\) for some class \(\beta \in H^n(K(G,n); G)\). So, for any given \(\alpha^i\in H^n(X;G)\), it's equal to \(f^*(\beta_i)\), so definitely \(f^*\) hits it. But if I have some enormous product of EM spaces, and all these maps \(f_i : X \to K(G, n_i)\) come together to give a map \(f : X \to \prod_i K(G,n_i)\), then Hatcher is trying to tell me I get a surjection \(H^*(\prod_i K(G, n_i))\to H^*(X)\)?? I know nothing about the cohomology of an infinite product, there's no reason it would be e.g. the product of the cohomologies.]
+
+\item Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. 
 \item Def: A cofibration. [see : \autocite{hatcher}, p398.]
 
 \item Fact: If \(Z\) is a connective CW spectrum of finite type, then \(\pi_t(Z)\) is finitely generated. [Halfway down p586 of \autocite{hatcher5}, Hatcher says that ``for a connective CW spectrum [\(X\)] of finite type the groups \(\pi_{i+n}(X_n)\) do eventually stabilise by the Freudenthal theorem''. Since the homotopy groups are just the colimits of these guys, they're equal to the stable values. \autocite{hatcher}, Thm 5.7 says in particular that a simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups. Now, the \(X_n\) must eventually by simply-connected because otherwise \(X\) would not be connective [elaborate], and we've already seen the \(H_i\) are finitely generated, so yes, the \(\pi_i\) are also finitely generated.]
