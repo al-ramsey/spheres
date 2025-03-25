@@ -151,7 +151,7 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 \item Suppose \(X\) is \(k\)-connected. Then, for \(k\geq 0\), \(0=\pi_k(X)\cong \pi_{k+1}(\Sigma X)\), so whenever a space is \(k\)-connected its suspension is \(k+1\)-connected. 
 \item As you take suspensions, then, your successive bounds are \(n \leq 2k\), \(n+1\leq 2k+2\implies n \leq 2k+1\), \(n\leq 2k+2\), etc ... so the sequence \(\pi_n(X)\to \pi_{n+1}(\Sigma X)\to \cdots\) will eventually stabilise.  
 \item Thus, if you take the colimit of that direct system, it'll just equal the stable value, with the higher legs just being the inverse isomorphisms.
-\item \autocite{ass}, Cor 1.9 [not 100\% convinced of how this follows, but believing it for now]: if \(X\) is a CW complex of dimension \(d\) and \(Y\) a \((k-1)\)-connected space, then the suspension homomorphism\footnote{Hang on, the what?? \(X\) isn't the suspension of anything, why on earth would this be a group?} \([X, Y]\to[\Sigma X, \Sigma Y]\) is bijective if \(d<2k-1\) and surjective if \(d=2k-1\). 
+\item ?\autocite{ass}, Cor 1.9 [not 100\% convinced of how this follows, but believing it for now]: if \(X\) is a CW complex of dimension \(d\) and \(Y\) a \((k-1)\)-connected space, then the suspension homomorphism\footnote{Hang on, the what?? \(X\) isn't the suspension of anything, why on earth would this be a group?} \([X, Y]\to[\Sigma X, \Sigma Y]\) is bijective if \(d<2k-1\) and surjective if \(d=2k-1\). 
 \end{itemize}
 
 Miscellaneous facts I might need later:
@@ -160,8 +160,24 @@ Miscellaneous facts I might need later:
 CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}? \autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups. So, it's over \textbf{Ab}? N.B: There's a lot of talk about `reduced cohomology theories', so a good next step would be to figure out what those are - if they only involve groups and not rings, maybe the cup product on \(H^*\) is not relevant here.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
 \item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
 \item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
-\item ``Stable homotopy groups are a homology theory'' (whatever that means)
-\item Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\tilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
+
+\item ?Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\tilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
+
+\item Axioms for a homology theory \(h_*\):
+\begin{enumerate}
+\item If \(f\simeq g : X \to Y\), then \(f_*=g_* : h_n(X)\to h_n(Y)\).
+\item For each \(A\subq X\), there is a long exact sequence
+\[\cdots \xleftarrow{\del}h_n(X/A)\xleftarrow{q_*}h_n(X) \xleftarrow{i_*}h_n(A) \xleftarrow{\del} h_{n+1}(X/A)\xleftarrow{q_*}\cdots.\]
+\item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the coproduct map \(\bigoplus_\alpha (i_\alpha)_* : \bigoplus_\alpha h_n(X_\alpha) \to  h_n(X)\) is an isomorphism for each \(n\). 
+\end{enumerate}
+Axioms for a (reduced) cohomology theory \(h^*\):
+\begin{enumerate}
+\item If \(f\simeq g : X \to Y\), then \(f^*=g^* : h^n(Y)\to h^n(X)\).
+\item For each \(A\subq X\), there is a long exact sequence
+\[\cdots \xrightarrow{\delta}h^n(X/A)\xrightarrow{q^*}h^n(X) \xrightarrow{i^*}h^n(A) \xrightarrow{\delta} h^{n+1}(X/A)\xrightarrow{q^*}\cdots.\]
+\item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the product map \((i^*_\alpha) : h^n(X) \to \prod_\alpha h^n(X_\alpha)\) is an isomorphism for each \(n\).
+\end{enumerate}
+\item Stable homotopy groups are a homology theory 
 \end{itemize}
 
 \autocite{ass}, \autocite{suspension}, \autocite{hatcher}
@@ -206,7 +222,7 @@ Note the admissible monomials are exactly those to which no Adem relations can b
 %\section{Spectra may not be your friends, but I can introduce you}
 \section{Spectra}
 
-\subsection{Categorical nonsense}
+\subsection{?Categorical nonsense}
 
 \begin{itemize}
 \item \autocite{ass}: There is a category \(\mathcal{H}\) of finite %[because the corollary wanted f.d. CW complexes] 
@@ -310,9 +326,9 @@ Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence 
 A \textit{map} of CW spectra \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal spectrum. 
 \end{definition}
 
-[this also induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]
+![this also induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]
 
-[check composition is well defined]
+![check composition is well defined]
 
 [working definition of equivalence below:]
 
@@ -322,7 +338,7 @@ Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) a
 
 Note that a spectrum is equivalent to any of its cofinal subspectra.
 
-[A spectrum is always equivalent to the suspension of some other spectrum]
+![A spectrum is always equivalent to the suspension of some other spectrum]
 
 \begin{definition}
 A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where \(X\times I\) is the spectrum with \((X\times I)_n=X_n\times_{\text{red}} I\).
@@ -344,13 +360,13 @@ Various claims:
 \item After checking a lot of things, I can eventually conclude that \([X, Y]\) is an abelian group for spectra \(X, Y\).]
 \end{itemize}
 
-[The suspension map \([X,Y]\to[\Sigma X, \Sigma Y]\) is an isomorphism of groups (important later!)]
+![The suspension map \([X,Y]\to[\Sigma X, \Sigma Y]\) is an isomorphism of groups (important later!)]
 
-[\ref{2502211419} and \ref{2502211420} are both true for CW spectra too]
+?[\ref{2502211419} and \ref{2502211420} are both true for CW spectra too]
 
-[Whitehead's theorem: a map between CW spectra that induces isomorphisms on all homotopy groups is a homotopy equivalence.]
+?[Whitehead's theorem: a map between CW spectra that induces isomorphisms on all homotopy groups is a homotopy equivalence.]
 
-[Prop: If a CW spectrum \(X\) is \(n\)-connected in the sense that \(\pi_i(X)=0\) for \(i\leq n\), then \(X\) is homotopy equivalent to a CW spectrum with no cells of dimension \(\leq n\)]
+?[Prop: If a CW spectrum \(X\) is \(n\)-connected in the sense that \(\pi_i(X)=0\) for \(i\leq n\), then \(X\) is homotopy equivalent to a CW spectrum with no cells of dimension \(\leq n\)]
 
 \subsection{Cofibration sequences}
 
@@ -383,8 +399,10 @@ Note that a quotient of connective spectra of finite type is again a connective 
 There are natural isomorphisms \(H^m(X;G)\cong [X,K(G,m)]\) for all CW spectra.
 \end{theorem}
 
+Recall that giving a map into a product is equivalent to giving a map into each of its components. We have maps \(F_i : [X, \bigvee_i \bb{K}(G,n_i)]\to [X,\bb{K}(G,n_i)]\) .
+
 \begin{proposition}[{\autocite{hatcher5}, Prop 5.46}]\label{2503231218}
-The natural map[?] \([X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\) is an isomorphism if \(X\) is a connective spectrum of finite type and \(n_i\to \infty\) as \(i\to\infty\). 
+The map \(F : [X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\) is an isomorphism if \(X\) is a connective spectrum of finite type and \(n_i\to \infty\) as \(i\to\infty\). 
 \end{proposition}
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
@@ -430,7 +448,7 @@ An element of \(E_2^{p,q}\) \textit{survives to the \(r\)th stage} if lies in \(
 \end{definition}
 
 We define 
-\[Z_\infty^{p,q}:= \bigcap_n \overline{Z}^{p,q}_n, \quad B_\infty^{p,q}:=\bigcup^n \overline{B}^{p,q}_n.\]
+\[Z_\infty^{p,q}:= \bigcap_n \overline{Z}^{p,q}_n, \quad B_\infty^{p,q}:=\bigcup_n \overline{B}^{p,q}_n.\]
 From the tower of inclusions, we see that \(B_\infty^{p,q}\subq Z^{p,q}_\infty\), so we define \(E_\infty^{p,q}:=Z_\infty^{p,q}/B_\infty^{p,q}\). 
 
 \begin{definition}
@@ -531,6 +549,8 @@ Taking cohomology, we get a diagram
 and that the map \(H^*(K_0)\to H^*(X)\) is surjective. Actually, I think the first exact sequence will follow from \(H^*(K_0)\to H^*(X)\) being surjective, since they're all constructed in the same way.
 
 I'm extremely confused by the supposed surjectivity - going back to the sketch of the construction for CW complexes, the corresponding statement is supposed to be that if we choose generators \(\alpha_i\) for \(H^*(X)\) as an \(\A\)-module giving maps \(f_i : X \to K(G, \deg(\alpha_i))\), the product of these maps induces a surjection on \(H^*\). But I can't see how it does? So, we know by \autocite{hatcher}, Thm 4.57  that there are natural bijections \(T : [X, K(G,n)]\to H^n(X;G)\) with \(T[f]=f^*(\beta)\) for some class \(\beta \in H^n(K(G,n); G)\). So, for any given \(\alpha^i\in H^n(X;G)\), it's equal to \(f^*(\beta_i)\), so definitely \(f^*\) hits it. But if I have some enormous product of EM spaces, and all these maps \(f_i : X \to K(G, n_i)\) come together to give a map \(f : X \to \prod_i K(G,n_i)\), then Hatcher is trying to tell me I get a surjection \(H^*(\prod_i K(G, n_i))\to H^*(X)\)?? I know nothing about the cohomology of an infinite product, there's no reason it would be e.g. the product of the cohomologies.]
+
+[Something something reduced cohomology theories for spectra and the wedge axiom?? Suppose \(K_0\) had finite type, which I'm not convinced it does. Then for some \(n\), \((K_0)_n=\left(\bigvee_i \bb{K}(G, n_i)\right)_n=\bigvee_i (\bb{K}(G, n_i))_n=\bigvee_i K(G, n+n_i)\), and \(H^i(K_0)=H^{i+n}(\bigvee_i K(G, n+n_i))=\prod_i H^{i+n}(K(G, n+n_i))\). Does that help?]
 
 \item Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. 
 \item Def: A cofibration. [see : \autocite{hatcher}, p398.]
@@ -866,7 +886,9 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \section{Notes to self}\label{C}
 
-\subsection{Vague problems and Questions}
+\subsection{Vague problems and questions....}
+
+\subsubsection{...that probably don't matter}
 
 \begin{itemize}
 %\item Is `pointed' (co)homology just reduced (co)homology? I've noticed `pointed things' (\(\Sigma, \Omega, \wedge\), ...) seem to happen to/in reduced (co)homology, and `unpointed things' (\(S, \times, ...\)) happen to/in normal (co)homology. I want to do pointed things. 
@@ -879,14 +901,20 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 %\[0 \subq \inte_2 \subq F^{2,5}\subq F^{1,4}=\pi^S_3,\]
 %and \(F^{2,5}/\inte_2\cong \inte_2\), \(F^{1,4}/F^{2,5}\cong \inte_2\). So \(\pi^S_3\) has order 8 and a filtration by \(\inte_2\)'s, but that still doesn't tell me whether it's \(\inte_8, \inte_4\times \inte_2\) or \(\inte_2^3\)? Thm 5.47 of \autocite{hatcher5} tells me that \(F^{s,t}\) is the image of the map \(\pi_t(\bb{S}_s)\to \pi_3^S\), so do I have to go back to the constructing and figure out what that map actually is, or is there something algebraic I can do?\footnote{I think this related to something \autocite{ass} calls the Yoneda product on p47-50 and 61-62 - this is a multiplicative structure on \(E_2\) and should tell me something about the additive structure of \(\pi_*^S\).}
 
+\item On p586 of \autocite{hatcher5}, Hatcher says ``If \(X\) is of finite type then for each \(i\) there is an \(n\) such that \(X_n\) contains all the \(i\)-cells of \(X\). It follows that \(H_i(X;G)=H_i(X_n;G)\) for all sufficiently large \(n\), and the same is true for cohomology.'' But from the way he set up \(H_*\) and \(H^*\) earlier, shouldn't this be \(H_i(X;G)=H_{i+n}(X_n; G)\)? Because \(H_i(X;G)=\lim\limits_{\rightarrow}H_{i+n}(X_n)\), and he talks about things stabilising in the next sentence, so shouldn't the stable point be at some \(H_{i+n}\)?
+
+\end{itemize}
+
+\subsubsection{...that probably do matter}
+
+\begin{itemize}
 \item I am definitely being told some lies about what the spectral sequence actually converges to. There's a strong implication/actual statement(!!) that at each \(i\) it's supposed to be a filtration of \(\pi_i^S\) modulo odd torsion, but I think this isn't true. I think it's actually the 2-completion\footnote{Whatever that means.} of \(\pi_i^S\). That coincides with the \(p\)-primary part for finite abelian groups, but for \(\pi_0^S\) it's supposed to be \(\inte_2\) (i.e. the 2-adic integers), not \(\inte\). I believe. Maybe get a source for this. Some people say it's the localisation at 2?? But I think that's also a lie. 
 
 \item The Leibniz rule is \(d_r(xy)=d_r(x)y\pm xd_r(y)\) (can't remember the sign). But anything I'm using that rule on is some generator of an \(\bb{F}_2\), right? So the sign shouldn't matter. But then, shouldn't the Yoneda product be graded commutative (and thus commutative, because again, in the target signs don't matter)? So why does \autocite{ass} have some comment (to find later) about how the Yoneda product is commutative ``in some range''?? 
 
-\item On p586 of \autocite{hatcher5}, Hatcher says ``If \(X\) is of finite type then for each \(i\) there is an \(n\) such that \(X_n\) contains all the \(i\)-cells of \(X\). It follows that \(H_i(X;G)=H_i(X_n;G)\) for all sufficiently large \(n\), and the same is true for cohomology.'' But from the way he set up \(H_*\) and \(H^*\) earlier, shouldn't this be \(H_i(X;G)=H_{i+n}(X_n; G)\)? Because \(H_i(X;G)=\lim\limits_{\rightarrow}H_{i+n}(X_n)\), and he talks about things stabilising in the next sentence, so shouldn't the stable point be at some \(H_{i+n}\)?
-
 \item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Um? Sure, we have that each \(H^{i+n}(X_n)\) stabilises eventually, but is Hatcher saying \(H^{*+n}(X_n)\) stabilises? Like, as an \(\A\)-module? And if not, what's going on here? Because inverse limits don't commute with infinite direct sums - they're not biproducts anymore, they're coproducts and there's no reason limits should commute with them. 
 
+\item There's something weird going on with products. So, things are ok in \textbf{Top}, because we have the ordinary product of two spaces, which is a categorical product. But with CW complexes, supposedly sometimes the product topology differs from the `cell complex topology'? But, regardless, we're supposed to be working with pointed things - so in \(\textbf{Top}_*\), the pointed coproduct is the wedge sum, and the pointed product is just the normal product \(X\times Y\) with the basepoint \((x_0,y_0)\) (it's not the smash product). But what about in spectra? No one ever seems to talk about products of spectra, but for example a collection of maps \(X\to \bb{K}(G,n_i)\) should correspond to a single map \(X\to \prod_i \bb{K}(G,n_i)\), whatever that last object is. 
 \end{itemize}
 
 \subsection{To do}\label{2503221342}
@@ -944,6 +972,8 @@ Eventually:
 \item As previously mentioned, we are working modulo 2!! What this also implies is that if anything is hit by any sort of differential, or has any nonzero differential coming out of it, it's completely killed by the next page. Because the summands are just a bunch of \(\bb{F}_2\)'s (so you don't need to worry about `how much' of something is killed, it all is). 
 
 \item Sometimes Hatcher says that you can replace any map of CW complexes by an inclusion. I think the point here is that if you have a map \(f : X \to Y\), \ref{2503231306} says that \(M_f\) deformation retracts onto \(Y\). So if you only care about \(X\) and \(Y\) up to homotopy equivalence, you can replace \(Y\) by \(M_f\) and then \(X\) definitely includes into \(M_f\). 
+
+\item Where it's ambiguous, I'm marking things I definitely need by ! and things I may or may not need by ?.
 \end{itemize}
 
 \printbibliography
