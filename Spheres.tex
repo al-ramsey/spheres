@@ -177,7 +177,7 @@ Axioms for a (reduced) cohomology theory \(h^*\):
 \[\cdots \xrightarrow{\delta}h^n(X/A)\xrightarrow{q^*}h^n(X) \xrightarrow{i^*}h^n(A) \xrightarrow{\delta} h^{n+1}(X/A)\xrightarrow{q^*}\cdots.\]
 \item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the product map \((i^*_\alpha) : h^n(X) \to \prod_\alpha h^n(X_\alpha)\) is an isomorphism for each \(n\).
 \end{enumerate}
-\item Stable homotopy groups are a homology theory 
+\item Stable homotopy groups are a homology theory.
 \end{itemize}
 
 \autocite{ass}, \autocite{suspension}, \autocite{hatcher}
@@ -368,7 +368,7 @@ Various claims:
 
 ?[Prop: If a CW spectrum \(X\) is \(n\)-connected in the sense that \(\pi_i(X)=0\) for \(i\leq n\), then \(X\) is homotopy equivalent to a CW spectrum with no cells of dimension \(\leq n\)]
 
-\subsection{Cofibration sequences}
+\subsection{Cofibration sequences}\label{2503291211}
 
 \begin{definition}
 Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum} %\footnote{This definition comes from \autocite{local}, but I'm a little suspicious because the nLab page says a wedge sum should always identify the basepoints, but the basepoint of a spectra surely isn't given by just a basepoint from each \(X_n\)? That's the only thing being identified here.} I think it's fine? just won't be an omega spectrum anymore, if that matters
@@ -510,7 +510,7 @@ Let \(X\) be a connective CW spectrum of finite type.
 
 [Each \(H^i(X)\) is finitely generated: Hatcher says on p586 of \autocite{hatcher5} that \(H^i(X)=H^i(X_n)\) for sufficiently large \(n\) as long as \(X\) is of finite type (which I think should actually read \(H^{i+n}(X_n)\), but it doesn't matter for this particular point), and \(H^i(X_n)\) (or \(H^{i+n}(X_n)\)) is supposed to be finitely generated because all the \(H_j(X_n)\) are finitely generated\footnote{The cohomology groups are finitely generated if the homology ones are, see \autocite{hatcher} Cor 3.3.}, since \(X_n\) should have finitely many cells in each dimension (if it didn't, \(X\) certainly wouldn't).]
 
-[Claim: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. Either use \ref{2503221328} (i.e. \(H^m(X;G)\cong[X,K(G,m)]\)) to give the action, or the above mentioned fact that for spectra of finite type, \(H^i(X; G)=H^{i+n}(X_n;G)\). To define a map \(Sq^j : H^{i}(X;G)\to H^{i+j}(X;G)\) we can either hit \(H^{i+n}(X_n;G)\) with \(Sq^j\) and then push it along the sequence of cohomology groups until it's stable, or first push it along until \(H^{i+j+n}(X_n;G)\) is stable and then hit \(H^i(X_n;G)\) with \(Sq^i\). And these are the same thing, because of this handy commutative diagram:
+[Claim: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. Either use \ref{2503221328} (i.e. \(H^m(X;G)\cong[X,K(G,m)]\)) to give the action, or the above mentioned fact that for spectra of finite type, \(H^i(X; G)=H^{i+n}(X_n;G)\). To define a map \(Sq^j : H^{i}(X;G)\to H^{i+j}(X;G)\) we can either hit \(H^{i+n}(X_n;G)\) with \(Sq^j\) and then push it along the sequence of cohomology groups until it's stable, or first push it along until \(H^{i+j+n}(X_n;G)\) is stable and then hit \(H^{i+n}(X_n;G)\) with \(Sq^j\). And these are the same thing, because of this handy commutative diagram:
 \[\begin{tikzcd} 
  & H^{i+n}(X_n;G)  \arrow[dl, "\sigma"'] \arrow[dr, "Sq^j"] & \\ 
  H^{i+n+1}(\Sigma X_n;G) \arrow[d, "i^*"'] & & H^{i+j+n}(X_n;G) \arrow[d, "\sigma"] \\ 
@@ -521,7 +521,7 @@ which follows from the properties in Section  \ref{2503221247}. Is this an actua
 
 We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\) [since each \(H^n(X)\) is finitely generated, and that finite generating set would certainly also generate it as an \(\A\)-module (we could be more efficient, though)].
 
-[Claim: these \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type. Very confused about this - each \(\alpha_i\in H^{n_i}(X;G)\) gives a map \(X \to K(G,n_i)\) by \ref{2503221328}, but shouldn't they  come together to give a map into a product\footnote{And on that note, what is a product of spectra? Is it a reduced product? Are we allowed to do that?} of EM spaces, not a wedge sum? Isn't a wedge sum a sort of reduced \textit{coproduct}, not a product?? Is this something to do with the `fibrations and cofibrations are the same' nonsense?
+[Claim: these \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type. Very confused about this - each \(\alpha_i\in H^{n_i}(X;G)\) gives a map \(X \to K(G,n_i)\) by \ref{2503221328}, but shouldn't they  come together to give a map into a product\footnote{And on that note, what is a product of spectra? Surely it's not a smash product? Is it just a pointed product? Are we allowed to do that?} of EM spaces, not a wedge sum? Isn't a wedge sum a sort of reduced \textit{coproduct}, not a product?? Is this something to do with the `fibrations and cofibrations are the same' nonsense?
 
 Vague idea: we have \ref{2503231218}, which tells us that \([X, \bigvee_i \bb{K}(G,n_i)]\cong \prod_i[X, \bb{K}(G,n_i)]\). Now, \(X\) is connective, so \(H^*(X;G)\) has some smallest degree. Let's just pretend it starts from zero for the moment, and we can reindex or whatever later. Let's say each \(H^k(X;G)\) has \(i_k\) generators \(\alpha_{i_0+\cdots+i_{k-1}+1}, ...,\alpha_{i_0+\cdots+i_k}\)  , and write \(n_0=\cdots=n_{i_0}\), \(n_{i_0+1}=\cdots= n_{i_0+i_1}\), etc., \(n_{i_0+i_1+\cdots+i_{k-1}+1}=\cdots = n_{i_0+i_1+\cdots+i_k}\). So, the \(\alpha_{i_0+\cdots+i_{k-1}+j}\in H^k(X;G)\) determine maps \(X\to \bb{K}(G,n_k)\). Putting all these maps together, one in each coordinate, gives an element of \(\prod_i[X, \bb{K}(G,n_i)]\), which by the proposition corresponds to an element of \([X, \bigvee_i \bb{K}(G,n_i)]\).] 
 
@@ -541,7 +541,7 @@ Taking cohomology, we get a diagram
 ]
 
 \begin{itemize}
-\item Fact: \(K_0\) has finite type (and thus so do all the \(K_s\)'s)
+\item Fact: \(K_0\) has finite type (and thus so do all the \(K_s\)'s) [I'm sure this is supposed to follow from \(H^i(X)\) being finitely generated for all \(i\), but I can't at all see how].
 \item Fact: the top row of the diagram above is exact. [Suffices to show that we have exact sequences: 
 \[0 \leftarrow H^*(X_s)\leftarrow H^*(K_s),\]
 \[H^*(X) \leftarrow H^*(K_0) \leftarrow H^*(X_1)\leftarrow 0,\]
@@ -552,10 +552,39 @@ I'm extremely confused by the supposed surjectivity - going back to the sketch o
 
 [Something something reduced cohomology theories for spectra and the wedge axiom?? Suppose \(K_0\) had finite type, which I'm not convinced it does. Then for some \(n\), \((K_0)_n=\left(\bigvee_i \bb{K}(G, n_i)\right)_n=\bigvee_i (\bb{K}(G, n_i))_n=\bigvee_i K(G, n+n_i)\), and \(H^i(K_0)=H^{i+n}(\bigvee_i K(G, n+n_i))=\prod_i H^{i+n}(K(G, n+n_i))\). Does that help?]
 
-\item Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. 
+\item Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)''. Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]
 \item Def: A cofibration. [see : \autocite{hatcher}, p398.]
 
-\item Fact: If \(Z\) is a connective CW spectrum of finite type, then \(\pi_t(Z)\) is finitely generated. [Halfway down p586 of \autocite{hatcher5}, Hatcher says that ``for a connective CW spectrum [\(X\)] of finite type the groups \(\pi_{i+n}(X_n)\) do eventually stabilise by the Freudenthal theorem''. Since the homotopy groups are just the colimits of these guys, they're equal to the stable values. \autocite{hatcher}, Thm 5.7 says in particular that a simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups. Now, the \(X_n\) must eventually by simply-connected because otherwise \(X\) would not be connective [elaborate], and we've already seen the \(H_i\) are finitely generated, so yes, the \(\pi_i\) are also finitely generated.]
+\item ?Fact: If \(Z\) is a connective CW spectrum of finite type, then \(\pi_t(Z)\) is finitely generated. [Halfway down p586 of \autocite{hatcher5}, Hatcher says that ``for a connective CW spectrum [\(X\)] of finite type the groups \(\pi_{i+n}(X_n)\) do eventually stabilise by the Freudenthal theorem''. Since the homotopy groups are just the colimits of these guys, they're equal to the stable values. \autocite{hatcher}, Thm 5.7 says in particular that a simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups. Now, the \(X_n\) must eventually by simply-connected because otherwise \(X\) would not be connective\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective.}, and we've already seen the \(H_i\) are finitely generated, so yes, the \(\pi_i\) are also finitely generated.]
+
+\item Fact: we get a staircase diagram
+\[\begin{tikzcd}[column sep=4ex]
+   &  \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] & \\
+ \cdots \arrow[r, "k"] & \pi_{t+1}X_s \arrow[d, "i"] \arrow[r, "j"] & \pi_{t+1}K_s  \arrow[r, "k"] & \pi_{t+1}X_{s+1} \arrow[d, "i"] \arrow[r, "j"] & \pi_{t+1}K_{s+1} \arrow[r, "k"] & \pi_{t+1}X_{s+2} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, "k"] & \pi_t X_{s-1} \arrow[d, "i"] \arrow[r, "j"] & \pi_t K_{s-1}  \arrow[r, "k"] & \pi_t X_s \arrow[d, "i"] \arrow[r, "j"] & \pi_t K_s \arrow[r, "k"] & \pi_t X_{s+1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, "k"] & \pi_{t-1}X_{s-2}  \arrow[d, "i"] \arrow[r, "j"] & \pi_{t-1}K_{s-2}  \arrow[r, "k"] & \pi_{t-1}X_{s-1} \arrow[d, "i"] \arrow[r, "j"] & \pi_{t-1}K_{s-1} \arrow[r, "k"] & \pi_{t-1}X_s \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ & \vdots &  & \vdots & & \vdots &
+\end{tikzcd}\]
+
+\item Fact: this gives rise to a spectral sequence.
+
+\item Fact: elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\), one for each summand \(K_{s,i}\) in the appropriate group \(H^{n_i}(\bb{S})\).
+
+\item Def: \(\Hom^t_{\A}\).
+
+\item Fact: there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and it's an isomorphism.
+
+\item Fact: there is a `natural identification'
+\[[\Sigma^t \bb{S}]=\Hom^0_{\A}(H^*(K_s), H^*(\Sigma^t \bb{S}))=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})).\]
+
+\item Fact: \(E_1^{s,t}=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S}))\).
+
+\item Fact: the differential \(d_1 : \pi_t(K_s)\to\pi_t K_{s+1}\) is induced by the map \(K_s \to K_{s+1}\). 
+
+\item Fact: the \(E_1\) page of the spectral sequence `consists of'[??] the complexes 
+\[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots\]
+
+\item Fact: \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\). 
 \end{itemize}
 
 [\autocite{hatcher5} Thm 5.47 says that there is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\mathscr{A}_2}(H^*(\bb{S}), H^*(\bb{S}))\), and \(\{E_r, d_r\}\implies \pi^S_*\) modulo any odd torsion.
