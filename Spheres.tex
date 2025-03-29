@@ -306,6 +306,18 @@ so that there's a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating
 
 We define \(H^*\) and \(H_*\) to be the cohomology and homology of this chain complex, respectively.]
 
+[Important example:
+
+At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules\footnote{Maybe I need to move this somewhere else. I haven't  defined the \(\A\)-action yet...}. Thus, since \(\bb{S}\) is of finite type (it is actually finite), we have
+\begin{align*}
+H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\\
+&=\begin{cases}
+\inte/2\inte & i = 0,\\
+0 & \text{otherwise.}
+\end{cases}
+\end{align*}
+(since they're all just either \(0\) or \(\inte/2\inte\), at least eventually). So, \(H^*(\bb{S})=\inte/2\inte\) in degree zero and nothing else.]
+
 \begin{definition}
 Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} \(X'\) of \(X\) is a sequence of subcomplexes \(\{X_n'\subq X_n\}\) satisfying \(\Sigma X_n'\subq X_{n+1}'\). The subspectrum \(X'\) is \textit{cofinal} if, for each \(n\) and each cell \(e^i_\alpha\) of \(X_n\), the cell \(\Sigma^k e_\alpha^i\) belongs to \(X'_{n+k}\) for all sufficiently large \(k\).
 \end{definition}
@@ -552,10 +564,10 @@ I'm extremely confused by the supposed surjectivity - going back to the sketch o
 
 [Something something reduced cohomology theories for spectra and the wedge axiom?? Suppose \(K_0\) had finite type, which I'm not convinced it does. Then for some \(n\), \((K_0)_n=\left(\bigvee_i \bb{K}(G, n_i)\right)_n=\bigvee_i (\bb{K}(G, n_i))_n=\bigvee_i K(G, n+n_i)\), and \(H^i(K_0)=H^{i+n}(\bigvee_i K(G, n+n_i))=\prod_i H^{i+n}(K(G, n+n_i))\). Does that help?]
 
-\item Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)''. Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]
+\item Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]
 \item Def: A cofibration. [see : \autocite{hatcher}, p398.]
 
-\item ?Fact: If \(Z\) is a connective CW spectrum of finite type, then \(\pi_t(Z)\) is finitely generated. [Halfway down p586 of \autocite{hatcher5}, Hatcher says that ``for a connective CW spectrum [\(X\)] of finite type the groups \(\pi_{i+n}(X_n)\) do eventually stabilise by the Freudenthal theorem''. Since the homotopy groups are just the colimits of these guys, they're equal to the stable values. \autocite{hatcher}, Thm 5.7 says in particular that a simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups. Now, the \(X_n\) must eventually by simply-connected because otherwise \(X\) would not be connective\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective.}, and we've already seen the \(H_i\) are finitely generated, so yes, the \(\pi_i\) are also finitely generated.]
+\item ?Fact: If \(Z\) is a connective CW spectrum of finite type, then \(\pi_t(Z)\) is finitely generated. [Halfway down p586 of \autocite{hatcher5}, Hatcher says that ``for a connective CW spectrum \(X\) of finite type the groups \(\pi_{i+n}(X_n)\) do eventually stabilise by the Freudenthal theorem''. Since the homotopy groups are just the colimits of these guys, they're equal to the stable values. \autocite{hatcher}, Thm 5.7 says in particular that a simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups. Now, the \(X_n\) must eventually by simply-connected because otherwise \(X\) would not be connective\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective.}, and we've already seen the \(H_i\) are finitely generated, so yes, the \(\pi_i\) are also finitely generated.]
 
 \item Fact: we get a staircase diagram
 \[\begin{tikzcd}[column sep=4ex]
@@ -586,18 +598,6 @@ I'm extremely confused by the supposed surjectivity - going back to the sketch o
 
 \item Fact: \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\). 
 \end{itemize}
-
-[\autocite{hatcher5} Thm 5.47 says that there is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\mathscr{A}_2}(H^*(\bb{S}), H^*(\bb{S}))\), and \(\{E_r, d_r\}\implies \pi^S_*\) modulo any odd torsion.
-
-At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules. Thus, since \(\bb{S}\) is of finite type (it is actually finite), we have
-\begin{align*}
-H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\\
-&=\begin{cases}
-\inte/2\inte & i = 0,\\
-0 & \text{otherwise.}
-\end{cases}
-\end{align*}
-(since they're all just either \(0\) or \(\inte/2\inte\), at least eventually). So, \(H^*(\bb{S})=\inte/2\inte\) in degree zero and nothing else.]
 
 \begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]
 There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_*^S\) modulo torsion of odd order. [which is probably a lie but let's worry about that later]
@@ -944,6 +944,8 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 \item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Um? Sure, we have that each \(H^{i+n}(X_n)\) stabilises eventually, but is Hatcher saying \(H^{*+n}(X_n)\) stabilises? Like, as an \(\A\)-module? And if not, what's going on here? Because inverse limits don't commute with infinite direct sums - they're not biproducts anymore, they're coproducts and there's no reason limits should commute with them. 
 
 \item There's something weird going on with products. So, things are ok in \textbf{Top}, because we have the ordinary product of two spaces, which is a categorical product. But with CW complexes, supposedly sometimes the product topology differs from the `cell complex topology'? But, regardless, we're supposed to be working with pointed things - so in \(\textbf{Top}_*\), the pointed coproduct is the wedge sum, and the pointed product is just the normal product \(X\times Y\) with the basepoint \((x_0,y_0)\) (it's not the smash product). But what about in spectra? No one ever seems to talk about products of spectra, but for example a collection of maps \(X\to \bb{K}(G,n_i)\) should correspond to a single map \(X\to \prod_i \bb{K}(G,n_i)\), whatever that last object is. 
+
+The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+spectrum}{the nLab}: ``[some smash product] is non-canonically equivalent to a product of EM-spectra (hence a wedge sum of EM-spectra in the finite case''. ???????
 \end{itemize}
 
 \subsection{To do}\label{2503221342}
@@ -1003,6 +1005,8 @@ Eventually:
 \item Sometimes Hatcher says that you can replace any map of CW complexes by an inclusion. I think the point here is that if you have a map \(f : X \to Y\), \ref{2503231306} says that \(M_f\) deformation retracts onto \(Y\). So if you only care about \(X\) and \(Y\) up to homotopy equivalence, you can replace \(Y\) by \(M_f\) and then \(X\) definitely includes into \(M_f\). 
 
 \item Where it's ambiguous, I'm marking things I definitely need by ! and things I may or may not need by ?.
+
+\item By the way, the argument at footnote 10 looks a little unsettling, because it seems like you could use it to show that \textit{all} homotopy groups are trivial eventually. And that's true! But when you take the colimit \(\pi_i(X)=\colim_n \pi_{i+n}X_n\), notice that it's over \(\pi_{i+n}\), not \(\pi_{i}\). So yes, the connectivity of \(X_n\) increases with \(n\), but the index of \(\pi\) also does. Basically, it's all fine. I'm putting this note here because I will invariably forget this and have a heart attack a day before this is due thinking everything is broken. 
 \end{itemize}
 
 \printbibliography
