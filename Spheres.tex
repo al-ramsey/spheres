@@ -159,9 +159,9 @@ Miscellaneous facts I might need later:
 \item Cohomology [possibly only of pointed %\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?} %I think it's just that it's reduced
 CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}? \autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups. So, it's over \textbf{Ab}? N.B: There's a lot of talk about `reduced cohomology theories', so a good next step would be to figure out what those are - if they only involve groups and not rings, maybe the cup product on \(H^*\) is not relevant here.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
 \item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
-\item The map \(\mathscr A_2 \to \tilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
+\item The map \(\mathscr A_2 \to \widetilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
 
-\item ?Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\tilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
+\item ?Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\widetilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
 
 \item Axioms for a homology theory \(h_*\):
 \begin{enumerate}
@@ -473,7 +473,7 @@ the condition \(d_r^{p,q}\) forces  \(\overline{Z}^{p,q}_r=\overline{Z}_{r-1}^{p
 \[B_2^{p,q}\subq \overline B_3^{p,q}\subq \cdots \subq \overline B_{N-1}^{p,q}=B_N^{p,q}= \cdots=B_\infty^{p,q} \subq Z_\infty^{p,q}= \cdots = \overline Z_N^{p,q}=\overline Z^{p,q}_{N-1}\subq \cdots \subq \overline Z_3^{p,q}\subq Z_2^{p,q}\subq E_2^{p,q}.\]
 Thus, \(E_\infty^{p,q}=E_N^{p,q}\). 
 
-\subsection{Exact couples}
+\subsection{Exact couples}\label{2503301333}
 
 (Following \autocite{spectral_sequences}, C2)
 
@@ -500,8 +500,8 @@ We call \(\mathcal{C}'=\{D', E'. i', j', k'\}\) the \textit{derived couple} of \
 If \(\mathcal{C}=\{D, E, i, j, k\}\) is an exact couple, then \(\mathcal{C}'\) is also an exact couple.
 \end{proposition}
 
-\begin{theorem}[{\autocite{spectral_sequences}, Thm 2.8}]
-Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,1)\)\footnote{This is the wrong index. For my purposes it should be \((-1, -1)\). So, the spectral sequence will not be of cohomological type, but hopefully the proof still goes through.}, \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of cohomological type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r)}\circ k^{(r)}\). 
+\begin{theorem}[{\autocite{spectral_sequences}, Thm 2.8}]\label{2503301131}
+Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,1)\)\footnote{This is the wrong index. For my purposes it should be \((-1, -1)\). So, the spectral sequence will not be of cohomological type, but hopefully the proof still goes through.}, \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of cohomological type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r)}\circ k^{(r)}\). \footnote{Is this supposed to be \(d_r = j^{(r-1)}\circ k^{(r-1)}\)? Because \(d_1\) is supposed to be a map on \(E_1=E\), but \(j'\) and \(k'\) are between \(E'=E_2\) and \(D'\).}
 \end{theorem}
 
 A bigraded exact couple may be displayed in the following diagram, known as a \textit{staircase diagram}:
@@ -540,10 +540,12 @@ Vague idea: we have \ref{2503231218}, which tells us that \([X, \bigvee_i \bb{K}
 We can replace that map with an inclusion. [I sort of believe this - \ref{2503231306} and my comment at the end of Section \ref{2503231313} say we can do this for CW complexes, so I should check it for spectra. But it seems true (and I'm currently suffering from spectrum fatigue).]
 
 [Set \(X_1=K_0/X\), and repeat the construction to get a diagram:
-\[\begin{tikzcd}[column sep=3ex] 
+\begin{equation}\label{2503301114}
+\begin{tikzcd}[column sep=3ex] 
  X \arrow[rr, ""]  & & K_0 \arrow[rr, ""] \arrow[dr, ""] & & K_1 \arrow[dr, ""] \arrow[rr, ""] & & K_2 \arrow[dr, ""] \arrow[rr, ""] & & \cdots \\ 
   &&& K_0/X=X_1 \arrow[ur, ""] & & K_1/X_1=X_2 \arrow[ur, ""] & & K_2/X_2=X_3 \arrow[ur, ""] &  &
- \end{tikzcd}\] 
+ \end{tikzcd}\nonumber
+\end{equation}
 Taking cohomology, we get a diagram
 \[\begin{tikzcd}[column sep=1.5ex, row sep = 2ex, arrows=<-]
  0 \arrow[rr, ""] && H^*(X) \arrow[rr,""] & & H^*(K_0) \arrow[rr, ""] \arrow[dr, ""] & & H^*(K_1) \arrow[dr, ""] \arrow[rr, ""] & & H^*(K_2) \arrow[dr, ""] \arrow[rr, ""] & & \cdots \\ 
@@ -565,11 +567,15 @@ I'm extremely confused by the supposed surjectivity - going back to the sketch o
 [Something something reduced cohomology theories for spectra and the wedge axiom?? Suppose \(K_0\) had finite type, which I'm not convinced it does. Then for some \(n\), \((K_0)_n=\left(\bigvee_i \bb{K}(G, n_i)\right)_n=\bigvee_i (\bb{K}(G, n_i))_n=\bigvee_i K(G, n+n_i)\), and \(H^i(K_0)=H^{i+n}(\bigvee_i K(G, n+n_i))=\prod_i H^{i+n}(K(G, n+n_i))\). Does that help?]
 
 \item Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]
-\item Def: A cofibration. [see : \autocite{hatcher}, p398.]
+\end{itemize}
 
-\item ?Fact: If \(Z\) is a connective CW spectrum of finite type, then \(\pi_t(Z)\) is finitely generated. [Halfway down p586 of \autocite{hatcher5}, Hatcher says that ``for a connective CW spectrum \(X\) of finite type the groups \(\pi_{i+n}(X_n)\) do eventually stabilise by the Freudenthal theorem''. Since the homotopy groups are just the colimits of these guys, they're equal to the stable values. \autocite{hatcher}, Thm 5.7 says in particular that a simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups. Now, the \(X_n\) must eventually by simply-connected because otherwise \(X\) would not be connective\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective.}, and we've already seen the \(H_i\) are finitely generated, so yes, the \(\pi_i\) are also finitely generated.]
-
-\item Fact: we get a staircase diagram
+[The work in Section \ref{2503291211} gives us long exact sequences
+\[\cdots \to [\Sigma^\infty S^{t+1}, X_s] \to [\Sigma^\infty S^{t+1}, K_s] \to [\Sigma^\infty S^{t+1}, X_{s+1}]\to [\Sigma^{\infty}S^{t+1}, \Sigma X_s]\to [\Sigma^{\infty}S^{t+1}, \Sigma K_s] \to \cdots.\]
+Using the isomorphism \([Y,Z]\cong [\Sigma Y, \Sigma Z]\), we get long exact sequences
+\[\cdots \to [\Sigma^\infty S^{t+1}, X_s] \to [\Sigma^\infty S^{t+1}, K_s] \to [\Sigma^\infty S^{t+1}, X_{s+1}]\to [\Sigma^{\infty}S^{t}, X_s]\to [\Sigma^{\infty}S^{t}, K_s] \to \cdots,\]
+i.e.
+\[\cdots \to \pi_{t+1}X_s \to \pi_{t+1}K_s \to \pi_{t+1}X_{s+1}\to \pi_t X_s\to \pi_t K_s \to \cdots.\]
+These form a staircase diagram,
 \[\begin{tikzcd}[column sep=4ex]
    &  \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] & \\
  \cdots \arrow[r, "k"] & \pi_{t+1}X_s \arrow[d, "i"] \arrow[r, "j"] & \pi_{t+1}K_s  \arrow[r, "k"] & \pi_{t+1}X_{s+1} \arrow[d, "i"] \arrow[r, "j"] & \pi_{t+1}K_{s+1} \arrow[r, "k"] & \pi_{t+1}X_{s+2} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
@@ -577,27 +583,38 @@ I'm extremely confused by the supposed surjectivity - going back to the sketch o
  \cdots \arrow[r, "k"] & \pi_{t-1}X_{s-2}  \arrow[d, "i"] \arrow[r, "j"] & \pi_{t-1}K_{s-2}  \arrow[r, "k"] & \pi_{t-1}X_{s-1} \arrow[d, "i"] \arrow[r, "j"] & \pi_{t-1}K_{s-1} \arrow[r, "k"] & \pi_{t-1}X_s \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  & \vdots &  & \vdots & & \vdots &
 \end{tikzcd}\]
+%where the rows are given by applying \(\pi_*\) to the diagram (\ref{2503301114}), and the columns <-- actually you get the rows for free
+This gives rise to a spectral sequence, by [some version of] \ref{2503301131}.
 
-\item Fact: this gives rise to a spectral sequence.
-
-\item Fact: elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\), one for each summand \(K_{s,i}\) in the appropriate group \(H^{n_i}(\bb{S})\).
-
-\item Def: \(\Hom^t_{\A}\).
-
-\item Fact: there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and it's an isomorphism.
-
-\item Fact: there is a `natural identification'
-\[[\Sigma^t \bb{S}]=\Hom^0_{\A}(H^*(K_s), H^*(\Sigma^t \bb{S}))=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})).\]
-
-\item Fact: \(E_1^{s,t}=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S}))\).
-
-\item Fact: the differential \(d_1 : \pi_t(K_s)\to\pi_t K_{s+1}\) is induced by the map \(K_s \to K_{s+1}\). 
-
-\item Fact: the \(E_1\) page of the spectral sequence `consists of'[??] the complexes 
-\[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots\]
-
-\item Fact: \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\). 
+\begin{itemize}
+\item ?Fact: If \(Z\) is a connective CW spectrum of finite type, then \(\pi_t(Z)\) is finitely generated. [Halfway down p586 of \autocite{hatcher5}, Hatcher says that ``for a connective CW spectrum \(X\) of finite type the groups \(\pi_{i+n}(X_n)\) do eventually stabilise by the Freudenthal theorem''. Since the homotopy groups are just the colimits of these guys, they're equal to the stable values. \autocite{hatcher}, Thm 5.7 says in particular that a simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups. Now, the \(X_n\) must eventually by simply-connected because otherwise \(X\) would not be connective\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective.}, and we've already seen the \(H_i\) are finitely generated, so yes, the \(\pi_i\) are also finitely generated.]
 \end{itemize}
+
+Now, since \(K_s = \bigvee_i \bb{K}(G, n_{s_i})\),  \ref{2503231218}, tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(G, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
+%talk about death by indices...
+
+\begin{itemize}
+\item Def: \(\Hom^t_{\A}\) [it's just the homs that lower the degree by \(t\)]
+
+\item Fact: there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and it's an isomorphism. [??]
+\end{itemize}
+
+[We thus have
+\[[\Sigma^t \bb{S}, K_s]=\Hom^0_{\A}(H^*(K_s), H^*(\Sigma^t \bb{S}))=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})).\]
+In the case of CW complexes, we have \(H^*(\Sigma^t X)\cong H^{*-t}(X)\) via the map \(\sigma\) mentioned in Section  \ref{2503221247}. Since \(\bb{S}\) has finite type, for \(i\) large enough we have \(H^n(\Sigma^t\bb{S})=H^{n+i}(\Sigma^t S^i)=H^{n+i-t}(S^i)=H^{n-t}(\bb{S})\).]
+
+[\(E_1^{s,t} = \pi_t K_s (=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})))\), since the staircase diagram comes from (or gives rise to, depending on your point of view) the exact couple:
+\[\begin{tikzcd}
+ \pi_*X_* \arrow[rr, "i"] & & \pi_* X_* \arrow[dl, "j"] \\ 
+ & \pi_*K_* \arrow[ul, "k"] & 
+ \end{tikzcd}\]
+where \(i : \pi_{t+1}X_{s+1}\to \pi_tX_s\), \(j : \pi_{t+1}X_s \to \pi_{t+1}K_s\), and \(k : \pi_{t+1}X_{s+1}\) all come from the diagram we set up earlier. The differential \(d_1 : \pi_t(K_s)\to\pi_t K_{s+1}\) is induced by the map \(K_s \to K_{s+1}\), since it's just \(j\circ k\), according to the way things are set up in Section \ref{2503301333}, possibly modulo some typos.]
+
+[Then, \(E^{s,t}_2=H^{s,t}(E_1^{*,*}, d_1)\), so each \(E^{*, t}\) is the homology of the chain complex
+\[0 \to E^{0,t}_1 \to E^{1,t}\to E^{2,t}\to \cdots,\]
+or, in other words,
+\[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots.\]
+The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).]
 
 \begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]
 There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_*^S\) modulo torsion of odd order. [which is probably a lie but let's worry about that later]
@@ -819,8 +836,8 @@ It follows that \(\pi_{n+1}(X)\cong \pi_n(\Omega X)\). In particular, \(\Omega K
 \end{remark}
 
 \begin{itemize}
-\item \autocite{hatcher} 2.1 Ex 20 and 2.2 Ex 32: \(\tilde H_n(X)\cong \tilde H_{n+1}(SX)\), where \(S\) is the (non-reduced) suspension.  (MV?) 
-\item Hatcher also says on p219 that \(\tilde H^n(X;R)\cong \tilde H^{n+k}(\Sigma^kX;R)\), where \(\Sigma \) is reduced suspension.
+\item \autocite{hatcher} 2.1 Ex 20 and 2.2 Ex 32: \(\widetilde H_n(X)\cong \widetilde H_{n+1}(SX)\), where \(S\) is the (non-reduced) suspension.  (MV?) 
+\item Hatcher also says on p219 that \(\widetilde H^n(X;R)\cong \widetilde H^{n+k}(\Sigma^kX;R)\), where \(\Sigma \) is reduced suspension.
 \end{itemize}
 
 \subsection{Other basic constructions}
@@ -888,7 +905,7 @@ Let \(f : X \to Y\) be a map of CW complexes. Then \(f\) is homotopic to a cellu
 \end{theorem}
 
 \begin{lemma}[{\autocite{hatcher}, Prop 0.16}]\label{2502211419}
-Let \(A\subq X\) be CW complexes. Then the pair \((X, A)\) has the \textit{homotopy extension property}; that is, for any map \(f : X \to Y\) and homotopy \(h : A\times I \to Y\) such that \(h(a,0)=f|_A\), there is a homotopy \(\tilde h : X\times I \to Y\) extending \(h\). 
+Let \(A\subq X\) be CW complexes. Then the pair \((X, A)\) has the \textit{homotopy extension property}; that is, for any map \(f : X \to Y\) and homotopy \(h : A\times I \to Y\) such that \(h(a,0)=f|_A\), there is a homotopy \(\widetilde h : X\times I \to Y\) extending \(h\). 
 \end{lemma}
 
 \begin{itemize}
@@ -932,6 +949,8 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \item On p586 of \autocite{hatcher5}, Hatcher says ``If \(X\) is of finite type then for each \(i\) there is an \(n\) such that \(X_n\) contains all the \(i\)-cells of \(X\). It follows that \(H_i(X;G)=H_i(X_n;G)\) for all sufficiently large \(n\), and the same is true for cohomology.'' But from the way he set up \(H_*\) and \(H^*\) earlier, shouldn't this be \(H_i(X;G)=H_{i+n}(X_n; G)\)? Because \(H_i(X;G)=\lim\limits_{\rightarrow}H_{i+n}(X_n)\), and he talks about things stabilising in the next sentence, so shouldn't the stable point be at some \(H_{i+n}\)?
 
+\item I write \(\A\) where Hatcher writes \(\mathscr{A}\). We mean the same thing, right...?
+
 \end{itemize}
 
 \subsubsection{...that probably do matter}
@@ -939,7 +958,7 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 \begin{itemize}
 \item I am definitely being told some lies about what the spectral sequence actually converges to. There's a strong implication/actual statement(!!) that at each \(i\) it's supposed to be a filtration of \(\pi_i^S\) modulo odd torsion, but I think this isn't true. I think it's actually the 2-completion\footnote{Whatever that means.} of \(\pi_i^S\). That coincides with the \(p\)-primary part for finite abelian groups, but for \(\pi_0^S\) it's supposed to be \(\inte_2\) (i.e. the 2-adic integers), not \(\inte\). I believe. Maybe get a source for this. Some people say it's the localisation at 2?? But I think that's also a lie. 
 
-\item The Leibniz rule is \(d_r(xy)=d_r(x)y\pm xd_r(y)\) (can't remember the sign). But anything I'm using that rule on is some generator of an \(\bb{F}_2\), right? So the sign shouldn't matter. But then, shouldn't the Yoneda product be graded commutative (and thus commutative, because again, in the target signs don't matter)? So why does \autocite{ass} have some comment (to find later) about how the Yoneda product is commutative ``in some range''?? 
+\item The Leibniz rule is \(d_r(xy)=d_r(x)y\pm xd_r(y)\) (can't remember the sign). But anything I'm using that rule on is some generator of an \(\bb{F}_2\), right? So the sign shouldn't matter. But then, shouldn't the Yoneda product be graded commutative (and thus commutative, because again, in the target signs don't matter)? So why does \autocite{ass} have some comment (in Cor 6.5) about how the Yoneda product is commutative ``in [some] range''?? 
 
 \item On p592 of \autocite{hatcher5}, he says that ``for spectra \(X\) of finite type [the more general] definition of an \(\A\)-module structure on \(H^*(X)\) agrees with the definition using the usual \(\A\)-module structure on the cohomology of spaces and the identification of \(H^*(X)\) with the inverse limit \(\lim\limits_{\leftarrow}H^{*+n}(X_n)\)''. Um? Sure, we have that each \(H^{i+n}(X_n)\) stabilises eventually, but is Hatcher saying \(H^{*+n}(X_n)\) stabilises? Like, as an \(\A\)-module? And if not, what's going on here? Because inverse limits don't commute with infinite direct sums - they're not biproducts anymore, they're coproducts and there's no reason limits should commute with them. 
 
@@ -953,11 +972,7 @@ The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+s
 Now:
 
 \begin{itemize}
-\item The definition of Ext in \ref{2502220958} has only one superscript, but the Ext in the Adams spectral sequence has a bigrading - figure out where the extra index came from and write it down so I don't forget it.
-
 \item Read about fibration and cofibration sequences of CW complexes. 
-
-\item Find out what a (co)homology theory is. 
 
 \item Find out what the deal with reduced cohomology and being stable under suspension is.
 
@@ -984,6 +999,8 @@ Eventually:
 \item Make the \(\alpha^i_j\) notation not appalling.
 
 \item Ease notation by not writing \(G\) in e.g. \(H^*(X;G)\). Say we're taking coefficients in \(\bb{F}_2\), but actually a lot of the time it doesn't matter so maybe note that.
+
+\item Have any sort of consistency in using or not using brackets (e.g. \(\pi_t X_s\) v.s. \(\pi_t(X_s)\)). 
 
 \end{itemize}
 
