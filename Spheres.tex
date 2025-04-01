@@ -111,6 +111,8 @@
 \def\colour{\color}
 \def\textcolour{\textcolor}
 
+\def\nvert{\ensuremath\hspace{-0.5ex}\not\vert\hspace{0.5ex}}
+
 \DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
 \DeclareSymbolFontAlphabet{\mathbbold}{bbold}
 
@@ -622,7 +624,7 @@ or, in other words,
 The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).]
 
 \begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]
-There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_*^S\) modulo torsion of odd order. [which is probably a lie but let's worry about that later]
+There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_{t-s}^S\) modulo torsion of odd order. [which is probably a lie but let's worry about that later]
 \end{theorem}
 
 
@@ -663,12 +665,22 @@ A spectral sequence pairing \(\{\phi_r\}\) induces a pairing
 
 [Just putting the theorem below here for the moment, but I'll need to unpack it...]
 
+The following definition is from \autocite{spectra}, Chapter 9.
+
+\begin{definition}
+Let \(X\) be a CW spectrum. Then a \textit{\(p\)-completion} of \(X\) is a map \(f : X \to \text{}_pX\) such that for all \(i\), \(\pi_if\) expresses \(\pi_i(\text{}_2X)\) as the \(p\)-completion of \(\pi_i(X)\).
+\end{definition}
+
+\begin{theorem}[{\autocite{spectra}, Thm 9.1.1}]
+If \(X\) has finite type, then it has a \(p\)-completion unique up to equivalence. 
+\end{theorem}
+
 \begin{theorem}[{\autocite{ass}, Thm 5.8}]
 Let \(X,Y,Z\) be spectra, with \(Y, Z\) connective and of finite type. There is a pairing of spectral sequences
 \[E^{*,*}_r(Y,Z)\otimes E^{*,*}_r(X,Y)\to E^{*,*}_r(X,Z)\]
 which agrees for \(r=2\) with the Yoneda pairing
 \[\Ext^{*,*}_{\A}(H^*(Z), H^*(Y))\otimes \Ext_{\A}^{*,*}(H^*(Y), H^*(X))\to \Ext_{\A}^{*,*}(H^*(Z), H^*(X))\]
-and which converges\footnote{What does that mean? The spectral sequence itself only converges to a filtration of \(\text{}_{2}\pi_*^S\), so is this saying that the composition product (graded commutative) on \(\pi_*^S\) induces (descends to? lifts to?) a product on \(\text{}_2\pi_*^S\), which itself descends to a product on \(E^{s,t}_\infty=F^{s,t}/F^{s+1,t+1}\)? Even if the first part works, why would the product land in the correct subgroup?} to the composition pairing
+and which converges\footnote{What does that mean? The spectral sequence itself only converges to a filtration of \(\text{}_{2}\pi_*^S\), so is this saying that the composition product (graded commutative) on \(\pi_*^S\) induces (descends to? lifts to?) a product on \(\text{}_2\pi_*^S\), which itself descends to a product on \(E^{s,t}_\infty=F^{s,t}/F^{s+1,t+1}\)? Even if the first part works, why would the product land in the correct subgroup?} to the composition pairing\footnote{Hang on, what's the 2-completion of a spectrum??}
 \[[Y, \text{}_2Z]_*\otimes [X,\text{}_2Y]_* \to [X, \text{}_2Z]_*.\]
 The pairing is associative and unital.
 \end{theorem}
@@ -684,6 +696,8 @@ The pairing is associative and unital.
 %It satisfies the Leibniz rule, and it converges to the composition product on \(\text{}_2\pi_*^S\). 
 
 [Leibniz rule?]
+
+[I'm concerned that I have no idea what \(\text{}_2 \bb{S}\) is, although I know that \([\bb{S}, \text{}_2 \bb{S}]_*=\pi_*(\text{}_2 \bb{S})\cong \text{}_2 \pi_*^S\). But maybe that's not a problem - I know the usual composition product on \(\pi_*^S\) is graded commutative, is that true of the general composition pairing? It would be lovely if it was, because it would also solve my ring-theoretic problems in \ref{2504011259timeforlunchithink}.]
 
 Using \ref{2503171645shutupitsbeenalongterm} (which comes later but whatever, I'll reorder things), we get \(E_2^{s,t}=\Hom^t_{\A}(F_s, \bb{F}_2)\). So, if we have a minimal free resolution 
 \[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2\]
@@ -838,6 +852,29 @@ and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain 
 A free resolution is \textit{minimal} if at each stage of its construction we choose the minimal number of free generators for \(F_i\) in each degree.
 
 [The above definition is bad but I'm keeping it just for the moment.]
+
+\subsection{Completion of abelian groups}
+
+\begin{definition}[{\autocite{concise}, Def 10.1.1}]
+Let \(A\) be an abelian group. Then its \textit{\(p\)-adic completion} is the limit 
+\[\text{}_pA=\lim\limits_{\leftarrow n} (A/p^nA).\]
+\end{definition}
+
+If \(A=\inte\), we instead write \(\inte_p\) for the \(p\)-adic integers.
+
+There is a natural map \(A \to \text{}_pA\), whose component at \(n\) is reduction modulo \(p^nA\). 
+
+[\autocite{concise} p154]:
+
+?When \(A\) is finitely generated, its \(p\)-adic completion is given by the map \(A \to A\otimes \inte_p\); \(a\mapsto a\otimes 1\). 
+
+\begin{lemma}
+Suppose \(A\) is finite, and write \(\abs{A}=np^r\) for \(p\nvert n\). Then \(A\otimes\inte_p\cong A/T\), where \(T\subq A\) is the subgroup generated by all torsion coprime to \(p\).
+\end{lemma}
+
+\begin{ourproof}
+Define a homomorphism \(A\otimes\inte_p\to A/T\) sending \(a\otimes z \mapsto [q(z)a]\), where \(q\) is the projection \(\inte_p \surj \inte/p^r\inte\). Suppose \(a\otimes z\mapsto 0\). Then \(q(z)a\in T\), so \(kq(z)a=0\) for some \(k\) coprime to \(p\), and thus \(q(z)a\otimes z=kq(z)a\otimes \frac{1}{k}z=0\). On the other hand, \(z=q(z)z'\) for some \(z'\in \inte_p\), so \(a\otimes z = q(z) \otimes z'\). Thus, \(a\otimes z = 0\), so the map is injective. The map is clearly also surjective, since \(a\otimes 1 \mapsto [a]\), so it is an isomorphism. \done
+\end{ourproof}
 
 \section{Topology}
 
@@ -1009,7 +1046,7 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \end{itemize}
 
-\subsubsection{...that probably do matter}
+\subsubsection{...that probably do matter}\label{2504011259timeforlunchithink}
 
 \begin{itemize}
 \item I am definitely being told some lies about what the spectral sequence actually converges to. There's a strong implication/actual statement(!!) that at each \(i\) it's supposed to be a filtration of \(\pi_i^S\) modulo odd torsion, but I think this isn't true. I think it's actually the 2-completion\footnote{Whatever that means.} of \(\pi_i^S\). That coincides with the \(p\)-primary part for finite abelian groups, but for \(\pi_0^S\) it's supposed to be \(\inte_2\) (i.e. the 2-adic integers), not \(\inte\). I believe. Maybe get a source for this. Some people say it's the localisation at 2?? But I think that's also a lie. 
@@ -1025,6 +1062,13 @@ The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+s
 \item Question: so I have this multiplicative structure on the entire spectral sequence, right? And on the second page it's just the Yoneda product. But say I compute, I don't know, \(\alpha^2_5=h_0h_2\) on the \(E_2\)  page. Since none of those guys are touched by differentials, is that computation still valid on the \(E_3\) page? And on higher pages?
 
 \item This \(2\)-completion nonsense is not bringing me joy. On the one hand, it literally should not matter at all, because (apparently) everything above \(\pi_0^S\) satisfies \(\pi_i^S=\text{}_2\pi_i^S\). But... when I take this 2-completion, I'm taking the 2-completion of the entire ring \(\pi_*^S\), right? Which is an infinite direct sum? And the 2-completion is a limit, and an infinite direct sum is very much a colimit, and they don't commute. So maybe it really does matter?? Ok, that's a new problem that I realised as I was writing this up, but the actual problem I was worried about was that we have this graded commutative ring \(\pi_*^S\) with the composition product, but now magically a graded commutative product on \(\text{}_2\pi_*^S\) appears to save the day when we're computing differentials, and \autocite{rognes2} just says it's again the composition product with zero further explanation (e.g. in 11.9). I mean, if we're taking the completion of a ring, we do inherit the original product (I think?) but now we run into the initial problem. Does \autocite{rognes2} lemma 11.5.6 help me? When he writes \(\pi_*(Y_p^\wedge)\), does he mean the entire ring or just an arbitrary \(*\)? From the look of the proof it seems like he means the latter :(
+
+Assumption for the moment: \autocite{ass} Thm 4.29 says ``\(E^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\implies \pi_{t-s}(S)_2^\wedge\)''. I.e. the group. So, here's what I'm guessing: \begin{enumerate}
+\item The Adams spectral sequence converges to the 2-completion of each group individually.
+\item You can direct sum all these groups together.
+\item The composition product on \(\pi_*^S\) gives it \(\bigoplus_i \pi_i^S\) a ring structure. 
+\item Somehow[?] \(\text{}_2\pi_*^S\) (by which I mean \(\bigoplus_i \text{}_2\pi_i^S\), NOT \(\text{}_2\bigoplus_i \pi_i^S\)) inherits a ring structure from this, and it coincides exactly with the composition product (in whatever way that makes sense).
+\end{enumerate}
 \end{itemize}
 
 \subsection{To do}\label{2503221342}
@@ -1059,6 +1103,8 @@ Eventually:
 \item Ease notation by not writing \(G\) in e.g. \(H^*(X;G)\). Say we're taking coefficients in \(\bb{F}_2\), but actually a lot of the time it doesn't matter so maybe note that.
 
 \item Have any sort of consistency in using or not using brackets (e.g. \(\pi_t X_s\) v.s. \(\pi_t(X_s)\)). 
+
+\item When I say `spectrum' at any point after defining CW spectra I mean `CW spectrum'. And I basically always mean `connective CW spectrum of finite type' too. 
 
 \end{itemize}
 
