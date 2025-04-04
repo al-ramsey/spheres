@@ -637,147 +637,16 @@ There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s
 
 \subsection{Multiplicative structure}
 
-\subsubsection{A Brief Summary, or How to Lose Your Mind Because of One Stupid Prime Number [TO DELETE]}
+\subsubsection{The Yoneda product}
 
 \begin{itemize}
-\item There is a multiplication, the \textit{Yoneda product}, on \(E_2 = \Ext\)(whatever). 
-
-\item There is a multiplication, the \textit{composition product}, on \(\pi_*^S\). It's graded commutative.
-
-\item There is (supposedly!!!) a multiplication, also called the composition product, on \(\text{}_2\pi_*^S\) (whatever that object is). It may be inherited from the one on \(\pi_*^S\), though it's not at all clear how. It should be graded commutative as well.
-
-\item There is a multiplication on \(E_r\) which coincides with the Yoneda product on \(E_2\) and converges (whatever that means) to the composition product on \(\text{}_2\pi_*^S\) (whatever that is). It's associative and unital, and plays nicely with the differentials. 
-\end{itemize}
-
-Questions/problems (briefly):
-\begin{itemize}
-\item Is \(\text{}_2\pi_*^S\) equal to \(\text{}_2 \left(\bigoplus_i \pi_i^S\right)\) (i.e. the completion of the ring), or \(\bigoplus_i \text{}_2\pi_*^S\)?
-\item If it's the latter, how does the composition product on \(\pi_*^S\) give rise to a `composition product' on \(\text{}_2\pi_*^S\)?
-\item If I compute a product on the \(E_2\) page, and both terms survive to the \(E_3\) page, is that computation still valid?
-\end{itemize}
-
-What \autocite{rognes2} says:
-\begin{itemize}
-\item 11.8: For spectra \(X, Y, Z\), the composition of morphisms defines a pairing 
-\[\circ : [Y, Z]_n \otimes [X,Y]_m \to [X,Z]_{n+m}\]
-[doing what it should].
-
-\item For any algebra \(A\) and \(A\)-modules \(L,M,N\), there is a natural Yoneda composition product
+\item There is a multiplication, the \textit{Yoneda product}, on \(E_2 = \Ext\)(whatever)
+\item More generally, \autocite{rognes2}: For any algebra \(A\) and \(A\)-modules \(L,M,N\), there is a natural Yoneda composition product
 \[\circ : \Ext_A^s(M,N)\otimes \Ext^u_A(L,M)\to \Ext_A^{s+u}(L,N)\]
 [doing what it should].
-
-\item 11.8.5: For spectra \(X, Y, Z\), consider the Adams spectral sequences
-\['E_2 = \Ext_A(H_*(Y), H_*(Z))\implies [Y,Z]_*\]
-\[''E_2 = \Ext_A(H_*(X), H_*(Y))\implies [X,Y]_*\]
-\[E_2 = \Ext_A(H_*(X), H_*(Z))\implies [X,Z]_*\] \begin{enumerate}
-\item There is a natural pairing 
-\[\circ_r : ('E_r, ''E_r)\to E_r\]
-of Adams spectral sequences, with abutment the filtration-preserving pairing
-\[\circ : [Y, Z]_* \otimes [X,Y]_* \to [X,Z]_*\]
-mapping \(g \otimes f\) to \(g \circ \Sigma^{\abs{g}}f\)
-
-\item The pairing of \(E_2\)-terms 
-\[\circ_2 : \Ext_{A_*}(H_*(Y), H_*(Z))\otimes \Ext_{A_*}(H_*(X), H_*(Y))\to \Ext_{A_*}(H_*(X), H_*(Z))\]
-is the composition product.
-
-\item If \(Y/p\) and \(Z/p\) are bounded below of finite type, then the \(E_2\)-pairing 
-\[\circ_2 : \Ext_{A_*}(H^*(Z), H^*(Y))\otimes \Ext_{A_*}(H^*(Y), H^*(X))\to \Ext_{A_*}(H^*(Z), H^*(X))\]
-is the twisted composition product, mapping \(y\otimes x\) to \((-1)^{\abs{x}\abs{y}}x\circ y\), where \(\abs{x}=v-u\) and \(\abs{y}=t-s\) for \(x\in ''E_2^{u,v}\) and \(y \in 'E^{s,t}_2\).
-\end{enumerate}
 \end{itemize}
 
-Let's play a game of ``where's the \(p\)-completion?'':
-
-\begin{itemize}
-\item By theorem 11.8.5, the \(p\)-completion has disappeared:
-\[E_2 = \Ext_A(H_*(X), H_*(Z))\implies [X, Z]_*.\]
-
-\item In section 11.9 it miraculously returns to give us the result we need:
-\[E_2(S)^{s,t}=\Ext_A^{s,t}(\bb{F}_p, \bb{F}_p)\implies \pi_{t-s}(S)^\wedge_p.\]
-
-\item At the beginning of 11.7 it's also absent; supposedly we have spectral sequences as in the setup to theorem 11.8.5, i.e. e.g. 
-\[E_2 = \Ext_{A_*}(H_*(X), H_*(Y))\implies [X, Y]_*.\]
-
-\item In theorem 11.5.14, it's back again: \(\Ext^{s,t}_A(H^*(Y), \bb{F}_p)\implies \pi_{t-s}(Y_p^\wedge)\). 
-
-\item In theorem 11.5.12, it's there, but like, more than I would expect it to be? 
-\[E^{s,t}_2=\Ext^{s,t}_{A_*}(H_*(X), H_*(Y_p^\wedge))\implies [X,Y_p^\wedge]_{t-s}.\]
-
-\item At the beginning of chapter 11, we get:
-\[E^{s,t}_2 = \Ext_A^{s,t}(H^*(Y), H^*(X))\implies [X,Y_p^\wedge]_{t-s}\]
-\[E^{s,t}_2=\Ext^{s,t}_{A_*}(H_*(X), H_*(Y))\implies [X, Y_p^\wedge]_{t-s},\]
-which shows that the vanishing and reappearing of this completion has nothing to do with whether we're working with \(H_*\) or \(H^*\).
-\end{itemize}
-
-Conclusion: ?????????????????
-
-\subsubsection{The actual chapter [HEADING TO DELETE]}
-
-[Rough sketch, details to fill in once I have the shape of things:
-
-From \autocite{ass}, 5.1
-
-\begin{definition}
-Let \(X, Y, Z\) be spectra. The \textit{composition pairing} \(\circ : [Y, Z]_* \otimes [X,Y]_* \to [X,Z]_*\) is defined as follows: 
-\begin{align*}
-\circ :\; [Y, Z]_v\; \otimes \;[X,Y]_t\; &\to\; [X,Z]_{v+t}\\
-[g : \Sigma^v Y \to Z]\otimes [f : \Sigma^t X\to Y] &\mapsto [g \circ \Sigma^v f : \Sigma^{v+t}X\to Z],
-\end{align*}
-%sort of appalling, I'm sorry. I'll fix it later.
-where \([X,Y]_n=[S^n\wedge X, Y]\) [which is the same as \([\Sigma^n X, Y]\) by the version of \ref{2503311142} for spectra\footnote{Note, by the way, that this notation is defined in \autocite{rognes2} Def 11.1.1, and yes, he really means \(S^n\), as in the normal \(n\)-dimensional sphere, so we're taking the smash product of a spectrum and a space, which is fine.}]
-\end{definition}
-
-In particular, if \(X=Y=Z=\bb{S}\), we have a product \(\pi_v \bb{S}\otimes \pi_t \bb{S}\to \pi_{v+t}\bb{S}\), or, in other words, a product \(\pi_v^S\otimes \pi_t^S\to \pi_{v+t}^S\). 
-
-\begin{definition}[{\autocite{ass}, Def 5.5}]
-Let \(\{'E_r\}, \{''E_r\}, \{E_r\}\) be three spectral sequences. A \textit{pairing} of these spectral sequences is a sequence of homomorphisms 
-\[\phi_r : 'E_r^{*,*}\otimes ''E_r^{*,*} \to E_r^{*,*}\]
-such that the Leibniz rule
-\[d_r\phi_r(x\otimes y)=\phi_r(d_r(x)\otimes y)+(-1)^{\deg x}\phi_r(x\otimes d_r(y))\]
-holds, and
-\[\phi_{r+1}([x]\otimes[y])=[\phi_r(x\otimes y)],\]
-where \([x]\in 'E_{r+1}^{*,*}\) is the homology class of a \(d_r\)-cycle \(x\in 'E_r^{*,*}\), and similarly for \(y\) and the right hand side. 
-\end{definition}
-
-A spectral sequence pairing \(\{\phi_r\}\) induces a pairing 
-\[\phi_\infty : 'E_\infty^{*,*}\otimes ''E^{*,*}_\infty \to E^{*,*}_\infty.\]
-
-The following definition is from \autocite{spectra}, Chapter 9.
-
-\begin{definition}
-Let \(X\) be a CW spectrum. Then a \textit{\(p\)-completion} of \(X\) is a map \(f : X \to \text{}_pX\) such that for all \(i\), \(\pi_if\) expresses \(\pi_i(\text{}_2X)\) as the \(p\)-completion of \(\pi_i(X)\).
-\end{definition}
-
-\begin{theorem}[{\autocite{spectra}, Thm 9.1.1}]
-If \(X\) has finite type, then it has a \(p\)-completion unique up to equivalence. 
-\end{theorem}
-
-[Just putting the theorem below here for the moment, but I'll need to unpack it...]
-
-\begin{theorem}[{\autocite{ass}, Thm 5.8}]
-Let \(X,Y,Z\) be spectra, with \(Y, Z\) connective and of finite type. There is a pairing of spectral sequences
-\[E^{*,*}_r(Y,Z)\otimes E^{*,*}_r(X,Y)\to E^{*,*}_r(X,Z)\]
-which agrees for \(r=2\) with the Yoneda pairing
-\[\Ext^{*,*}_{\A}(H^*(Z), H^*(Y))\otimes \Ext_{\A}^{*,*}(H^*(Y), H^*(X))\to \Ext_{\A}^{*,*}(H^*(Z), H^*(X))\]
-and which converges\footnote{What does that mean? The spectral sequence itself only converges to a filtration of \(\text{}_{2}\pi_*^S\), so is this saying that the composition product (graded commutative) on \(\pi_*^S\) induces (descends to? lifts to?) a product on \(\text{}_2\pi_*^S\), which itself descends to a product on \(E^{s,t}_\infty=F^{s,t}/F^{s+1,t+1}\)? Even if the first part works, why would the product land in the correct subgroup?} to the composition pairing\footnote{That's not a composition pairing!! A composition pairing would be something like \([Y, \text{}_2Z]_*\otimes [X,Y]_* \to [X, \text{}_2Z]_*\) or even \([\text{}_2Y, \text{}_2Z]_* \otimes [X, \text{}_2Y]_* \to [X, \text{}_2Z]_*\), but not what's written up there! How on earth is that thing even defined??}
-\[[Y, \text{}_2Z]_*\otimes [X,\text{}_2Y]_* \to [X, \text{}_2Z]_*.\]
-The pairing is associative and unital.
-\end{theorem}
-
-% I think the stuff below is garbage...
-%Fact: there is a multiplication 
-%\[E^{s,t}_2\otimes E^{s',t'}_2\to E^{s+s', t+t'}_2,\]
-%which induces(?) a multiplication
-%\[E^{s,t}_r\otimes E^{s',t'}_r\to E^{s+s', t+t'}_r.\]
-%At \(E_\infty\), this is a multiplication
-%\[F^{s,t}/F^{s+1, t+1}\otimes F^{s',t'}/F^{s'+1, t'+1}\to F^{s+s', t+t'}/F^{s+s'+1, t+t'+1}.\]
-
-%It satisfies the Leibniz rule, and it converges to the composition product on \(\text{}_2\pi_*^S\). 
-
-[Leibniz rule?]
-
-% sweet naive me below didn't notice that the maps were going the wrong way :')
-%[I'm concerned that I have no idea what \(\text{}_2 \bb{S}\) is, although I know that \([\bb{S}, \text{}_2 \bb{S}]_*=\pi_*(\text{}_2 \bb{S})\cong \text{}_2 \pi_*^S\). But maybe that's not a problem - I know the usual composition product on \(\pi_*^S\) is graded commutative, is that true of the general composition pairing? It would be lovely if it was, because it would also solve my ring-theoretic problems in \ref{2504011259timeforlunchithink}.]
+[The stuff below is old and needs to be rewritten but I'm putting it here for the moment]
 
 Using \ref{2503171645shutupitsbeenalongterm} (which comes later but whatever, I'll reorder things), we get \(E_2^{s,t}=\Hom^t_{\A}(F_s, \bb{F}_2)\). So, if we have a minimal free resolution 
 \[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2\]
@@ -800,22 +669,186 @@ Then we inductively fill in the dotted arrows from the bottom up. So you can fil
 
 This thing is hopefully well-defined.
 
-A few other things:
-\begin{enumerate}
-\item We know that \(\pi_0^S=\inte\) since \(\pi_1S^1=\inte\) and \(n=1\leq 2=2(1)\), so this lies in the stable region. Now, \(E^{s,t}\) is actually supposed to converge to some filtration of \(\inte_2\) (i.e. the 2-adics) (i.e. \(\text{}_2\inte\)) I think? But either way, we know that for our filtration all the quotients are \(\inte/2\inte\). I claim\footnote{Here is an absolutely ridiculous argument for that: \((\inte_2, +)\) is a topological group. For any subgroup \(H\) of finite index \(n=2^km\), \(H\) is open (since by Lagrange's theorem \(n\inte_2\subq H\) and thus \(n\inte_2=2^k\inte_2\), so \(x+2^k\inte_2\) is an open ball around any \(x\in H\)). Now, every open subgroup of \(\inte_2\) is also closed (since it's complement is a union of open cosets), and it's apparently the case [elaborate] that the closed subgroups of \(\inte_2\) are the ideals \(2^k\inte_2\). These facts then imply that the filtration I give is the only possible one. Short answer: finite index subgroups of \(\inte_p\) are of the form \(p^k\inte_p\).} then that the filtration must be \(\cdots 4\inte_2 \subq 2\inte_2 \subq \inte_2\). 
-\item If that's true then \(\iota=[1]\in \inte_2/2\inte_2\), and using the multiplication above we see \(\iota\) is a unit. We also have \(h_0=[2]\in 2\inte_2/4\inte_2\) so \(h_0=[2]=[2[1]]=[2\iota]\), so \(h_0\) acts on \(\iota\) by multiplication by 2.
-\item Now, for any \(\kappa\in E^{s,t}_2\), \(h_0\cdot \kappa = (\iota h_0)\cdot \kappa=2\kappa\). 
-\end{enumerate}
-The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\).
+\subsubsection{The composition product}
 
-All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]
+From \autocite{ass}, 5.1
+
+\begin{definition}
+Let \(X, Y, Z\) be spectra. The \textit{composition pairing} \(\circ : [Y, Z]_* \otimes [X,Y]_* \to [X,Z]_*\) is defined as follows: 
+\begin{align*}
+\circ :\; [Y, Z]_v\; \otimes \;[X,Y]_t\; &\to\; [X,Z]_{v+t}\\
+[g : \Sigma^v Y \to Z]\otimes [f : \Sigma^t X\to Y] &\mapsto [g \circ \Sigma^v f : \Sigma^{v+t}X\to Z],
+\end{align*}
+%sort of appalling, I'm sorry. I'll fix it later.
+where \([X,Y]_n=[S^n\wedge X, Y]\) [which is the same as \([\Sigma^n X, Y]\) by the version of \ref{2503311142} for spectra\footnote{Note, by the way, that this notation is defined in \autocite{rognes2} Def 11.1.1, and yes, he really means \(S^n\), as in the normal \(n\)-dimensional sphere, so we're taking the smash product of a spectrum and a space, which is fine.}]
+\end{definition}
+
+In particular, if \(X=Y=Z=\bb{S}\), we have a product \(\pi_v \bb{S}\otimes \pi_t \bb{S}\to \pi_{v+t}\bb{S}\), or, in other words, a product \(\pi_v^S\otimes \pi_t^S\to \pi_{v+t}^S\). 
+
+\begin{itemize}
+\item Lemma: this makes \(\pi_*^S\) into a graded commutative ring.
+
+\item There is a multiplication, also called the composition product, on \(\text{}_2\pi_*^S\) (i.e. \(\bigoplus_i \text{}_2\pi_*^S\)). It's inherited from the one on \(\pi_*^S\): we have a product
+\[\pi_i(S)^\wedge_2 \otimes \pi_j(S)^\wedge_2 \to \pi_{i+j}(S)^\wedge_2.\]
+\begin{enumerate}
+\item If \(i, j \geq 1\), then \(\pi_i(S)^\wedge_2 \cong \pi_i(S)/T_i\), where \(T_i\) is the subgroup of odd torsion. Then we have a map
+\begin{align*}
+\pi_i(S)/T_i \otimes \pi_j(S)/T_j &\to \pi_{i+j}(S)/T_{i+j}\\
+[a]\otimes[b] \to [ab],
+\end{align*}
+which is well defined, since if \(a'=a+t\) with \(nt=0\) for odd \(n\), then \([a'b]=[ab+tb]=[ab]\) (since \(ntb=(nt)b=0b=0\)). Likewise, if \(b'=b+t\) with \(nt=0\) for odd \(n\), then \([ab']=[ab+at]=[ab]\).
+\item If exactly one of \(i, j\) is zero, then without loss of generality \(i=0\) and we have a map
+\[\inte_2 \otimes \pi_j(S)/T_j \to \pi_{j}(S)/T_{j}\]
+defined via the isomorphism \(\inte_2 \otimes \pi_j(S)/T_j \cong \pi_{j}(S)/T_{j}\) of \ref{2504031247}. 
+\item If \(i=j=0\), we have the usual product on \(\inte_2\):
+\[\inte_2 \otimes \inte_2 \to \inte_2.\]
+\end{enumerate}
+\end{itemize}
+
+The following definition is from \autocite{spectra}, Chapter 9.
+
+\begin{definition}
+Let \(X\) be a CW spectrum. Then a \textit{\(p\)-completion} of \(X\) is a map \(f : X \to \text{}_pX\) such that for all \(i\), \(\pi_if\) expresses \(\pi_i(\text{}_2X)\) as the \(p\)-completion of \(\pi_i(X)\).
+\end{definition}
+
+\begin{theorem}[{\autocite{spectra}, Thm 9.1.1}]
+If \(X\) has finite type, then it has a \(p\)-completion unique up to equivalence. 
+\end{theorem}
+
+\begin{itemize}
+\item \(p\)-completion has a universal property: whenever \(Y \xrightarrow{f} T\) is a map where \(Z\) is \(p\)-complete, there exists a unique (up to homotopy) factorisation \(Y\to \text{}_pY \xrightarrow{\overline f} T\) of \(f\). 
+
+\item Given spectra \(X, Y, Z\), we have a pairing \(\circ : [Y, \text{}_2Z]_* \otimes [X,\text{}_2Y]_* \to [X, \text{}_2Z]\): given \(f \in [Y, \text{}_2Z], g \in [X, \text{}_2Y]\), we can `compose' to get \(\overline fg\in [X, \text{}_2Z]\). 
+
+\item Remaining questions: \begin{enumerate}
+\item Why is there this universal property? 
+
+\item Does suspension commute with \(p\)-completion? 
+
+\item Why does this definition of the product on \(\text{}_2\pi_*^S\) agree with the one induced by the product on \(\pi_*^S\)?
+
+\item Does the product
+\[[Y, Z]_*\otimes [X, Y]_*\to [X, Z]_*\]
+induce the product
+\[[Y, \text{}_2Z]_*\otimes [X, \text{}_2Y]_*\to [X, \text{}_2Z]_*,\]
+or vice versa?
+
+Let's restrict to normal composition: i.e. degree 0. Suppose I already have a product 
+\[[Y, \text{}_2Z]_0\otimes [X, \text{}_2Y]_0\to [X, \text{}_2Z]_0,\]
+and let \(f : Y \to Z\), \(g : X \to Y\). I can form,
+\[\begin{tikzcd}
+Y \arrow[r, "f"] \arrow[d, swap, "\wedge_Y"]  & Z \arrow[d, "\wedge_Z"]  \\
+Y^\wedge_p \arrow[r, swap, "\overline{\wedge_Z \circ f}", dashrightarrow]  & Z^\wedge_p
+\end{tikzcd}\qquad \begin{tikzcd}
+X \arrow[r, "g"] \arrow[d, swap, "\wedge_X"]  & Y \arrow[d, "\wedge_Y"]  \\
+X^\wedge_p \arrow[r, swap, "\overline{\wedge_Y \circ g}", dashrightarrow]  & Y^\wedge_p
+\end{tikzcd}\]
+giving maps \(Y \xrightarrow{\overline{\wedge_Z \circ f}\circ \wedge_Y} Z^\wedge_p\) and \(X \xrightarrow{\overline{\wedge_Y \circ g}\circ \wedge_X} Y^\wedge_p\). Using the product we already have, we get \(X \xrightarrow{\overline{\wedge_Y \circ g}\circ \wedge_X} Y^\wedge_p \xrightarrow{\overline{\wedge_Z \circ f}} Z^\wedge_p\). Using the commutative diagram below, we see that this is just \(X \xrightarrow{\wedge_Z\circ f\circ g}Z^\wedge_p\). 
+\[\begin{tikzcd}
+ X \arrow[r, "g"] \arrow[d, swap, "\wedge_X"]  & Y \arrow[r, "f"] \arrow[d, "\wedge_Y"] & Z \arrow[d, "\wedge_Z"] \\ 
+ X^\wedge_p \arrow[r, swap, "\overline{\wedge_Y \circ g}"]  & Y^\wedge_p \arrow[r, "\overline{\wedge_Z \circ f}"'] & Z^\wedge_p 
+ \end{tikzcd}\] 
+But that's what we'd have gotten if we took \(X \xrightarrow{fg}Z\) and made it into a map \(X \to Z^\wedge_p\) directly. So it seems like the composition product 
+\[[Y, \text{}_2Z]_0\otimes [X, \text{}_2Y]_0\to [X, \text{}_2Z]_0,\]
+induces the one 
+\[[Y, Z]_0\otimes [X, Y]_0\to [X, Z]_0,\]
+which is \textit{really weird}, because \([Y,Z]\) could easily be (and often is) bigger than \([Y, \text{}_2Z]\). But maybe this is just an artefact of me having restricted to degree 0? Does this argument still work when I consider general degrees? I find it really difficult to believe I could figure out the product on odd torsion parts of \(\pi_i^S\) from just the even parts, for example. 
+\end{enumerate}
+\end{itemize}
+
+\subsubsection{Multiplication on the spectral sequence}
+
+\begin{itemize}
+\item There is a multiplication on \(E_r\) which coincides with the Yoneda product on \(E_2\) and converges (whatever that means) to the composition product on \(\text{}_2\pi_*^S\). It's associative and unital, and plays nicely with the differentials. 
+\end{itemize}
+
+Questions/problems (briefly):
+\begin{itemize}
+\item If I compute a product on the \(E_2\) page, and both terms survive to the \(E_3\) page, is that computation still valid?
+\end{itemize}
+
+\begin{definition}[{\autocite{ass}, Def 5.5}]
+Let \(\{'E_r\}, \{''E_r\}, \{E_r\}\) be three spectral sequences. A \textit{pairing} of these spectral sequences is a sequence of homomorphisms 
+\[\phi_r : \text{}'E_r^{*,*}\otimes \text{}''E_r^{*,*} \to E_r^{*,*}\]
+such that the Leibniz rule
+\[d_r\phi_r(x\otimes y)=\phi_r(d_r(x)\otimes y)+(-1)^{\deg x}\phi_r(x\otimes d_r(y))\]
+holds, and
+\[\phi_{r+1}([x]\otimes[y])=[\phi_r(x\otimes y)],\]
+where \([x]\in \text{}'E_{r+1}^{*,*}\) is the homology class of a \(d_r\)-cycle \(x\in \text{}'E_r^{*,*}\), and similarly for \(y\) and the right hand side. 
+\end{definition}
+
+A spectral sequence pairing \(\{\phi_r\}\) induces a pairing 
+\[\phi_\infty : \text{}'E_\infty^{*,*}\otimes \text{}''E^{*,*}_\infty \to E^{*,*}_\infty.\]
+
+What \autocite{rognes2} says:
+\begin{itemize}
+\item 11.8.5: For spectra \(X, Y, Z\), consider the Adams spectral sequences
+\['E_2 = \Ext_A(H_*(Y), H_*(Z))\implies [Y,Z]_*\]
+\[''E_2 = \Ext_A(H_*(X), H_*(Y))\implies [X,Y]_*\]
+\[E_2 = \Ext_A(H_*(X), H_*(Z))\implies [X,Z]_*\] \begin{enumerate}
+\item There is a natural pairing 
+\[\circ_r : ('E_r, ''E_r)\to E_r\]
+of Adams spectral sequences, with abutment the filtration-preserving pairing
+\[\circ : [Y, Z]_* \otimes [X,Y]_* \to [X,Z]_*\]
+mapping \(g \otimes f\) to \(g \circ \Sigma^{\abs{g}}f\)
+
+\item The pairing of \(E_2\)-terms 
+\[\circ_2 : \Ext_{A_*}(H_*(Y), H_*(Z))\otimes \Ext_{A_*}(H_*(X), H_*(Y))\to \Ext_{A_*}(H_*(X), H_*(Z))\]
+is the composition product.
+
+\item If \(Y/p\) and \(Z/p\) are bounded below of finite type, then the \(E_2\)-pairing 
+\[\circ_2 : \Ext_{A_*}(H^*(Z), H^*(Y))\otimes \Ext_{A_*}(H^*(Y), H^*(X))\to \Ext_{A_*}(H^*(Z), H^*(X))\]
+is the twisted composition product, mapping \(y\otimes x\) to \((-1)^{\abs{x}\abs{y}}x\circ y\), where \(\abs{x}=v-u\) and \(\abs{y}=t-s\) for \(x\in \text{}''E_2^{u,v}\) and \(y \in \text{}'E^{s,t}_2\).
+\end{enumerate}
+\end{itemize}
+
+What \autocite{ass} says:
+
+\begin{theorem}[{\autocite{ass}, Thm 5.8}]
+Let \(X,Y,Z\) be spectra, with \(Y, Z\) connective and of finite type. There is a pairing of spectral sequences
+\[E^{*,*}_r(Y,Z)\otimes E^{*,*}_r(X,Y)\to E^{*,*}_r(X,Z)\]
+which agrees for \(r=2\) with the Yoneda pairing
+\[\Ext^{*,*}_{\A}(H^*(Z), H^*(Y))\otimes \Ext_{\A}^{*,*}(H^*(Y), H^*(X))\to \Ext_{\A}^{*,*}(H^*(Z), H^*(X))\]
+and which converges%\footnote{What does that mean? The spectral sequence itself only converges to a filtration of \(\text{}_{2}\pi_*^S\), so is this saying that the composition product (graded commutative) on \(\pi_*^S\) induces (descends to? lifts to?) a product on \(\text{}_2\pi_*^S\), which itself descends to a product on \(E^{s,t}_\infty=F^{s,t}/F^{s+1,t+1}\)? Even if the first part works, why would the product land in the correct subgroup?} % removing the footnote for the moment because while it's a valid point, the whole `it lands in the correct subgroup' business is part of the theorem and also is explained in the source.
+to the composition pairing
+\[[Y, \text{}_2Z]_*\otimes [X,\text{}_2Y]_* \to [X, \text{}_2Z]_*.\]
+The pairing is associative and unital.
+\end{theorem}
+
+[Leibniz rule?]
+
+%Let's play a game of ``where's the \(p\)-completion?'':
+
+% let's not actually
+
+%\begin{itemize}
+%\item By theorem 11.8.5, the \(p\)-completion has disappeared:
+%\[E_2 = \Ext_A(H_*(X), H_*(Z))\implies [X, Z]_*.\]
+
+%\item In section 11.9 it miraculously returns to give us the result we need:
+%\[E_2(S)^{s,t}=\Ext_A^{s,t}(\bb{F}_p, \bb{F}_p)\implies \pi_{t-s}(S)^\wedge_p.\]
+
+%\item At the beginning of 11.7 it's also absent; supposedly we have spectral sequences as in the setup to theorem 11.8.5, i.e. e.g. 
+%\[E_2 = \Ext_{A_*}(H_*(X), H_*(Y))\implies [X, Y]_*.\]
+
+%\item In theorem 11.5.14, it's back again: \(\Ext^{s,t}_A(H^*(Y), \bb{F}_p)\implies \pi_{t-s}(Y_p^\wedge)\). 
+
+%\item In theorem 11.5.12, it's there, but like, more than I would expect it to be? 
+%\[E^{s,t}_2=\Ext^{s,t}_{A_*}(H_*(X), H_*(Y_p^\wedge))\implies [X,Y_p^\wedge]_{t-s}.\]
+
+%\item At the beginning of chapter 11, we get:
+%\[E^{s,t}_2 = \Ext_A^{s,t}(H^*(Y), H^*(X))\implies [X,Y_p^\wedge]_{t-s}\]
+%\[E^{s,t}_2=\Ext^{s,t}_{A_*}(H_*(X), H_*(Y))\implies [X, Y_p^\wedge]_{t-s},\]
+%which shows that the vanishing and reappearing of this completion has nothing to do with whether we're working with \(H_*\) or \(H^*\).
+%\end{itemize}
+
+%Conclusion: ?????????????????
 
 \autocite{ass}
 
 \section{Calculating stable homotopy groups}
 
 \subsection{The \(E_2\) page}
-
 
 \begin{lemma}[{\autocite{hatcher5}, Lem 5.49}]\label{2503171645shutupitsbeenalongterm}
 For a minimal free resolution 
@@ -849,13 +882,7 @@ On the other hand, \(E^{2, 10}\) is generated by \(h_1h_3\), and \(d_2(h_1h_3)=d
 
 \subsection{Resolving extensions}
 
-%[Note: there is a multiplicative structure on the \(E_2\) page of the spectral sequence, which Hatcher says is there and then proceeds to never ever mention again. So I'll have to find another source for this bit. It should correspond to the composition product on \(\pi_*^S\), i.e. given \([f]\in \pi_i^S\), \([g]\in \pi_j^S\), we have \([f][g]=[g \circ \Sigma^j f]\in \pi_{i+j}^S\).
-
-\autocite{ass}, in particular 6.1 and 6.2.
-
-Also, \autocite{spectral_sequences} has some cryptic remarks on p424 and p407 about this but doesn't actually really explain it, and in particular doesn't explain how you could know that some stable homotopy group \textit{isn't} cyclic (e.g. \(\pi_8^S\)).
-
-Some slightly less cryptic comments are made in \autocite{cobordism}, in particular stemming from Lemma 3.1.3. If I just believe this lemma for the moment, assuming its \(a_0\) is the same as my \(\alpha^1_1\), and further believe the calculations done in \autocite{ass} in 6.2, then (I think!) this solves my problems.]
+%Some slightly less cryptic comments are made in \autocite{cobordism}, in particular stemming from Lemma 3.1.3. If I just believe this lemma for the moment, assuming its \(a_0\) is the same as my \(\alpha^1_1\), and further believe the calculations done in \autocite{ass} in 6.2, then (I think!) this solves my problems.]
 
 \begin{proposition}[{\autocite{ass}, Cor 6.5}]
 We have the following relations:
@@ -867,11 +894,21 @@ We have the following relations:
 \end{align*}
 \end{proposition}
 
-[Should I even have the below as a proposition? Should I cite \autocite{cobordism}? His \(a_0\) is defined completely differently to my \(\alpha^1_1\) and his proof uses some sort of naturality? I think my explanation aligns much more closely with \autocite{ass} or \autocite{rognes2}.]
+A few other things:
+\begin{enumerate}
+\item We know that \(\pi_0^S=\inte\) since \(\pi_1S^1=\inte\) and \(n=1\leq 2=2(1)\), so this lies in the stable region. Now, \(E^{s,t}\) is actually supposed to converge to some filtration of \(\inte_2\) (i.e. the 2-adics) (i.e. \(\text{}_2\inte\)) I think? But either way, we know that for our filtration all the quotients are \(\inte/2\inte\). I claim\footnote{Here is an absolutely ridiculous argument for that: \((\inte_2, +)\) is a topological group. For any subgroup \(H\) of finite index \(n=2^km\), \(H\) is open (since by Lagrange's theorem \(n\inte_2\subq H\) and thus \(n\inte_2=2^k\inte_2\), so \(x+2^k\inte_2\) is an open ball around any \(x\in H\)). Now, every open subgroup of \(\inte_2\) is also closed (since it's complement is a union of open cosets), and it's apparently the case [elaborate] that the closed subgroups of \(\inte_2\) are the ideals \(2^k\inte_2\). These facts then imply that the filtration I give is the only possible one. Short answer: finite index subgroups of \(\inte_p\) are of the form \(p^k\inte_p\).} then that the filtration must be \(\cdots 4\inte_2 \subq 2\inte_2 \subq \inte_2\). 
+\item If that's true then \(\iota=[1]\in \inte_2/2\inte_2\), and using the multiplication above we see \(\iota\) is a unit. We also have \(h_0=[2]\in 2\inte_2/4\inte_2\) so \(h_0=[2]=[2[1]]=[2\iota]\), so \(h_0\) acts on \(\iota\) by multiplication by 2.
+\item Now, for any \(\kappa\in E^{s,t}_2\), \(h_0\cdot \kappa = (\iota h_0)\cdot \kappa=2\kappa\). 
+\end{enumerate}
+The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\).
 
-\begin{proposition}[{\autocite{cobordism}, Lem 3.1.3(b)}]
-If \(x \in \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\) is a permanent cycle in the Adams spectral sequence represented by \(\alpha \in \pi_*^S\), then \(\alpha^1_1x\) is a permanent cycle represented by \(2 \alpha\). 
-\end{proposition}
+All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]
+
+%[Should I even have the below as a proposition? Should I cite \autocite{cobordism}? His \(a_0\) is defined completely differently to my \(\alpha^1_1\) and his proof uses some sort of naturality? I think my explanation aligns much more closely with \autocite{ass} or \autocite{rognes2}.]
+
+%\begin{proposition}[{\autocite{cobordism}, Lem 3.1.3(b)}]
+%If \(x \in \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\) is a permanent cycle in the Adams spectral sequence represented by \(\alpha \in \pi_*^S\), then \(\alpha^1_1x\) is a permanent cycle represented by \(2 \alpha\). 
+%\end{proposition}
 
 [Justify the below with sseq, not quite sure how to do this in a satisfying way though. See note in Section \ref{2503221342}]
 
@@ -1144,29 +1181,6 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+spectrum}{the nLab}: ``[some smash product] is non-canonically equivalent to a product of EM-spectra (hence a wedge sum of EM-spectra in the finite case)''. ???????
 
 \item Question: so I have this multiplicative structure on the entire spectral sequence, right? And on the second page it's just the Yoneda product. But say I compute, I don't know, \(\alpha^2_5=h_0h_2\) on the \(E_2\)  page. Since none of those guys are touched by differentials, is that computation still valid on the \(E_3\) page? And on higher pages?
-
-\item This \(2\)-completion nonsense is not bringing me joy. On the one hand, it literally should not matter at all, because (apparently) everything above \(\pi_0^S\) satisfies \(\pi_i^S=\text{}_2\pi_i^S\). But... when I take this 2-completion, I'm taking the 2-completion of the entire ring \(\pi_*^S\), right? Which is an infinite direct sum? And the 2-completion is a limit, and an infinite direct sum is very much a colimit, and they don't commute. So maybe it really does matter?? Ok, that's a new problem that I realised as I was writing this up, but the actual problem I was worried about was that we have this graded commutative ring \(\pi_*^S\) with the composition product, but now magically a graded commutative product on \(\text{}_2\pi_*^S\) appears to save the day when we're computing differentials, and \autocite{rognes2} just says it's again the composition product with zero further explanation (e.g. in 11.9). I mean, if we're taking the completion of a ring, we do inherit the original product (I think?) but now we run into the initial problem. Does \autocite{rognes2} lemma 11.5.6 help me? When he writes \(\pi_*(Y_p^\wedge)\), does he mean the entire ring or just an arbitrary \(*\)? From the look of the proof it seems like he means the latter :(
-
-Assumption for the moment: \autocite{ass} Thm 4.29 says ``\(E^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\implies \pi_{t-s}(S)_2^\wedge\)''. I.e. the group. So, here's what I'm guessing: \begin{enumerate}
-\item The Adams spectral sequence converges to the 2-completion of each group individually.
-\item You can direct sum all these groups together.
-\item The composition product on \(\pi_*^S\) gives it \(\bigoplus_i \pi_i^S\) a ring structure. 
-\item Somehow[?] \(\text{}_2\pi_*^S\) (by which I mean \(\bigoplus_i \text{}_2\pi_i^S\), NOT \(\text{}_2\bigoplus_i \pi_i^S\)) inherits a ring structure from this, and it coincides exactly with the composition product (in whatever way that makes sense). Here is a way in which it might make sense: we're supposed to get a product
-\[\pi_i(S)^\wedge_2 \otimes \pi_j(S)^\wedge_2 \to \pi_{i+j}(S)^\wedge_2.\]
-\begin{enumerate}
-\item If \(i, j \geq 1\), then \(\pi_i(S)^\wedge_2 \cong \pi_i(S)/T_i\), where \(T_i\) is the subgroup of odd torsion. Then we have a map
-\begin{align*}
-\pi_i(S)/T_i \otimes \pi_j(S)/T_j &\to \pi_{i+j}(S)/T_{i+j}\\
-[a]\otimes[b] \to [ab],
-\end{align*}
-which is well defined, since if \(a'=a+t\) with \(nt=0\) for odd \(n\), then \([a'b]=[ab+tb]=[ab]\) (since \(ntb=(nt)b=0b=0\)). Likewise, if \(b'=b+t\) with \(nt=0\) for odd \(n\), then \([ab']=[ab+at]=[ab]\).
-\item If exactly one of \(i, j\) is zero, then without loss of generality \(i=0\) and we have a map
-\[\inte_2 \otimes \pi_j(S)/T_j \to \pi_{j}(S)/T_{j}\]
-defined via the isomorphism \(\inte_2 \otimes \pi_j(S)/T_j \cong \pi_{j}(S)/T_{j}\) of \ref{2504031247}. 
-\item If \(i=j=0\), we have the usual product on \(\inte_2\):
-\[\inte_2 \otimes \inte_2 \to \inte_2.\]
-\end{enumerate}
-\end{enumerate}
 \end{itemize}
 
 \subsection{To do}\label{2503221342}
@@ -1225,7 +1239,7 @@ Eventually:
 
 \item By the way, the argument at footnote 11 looks a little unsettling, because it seems like you could use it to show that \textit{all} homotopy groups are trivial eventually. And that's true! But when you take the colimit \(\pi_i(X)=\colim_n \pi_{i+n}X_n\), notice that it's over \(\pi_{i+n}\), not \(\pi_{i}\). So yes, the connectivity of \(X_n\) increases with \(n\), but the index of \(\pi\) also does. Basically, it's all fine. I'm putting this note here because I will invariably forget this and have a heart attack a day before this is due thinking everything is broken. 
 
-\item In literature, \(A^\wedge_p\) is the \(p\)-adic completion of \(A\). For the moment I'm going to write this as \(\text{}_pA\) because of some stupid notational decisions I made earlier.
+\item In literature, \(A^\wedge_p\) is the \(p\)-adic completion of \(A\). Sometimes I'll write this as \(\text{}_pA\) because of some stupid notational decisions I made earlier.
 
 \item The `abutment' of a spectral sequence apparently means the thing it converges to (i.e. if \(E_\infty\) computes the associated graded of some \(H^*\), the abutment of \(\{E\}\) is \(H^*\) (not its associated graded)). 
 \end{itemize}
