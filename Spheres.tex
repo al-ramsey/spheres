@@ -723,7 +723,7 @@ If \(X\) has finite type, then it has a \(p\)-completion unique up to equivalenc
 \item Remaining questions: \begin{enumerate}
 \item Why is there this universal property? 
 
-\item Does suspension commute with \(p\)-completion? 
+\item Does suspension commute with \(p\)-completion? I think so. The \(i\)th suspension of the canonical map \(\Sigma^i Y \to \Sigma^iY^\wedge_p\) descends to a map \(\pi_j(\Sigma^iY)\to \pi_j(\Sigma^iY^\wedge_p)\), but \(\pi_j(\Sigma^iY)\) is just \(\pi_{i+j}(Y)\) and \(\pi_{j}(\Sigma^i Y^\wedge_p)\) is \(\pi_{i+j}(Y^\wedge_p)\), so the map on homotopy groups is the one witnessing \(p\)-completion. 
 
 \item Why does this definition of the product on \(\text{}_2\pi_*^S\) agree with the one induced by the product on \(\pi_*^S\)?
 
@@ -748,11 +748,11 @@ giving maps \(Y \xrightarrow{\overline{\wedge_Z \circ f}\circ \wedge_Y} Z^\wedge
  X \arrow[r, "g"] \arrow[d, swap, "\wedge_X"]  & Y \arrow[r, "f"] \arrow[d, "\wedge_Y"] & Z \arrow[d, "\wedge_Z"] \\ 
  X^\wedge_p \arrow[r, swap, "\overline{\wedge_Y \circ g}"]  & Y^\wedge_p \arrow[r, "\overline{\wedge_Z \circ f}"'] & Z^\wedge_p 
  \end{tikzcd}\] 
-But that's what we'd have gotten if we took \(X \xrightarrow{fg}Z\) and made it into a map \(X \to Z^\wedge_p\) directly. So it seems like the composition product 
-\[[Y, \text{}_2Z]_0\otimes [X, \text{}_2Y]_0\to [X, \text{}_2Z]_0,\]
-induces the one 
-\[[Y, Z]_0\otimes [X, Y]_0\to [X, Z]_0,\]
-which is \textit{really weird}, because \([Y,Z]\) could easily be (and often is) bigger than \([Y, \text{}_2Z]\). But maybe this is just an artefact of me having restricted to degree 0? Does this argument still work when I consider general degrees? I find it really difficult to believe I could figure out the product on odd torsion parts of \(\pi_i^S\) from just the even parts, for example. 
+But that's what we'd have gotten if we took \(X \xrightarrow{fg}Z\) and made it into a map \(X \to Z^\wedge_p\) directly. So I guess what I've shown is that the diagram below commutes.
+\[\begin{tikzcd}
+\left[Y, Z\right]\otimes \left[X, Y\right] \arrow[r, ""] \arrow[d, swap, ""]  & \left[X,Z\right] \arrow[d, ""]  \\
+\left[Y, Z^\wedge_p\right] \otimes \left[X, Y^\wedge_p\right] \arrow[r, swap, ""]  & \left[X, Z^\wedge_p\right]
+\end{tikzcd}\]
 \end{enumerate}
 \end{itemize}
 
