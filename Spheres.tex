@@ -143,6 +143,14 @@
 
 \pagebreak
 
+Key:
+
+\textcolour{teal}{To do (likely straightforward)}
+
+\textcolour{violet}{To do (likely difficult)}
+
+\textcolour{purple}{Problems}
+
 \section{Introduction}
 
 \begin{itemize}
@@ -191,7 +199,7 @@ Axioms for a (reduced) cohomology theory \(h^*\):
 \item Stable homotopy groups are a homology theory.
 \end{itemize}
 
-\autocite{ass}, \autocite{suspension}, \autocite{hatcher}
+\autocite{ass}, \autocite{hatcher}
 
 \section{The Steenrod algebra}\label{2503221247}
 
@@ -202,10 +210,10 @@ The following is from \autocite{hatcher} 4L.
 \item \(Sq^i_X(f^*(\alpha))=f^*(Sq^i_Y(\alpha))\) for \(f : X \to Y\) (i.e. \(Sq^i\) is a natural transformation).
 \item \(Sq^i_X(\alpha + \beta)=Sq^i_X(\alpha)+Sq^i_X(\beta)\) (i.e. \(Sq_X^i\) respects the group operation for all \(X\)).
 \item \(Sq^i(\alpha \smile \beta)=\sum\limits_{0\leq j \leq i} (Sq^j(\alpha)\smile Sq^{i-j}(\beta))\) (the Cartan formula)
-\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the ``suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\)''. [see: \autocite{hatcher}, p219. N.B: I think this ``relative cross product'' theory is required -- you can argue that there is an isomorphism via MV, but this point says that it's this specific one. Maybe they're the same, but Hatcher doesn't say that anywhere and there could be many isomorphisms.]
+\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the \textcolour{violet}{``suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\)''. [see: \autocite{hatcher}, p219. N.B: I think this ``relative cross product'' theory is required -- you can argue that there is an isomorphism via MV, but this point says that it's this specific one. Maybe they're the same, but Hatcher doesn't say that anywhere and there could be many isomorphisms.]}
 \item \(Sq^i(\alpha)=\alpha^2\) if \(i=\deg(\alpha)\) and \(Sq^i(\alpha)=0\) if \(i> \deg(\alpha)\). 
 \item \(Sq^0=\id.\)
-\item \(Sq^1\) is the ``\(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\)''. 
+\item \(Sq^1\) is the \textcolour{violet}{``\(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\)''.}
 \end{enumerate}
 \item Define \(Sq:=Sq^0+Sq^1+\cdots\). Then \(Sq(\alpha\smile \beta)=Sq(\alpha)\smile Sq(\beta)\) (since \((Sq(\alpha\smile \beta))_n=\sum_iSq^i(\alpha)\smile Sq^{n-i}(\beta)=(Sq(\alpha)\smile Sq(\beta))_n\)). Thus, \(Sq\) is a ring homomorphism. 
 \item Adem relations:
@@ -227,8 +235,7 @@ Write \(Sq^I\) for the monomial \(Sq^{i_1}Sq^{i_2}\cdots Sq^{i_n}\). Then \(Sq^I
 
 Note the admissible monomials are exactly those to which no Adem relations can be applied. Thus, \(\A\) is generated as a \(\inte/2\inte\) module by admissible monomials. 
 
-\autocite{stable_homotopy}, \autocite{cobordism}, 
-\autocite{ass}, \autocite{spectra}, \autocite{hatcher}, \autocite{foundations}
+\autocite{hatcher}
 
 %\section{Spectra may not be your friends, but I can introduce you}
 \section{Spectra}
@@ -343,15 +350,15 @@ Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence 
 \end{tikzcd}\]
 \end{definition}
 
-[this induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]
+\textcolour{teal}{[this induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]}
 
 \begin{definition}
 A \textit{map} of CW spectra \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal spectrum. 
 \end{definition}
 
-![this also induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]
+\textcolour{teal}{![this also induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]}
 
-![check composition is well defined]
+\textcolour{teal}{![check composition is well defined]}
 
 [working definition of equivalence below:]
 
@@ -359,9 +366,11 @@ A \textit{map} of CW spectra \(f : X \to Y\) is an equivalence class of strict m
 Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) and \(g : Y \to X\) such that \(fg=\id_{Y}\) and \(gf=\id_X\).
 \end{definition}
 
+[maybe something on weak equivalence?]
+
 Note that a spectrum is equivalent to any of its cofinal subspectra.
 
-![A spectrum is always equivalent to the suspension of some other spectrum]
+\textcolour{teal}{![A spectrum is always equivalent to the suspension of some other spectrum]}
 
 \begin{definition}
 A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where \(X\times I\) is the spectrum with \((X\times I)_n=X_n\times_{\text{red}} I\).
@@ -373,17 +382,17 @@ Note that \(\Sigma(X_n\times_{\text{red}}I)=\Sigma X_n\times_{\text{red}}I\). Th
 For any CW spectra \(Z\), \([\Sigma^\infty S^t, Z]=\pi_t(Z)\). [they satisfy the same universal property]
 \end{remark}
 
-[\autocite{stable_homotopy} says on p171 that ``\([\Sigma X, Z]\) is obviously a group, because in \(\Sigma X\) we have a spare suspension coordinate out in front to manipulate. And for the same reason, \([\Sigma^2 X, Z]\) is an abelian group. But now we can give \([X,Y]\) the structure of an abelian group, because \([X,Y]\) is in 1-1 correspondence with \([\Sigma^2X, \Sigma^2 Y]\) and we pull back the group structure on that. So now our sets of morphisms \([X,Y]\) are abelian groups, and it's easy to see that composition is bilinear''. 
+\textcolour{teal}{[\autocite{stable_homotopy} says on p171 that ``\([\Sigma X, Z]\) is obviously a group, because in \(\Sigma X\) we have a spare suspension coordinate out in front to manipulate. And for the same reason, \([\Sigma^2 X, Z]\) is an abelian group. But now we can give \([X,Y]\) the structure of an abelian group, because \([X,Y]\) is in 1-1 correspondence with \([\Sigma^2X, \Sigma^2 Y]\) and we pull back the group structure on that. So now our sets of morphisms \([X,Y]\) are abelian groups, and it's easy to see that composition is bilinear''.}
 
-Various claims:
+\textcolour{teal}{Various claims:}
 \begin{itemize}
 
 %\item A spectrum is equivalent\footnote{Whatever that means.} to some suspension spectrum\footnote{Or probably just the suspension of a spectrum, see \ref{C}.}, so understanding \([X, Z]\) is the same as understanding \([\Sigma X, Z]\), which is the same as understanding \([\Sigma^2 X, Z]\). 
-\item The stuff about normal CW complexes and their groups of maps (i.e. \ref{2502200937}) translates to tell me the appropriate things about spectra and their groups of maps.
-\item After checking a lot of things, I can eventually conclude that \([X, Y]\) is an abelian group for spectra \(X, Y\).]
+\item \textcolour{teal}{The stuff about normal CW complexes and their groups of maps (i.e. \ref{2502200937}) translates to tell me the appropriate things about spectra and their groups of maps.}
+\item \textcolour{teal}{After checking a lot of things, I can eventually conclude that \([X, Y]\) is an abelian group for spectra \(X, Y\).]}
 \end{itemize}
 
-![The suspension map \([X,Y]\to[\Sigma X, \Sigma Y]\) is an isomorphism of groups (important later!)]
+\textcolour{violet}{![The suspension map \([X,Y]\to[\Sigma X, \Sigma Y]\) is an isomorphism of groups (important later!)]}
 
 ?[\ref{2502211419} and \ref{2502211420} are both true for CW spectra too]
 
@@ -406,15 +415,15 @@ Note that any subspectrum is cofinal in (and thus equivalent to) its closure. We
 
 Note that a quotient of connective spectra of finite type is again a connective spectrum of finite type. [This is obvious - the quotient has fewer cells in each dimension then the original space, it is not going to magically generate new ones.]
 
-[The rest of the section:
+\textcolour{violet}{[The rest of the section:}
 
 \begin{itemize}
-\item Fact: for spectra \(X, Y\) and a subspectrum \(A\subq X\) we have exact sequences\footnote{Check if I actually need the first one.}
-\[\cdots \to [\Sigma X, Y]\to [\Sigma A, Y]\to [X/A,Y]\to[X,Y]\to[A,Y]\]
-\[[Y,A]\to[Y,X]\to[Y,X/A]\to[Y,\Sigma A]\to[Y,\Sigma X]\to\cdots\]
+\item \textcolour{violet}{Fact: for spectra \(X, Y\) and a subspectrum \(A\subq X\) we have exact sequences\footnote{Check if I actually need the first one.}}
+\[\textcolour{violet}{\cdots \to [\Sigma X, Y]\to [\Sigma A, Y]\to [X/A,Y]\to[X,Y]\to[A,Y]}\]
+\[\textcolour{violet}{[Y,A]\to[Y,X]\to[Y,X/A]\to[Y,\Sigma A]\to[Y,\Sigma X]\to\cdots}\]
 \end{itemize}
 
-]
+\textcolour{violet}{]}
 
 \subsection{Eilenberg-MacLane spectra}
 
@@ -428,11 +437,11 @@ Recall that giving a map into a product is equivalent to giving a map into each 
 The map \(F : [X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\) is an isomorphism if \(X\) is a connective spectrum of finite type and \(n_i\to \infty\) as \(i\to\infty\). 
 \end{proposition}
 
-\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{spectra}, \autocite{foundations}, \autocite{hatcher5}
+\autocite{ass}, \autocite{hatcher5}
 
 \section{The Adams spectral sequence}
 
-\subsection{Spectral sequences}
+\subsection{Spectral sequences}\label{2504041910}
 
 [Maybe add some notes from \autocite{ass}]
 
@@ -446,7 +455,7 @@ We can take the homology of \((E, d)\):
 \[H^{p, q}(E^{*, *}, d)=\ker(d : E^{p, q}\to E^{p+s, q-s+1})/\im(d : E^{p-s, q+s-1}\to E^{p, q}).\]
 
 \begin{definition}
-A \textit{spectral sequence} (of \textit{cohomological type}\footnote{I'll have to rewrite this section because the Adams spectral sequence is not a cohomological or a homological spectral sequence I don't think - the grading is \(d_r : E^{s,t}\to E^{s+r,t+r-1}\).}) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, 1-r)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
+A \textit{spectral sequence} (of \textit{cohomological type}\footnote{\textcolour{violet}{I'll have to rewrite this section because the Adams spectral sequence is not a cohomological or a homological spectral sequence I don't think - the grading is \(d_r : E^{s,t}\to E^{s+r,t+r-1}\).}}) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, 1-r)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
 \end{definition}
 
 We will sometimes write \(d^{p, q}_r\) for the differential \(d_r : E^{p, q}\to E^{p+r,q-s+1}\). 
@@ -540,7 +549,7 @@ Let \(X\) be a connective CW spectrum of finite type.
  H^{i+n+1}(X_{n+1};G) \arrow[dr, "Sq^j"'] & & H^{i+j+n+1}(\Sigma X_n;G) \arrow[dl, "i^*"] \\ 
  & H^{i+j+n+1}(X_{n+1};G) &  
 \end{tikzcd}\] 
-which follows from the properties in Section  \ref{2503221247}. Is this an actual module action? Is the former one also a module action?]
+which follows from the properties in Section  \ref{2503221247}. \textcolour{violet}{Is this an actual module action? Is the former one also a module action?}]
 
 We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\) [since each \(H^n(X)\) is finitely generated, and that finite generating set would certainly also generate it as an \(\A\)-module (we could be more efficient, though)].
 
@@ -548,7 +557,7 @@ We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-modul
 
 Vague idea: we have \ref{2503231218}, which tells us that \([X, \bigvee_i \bb{K}(G,n_i)]\cong \prod_i[X, \bb{K}(G,n_i)]\). Now, \(X\) is connective, so \(H^*(X;G)\) has some smallest degree. Let's just pretend it starts from zero for the moment, and we can reindex or whatever later. Let's say each \(H^k(X;G)\) has \(i_k\) generators \(\alpha_{i_0+\cdots+i_{k-1}+1}, ...,\alpha_{i_0+\cdots+i_k}\)  , and write \(n_0=\cdots=n_{i_0}\), \(n_{i_0+1}=\cdots= n_{i_0+i_1}\), etc., \(n_{i_0+i_1+\cdots+i_{k-1}+1}=\cdots = n_{i_0+i_1+\cdots+i_k}\). So, the \(\alpha_{i_0+\cdots+i_{k-1}+j}\in H^k(X;G)\) determine maps \(X\to \bb{K}(G,n_k)\). Putting all these maps together, one in each coordinate, gives an element of \(\prod_i[X, \bb{K}(G,n_i)]\), which by the proposition corresponds to an element of \([X, \bigvee_i \bb{K}(G,n_i)]\).] 
 
-We can replace that map with an inclusion. [I sort of believe this - \ref{2503231306} and my comment at the end of Section \ref{2503231313} say we can do this for CW complexes, so I should check it for spectra. But it seems true (and I'm currently suffering from spectrum fatigue).]
+\textcolour{teal}{We can replace that map with an inclusion.} [I sort of believe this - \ref{2503231306} and my comment at the end of Section \ref{2503231313} say we can do this for CW complexes, so I should check it for spectra. But it seems true (and I'm currently suffering from spectrum fatigue).]
 
 [Set \(X_1=K_0/X\), and repeat the construction to get a diagram:
 \begin{equation}\label{2503301114}
@@ -577,7 +586,7 @@ I'm extremely confused by the supposed surjectivity - going back to the sketch o
 
 [Something something reduced cohomology theories for spectra and the wedge axiom?? Suppose \(K_0\) had finite type, which I'm not convinced it does. Then for some \(n\), \((K_0)_n=\left(\bigvee_i \bb{K}(G, n_i)\right)_n=\bigvee_i (\bb{K}(G, n_i))_n=\bigvee_i K(G, n+n_i)\), and \(H^i(K_0)=H^{i+n}(\bigvee_i K(G, n+n_i))=\prod_i H^{i+n}(K(G, n+n_i))\). Does that help?]
 
-\item Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]
+\item \textcolour{teal}{Fact: each \(H^*(K_s)\) is a free \(\A\)-module}, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]
 \end{itemize}
 
 [The work in Section \ref{2503291211} gives us long exact sequences
@@ -633,14 +642,14 @@ There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s
 
 
 
-\autocite{spectral_sequences}, \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{foundations}, \autocite{hatcher5}, \autocite{ass}, \autocite{primer}
+\autocite{spectral_sequences}, \autocite{hatcher5}
 
 \subsection{Multiplicative structure}
 
 \subsubsection{The Yoneda product}
 
 \begin{itemize}
-\item There is a multiplication, the \textit{Yoneda product}, on \(E_2 = \Ext\)(whatever)
+\item \textcolour{teal}{There is a multiplication, the \textit{Yoneda product}, on \(E_2 = \Ext\)(whatever)}
 \item More generally, \autocite{rognes2}: For any algebra \(A\) and \(A\)-modules \(L,M,N\), there is a natural Yoneda composition product
 \[\circ : \Ext_A^s(M,N)\otimes \Ext^u_A(L,M)\to \Ext_A^{s+u}(L,N)\]
 [doing what it should].
@@ -686,7 +695,7 @@ where \([X,Y]_n=[S^n\wedge X, Y]\) [which is the same as \([\Sigma^n X, Y]\) by 
 In particular, if \(X=Y=Z=\bb{S}\), we have a product \(\pi_v \bb{S}\otimes \pi_t \bb{S}\to \pi_{v+t}\bb{S}\), or, in other words, a product \(\pi_v^S\otimes \pi_t^S\to \pi_{v+t}^S\). 
 
 \begin{itemize}
-\item Lemma: this makes \(\pi_*^S\) into a graded commutative ring.
+\item \textcolour{violet}{Lemma: this makes \(\pi_*^S\) into a graded commutative ring.}
 
 \item There is a multiplication, also called the composition product, on \(\text{}_2\pi_*^S\) (i.e. \(\bigoplus_i \text{}_2\pi_*^S\)). It's inherited from the one on \(\pi_*^S\): we have a product
 \[\pi_i(S)^\wedge_2 \otimes \pi_j(S)^\wedge_2 \to \pi_{i+j}(S)^\wedge_2.\]
@@ -716,7 +725,7 @@ If \(X\) has finite type, then it has a \(p\)-completion unique up to equivalenc
 \end{theorem}
 
 \begin{itemize}
-\item \(p\)-completion has a universal property: whenever \(Y \xrightarrow{f} T\) is a map where \(Z\) is \(p\)-complete, there exists a unique (up to homotopy) factorisation \(Y\to \text{}_pY \xrightarrow{\overline f} T\) of \(f\). 
+\item \textcolour{violet}{\(p\)-completion has a universal property}: whenever \(Y \xrightarrow{f} T\) is a map where \(Z\) is \(p\)-complete, there exists a unique (up to homotopy) factorisation \(Y\to \text{}_pY \xrightarrow{\overline f} T\) of \(f\). 
 
 \item Given spectra \(X, Y, Z\), we have a pairing \(\circ : [Y, \text{}_2Z]_* \otimes [X,\text{}_2Y]_* \to [X, \text{}_2Z]\): given \(f \in [Y, \text{}_2Z], g \in [X, \text{}_2Y]\), we can `compose' to get \(\overline fg\in [X, \text{}_2Z]\). 
 
@@ -844,7 +853,7 @@ The pairing is associative and unital.
 
 %Conclusion: ?????????????????
 
-\autocite{ass}
+\autocite{ass}, \autocite{rognes2}, \autocite{spectra}
 
 \section{Calculating stable homotopy groups}
 
@@ -858,9 +867,9 @@ of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F
 
 [Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
 
-\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{hatcher5}.
+\autocite{ass}, \autocite{hatcher5}, \autocite{rognes2}
 
-\begin{figure}[H]
+\begin{figure}[H]\label{2504041920}
 \centering
 \includegraphics[width=0.4\textwidth]{ext3}
 \caption{Calculating the first 5 rows}
@@ -878,7 +887,7 @@ Now, \(0=d_r(h_0h_1)=d_r(h_0)h_1 + h_0d_r(h_1)=h_0d_r(h_1)\), so \(d_r(h_1)=0\).
 On the other hand, \(E^{2, 10}\) is generated by \(h_1h_3\), and \(d_2(h_1h_3)=d_2(h_1)h_3+h_1d_2(h_3)=0+0=0\) (the first factor is zero by the previous computation, and the second is an element of a trivial group). \done
 \end{ourproof}
 
-[Obviously justify the \(h\) notation and the claims above that the generators are what I say they are]
+\textcolour{teal}{[Obviously justify the \(h\) notation and the claims above that the generators are what I say they are]}
 
 \subsection{Resolving extensions}
 
@@ -910,7 +919,7 @@ All this is to say if I start multiplying higher things by \(h_0\), that \textit
 %If \(x \in \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\) is a permanent cycle in the Adams spectral sequence represented by \(\alpha \in \pi_*^S\), then \(\alpha^1_1x\) is a permanent cycle represented by \(2 \alpha\). 
 %\end{proposition}
 
-[Justify the below with sseq, not quite sure how to do this in a satisfying way though. See note in Section \ref{2503221342}]
+\textcolour{violet}{[Justify the below with sseq, not quite sure how to do this in a satisfying way though. See note in Section \ref{2503221342}]}
 
 \begin{theorem}
 \begin{align*}
@@ -932,14 +941,14 @@ All this is to say if I start multiplying higher things by \(h_0\), that \textit
 \begin{enumerate}
 \item The \(d_2\) differential at \(E^{1, 16}_2\) is nontrivial: \autocite{rognes2}, Thm 11.10.2:
 \begin{itemize}
-\item \(h_0\) detects\footnote{Make precise.} \(2 \in \text{}_2\pi^S_0\).
+\item \textcolour{teal}{\(h_0\) detects\footnote{Make precise.} \(2 \in \text{}_2\pi^S_0\).}
 \item \(h_3\) detects some \(\sigma \in \text{}_2\pi^S_7\).
-\item By multiplicativity [?] \(h_0h_3^2\) detects \(2 \sigma^2\). 
+\item \textcolour{teal}{By multiplicativity [?] \(h_0h_3^2\) detects \(2 \sigma^2\). }
 \item \(\text{}_2\pi_*^S\) is graded commutative.
 \item Thus, \(\sigma^2=-\sigma^2\), so \(2 \sigma^2=0\).
 \item Thus, \(h_0h_3^2=0\) in \(E_\infty\), so it is the boundary of a differential. The only possibility is \(d_2(h_4)=h_0h_3^2\). 
 \end{itemize}
-\item The \(d_3\) differential at \(E^{2, 17}_3\) is nontrivial: \autocite{rognes2}, Thm 11.10.7 (which he doesn't prove, so really it's \autocite{rognes2} Table 14.2 (10), which uses a differential \(d_2\) of \(E_2(C\sigma)\) which is on table 14.9 (4)(!)). 
+\item \textcolour{violet}{The \(d_3\) differential at \(E^{2, 17}_3\) is nontrivial: \autocite{rognes2}, Thm 11.10.7 (which he doesn't prove, so really it's \autocite{rognes2} Table 14.2 (10), which uses a differential \(d_2\) of \(E_2(C\sigma)\) which is on table 14.9 (4)(!)).} 
 \end{enumerate}
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{rognes2}.
@@ -968,7 +977,7 @@ and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain 
 %\[0 \leftarrow F_1^* \leftarrow F_0^* \leftarrow H^* \leftarrow 0.\]
 %We have \(H^n(F; G)=0\) for \(n>1\). Define \(\Ext(H;G):=H^1(F;G)\). 
 
-[these do not depend on the choice of free resolution of \(M\)]
+\textcolour{teal}{[these do not depend on the choice of free resolution of \(M\)]}
 
 A free resolution is \textit{minimal} if at each stage of its construction we choose the minimal number of free generators for \(F_i\) in each degree.
 
@@ -1061,7 +1070,7 @@ Let \((X, x_0), (Y, y_0)\) be pointed topological spaces, and consider their pro
 \end{definition}
 
 \begin{example}
-We have \(S^n \wedge S^m\cong S^{n+m}\). [is this obvious?]
+We have \(S^n \wedge S^m\cong S^{n+m}\). \textcolour{teal}{[is this obvious?]}
 \end{example}
 
 \begin{remark}
@@ -1188,13 +1197,59 @@ The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+s
 Now:
 
 \begin{itemize}
-\item Find out what the deal with reduced cohomology and being stable under suspension is.
+%\item Find out what the deal with reduced cohomology and being stable under suspension is. % It's just the fact that \wildetilde{H}_i(X) \cong \widetilde{H}_{i+1}(\Sigma X). More interesting is *which* isomorphism we're using here...
+\item Find out what the ``suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \bb{F}_2)\)'' is. 
+
+\item Find out what the \(\bb{F}_2\) Bockstein homomorphism is.
+
+\item Write down the induced maps on \(\pi_*\) and \(H^*\)/\(H_*\) from maps of spectra.
+
+\item Check composition of maps of spectra is well-defined.
+
+\item Prove that a spectrum is equivalent to the suspension of some other spectrum.
+
+\item Prove that \([X,Y]\) is an abelian group for \(X,Y\) spectra.
+
+\item Prove that the suspension map \([X,Y]\to [\Sigma X, \Sigma Y]\) is a group isomorphism. 
+
+\item Derive the exact sequence
+\[[Y,A]\to [Y,X]\to [Y, X/A]\to [Y, \Sigma A]\to [Y, \Sigma X].\]
+
+\item Rewrite Sections \ref{2504041910} and \ref{2503301333} and fix the grading.
+
+\item Show the action of \(\A\) on \(H^*(X)\) is actually a module action.
+
+\item Figure out the whole wedge/product of EM spectra nonsense and why \(K_0\) has finite type. 
+
+\item Figure out when and why maps can be replaced by inclusions.
+
+\item Figure out why applying \(H^*\) to the sequence \(k_0\to K_1 \to \cdots\) makes it exact.
+
+\item Show that the \(H*(K_s)\)'s are free \(\A\)-modules.
+
+\item Show that there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and that it's an isomorphism (Yoneda?). 
+
+\item Find out how much of this you should be proving.
+
+\item Explain the Yoneda product at all coherently, and compute some examples.
+
+\item Prove that \(\pi_*^S\) is a graded commutative ring.
+
+\item Find out where the universal property of \(p\)-completion comes from. 
+
+\item Find a way to translate the calculations in \ref{2504041920} into readable and coherent LaTeX'd calculations, and make some figures of pages of the spectral sequence (up to 14 I guess..) 
+
+\item Make the \(\alpha^i_j\) notation not appalling - link it to the usual \(h\) notation.
+
+\item Make the language of `detection' precise. 
+
+\item Prove that the \(d_3\) differential at \(E^{2,17}\) is nontrivial.
 \end{itemize}
 
 Eventually:
 
 \begin{itemize}
-\item Be consistent with either cell complex or CW complex (eventually)
+\item Be consistent with either cell complex or CW complex.
 
 \item Be consistent with \(\bb{F}_2\)  or \(\inte/2\inte\) (don't use \(\inte_2\), that's really bad).
 
@@ -1207,8 +1262,6 @@ Eventually:
 \item Stick to a convention on suspension/cone/homotopy numbering. I.e. Does a homotopy start at 0 or 1? Does a suspension go from -1 to 1 with the space in the middle at 0, or 0 to 1 with the space at \(1/2\)? Do cones go from 0 to 1, and if so, make sure when they include into suspensions they do so consistently. 
 
 \item I want to at some point compute \(h_0h_1h_3\) or something like that, just to show that sometimes a product can be zero even if it lands in a nonzero group (i.e. the stable groups aren't all cyclic). The trouble is by the time you get to \(\pi_8^S\) the free resolution is an awful mess. Maybe I can try and wrangle with the sseq program to get it to show me kernels and the like?
-
-\item Make the \(\alpha^i_j\) notation not appalling.
 
 \item Ease notation by not writing \(G\) in e.g. \(H^*(X;G)\). Say we're taking coefficients in \(\bb{F}_2\), but actually a lot of the time it doesn't matter so maybe note that.
 
@@ -1244,6 +1297,10 @@ Eventually:
 \item The `abutment' of a spectral sequence apparently means the thing it converges to (i.e. if \(E_\infty\) computes the associated graded of some \(H^*\), the abutment of \(\{E\}\) is \(H^*\) (not its associated graded)). 
 \end{itemize}
 
+Sources I've used: \autocite{cobordism}, 
+\autocite{ass}, \autocite{spectra}, \autocite{hatcher5}, \autocite{hatcher}, \autocite{rognes2}, \autocite{concise}, \autocite{spectral_sequences}
+
+Sources I probably won't use: \autocite{suspension}, \autocite{stable_homotopy}, \autocite{foundations}, \autocite{primer}, \autocite{mazelgee} (I think the construction I need is in Hatcher)
 
 \printbibliography
 
