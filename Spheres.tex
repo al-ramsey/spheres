@@ -736,6 +736,44 @@ If \(X\) has finite type, then it has a \(p\)-completion unique up to equivalenc
 
 \item Why does this definition of the product on \(\text{}_2\pi_*^S\) agree with the one induced by the product on \(\pi_*^S\)?
 
+Answer: Suppose \(i,j\geq 1\). We know that the map \(\pi_*(\wedge) : \pi_*(S) \to \pi_*(S^\wedge_2)\) is the 2-completion, so in particular \(\pi_i(S) \xsurj{\pi_*(\wedge)} \pi_i(S^\wedge_2)\) (and likewise for \(j\)). Let \(f : S^i \to S^\wedge_2\), \(g : S^j \to S^\wedge_2\). Then there are two ways of multiplying them in \(S^\wedge_2\):
+\begin{enumerate}
+\item The composition product in \(\pi_*(S^\wedge_2)\): \[\begin{tikzcd}
+S^{i+j} \arrow[r, "\Sigma^j f"]  & \Sigma^j S^\wedge_2 \arrow[r, "\overline g", dashrightarrow] & S^\wedge_2 \\ 
+ & S^j \arrow[u, "c"] \arrow[ur, "g"'] &  
+ \end{tikzcd}\] 
+\item Since completion is a surjection, there exist \(\widetilde f : S^i \to S\), \(\widetilde g : S^j \to S\) such that \(f = c\widetilde f\) and \(g = c \widetilde g\). Then, take the composition product in \(\pi_*(S)\), and complete it.
+\[S^{i+j}\xrightarrow{\Sigma^j \widetilde f} S^j \xrightarrow{\widetilde g}S \xrightarrow{c}S^\wedge_2.\]
+\end{enumerate}
+But these two ways actually coincide, because of the commutative diagram below.
+\[\begin{tikzcd}
+S^{i+j} \arrow[r, "\Sigma^j \widetilde f"] \arrow[dr, swap, "\Sigma^j f"]  & S^j \arrow[dr, "g"] \arrow[r, "\widetilde g"] \arrow[d, "c"] & S \arrow[d, "c"] \\ 
+ & \Sigma^j S^\wedge_2 \arrow[r, "\overline g"'] & S^\wedge_2 
+ \end{tikzcd}\] 
+
+Now, suppose \(i=0\) and \(j\geq 1\). Let \(f : S^0 \to S^\wedge_2\), \(g : S^j \to S^\wedge_2 \). There are two ways of multiplying them in \(S^\wedge_2\): \begin{enumerate}
+\item The composition product in \(\pi_*(S^\wedge_2)\):
+\[\begin{tikzcd}
+S^{j} \arrow[r, "\Sigma^j f"]  & \Sigma^j S^\wedge_2 \arrow[r, "\overline g", dashrightarrow] & S^\wedge_2 \\ 
+ & S^j \arrow[u, "c"] \arrow[ur, "g"'] &  
+ \end{tikzcd}\] 
+\item Let \(\widetilde g : S^j \to S\) be such that \(g=c\widetilde g\). We have maps 
+\[\begin{tikzcd}
+  & \pi_0(S)^\wedge_2 \arrow[d, "q", twoheadrightarrow]  \\
+\pi_0(S) \arrow[r, swap, "p", twoheadrightarrow]  & \pi_0(S)/2^r
+\end{tikzcd}\]
+where \(2^r\) is the highest power of 2 dividing \(\abs{\pi_j(S)}\)\footnote{...which implies \(\abs{\pi_j(S)^\wedge_2}=2^r\), by Sylow theory.}. Pick a lift \(\hat f\in \pi_0(S)\) of \(q(f)\), and form
+\[S^j \xrightarrow{\Sigma^j \hat f}S^j \xrightarrow{\widetilde g} S \xrightarrow{c}S^\wedge_2.\]
+\end{enumerate}
+As before, we have a commutative diagram
+\[\begin{tikzcd}
+S^{j} \arrow[r, "\Sigma^j \hat f"]  & S^j \arrow[dr, "g"] \arrow[r, "\widetilde g"] \arrow[d, "c"] & S \arrow[d, "c"] \\ 
+ & \Sigma^j S^\wedge_2 \arrow[r, "\overline g"'] & S^\wedge_2 
+ \end{tikzcd}\] 
+and \(f \equiv c\hat f \mod 2^r\), so \(f=c\hat f + 2^rw\). Now, \(f\cdot g=(c\hat f + 2^rw)\cdot g=(c\hat f)\cdot g + (2^rw)\cdot g=(c\hat f)\cdot g + 2^rw\cdot g=(c\hat f)\cdot g\). Thus, the multiplications agree.
+
+Finally, suppose \(f, g : S^0 \to S^\wedge_2\). We know that the completion map \(\pi_*(S)\to \pi_*(S^\wedge_2)\) is a ring homomorphism, so if we had two different products on \(\inte_2\) they must agree on \(\inte\). But this is impossible: suppose \(\star, \cdot\) are two products on \(\inte_2\), with \(f\star g \neq f \cdot g\). Then there is some \(k\) such that \(f \star g \not\equiv f \cdot g \mod k\). Pick integers \(n, m \) such that \(n\equiv f \mod k\) and \(m \equiv g \mod k\). Then, modulo \(k\), \(f\cdot g \equiv n\cdot m =n\star m \equiv f \star g\), contradicting distinctness. So the composition product can't differ from the usual one. 
+
 \item Does the product
 \[[Y, Z]_*\otimes [X, Y]_*\to [X, Z]_*\]
 induce the product
@@ -762,6 +800,7 @@ But that's what we'd have gotten if we took \(X \xrightarrow{fg}Z\) and made it 
 \left[Y, Z\right]\otimes \left[X, Y\right] \arrow[r, ""] \arrow[d, swap, ""]  & \left[X,Z\right] \arrow[d, ""]  \\
 \left[Y, Z^\wedge_p\right] \otimes \left[X, Y^\wedge_p\right] \arrow[r, swap, ""]  & \left[X, Z^\wedge_p\right]
 \end{tikzcd}\]
+In other words, completion is a ring homomorphism. 
 \end{enumerate}
 \end{itemize}
 
