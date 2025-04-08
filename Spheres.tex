@@ -310,15 +310,15 @@ If \(X\) is a finite (resp. finite type) CW complex, then \(\Sigma^\infty\) is a
 
 [From Hatcher: ``the inclusions \(\Sigma X_n \inj X_{n+1}\) induce inclusions \(C_*(X_n; G)\inj C_*(X_{n+1}; G)\) with a dimension shift to account for the suspension''. Below is my vague explanation of what I understand this to mean.
 
-\(C_i(X_n; G)\) is the free abelian group on maps \(\Delta^i \to X_n\). I claim \(\Sigma\Delta^i\cong \Delta^{i+1}\). If this is true, it gives a map
+\(C^\text{cell}_i(X_n; G)\) is the free abelian group on the \(i\)-cells of \(X_n\). We have an injection
 \begin{align*}
-C_i(X_n;G) &\to C_{i+1}(\Sigma X_n; G)\\
-f &\mapsto \Sigma f.
+C_i^\text{cell}(X_n;G) &\to C_{i+1}^\text{cell}(\Sigma X_n; G)\\
+e^i_\alpha &\mapsto \Sigma e^i_\alpha.
 \end{align*}
-This is an injection, by \ref{2502141442}. We also have an injection \(C_{i+1}(\Sigma X_n; G)\to C_{i+1}(X_{n+1}; G)\) induced by the structure map \(\sigma_n\), so we get an injection \(C_i(X_n;G)\inj C_{i+1}(X_{n+1};G)\), which indeed has a dimension shift.
+We also have an injection \(C^\text{cell}_{i+1}(\Sigma X_n; G)\to C^\text{cell}_{i+1}(X_{n+1}; G)\) induced by the structure map \(\sigma_n\), so we get an injection \(C^\text{cell}_i(X_n;G)\inj C^\text{cell}_{i+1}(X_{n+1};G)\), which indeed has a dimension shift.
 
 We then have that ``the union \(C_*(X ; G)\) of this increasing sequence of chain complexes is then a chain complex having one \(G\) summand for each cell of \(X\)''. I think that 
-\[C_n(X ; G)=\bigcup_{i\in \inte}C_{i+n}(X_i; G),\] 
+\[C_n(X ; G)=\bigcup_{i\in \inte}C^\text{cell}_{i+n}(X_i; G),\] 
 so that there's a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating suspensions of cells as equivalent to the cells themselves (since they include in), i.e. a \(G\) summand for every \(n\)-cell of \(X\), since that's how we defined them.
 
 %The way it's phrased, it seems to be that this is a morphism of chain complexes - i.e. these maps commute with the \(\del\)s. Why would they? %I don't think so?
@@ -351,17 +351,19 @@ Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence 
 \end{tikzcd}\]
 \end{definition}
 
-\textcolour{teal}{[this induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]}
+%\textcolour{teal}{[this induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]} % true, but more important that it does so for the actual maps 
+
+[Some intuition: it's enough for maps to be `defined eventually']
 
 \begin{definition}
-A \textit{map} of CW spectra \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal spectrum. 
+A \textit{map} of CW spectra \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a cofinal subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal subspectrum. 
 \end{definition}
 
-\textcolour{teal}{![this also induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]}
+Given two maps \(f : X \to Y\), \(g : Y \to Z\) represented by \(f' : X' \to Y\), \(g' : Y' \to Z\) respectively, we compose as follows: let \(X''\) be the subspectrum of \(X'\), where the cells of \(X''_n\) consist of the cells of \(X'_n\) mapped to \(Y'_n\) under \(f'_n\). Then, for any cell \(e^i_\alpha\) of \(X'_n\), \(f_n(e^i_\alpha)\) is contained in a finite union of cells\footnote{Since the image of a compact set is compact.} of \(Y_n\), whose \(k\)-fold suspension lies in \(Y'_{n+k}\) for large enough \(k\). Since \(f'\) is a strict map, \(\Sigma^kf'_n(e^i_\alpha)=f'_{n+k}\Sigma^ke^i_\alpha\), so \(\Sigma^ke^i_\alpha\) is a cell of \(X'_{n+k}\). Thus, \(X''\) is cofinal in \(X'\) and hence in \(X\). We define \(gf := [X'' \xrightarrow{f'|_{X''}}Y' \xrightarrow{g'}Z]\), which is well-defined since the intersection of cofinal subspectra is again a cofinal subspectrum. 
 
-\textcolour{teal}{![check composition is well defined]}
+Since any strict map \(f' : X' \to Y\) can be taken to be cellular, a map \(f : X \to Y\) induces a well-defined map \(C_*(X)\to C_*(Y)\) (by cofinality), and thus maps on homology and cohomology. 
 
-[working definition of equivalence below:]
+Further, any map \(\Sigma^\infty S^i \to X\) can be represented by a map \(S^{i+n}\to X_n\), which has compact image and thus by \ref{25004081110} is contained in a finite subcomplex of \(\overline X_n\). Given any map \(f : X \to Y\) represented by a strict map \(f' : X' \to Y\), the \(k\)th suspension of the cells of \(\overline X_n\) lie in \(X'_{n+k}\), and thus \(f\) induces a map \(\pi_*(X) \to \pi_*(Y)\). % well-defined because of the same compactness argument about homotopies S^{i+n} x I --> X
 
 \begin{definition}
 Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) and \(g : Y \to X\) such that \(fg=\id_{Y}\) and \(gf=\id_X\).
@@ -369,9 +371,7 @@ Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) a
 
 [maybe something on weak equivalence?]
 
-Note that a spectrum is equivalent to any of its cofinal subspectra.
-
-\textcolour{teal}{![A spectrum is always equivalent to the suspension of some other spectrum]}
+Note that a spectrum is equivalent to any of its cofinal subspectra. In particular, if \(X=\{X_n\}\) is a spectrum, then \(X'=\{\Sigma X_{n-1}\}\) is a cofinal subspectrum of \(X\) (where we take \(X_{-1}\) to be the basepoint of \(X_0\)). We define \(\Sigma^{-1}X:=\{X_{n-1}\}\), noting that \(\Sigma \Sigma^{-1}X=X'\simeq X\). Thus, a spectrum is always equivalent to the suspension of some other spectrum.
 
 \begin{definition}
 A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where \(X\times I\) is the spectrum with \((X\times I)_n=X_n\times_{\text{red}} I\).
@@ -679,7 +679,7 @@ or, in other words,
 \[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots.\]
 The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).]
 
-\begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]
+\begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]\label{2504081125}
 There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_{t-s}^S\) modulo torsion of odd order. \textcolour{violet}{[which is probably a lie but let's worry about that later]}
 \end{theorem}
 
@@ -1258,8 +1258,13 @@ Every space \(X\) has a CW approximation \(f : Z \to X\). %If \(X\) is path-conn
 
 \begin{itemize}
 \item In particular, \(\Omega K(G, n)\) has a CW approximation \(Z \to \Omega K(G, n)\), and since \(\Omega K(G,n)\) is a \(K(G,n-1)\), so is \(Z\). 
-\item Something along the lines of `compact \(\leftrightarrow\) finite number of cells'.
 \end{itemize}
+
+Any finite CW complex is compact.
+
+\begin{proposition}[{\autocite{hatcher}, A.1}]\label{25004081110}
+A compact subspace of a CW complex is contained in a finite subcomplex.
+\end{proposition}
 
 \section{Notes to self}\label{C}
 
@@ -1305,12 +1310,6 @@ The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+s
 Now:
 
 \begin{itemize}
-\item Write down the induced maps on \(\pi_*\) and \(H^*\)/\(H_*\) from maps of spectra.
-
-\item Check composition of maps of spectra is well-defined.
-
-\item Prove that a spectrum is equivalent to the suspension of some other spectrum.
-
 \item Prove that \([X,Y]\) is an abelian group for \(X,Y\) spectra.
 
 \item Prove that the suspension map \([X,Y]\to [\Sigma X, \Sigma Y]\) is a group isomorphism. 
@@ -1333,6 +1332,8 @@ Now:
 \item Show that there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and that it's an isomorphism (Yoneda?). 
 
 \item Find out how much of this you should be proving.
+
+\item Figure out how to state \ref{2504081125} without lying about \(2\)-completion.
 
 \item Explain the Yoneda product at all coherently, and compute some examples.
 
