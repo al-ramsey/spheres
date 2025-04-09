@@ -24,6 +24,7 @@
 \usepackage{mathrsfs}
 \usepackage{float}
 \usepackage{xcolor}
+\usepackage{spectralsequences}
 
 % knots stuff
 
@@ -76,6 +77,7 @@
 \def\id{\ensuremath\text{id}}
 \def\hopf{\ensuremath\mathcal{H}}
 \def\wildetilde{\ensuremath\widetilde}
+\def\wildetile{\ensuremath\widetilde}
 
 \DeclareMathOperator{\Arg}{Arg}
 \DeclareMathOperator{\can}{can}
@@ -211,7 +213,7 @@ The following is from \autocite{hatcher} 4L.
 \item \(Sq^i_X(f^*(\alpha))=f^*(Sq^i_Y(\alpha))\) for \(f : X \to Y\) (i.e. \(Sq^i\) is a natural transformation).
 \item \(Sq^i_X(\alpha + \beta)=Sq^i_X(\alpha)+Sq^i_X(\beta)\) (i.e. \(Sq_X^i\) respects the group operation for all \(X\)).
 \item \(Sq^i(\alpha \smile \beta)=\sum\limits_{0\leq j \leq i} (Sq^j(\alpha)\smile Sq^{i-j}(\beta))\) (the Cartan formula)
-\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\). [Something is a little strange here, I think maybe it doesn't matter which suspension isomorphism you pick, though it's not immediately clear why. It's just that the wikipedia page that \(\sigma\) is the connecting homomorphism of the long exact sequence in cohomology. \autocite{rognes2} just says it's the suspension isomorphism \(:\hspace{-0.75ex}|\)].
+\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\). [Something is a little strange here, I think maybe it doesn't matter which suspension isomorphism you pick, though it's not immediately clear why. It's just that the wikipedia page that \(\sigma\) is the connecting homomorphism of the long exact sequence in cohomology. \autocite{rognes2} just says it's the suspension isomorphism \(:\hspace{-0.75ex}|\). Something interesting: on p219 of \autocite{hatcher}, it says ``the suspension isomorphisms \(\widetilde H^n(X;R)\cong \widetilde H^{n+k}(\Sigma^kX;R)\) derivable by elementary exact sequence arguments can also be obtained via cross product with a generator of \(\wildetilde H^*(S^k; R)\)''. Does he mean the \textit{same} isomorphism, or just the fact that there is (at least) one?].
 \item \(Sq^i(\alpha)=\alpha^2\) if \(i=\deg(\alpha)\) and \(Sq^i(\alpha)=0\) if \(i> \deg(\alpha)\). 
 \item \(Sq^0=\id.\)
 \item \(Sq^1\) is the \(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\).\footnote{Check properties 4 and 7 are actually needed, because \autocite{rognes2} only takes 1-3 and 5-6, giving 4 as Prop 7.2.4 and 7 as as consequence of Prop 7.6.5. In particular, I don't think I actually ever use property 7.}
@@ -383,15 +385,7 @@ Note that \(\Sigma(X_n\times_{\text{red}}I)=\Sigma X_n\times_{\text{red}}I\). Th
 For any CW spectra \(Z\), \([\Sigma^\infty S^t, Z]=\pi_t(Z)\). [they satisfy the same universal property]
 \end{remark}
 
-\textcolour{teal}{[\autocite{stable_homotopy} says on p171 that ``\([\Sigma X, Z]\) is obviously a group, because in \(\Sigma X\) we have a spare suspension coordinate out in front to manipulate. And for the same reason, \([\Sigma^2 X, Z]\) is an abelian group. But now we can give \([X,Y]\) the structure of an abelian group, because \([X,Y]\) is in 1-1 correspondence with \([\Sigma^2X, \Sigma^2 Y]\) and we pull back the group structure on that. So now our sets of morphisms \([X,Y]\) are abelian groups, and it's easy to see that composition is bilinear''.}
-
-\textcolour{teal}{Various claims:}
-\begin{itemize}
-
-%\item A spectrum is equivalent\footnote{Whatever that means.} to some suspension spectrum\footnote{Or probably just the suspension of a spectrum, see \ref{C}.}, so understanding \([X, Z]\) is the same as understanding \([\Sigma X, Z]\), which is the same as understanding \([\Sigma^2 X, Z]\). 
-\item \textcolour{teal}{The stuff about normal CW complexes and their groups of maps (i.e. \ref{2502200937}) translates to tell me the appropriate things about spectra and their groups of maps.}
-\item \textcolour{teal}{After checking a lot of things, I can eventually conclude that \([X, Y]\) is an abelian group for spectra \(X, Y\).]}
-\end{itemize}
+For any CW spectra \(X,Y\), the set \([X,Y]\) can the structure of an abelian group, since \(X\) has be written as a double suspension \(\Sigma^2X'\), and each set \([\Sigma^2X'_n, Y_n]\) has the structure of an abelian group by \ref{2504091052}. 
 
 \textcolour{violet}{![The suspension map \([X,Y]\to[\Sigma X, \Sigma Y]\) is an isomorphism of groups (important later!)]}
 
@@ -976,6 +970,12 @@ of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F
 \caption{Calculating the first 5 rows}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\input{ext.tex}
+\caption{Look what I made!!!}
+\end{figure}
+
 \begin{lemma}
 There are no nontrivial differentials for \(t-s\leq 13\). 
 \end{lemma}
@@ -1053,6 +1053,24 @@ All this is to say if I start multiplying higher things by \(h_0\), that \textit
 \end{enumerate}
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{rognes2}.
+
+\begin{figure}[H]
+\centering
+\input{e2page.tex}
+\caption{The \(E_2\) page of the Adams spectral sequence for \(t-s\leq 15\), with the differentials shown in green.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\input{e3page.tex}
+\caption{The \(E_3\) page of the Adams spectral sequence for \(t-s\leq 15\), with the differentials shown in green.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\input{e4page.tex}
+\caption{The \(E_4\) page of the Adams spectral sequence for \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
+\end{figure}
 
 \appendix 
 
@@ -1133,8 +1151,8 @@ g[x,2t] &t\leq \frac{1}{2}.
 \end{align*}
 This is well defined, since both \(f\) and \(g\) are basepoint-preserving. %\(f[x,0]=f[x_0,0]=y_0=g[x_0,1]=g[x,1]\). Essentially, it's just because the maps are basepoint-preserving, and \([x,0]\) and \([x,1]\) are both just the basepoint.
 
-\begin{remark}
-This defines a group structure on \([\Sigma X, Z]\), and thus \([\Sigma^i X, Z]\) is a group for all \(i\geq 1\). For \(i\geq 2\), these can be shown to be abelian, via the Eckmann-Hilton argument.
+\begin{remark}\label{2504091052}
+This defines a group structure on \([\Sigma X, Z]\), and thus \([\Sigma^i X, Z]\) is a group for all \(i\geq 1\). For \(i\geq 2\), these can be shown to be abelian, via the Eckmann-Hilton argument. The suspension map \([\Sigma X, Y]\to [\Sigma^2X, \Sigma Y]\) is a homomorphism.\footnote{Probably follows from the result for \(\pi_*(Y)\) and induction on the cells of \(X\), but I'll check this}
 \end{remark}
 
 \begin{remark}\label{2502200937}
@@ -1310,8 +1328,6 @@ The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+s
 Now:
 
 \begin{itemize}
-\item Prove that \([X,Y]\) is an abelian group for \(X,Y\) spectra.
-
 \item Prove that the suspension map \([X,Y]\to [\Sigma X, \Sigma Y]\) is a group isomorphism. 
 
 \item Derive the exact sequence
@@ -1325,9 +1341,9 @@ Now:
 
 \item Figure out when and why maps can be replaced by inclusions.
 
-\item Figure out why applying \(H^*\) to the sequence \(k_0\to K_1 \to \cdots\) makes it exact.
+\item Figure out why applying \(H^*\) to the sequence \(K_0\to K_1 \to \cdots\) makes it exact.
 
-\item Show that the \(H*(K_s)\)'s are free \(\A\)-modules.
+\item Show that the \(H^*(K_s)\)'s are free \(\A\)-modules.
 
 \item Show that there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and that it's an isomorphism (Yoneda?). 
 
@@ -1341,7 +1357,7 @@ Now:
 
 \item Find out where the universal property of \(p\)-completion comes from. 
 
-\item Find a way to translate the calculations in \ref{2504041920} into readable and coherent LaTeX'd calculations, and make some figures of pages of the spectral sequence (up to 14 I guess..) 
+\item Find a way to translate the calculations in Figure \ref{2504041920} into readable and coherent LaTeX'd calculations.
 
 \item Make the \(\alpha^i_j\) notation not appalling - link it to the usual \(h\) notation.
 
