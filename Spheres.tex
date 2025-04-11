@@ -271,7 +271,7 @@ A \textit{spectrum} is a collection of pointed topological spaces \(\{X_n\}_{n\i
 Let \(X\) be a topological space. The \textit{suspension spectrum} of \(X\), denoted by \(\Sigma^\infty X\), has \(X_n=\Sigma^nX\) and \(\sigma_n=\id : \Sigma X_n \to X_{n+1}\).
 \end{example}
 
-We write \(\bb{S}:=\Sigma^\infty S^0\), and call \(\bb{S}\) the \textit{sphere spectrum}. 
+We write \(\bb{S}:=\Sigma^\infty S^0\), and call \(\bb{S}\) the \textit{sphere spectrum}. For \(i>0\), we write \(\bb{S}^i:=\Sigma^i \bb{S}=\Sigma^\infty S^i\).
 
 \begin{example}
 The \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\) and \(\sigma_n : \Sigma K(G,m+n)\to K(G,m+n+1)\) is the adjoint of the CW approximation \(K(G, m+n)\to \Omega K(G,m+n+1)\).
@@ -453,7 +453,7 @@ Suppose \(A\) is finite, and write \(\abs{A}=np^r\) for \(p\nvert n\). Then \(A\
 
 \begin{ourproof}
 Define a homomorphism \(A\otimes\inte_p\to A/T\) sending \(a\otimes z \mapsto [\hat za]\), where \(\hat z\in \inte\) is a lift of \(q(z)\), chosen such that \(0 < \hat z \leq p^{r}\), and \(q\) is the projection \(\inte_p \surj \inte/p^r\inte\). Suppose \(a\otimes z\mapsto 0\).  Then \(\hat za\in T\), so \(k\hat za=0\) for some \(k\) coprime to \(p\). Write \(z=\hat z + p^rz'\) for some \(z'\in\inte_p\). Then \(a\otimes z = a\otimes(\hat z + p^r z')=\hat za\otimes(1 + \frac{p^rz'}{\hat z})=k\hat z\otimes(\frac{1}{k}+\frac{p^rz'}{k\hat z})=0\), where the second  equality follows from the fact that \(\hat z\) was chosen such that the highest power of \(p\) dividing it was less than or equal to \(r\).%, and thus \(\hat za\otimes z=k\hat za\otimes \frac{1}{k}z=0\). On the other hand, \(z=\hat zz'\) for some \(z'\in \inte_p\), so \(a\otimes z = \hat z \otimes z'\). 
- Thus, \(a\otimes z = 0\), so the map is injective. The map is clearly also surjective, since \(a\otimes 1 \mapsto [a]\), so it is an isomorphism. \done
+\text{ }Thus, \(a\otimes z = 0\), so the map is injective. The map is clearly also surjective, since \(a\otimes 1 \mapsto [a]\), so it is an isomorphism. \done
 \end{ourproof}
 
 \begin{remark}
@@ -627,9 +627,9 @@ I'm extremely confused by the supposed surjectivity - going back to the sketch o
 \end{itemize}
 
 [The work in Section \ref{2503291211} gives us long exact sequences
-\[\cdots \to [\Sigma^\infty S^{t+1}, X_s] \to [\Sigma^\infty S^{t+1}, K_s] \to [\Sigma^\infty S^{t+1}, X_{s+1}]\to [\Sigma^{\infty}S^{t+1}, \Sigma X_s]\to [\Sigma^{\infty}S^{t+1}, \Sigma K_s] \to \cdots.\]
+\[\cdots \to [\bb{S}^{t+1}, X_s] \to [\bb{S}^{t+1}, K_s] \to [\bb{S}^{t+1}, X_{s+1}]\to [\bb{S}^{t+1}, \Sigma X_s]\to [\bb{S}^{t+1}, \Sigma K_s] \to \cdots.\]
 Using the isomorphism \([Y,Z]\cong [\Sigma Y, \Sigma Z]\), we get long exact sequences
-\[\cdots \to [\Sigma^\infty S^{t+1}, X_s] \to [\Sigma^\infty S^{t+1}, K_s] \to [\Sigma^\infty S^{t+1}, X_{s+1}]\to [\Sigma^{\infty}S^{t}, X_s]\to [\Sigma^{\infty}S^{t}, K_s] \to \cdots,\]
+\[\cdots \to [\Sigma^\infty S^{t+1}, X_s] \to [\bb{S}^{t+1}, K_s] \to [\bb{S}^{t+1}, X_{s+1}]\to [\bb{S}^{t}, X_s]\to [\bb{S}^{t}, K_s] \to \cdots,\]
 i.e.
 \[\cdots \to \pi_{t+1}X_s \to \pi_{t+1}K_s \to \pi_{t+1}X_{s+1}\to \pi_t X_s\to \pi_t K_s \to \cdots.\]
 These form a staircase diagram,
@@ -973,8 +973,9 @@ of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F
 \begin{figure}[H]
 \centering
 \input{ext.tex}
-\caption{Look what I made!!!}
+\caption[\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).]{\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).\protect\footnotemark}
 \end{figure}
+\footnotetext{By the way, \(f_0\) is the node on the right, i.e. the node at (18,4,2).}
 
 \begin{lemma}
 There are no nontrivial differentials for \(t-s\leq 13\). 
@@ -1039,9 +1040,9 @@ All this is to say if I start multiplying higher things by \(h_0\), that \textit
 
 [The point here is that all differentials interacting with \(E^{s,t}\) for \(t-s<14\) are trivial, and thus computing the stable homotopy groups is purely mechanical, because everything that appears on this part of the \(E_2\) page has to survive to \(E_\infty\). Thus, the `ambiguity' at \(t-s=14\) is just the fact that this is the first time you need to actually compute differentials.]
 
-\begin{enumerate}
-\item The \(d_2\) differentials at \(E_2^{2, 17},  E_2^{3, 18}, E_2^{4, 19}\) are all trivial: \(d_2(h_0^nh_4)=h_0^nd_2(h_4)=h_0^{n-1}(h_0h_3^2)=0\). 
-\item The \(d_2\) differential at \(E^{1, 16}_2\) is nontrivial: \autocite{rognes2}, Thm 11.10.2:
+The \(d_2\) differentials at \(E_2^{2, 17},  E_2^{3, 18}, E_2^{4, 19}\) are all trivial: \(d_2(h_0^nh_4)=h_0^nd_2(h_4)=h_0^{n-1}(h_0h_3^2)=0\). 
+
+The \(d_2\) differential at \(E^{1, 16}_2\) is nontrivial: \autocite{rognes2}, Thm 11.10.2:
 \begin{itemize}
 \item \(h_0\) detects\footnote{I.e. \(2\in \text{}_2\pi_0^S\) is a representative for \(h_0\).} \(2 \in \text{}_2\pi^S_0\).
 \item \(h_3\) detects some \(\sigma \in \text{}_2\pi^S_7\).
@@ -1050,19 +1051,24 @@ All this is to say if I start multiplying higher things by \(h_0\), that \textit
 \item Thus, \(\sigma^2=-\sigma^2\), so \(2 \sigma^2=0\).
 \item Thus, \(h_0h_3^2=0\) in \(E_\infty\), so it is the boundary of a differential. The only possibility is \(d_2(h_4)=h_0h_3^2\). 
 \end{itemize}
-\item The \(d_3\) differential at \(E^{2, 17}_3\) is nontrivial: \autocite{rognes2}, Thm 11.10.7 (which he doesn't prove, so really it's \autocite{rognes2} Table 14.2 (10): \begin{itemize}
-\item \textcolour{violet}{There is an exact sequence
-\[\pi_7(S) \xrightarrow{\sigma}\pi_{14}(S) \xrightarrow{i}\pi_{14}(C \sigma)\xrightarrow{j}\pi_6(S) \xrightarrow{\sigma}\pi_{13}(S).\]}
 
-[From Section \ref{2503291211}, if we have a cofibration
-\[A \inj X \to X\cup CA \to \Sigma A \inj \Sigma X \to \cdots,\]
-then we get an exact sequence
-\[\cdots \to [\Sigma X, Y] \to [\Sigma A, Y] \to [X/A, Y] \to [X,Y]\to[A, Y].\]
-Replacing \(Y\) by \(\bb{S}\) and \(A\) by \(\Sigma^\infty S^{13}\) gives an exact sequence
-\[\cdots \to [\Sigma X, \bb{S}]\to \pi_{14}(S) \to [X/A, \bb{S}] \to [X, \bb{S}] \to \pi_{13}(S),\]
-which vaguely resembles what we want. The game is now to figure out what the cofibration
-\[\Sigma^\infty S^{13} \inj X \to X\cup C(\Sigma^\infty S^{13}) \to \Sigma^\infty S^{14} \inj \Sigma X \to \cdots,\]
-is, i.e. what the spectrum \(X\) is.]
+\begin{figure}[H]
+\centering
+\input{e2page.tex}
+\caption{The \(E_2\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the differentials are shown in green.}
+\end{figure}
+
+The \(d_3\) differential at \(E^{2, 17}_3\) is nontrivial: \autocite{rognes2}, Thm 11.10.7 (which he doesn't prove, so really it's \autocite{rognes2} Table 14.2 (10): \begin{itemize}
+\item There is an exact sequence
+\[\pi_7(S) \xrightarrow{\sigma}\pi_{14}(S) \xrightarrow{i}\pi_{14}(C \sigma)\xrightarrow{j}\pi_6(S) \xrightarrow{\sigma}\pi_{13}(S).\]
+
+[Let \(\sigma\in \pi_7(S)\), so \(\sigma : \bb{S}^7 \to \bb{S}\). Replacing \(\sigma\) by an inclusion, we get a cofibration
+\[\bb{S}^7 \xinj{\sigma} \bb{S} \xrightarrow{i}C \sigma \xrightarrow{j}\bb{S}^8 \inj \bb{S}^1 \to\cdots,\]
+where \(C \sigma= \bb{S}\cup C \bb{S}^7\) (the mapping cone). By Section \ref{2503291211}, setting \(Y=\bb{S}^{14}\), we get an exact sequence
+\[\cdots \to [\bb{S}^{14}, \bb{S}^7] \to [\bb{S}^{14}, \bb{S}] \to [\bb{S}^{14}, C \sigma] \to [\bb{S}^{14},\bb{S}^{8}]\to[\bb{S}^{14}, \bb{S}^1]\to \cdots\]
+i.e.
+\[\cdots \to \pi_{7}(S) \to \pi_{14}(S) \to \pi_{14}(C \sigma) \to \pi_6(S) \to \pi_{13}(S) \to \cdots,\]
+which is what we want.]
 
 \item \text{[}Above, he seems to mean the honest \(\pi_*(S)\), as opposed to \(\text{}_2\pi_*(S)\). If \(\pi_{14}(C \sigma)\) is finite (which it had better be, if its 2-completion has order dividing 4), we can make the following argument: whenever we have an exact sequence 
 \[\cdots \to G_1 \xrightarrow{\phi} G_2 \xrightarrow{\psi} G_3 \to \cdots\]
@@ -1074,10 +1080,29 @@ Let \([g']\in \im \overline\phi\). Then \([g']=\overline\phi[g]=[\phi g]\), so \
 
 All this is to say, I'm going to assume from now on whenever he says \(\pi_*\)(whatever) he means \(\pi_*\text{(whatever)}^\wedge_2\).]
 
-\item \textcolour{violet}{In \(E_2(C \sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\), so \(\pi_{14}(C \sigma)\) (actually \(\pi_{14}(C \sigma)^\wedge_2\)) has order dividing four.} [What's \(C \sigma\), and what's that double bar notation?\footnote{See \autocite{rognes2} Def 9.3.6. and table 14.9 (4)(!)}]
+\item In \(E_2(C \sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\), so \(\pi_{14}(C \sigma)\) (actually \(\pi_{14}(C \sigma)^\wedge_2\)) has order dividing four. Table 14.9 (4)!: \begin{itemize}
+\item \textcolour{violet}{\(h_2 \cdot \overline{\overline{h_0^2h_3}}=4_8\).} [What's \(4_8\)???]
+\item \textcolour{violet}{\(4_8=i(f_0)\).} [As above!]
+\item \textcolour{violet}{\(d_2(f_0)=h_0^2e_0\).}
+\item \textcolour{violet}{\(i(h_0^2e_0)=6_6\).}
+\item \textcolour{violet}{\(6_6\neq 0\).}
+\item \textcolour{violet}{Thus(!!) \(d_2(\overline{\overline{h_0^2h_3}})=5_4\).}
+\item \textcolour{violet}{\(5_4=i(h_0d_0)\).}
+\item \textcolour{violet}{``This intervenes before the image of \(d_3(h_0h_4)=h_0d_0\)''. }
+\item I can do this!!!!
+\end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\input{ext_csigma.tex}
+\caption{The \(E_2\) page of the Adams spectral sequence for \(C \sigma\), in the range \(t-s\leq 15\).}
+\end{figure}
+
+\begin{itemize}
 \item \(\pi_6(S)=\inte/2\inte \ang{\nu^2}\) (actually \(\pi_6(S)^\wedge_2=\inte/2\inte \ang{\nu^2}\)). [Assuming \(\nu\) is the thing represented by \(h_2^2\)]
 \item \(\nu^2 \sigma=0\). [It lands in the 2-torsion of \(\pi_{13}(S)\), which is zero.]
-\item The image of \(i\) has order dividing two. [Exactness - \(\sigma\) is the zero map, so \(j\) is surjective, so \(\pi_6(S)^\wedge_2\cong \pi_{14}(C \sigma)^\wedge_2/\ker j=\pi_{14}(C \sigma)^\wedge_2/\im i\). We know \(\pi_{14}(C \sigma)^\wedge_2\) has order dividing 4 and \(\pi_6(S)^\wedge_2\) has order 2 so \(\im i\) has order dividing 2.]
+\item The image of \(i\) has order dividing two. [Exactness: \(\sigma\) is the zero map, so \(j\) is surjective, so \(\pi_6(S)^\wedge_2\cong \pi_{14}(C \sigma)^\wedge_2/\ker j=\pi_{14}(C \sigma)^\wedge_2/\im i\). We know \(\pi_{14}(C \sigma)^\wedge_2\) has order dividing 4 and \(\pi_6(S)^\wedge_2\) has order 2 so \(\im i\) has order dividing 2.]
 \item \(\pi_7(S)=\inte/16\inte \ang{\sigma}\) (actually \(\pi_7(S)^\wedge_2=\inte/16\inte \ang{\sigma}\); he can't mean the honest group at this point, because apparently \(\pi_7(S)\cong \inte/240\inte\cong \inte/16\inte \oplus \inte/15\inte\)). [All assuming \(h_3\) detects \(\sigma\).]
 \item \(2 \sigma^2=0\) by graded commutativity.
 \item \(\pi_{14}(S)\) (actually \(\pi_{14}(S)^\wedge_2\)) has order dividing four. [First isomorphism theorem.]
@@ -1085,27 +1110,20 @@ All this is to say, I'm going to assume from now on whenever he says \(\pi_*\)(w
 %\item , which uses a differential \(d_2\) of \(E_2(C\sigma)\) which is on table 14.9 (4)(!)).}
 \end{itemize}
 
-\item The \(d_3\) differential at \(E_3^{3, 18}\) is nontrivial: \(d_3(h_0^2h_4)=h_0d_3(h_0h_4)=h_0(h_0 d_0)\neq 0\), where \(d_0\) is the generator at \(E_3^{4, 18}\).  
-\end{enumerate}
+The \(d_3\) differential at \(E_3^{3, 18}\) is nontrivial: \(d_3(h_0^2h_4)=h_0d_3(h_0h_4)=h_0(h_0 d_0)\neq 0\), where \(d_0\) is the generator at \(E_3^{4, 18}\).  
 
 \autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{rognes2}.
 
 \begin{figure}[H]
 \centering
-\input{e2page.tex}
-\caption{The \(E_2\) page of the Adams spectral sequence for \(t-s\leq 15\), with the differentials shown in green.}
-\end{figure}
-
-\begin{figure}[H]
-\centering
 \input{e3page.tex}
-\caption{The \(E_3\) page of the Adams spectral sequence for \(t-s\leq 15\), with the differentials shown in green.}
+\caption{The \(E_3\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the differentials are shown in green.}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \input{e4page.tex}
-\caption{The \(E_4\) page of the Adams spectral sequence for \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
+\caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
 \end{figure}
 
 \appendix 
@@ -1422,6 +1440,10 @@ Eventually:
 \item Have any sort of consistency in using or not using brackets (e.g. \(\pi_t X_s\) v.s. \(\pi_t(X_s)\)). 
 
 \item When I say `spectrum' at any point after defining CW spectra I mean `CW spectrum'. And I basically always mean `connective CW spectrum of finite type' too. 
+
+\item Make clear in the spectral sequence diagrams which towers terminate and which don't (e.g. the ones at \(t-s=0\) obviously don't but unfortunately the spectral sequence package can't draw the entire infinite chain).
+
+\item Connect \(1\) and \(h_1\) (if possible without messing up the labels). 
 
 \end{itemize}
 
