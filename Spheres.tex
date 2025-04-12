@@ -1087,22 +1087,45 @@ where \(T_i\) is the torsion in \(G_i\) coprime to some fixed \(p\). It's well d
 Let \([g']\in \im \overline\phi\). Then \([g']=\overline\phi[g]=[\phi g]\), so \(\overline\psi[g']=[\psi\phi g]=[0]\). Thus, \(\im\overline \phi \subq \overline\psi\). On the other hand, if \([\psi g']=[0]\) then \(\psi g' = t\in T_2\). We then have \(\psi(o(t)g')=o(t)\psi(g')=0\), so \(o(t)g'\in \ker\psi=\im\phi\). Write \(\phi(g)=o(t)g'\), so \([\phi g]=[o(t)g']\in G_2/T_2\). Since multiplication by \(o(t)\) is an isomorphism in \(G_2/T_2\), \([g']=\left[\phi \left(\frac{g}{o(t)}\right)\right]=\overline\phi \left[\frac{g}{o(t)}\right]\), so \([g']\in\im\overline\phi\). Thus, \(\im\overline\phi=\ker\overline\psi\). 
 
 All this is to say, I'm going to assume from now on whenever he says \(\pi_*\)(whatever) he means \(\pi_*\text{(whatever)}^\wedge_2\).]
+\end{itemize}
 
+Found something useful!! Not sure where to put it though.
+
+\begin{theorem}[{\autocite{ass}, Cor 4.17}]
+Let \(f : Y \to Z\) be a map of connective spectra of finite type. Then there is a map
+\[f_* : \{E_r(Y), d_r\}_r \to \{E_r(Z), d_r\}_r\]
+of Adams spectral sequences, given at the \(E_2\)-level by the homomorphism
+\[(f^*)^* : \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2) \to \Ext^{s,t}_{\A}(H^*(Z), \bb{F}_2)\]
+induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), with abutment the homomorphism 
+\[f_* : \pi_*(Y) \to \pi_*(Z).\]
+\end{theorem}
+
+\begin{itemize}
 \item In \(E_2(C \sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\), so \(\pi_{14}(C \sigma)\) (actually \(\pi_{14}(C \sigma)^\wedge_2\)) has order dividing four. Table 14.9 (4)!: \begin{itemize}
-\item \textcolour{violet}{\(h_2 \cdot \overline{\overline{h_0^2h_3}}=i(f_0)\).} [After extended research (and a hint from \autocite{rognes2} Ex 11.6.4) I have deduced that \(n_m\) is just notation for the \(m\)th generator (however that's counted) in row \(n\). So I will be ignoring it.]
+\item \textcolour{violet}{\(h_2 \cdot \overline{\overline{h_0^2h_3}}=i(f_0)\).} [After extended research (and a hint from \autocite{rognes2} Ex 11.6.4) I have deduced that \(n_m\) is just notation for the \(m\)th generator (however that's counted) in row \(n\). So I will be ignoring it.
+
+Note: it would be lovely if \(i\) as a map \(E_2(S) \to E_2(C \sigma)\) was a ring homomorphism, or an algebra morphism, or whatever.]
+
 \item \(d_2(f_0)=h_0^2e_0\).
 \item \textcolour{violet}{\(i(h_0^2e_0)\neq 0\).}
-\item \textcolour{violet}{Thus(!!) \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\).} [If we accept the claims that \(h_2\overline{\overline{h_0^2h_3}}=i(f_0)\) and \(i(h_0^2e_0)\neq 0\), and further suppose that \(i\) and \(d_2\) commute, we have \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
+\item Thus(!!) \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\). [If we accept the claims that \(h_2\overline{\overline{h_0^2h_3}}=i(f_0)\) and \(i(h_0^2e_0)\neq 0\), and further suppose that \(i\) and \(d_2\) commute [which they do, because \(i\) is a chain map and \(d_2\) is a differential], we have \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
 d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\).]
 \item \textcolour{violet}{``This intervenes before the image of \(d_3(h_0h_4)=h_0d_0\)''. }
 \item Questions: \begin{enumerate}
 \item What's that double bar notation?
-\item \(i : \bb{S} \to C \sigma\). Why does it induce a map on the \(E_2\) pages? Does any map \(X\to Y\) induce a map \(\Ext_{\A}^{s,t}(H^*(X), \bb{F}_2)\to \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2)\)? Actually, we'd need it to at least induce a map on the \(E_3\) pages too, since we take a \(d_2\) differential below...
+%\item \(i : \bb{S} \to C \sigma\). Why does it induce a map on the \(E_2\) pages? Does any map \(X\to Y\) induce a map \(\Ext_{\A}^{s,t}(H^*(X), \bb{F}_2)\to \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2)\)? Actually, we'd need it to at least induce a map on the \(E_3\) pages too, since we take a \(d_2\) differential below...
+
+%Possible lead: on p124 of \autocite{ass}, it says ``Associated to the [cofibre] sequence \(S \to S/2 \to \Sigma S=S^1\), we have an extension \(0 \to \Sigma \bb{F}_2 \to H^*(S/2)\to \bb{F}_2 \to 0\) and a long exact sequence of \(\Ext\)-groups \(\cdots \to \Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}(H^*(S/2), \bb{F}_2)\to \Ext^{s, t-1}_{\A}(\bb{F}_2, \bb{F}_2)\xrightarrow{\delta}\Ext^{s+1,t}_{\A}(\bb{F}_2, \bb{F}_2)\to \cdots\)''. So: cofibration sequences do seem to give maps on Ext, though it's never said why. 
+
+%Also, as long as the map on Ext commutes with \(d_2\) (which is what we need anyway!), it'll give a map on \(E_3\). 
+
 \item Why is \(h_2\) suddenly in \(E_2(C \sigma)\)? Is it \(i(h_2)\)? Why is that nonzero? [Vague idea: we have this exact sequence
 \[\pi_{n-7}(S) \xrightarrow{\sigma}\pi_n(S) \xrightarrow{i} \pi_n(C \sigma) \xrightarrow{j}\pi_{n-8}(S),\]
 but for \(n<7\) we have \(\pi_{n-7}(S)=[\bb{S}, \bb{S}^{7-n}]\). Any map \(\bb{S}\to \bb{S}^{7-n}\) is given by a map \(S^m \to S^{7-n+m}\), which will be homotopy equivalent to a constant map. In other words, we have an exact sequence
 \[0 \to \pi_n(S) \xrightarrow{i}\pi_n(C \sigma) \to 0,\]
-or, in other words, \(i\) is an isomorphism in this range. As a happy coincidence, for \(t-s<7\) there are no differentials, which is why the \(E_2\) pages for \(S\) and \(C \sigma\) look identical in this range. It's also why \(h_2\) shows up, though I still think it should be \(i(h_2)\).]
+or, in other words, \(i\) is an isomorphism in this range. As a happy coincidence, for \(t-s<7\) there are no differentials, which is why the \(E_2\) pages for \(S\) and \(C \sigma\) look identical in this range. It's also why \(h_2\) shows up, though I still think it should be \(i(h_2)\).
+
+Obviously this is a bit sketchy, I'm using some sort of ``\(i\) and the differentials play nicely'' assumption.]
 \end{enumerate}
 \end{itemize}
 \end{itemize}
@@ -1110,7 +1133,7 @@ or, in other words, \(i\) is an isomorphism in this range. As a happy coincidenc
 \begin{figure}[H]
 \centering
 \input{ext_csigma.tex}
-\caption{The \(E_2\) page of the Adams spectral sequence for \(C \sigma\), in the range \(t-s\leq 15\).}
+\caption{The \(E_2\) page of the Adams spectral sequence for \(C \sigma\), in the range \(t-s\leq 18\).}
 \end{figure}
 
 \begin{itemize}
@@ -1485,6 +1508,8 @@ Eventually:
 \item In literature, \(A^\wedge_p\) is the \(p\)-adic completion of \(A\). Sometimes I'll write this as \(\text{}_pA\) because of some stupid notational decisions I made earlier.
 
 \item The `abutment' of a spectral sequence apparently means the thing it converges to (i.e. if \(E_\infty\) computes the associated graded of some \(H^*\), the abutment of \(\{E\}\) is \(H^*\) (not its associated graded)). 
+
+\item \autocite{rognes2} has some \(n_m\) notation where \(n_m\) is supposed to be the \(m\)th generator in row \(n\). This is a bit arbitrary when there are two generators in the same row and column; I don't know how he counts them, but he's using the \verb|ext| program, whereas I'm using \href{https://spectralsequences.github.io/sseq/}{sseq}. Unless there's some Canonical Ordering, there's no reason why these different programs written by different people would use the same convention. In particular, even though \autocite{rognes2} says \(\overline{\overline{h_0^2h_3}}=3_4\), I'm pretty sure it is the one on the right (i.e. the one I would label \(3_5\)). 
 \end{itemize}
 
 Sources I've used: \autocite{cobordism}, 
