@@ -913,7 +913,7 @@ Let \(X,Y,Z\) be spectra, with \(Y, Z\) connective and of finite type. There is 
 \[E^{*,*}_r(Y,Z)\otimes E^{*,*}_r(X,Y)\to E^{*,*}_r(X,Z)\]
 which agrees for \(r=2\) with the Yoneda pairing
 \[\Ext^{*,*}_{\A}(H^*(Z), H^*(Y))\otimes \Ext_{\A}^{*,*}(H^*(Y), H^*(X))\to \Ext_{\A}^{*,*}(H^*(Z), H^*(X))\]
-and which converges%\footnote{What does that mean? The spectral sequence itself only converges to a filtration of \(\text{}_{2}\pi_*^S\), so is this saying that the composition product (graded commutative) on \(\pi_*^S\) induces (descends to? lifts to?) a product on \(\text{}_2\pi_*^S\), which itself descends to a product on \(E^{s,t}_\infty=F^{s,t}/F^{s+1,t+1}\)? Even if the first part works, why would the product land in the correct subgroup?} % removing the footnote for the moment because while it's a valid point, the whole `it lands in the correct subgroup' business is part of the theorem and also is explained in the source.
+and which converges %\footnote{What does that mean? The spectral sequence itself only converges to a filtration of \(\text{}_{2}\pi_*^S\), so is this saying that the composition product (graded commutative) on \(\pi_*^S\) induces (descends to? lifts to?) a product on \(\text{}_2\pi_*^S\), which itself descends to a product on \(E^{s,t}_\infty=F^{s,t}/F^{s+1,t+1}\)? Even if the first part works, why would the product land in the correct subgroup?} % removing the footnote for the moment because while it's a valid point, the whole `it lands in the correct subgroup' business is part of the theorem and also is explained in the source.
 to the composition pairing
 \[[Y, \text{}_2Z]_*\otimes [X,\text{}_2Y]_* \to [X, \text{}_2Z]_*.\]
 The pairing is associative and unital.
@@ -1052,13 +1052,21 @@ The \(d_2\) differential at \(E^{1, 16}_2\) is nontrivial: \autocite{rognes2}, T
 \item Thus, \(h_0h_3^2=0\) in \(E_\infty\), so it is the boundary of a differential. The only possibility is \(d_2(h_4)=h_0h_3^2\). 
 \end{itemize}
 
+Something I need later: \(d_2(f_0)\) is nontrivial:
+\begin{itemize}
+\item \(d_2(i)\) is nontrivial, because \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies \(d_2(i)\neq 0\).
+\item \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\).  
+\item A similar argument shows \(d_2(k), d_2(l)\neq0\), and \(d_2(h_0l)\neq 0\).
+\item \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).
+\end{itemize}
+
 \begin{figure}[H]
 \centering
 \input{e2page.tex}
 \caption{The \(E_2\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the differentials are shown in green.}
 \end{figure}
 
-The \(d_3\) differential at \(E^{2, 17}_3\) is nontrivial: \autocite{rognes2}, Thm 11.10.7 (which he doesn't prove, so really it's \autocite{rognes2} Table 14.2 (10): \begin{itemize}
+The \(d_3\) differential at \(E^{2, 17}_3\) is nontrivial: \autocite{rognes2}, Thm 11.10.7 (which he doesn't prove, so really it's \autocite{rognes2} Table 14.2 (10)): \begin{itemize}
 \item There is an exact sequence
 \[\pi_7(S) \xrightarrow{\sigma}\pi_{14}(S) \xrightarrow{i}\pi_{14}(C \sigma)\xrightarrow{j}\pi_6(S) \xrightarrow{\sigma}\pi_{13}(S).\]
 
@@ -1081,15 +1089,21 @@ Let \([g']\in \im \overline\phi\). Then \([g']=\overline\phi[g]=[\phi g]\), so \
 All this is to say, I'm going to assume from now on whenever he says \(\pi_*\)(whatever) he means \(\pi_*\text{(whatever)}^\wedge_2\).]
 
 \item In \(E_2(C \sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\), so \(\pi_{14}(C \sigma)\) (actually \(\pi_{14}(C \sigma)^\wedge_2\)) has order dividing four. Table 14.9 (4)!: \begin{itemize}
-\item \textcolour{violet}{\(h_2 \cdot \overline{\overline{h_0^2h_3}}=4_8\).} [What's \(4_8\)???]
-\item \textcolour{violet}{\(4_8=i(f_0)\).} [As above!]
-\item \textcolour{violet}{\(d_2(f_0)=h_0^2e_0\).}
-\item \textcolour{violet}{\(i(h_0^2e_0)=6_6\).}
-\item \textcolour{violet}{\(6_6\neq 0\).}
-\item \textcolour{violet}{Thus(!!) \(d_2(\overline{\overline{h_0^2h_3}})=5_4\).}
-\item \textcolour{violet}{\(5_4=i(h_0d_0)\).}
+\item \textcolour{violet}{\(h_2 \cdot \overline{\overline{h_0^2h_3}}=i(f_0)\).} [After extended research (and a hint from \autocite{rognes2} Ex 11.6.4) I have deduced that \(n_m\) is just notation for the \(m\)th generator (however that's counted) in row \(n\). So I will be ignoring it.]
+\item \(d_2(f_0)=h_0^2e_0\).
+\item \textcolour{violet}{\(i(h_0^2e_0)\neq 0\).}
+\item \textcolour{violet}{Thus(!!) \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\).} [If we accept the claims that \(h_2\overline{\overline{h_0^2h_3}}=i(f_0)\) and \(i(h_0^2e_0)\neq 0\), and further suppose that \(i\) and \(d_2\) commute, we have \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
+d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\).]
 \item \textcolour{violet}{``This intervenes before the image of \(d_3(h_0h_4)=h_0d_0\)''. }
-\item I can do this!!!!
+\item Questions: \begin{enumerate}
+\item What's that double bar notation?
+\item \(i : \bb{S} \to C \sigma\). Why does it induce a map on the \(E_2\) pages? Does any map \(X\to Y\) induce a map \(\Ext_{\A}^{s,t}(H^*(X), \bb{F}_2)\to \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2)\)? Actually, we'd need it to at least induce a map on the \(E_3\) pages too, since we take a \(d_2\) differential below...
+\item Why is \(h_2\) suddenly in \(E_2(C \sigma)\)? Is it \(i(h_2)\)? Why is that nonzero? [Vague idea: we have this exact sequence
+\[\pi_{n-7}(S) \xrightarrow{\sigma}\pi_n(S) \xrightarrow{i} \pi_n(C \sigma) \xrightarrow{j}\pi_{n-8}(S),\]
+but for \(n<7\) we have \(\pi_{n-7}(S)=[\bb{S}, \bb{S}^{7-n}]\). Any map \(\bb{S}\to \bb{S}^{7-n}\) is given by a map \(S^m \to S^{7-n+m}\), which will be homotopy equivalent to a constant map. In other words, we have an exact sequence
+\[0 \to \pi_n(S) \xrightarrow{i}\pi_n(C \sigma) \to 0,\]
+or, in other words, \(i\) is an isomorphism in this range. As a happy coincidence, for \(t-s<7\) there are no differentials, which is why the \(E_2\) pages for \(S\) and \(C \sigma\) look identical in this range. It's also why \(h_2\) shows up, though I still think it should be \(i(h_2)\).]
+\end{enumerate}
 \end{itemize}
 \end{itemize}
 
