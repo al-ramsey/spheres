@@ -970,7 +970,7 @@ of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F
 \caption{Calculating the first 5 rows}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[H]\label{1304251243}
 \centering
 \input{ext.tex}
 \caption[\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).]{\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).\protect\footnotemark}
@@ -1104,18 +1104,33 @@ induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), with abutm
 \item In \(E_2(C \sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\), so \(\pi_{14}(C \sigma)\) (actually \(\pi_{14}(C \sigma)^\wedge_2\)) has order dividing four. Table 14.9 (4)!: \begin{itemize}
 \item \textcolour{violet}{\(h_2 \cdot \overline{\overline{h_0^2h_3}}=i(f_0)\).} [After extended research (and a hint from \autocite{rognes2} Ex 11.6.4) I have deduced that \(n_m\) is just notation for the \(m\)th generator (however that's counted) in row \(n\). So I will be ignoring it.
 
-Note: it would be lovely if \(i\) as a map \(E_2(S) \to E_2(C \sigma)\) was a ring homomorphism, or an algebra morphism, or whatever.]
+Note: it would be lovely if \(i\) as a map \(E_2(S) \to E_2(C \sigma)\) was a ring homomorphism, or an algebra morphism, or whatever.
+
+Possible lead: on p124 of \autocite{ass}, it says ``Associated to the [cofibre] sequence \(S \to S/2 \to \Sigma S=S^1\), we have an extension \(0 \to \Sigma \bb{F}_2 \to H^*(S/2)\to \bb{F}_2 \to 0\) and a long exact sequence of \(\Ext\)-groups \(\cdots \to \Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}(H^*(S/2), \bb{F}_2)\to \Ext^{s, t-1}_{\A}(\bb{F}_2, \bb{F}_2)\xrightarrow{\delta}\Ext^{s+1,t}_{\A}(\bb{F}_2, \bb{F}_2)\to \cdots\) where the connecting homomorphism is given by the Yoneda product with \(h_0\in \Ext^{1,1}(\bb{F}_2,\bb{F}_2)\)''. A long exact sequence on \(\Ext\) groups would be really useful to me! Because then at least showing \(i(f_0)\neq 0\) would be the same as showing \(f_0\) is not in the image of some boundary map...
+
+Note that I can't just naively steal that long exact sequence, because \(i(h_3)=0\) but \(h_3\) is a generator (i.e. not the product of something with \(h_0\)). But! Maybe I can make my own long exact sequence.
+
+Claim 1: From the cofibration
+\[\bb{S}^7 \xrightarrow{\sigma} \bb{S}\xrightarrow{i} C \sigma \xrightarrow{j}\bb{S}^8,\]
+we get a short exact sequence
+\[0 \leftarrow \bb{F}_2 \leftarrow H^*(C \sigma) \leftarrow \Sigma^8 \bb{F}_2 \leftarrow 0.\]
+
+Claim 2: From the short exact sequence above, we get a long exact sequence \(\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \to \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to \Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots\)
+
+Now, \(f_0\in \Ext^{4,22}(\bb{F}_2, \bb{F}_2)\), so we look at the exact sequence
+\[\Ext^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{4,22}(H^*(C \sigma), \bb{F}_2)\]
+Anything in \(\Ext^{3,14}\) would be at coordinate \((11, 3)\) in Figure \ref{1304251243}, but that's just zero. So the kernel of \(i\) at this point is zero, so \(i(f_0)\neq 0\). Similarly, \(\Ext^{4,15}=0\) so \(i(h_0f_0)\neq 0\). If \(i\) is an algebra morphism, then \(i(h_0f_0)=i(h_0)i(f_0)\neq 0\), so \(i(f_0)\) cannot be at \((18,4,1)\), it must actually be at \((18,4,2)\). The claim \(h_2\overline{\overline{h_0^2h_3}}=i(f_0)\) would then follow.]
 
 \item \(d_2(f_0)=h_0^2e_0\).
-\item \textcolour{violet}{\(i(h_0^2e_0)\neq 0\).}
+\item \textcolour{violet}{\(i(h_0^2e_0)\neq 0\).} [Assuming the long exact sequence I wrote down is correct, we'd have an exact sequence
+\[\Ext^{5,15}(\bb{F}_2, \bb{F}_2)\to \Ext^{6,23}(\bb{F}_2, \bb{F}_2)\xrightarrow{i}\Ext^{6,23}(C \sigma, \bb{F}_2)\]
+But \(\Ext^{5,15}(\bb{F}_2, \bb{F}_2)=0\), so \(i\) is injective at this point. Since \(h_0^2e_0\in \Ext^{6,23}\), we have \(i(h_0^2e_0)\neq 0\).]
 \item Thus(!!) \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\). [If we accept the claims that \(h_2\overline{\overline{h_0^2h_3}}=i(f_0)\) and \(i(h_0^2e_0)\neq 0\), and further suppose that \(i\) and \(d_2\) commute [which they do, because \(i\) is a chain map and \(d_2\) is a differential], we have \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
 d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\).]
-\item \textcolour{violet}{``This intervenes before the image of \(d_3(h_0h_4)=h_0d_0\)''. }
+\item ``This intervenes before the image of \(d_3(h_0h_4)=h_0d_0\)''. [I think the point here is just that \(h_0h_4\) and \(h_0d_0\) still exist here, because we're still on the \(E_2\) pages of both spectral sequences.]
 \item Questions: \begin{enumerate}
 \item What's that double bar notation?
 %\item \(i : \bb{S} \to C \sigma\). Why does it induce a map on the \(E_2\) pages? Does any map \(X\to Y\) induce a map \(\Ext_{\A}^{s,t}(H^*(X), \bb{F}_2)\to \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2)\)? Actually, we'd need it to at least induce a map on the \(E_3\) pages too, since we take a \(d_2\) differential below...
-
-%Possible lead: on p124 of \autocite{ass}, it says ``Associated to the [cofibre] sequence \(S \to S/2 \to \Sigma S=S^1\), we have an extension \(0 \to \Sigma \bb{F}_2 \to H^*(S/2)\to \bb{F}_2 \to 0\) and a long exact sequence of \(\Ext\)-groups \(\cdots \to \Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}(H^*(S/2), \bb{F}_2)\to \Ext^{s, t-1}_{\A}(\bb{F}_2, \bb{F}_2)\xrightarrow{\delta}\Ext^{s+1,t}_{\A}(\bb{F}_2, \bb{F}_2)\to \cdots\)''. So: cofibration sequences do seem to give maps on Ext, though it's never said why. 
 
 %Also, as long as the map on Ext commutes with \(d_2\) (which is what we need anyway!), it'll give a map on \(E_3\). 
 
