@@ -416,13 +416,15 @@ Note that a quotient of connective spectra of finite type is again a connective 
 \item \textcolour{violet}{Fact: for spectra \(X, Y\) and a subspectrum \(A\subq X\) we have exact sequences\footnote{Check if I actually need the first one.}}
 \[\textcolour{violet}{\cdots \to [\Sigma X, Y]\to [\Sigma A, Y]\to [X/A,Y]\to[X,Y]\to[A,Y]}\]
 \[\textcolour{violet}{[Y,A]\to[Y,X]\to[Y,X/A]\to[Y,\Sigma A]\to[Y,\Sigma X]\to\cdots}\]
-
-\item \textcolour{teal}{Lemma: Given a cofibration}
-\[\textcolour{teal}{A \xinj{f} X \xrightarrow{i} Cf \xrightarrow{j} \Sigma A \to \cdots,}\]
-\textcolour{teal}{where \(X, A\) are of finite type, we get a long exact sequence}
-\[\textcolour{teal}{\cdots H^{n-1}(\Sigma A) \leftarrow H^n(X) \xleftarrow{i^*} H^n(Cf) \xleftarrow{j^*} H^n(\Sigma A)\leftarrow H^{n+1}(X) \leftarrow \cdots.}\]
 \end{itemize}
 ]
+
+\begin{lemma}\label{2504140954}
+Let \(A \xinj f X \xrightarrow{i} Cf \xrightarrow{j} \Sigma A \to \cdots\) be a cofibration, where \(X, A\) are CW spectra of finite type. Then there is a long exact sequence 
+\[\cdots \leftarrow H^{n-1}(\Sigma A) \leftarrow H^n(X) \xleftarrow{i^*} H^n(Cf) \xleftarrow{j^*} H^n(\Sigma A)\leftarrow H^{n+1}(X) \leftarrow \cdots.\]
+\end{lemma}
+
+\textcolour{teal}{(proof) [Should follow from the fact that it's true for CW complexes]}
 
 \subsection{Eilenberg-MacLane spectra}
 
@@ -703,16 +705,11 @@ Using \ref{2503171645shutupitsbeenalongterm} (which comes later but whatever, I'
 of \(\bb{F}_2\) as an \(\A\)-module, and we have \(f \in \Hom^t_{\A}(F_s, \bb{F}_2), g \in \Hom^{t'}_{\A}(F_{s'}, \bb{F}_2)\), we multiply them as follows:
 
 First, we put these resolutions side by side.
-\[\begin{tikzcd}
-F_{s+s'} \arrow[r, dashrightarrow,""] \arrow[d, swap, ""]  & F_{s'}[t]  \arrow[d, ""] \arrow[r, "g"] & \bb{F}_2[t+t']  \\
-F_{s+s'-1} \arrow[r, dashrightarrow, ""] \arrow[d, ""] & F_{s'-1}[t] \arrow[d, ""] & \\
-\vdots \arrow[d, ""] & \vdots \arrow[d, ""] &   \\
-F_s \arrow[r, dashrightarrow, ""] \arrow[d, ""] \arrow[rd, "f"'] & F_0[t]  \arrow[d, twoheadrightarrow, ""] &   \\ 
-F_{s-1} \arrow[d] & \bb{F}_2[t] & \\
-\vdots \arrow[d] & & \\
-F_0  \arrow[d] & & \\
-\bb{F}_2 & & 
-\end{tikzcd}\]
+\[\begin{tikzcd} 
+F_{s+s'} \arrow[r, ""] \arrow[d, swap, "", dashrightarrow]  & F_{s+s'-1} \arrow[r, ""] \arrow[d, ""', dashrightarrow] & \cdots \arrow[r, ""] & F_s \arrow[d, ""', dashrightarrow] \arrow[dr, "f"] \arrow[r, ""] & F_{s-1} \arrow[r, ""'] & \cdots \arrow[r] & F_0 \arrow[r] & \bb{F}_2 \\ 
+F_{s'}[t] \arrow[r, swap, ""] \arrow[d, swap, "g"] & F_{s'-1}[t] \arrow[r, ""'] & \cdots \arrow[r, ""'] & F_0[t] \arrow[r, ""', twoheadrightarrow] & \bb{F}_2[t] & & & \\ 
+\bb{F}_2[t+t'] & & & & & & & \\ 
+ \end{tikzcd}\] 
 (The \([t]\) means shifted by \(t\) i.e. in degree \(t\) because the maps are.)
 
 Then we inductively fill in the dotted arrows from the bottom up. So you can fill the first one because the modules are all free so you just need to say where the generator goes (a priori maybe there are infinitely many generators but it's ok because these are degree \(t\) maps and there are only finitely many in each degree), and the right map is surjective, so just do it the way you would do it. Likewise for the higher ones. 
@@ -1070,6 +1067,17 @@ The \(d_2\) differentials at \(E_2^{2, 17},  E_2^{3, 18}, E_2^{4, 19}\) are all 
 First, note that \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Now, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).\done
 \end{ourproof}
 
+[Probably need to move the theorem below but I'll leave it here for the moment]
+
+\begin{theorem}[{\autocite{ass}, Cor 4.17}]\label{2504141019}
+Let \(f : Y \to Z\) be a map of connective spectra of finite type. Then there is a map
+\[f_* : \{E_r(Y), d_r\}_r \to \{E_r(Z), d_r\}_r\]
+of Adams spectral sequences, given at the \(E_2\)-level by the homomorphism
+\[(f^*)^* : \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2) \to \Ext^{s,t}_{\A}(H^*(Z), \bb{F}_2)\]
+induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), with abutment the homomorphism 
+\[f_* : \pi_*(Y) \to \pi_*(Z).\]
+\end{theorem}
+
 \begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
 Consider the cofibration
 \[\bb{S}^7 \xrightarrow{\sigma} \bb{S} \xrightarrow{i} C \sigma \xrightarrow{j} \bb{S}^8\to \cdots.\]
@@ -1080,43 +1088,41 @@ Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C \sigma)\) be the generator 
  \end{tikzcd}\] 
 \end{lemma}
 
-\begin{itemize}
-\item \textcolour{violet}{\(h_2 \cdot \overline{\overline{h_0^2h_3}}=i(f_0)\).} %[After extended research (and a hint from \autocite{rognes2} Ex 11.6.4) I have deduced that \(n_m\) is just notation for the \(m\)th generator (however that's counted) in row \(n\). So I will be ignoring it.
+\begin{ourproof}
 
-%Note: it would be lovely if \(i\) as a map \(E_2(S) \to E_2(C \sigma)\) was a ring homomorphism, or an algebra morphism, or whatever.
+[Some note about how we're calling \(i(h_2)\) just \(h_2\) because for anything in the range \(t-s<7\) \(i\) is injective]
 
-%Possible lead: on p124 of \autocite{ass}, it says ``Associated to the [cofibre] sequence \(S \to S/2 \to \Sigma S=S^1\), we have an extension \(0 \to \Sigma \bb{F}_2 \to H^*(S/2)\to \bb{F}_2 \to 0\) and a long exact sequence of \(\Ext\)-groups \(\cdots \to \Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}(H^*(S/2), \bb{F}_2)\to \Ext^{s, t-1}_{\A}(\bb{F}_2, \bb{F}_2)\xrightarrow{\delta}\Ext^{s+1,t}_{\A}(\bb{F}_2, \bb{F}_2)\to \cdots\) where the connecting homomorphism is given by the Yoneda product with \(h_0\in \Ext^{1,1}(\bb{F}_2,\bb{F}_2)\)''. A long exact sequence on \(\Ext\) groups would be really useful to me! Because then at least showing \(i(f_0)\neq 0\) would be the same as showing \(f_0\) is not in the image of some boundary map...
-
-%Note that I can't just naively steal that long exact sequence, because \(i(h_3)=0\) but \(h_3\) is a generator (i.e. not the product of something with \(h_0\)). But! Maybe I can make my own long exact sequence.
-
-Claim 1: From the cofibration
-\[\bb{S}^7 \xrightarrow{\sigma} \bb{S}\xrightarrow{i} C \sigma \xrightarrow{j}\bb{S}^8,\]
-we get a long exact sequence
-\[\cdots \leftarrow H^{n-1}(\bb{S}^8) \leftarrow H^n(\bb{S}) \xleftarrow{i^*} H^n(C \sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow H^{n+1}(\bb{S}) \leftarrow \cdots\]
-
-[Should follow from the fact that it's true for CW complexes and all these spectra are of finite type]
-
-But any map \(H^n(\bb{S})\to H^{n-1}(\bb{S}^8)\) must be zero, so really we get short exact sequences 
+We first show that \(d_2(h_2 \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By \ref{2504140954}, we have a long exact sequence
+\[\cdots \leftarrow H^{n-1}(\bb{S}^8) \leftarrow H^n(\bb{S}) \xleftarrow{i^*} H^n(C \sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow H^{n+1}(\bb{S}) \leftarrow \cdots.\]
+However, any map \(H^n(\bb{S})\to H^{n-1}(\bb{S}^8)\) must be zero, so we get short exact sequences 
 \[0 \leftarrow H^n(\bb{S})\xleftarrow{i^*} H^n(C \sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow 0.\]
-Summing these up gives a short exact sequence
-\[0 \leftarrow H^*(\bb{S})\xleftarrow{i^*} H^*(C \sigma) \xleftarrow{j^*} H^*(\bb{S}^8)\leftarrow 0,\]
-i.e.
-\[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C \sigma) \xleftarrow{j^*} \Sigma^8 \bb{F}_2 \leftarrow 0.\]
+Taking a direct sum gives a short exact sequence
+\[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C \sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0.\]
+From the short exact sequence above, we get\footnote{This is a homological algebra fact, but maybe I should state it somewhere.} a long exact sequence 
 
-Claim 2: From the short exact sequence above, we get a long exact sequence \(\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to \Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots\)
+\[\begin{tikzcd}[row sep=8ex, column sep=3ex]
+\cdots \arrow[r, ""] & \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
+\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s+1,t}(H^*(C \sigma), \bb{F}_2) \arrow[r, "j"] & \Ext^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
+\end{tikzcd}\]
 
-[This is a homological algebra fact]
+%\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
+Now, \(f_0\in \Ext^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
+\[\Ext^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{4,22}(H^*(C \sigma), \bb{F}_2).\]
+Figure \ref{1304251243} shows us that \(\Ext^{3,14}=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext^{4,15}=0\) and \(\Ext^{0,8}=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication \footnote{I've just drawn some diagrams, and I think that yes, \(i(\alpha \beta)=i(\alpha)i(\beta)\). Essentially because the way you multiply in \(\Ext\) involves writing down unique lifts that make certain squares commute, but both \(i(\alpha \beta)\) and \(i(\alpha)i(\beta)\) are lifts making the appropriate squares commute, so by uniqueness they must be the same.}, \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+h_2\hat{i}(h_4)\). In either case, by linearity of \(d_2\), \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(h_2\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)\footnote{Explain.}).
 
-Now, \(f_0\in \Ext^{4,22}(\bb{F}_2, \bb{F}_2)\), so we look at the exact sequence
-\[\Ext^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{4,22}(H^*(C \sigma), \bb{F}_2)\]
-Anything in \(\Ext^{3,14}\) would be at coordinate \((11, 3)\) in Figure \ref{1304251243}, but that's just zero. So the kernel of \(i\) at this point is zero, so \(i(f_0)\neq 0\). Similarly, \(\Ext^{4,15}=0\) so \(i(h_0f_0)\neq 0\). If \(i\) is an algebra morphism\footnote{I've just drawn some diagrams, and I think that yes, \(i(\alpha \beta)=i(\alpha)i(\beta)\). Essentially because the way you multiply in \(\Ext\) involves writing down unique lifts that make certain squares commute, but both \(i(\alpha \beta)\) and \(i(\alpha)i(\beta)\) are lifts making the appropriate squares commute, so by uniqueness they must be the same.}, then \(i(h_0f_0)=i(h_0)i(f_0)\neq 0\), so \(i(f_0)\) cannot be at \((18,4,1)\), it must actually be at \((18,4,2)\) (well, actually it could be the sum of the two generators, but really all I need is for \(d_2\) of it to be \(d_2((18,4,2))\), which it will be since \(d_2((18,4,1)+(18,4,2))=d_2((18,4,1))+d_2((18,4,2))=d_2((18,4,2))\)). The claim \(h_2\overline{\overline{h_0^2h_3}}=i(f_0)\) would then follow.]
+Now, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
+d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\), as required. \done
+\end{ourproof}
 
-\item \(d_2(f_0)=h_0^2e_0\).
-\item \(i(h_0^2e_0)\neq 0\). [Assuming the long exact sequence I wrote down is correct, we'd have an exact sequence
-\[\Ext^{5,15}(\bb{F}_2, \bb{F}_2)\to \Ext^{6,23}(\bb{F}_2, \bb{F}_2)\xrightarrow{i}\Ext^{6,23}(C \sigma, \bb{F}_2)\]
-But \(\Ext^{5,15}(\bb{F}_2, \bb{F}_2)=0\), so \(i\) is injective at this point. Since \(h_0^2e_0\in \Ext^{6,23}\), we have \(i(h_0^2e_0)\neq 0\).]
-\item Thus(!!) \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\). [If we accept the claims that \(h_2\overline{\overline{h_0^2h_3}}=i(f_0)\) and \(i(h_0^2e_0)\neq 0\), and further suppose that \(i\) and \(d_2\) commute [which they do, because \(i\) is a chain map and \(d_2\) is a differential], we have \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
-d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\).]
+%\begin{itemize}
+%\item \textcolour{violet}{\(h_2 \cdot %\overline{\overline{h_0^2h_3}}=i(f_0)\).} 
+
+%\item \(d_2(f_0)=h_0^2e_0\).
+%\item \(i(h_0^2e_0)\neq 0\). [Assuming the long exact sequence I wrote down is correct, we'd have an exact sequence
+%\[\Ext^{5,15}(\bb{F}_2, \bb{F}_2)\to \Ext^{6,23}(\bb{F}_2, \bb{F}_2)\xrightarrow{i}\Ext^{6,23}(C \sigma, \bb{F}_2)\]
+%But \(\Ext^{5,15}(\bb{F}_2, \bb{F}_2)=0\), so \(i\) is injective at this point. Since \(h_0^2e_0\in \Ext^{6,23}\), we have \(i(h_0^2e_0)\neq 0\).]
+%\item Thus(!!) \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\). [If we accept the claims that \(h_2\overline{\overline{h_0^2h_3}}=i(f_0)\) and \(i(h_0^2e_0)\neq 0\), and further suppose that \(i\) and \(d_2\) commute [follows from \ref{2504141019}], we have \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
+%d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\).]
 %\item ``This intervenes before the image of \(d_3(h_0h_4)=h_0d_0\)''. [I think the point here is just that \(h_0h_4\) and \(h_0d_0\) still exist here, because we're still on the \(E_2\) pages of both spectral sequences.]
 %\item Questions: \begin{enumerate}
 %\item What's that double bar notation?
@@ -1132,7 +1138,7 @@ d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\).]
 
 %Obviously this is a bit sketchy, I'm using some sort of ``\(i\) and the differentials play nicely'' assumption.]
 %\end{enumerate}
-\end{itemize}
+%\end{itemize}
 
 \begin{figure}[H]\label{2504131812}
 \centering
@@ -1144,62 +1150,26 @@ d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\).]
 \(d_3(h_0h_4)=h_0d_0\).
 \end{theorem}
 
-\begin{itemize}
-\item There is an exact sequence
-\[\pi_7(S) \xrightarrow{\sigma}\pi_{14}(S) \xrightarrow{i}\pi_{14}(C \sigma)\xrightarrow{j}\pi_6(S) \xrightarrow{\sigma}\pi_{13}(S).\]
-
-[Let \(\sigma\in \pi_7(S)\), so \(\sigma : \bb{S}^7 \to \bb{S}\). Replacing \(\sigma\) by an inclusion, we get a cofibration
+\begin{ourproof}
+From the cofibration 
 \[\bb{S}^7 \xinj{\sigma} \bb{S} \xrightarrow{i}C \sigma \xrightarrow{j}\bb{S}^8 \inj \bb{S}^1 \to\cdots,\]
-where \(C \sigma= \bb{S}\cup C \bb{S}^7\) (the mapping cone). By Section \ref{2503291211}, setting \(Y=\bb{S}^{14}\), we get an exact sequence
-\[\cdots \to [\bb{S}^{14}, \bb{S}^7] \to [\bb{S}^{14}, \bb{S}] \to [\bb{S}^{14}, C \sigma] \to [\bb{S}^{14},\bb{S}^{8}]\to[\bb{S}^{14}, \bb{S}^1]\to \cdots\]
-i.e.
-\[\cdots \to \pi_{7}(S) \to \pi_{14}(S) \to \pi_{14}(C \sigma) \to \pi_6(S) \to \pi_{13}(S) \to \cdots,\]
-which is what we want.]
+we get an exact sequence
+\[\pi_{7}(S) \xrightarrow{\sigma} \pi_{14}(S) \xrightarrow{i} \pi_{14}(C \sigma) \xrightarrow{j} \pi_6(S) \to \pi_{13}(S),\]
+by [the work in Section \ref{2503291211}]. Since these stable homotopy groups are all finite\footnote{A priori \(\pi_{14}(C \sigma)\) is only finitely generated, but from Figure \ref{2504131812} we see that its 2-completion is finite, so the group itself must be finite.}, this induces\footnote{Explain or have as a lemma somewhere else (I've commented it out for the moment).} a exact sequence
+\[\pi_{7}(S)^\wedge_2 \xrightarrow{\sigma} \pi_{14}(S)^\wedge_2 \xrightarrow{i} \pi_{14}(C \sigma)^\wedge_2 \xrightarrow{j} \pi_6(S)^\wedge_2 \xrightarrow{\sigma} \pi_{13}(S)^\wedge_2=0.\]
+In \(E_2(C \sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\) (by \ref{2504131851}), so \(\pi_{14}(C \sigma)^\wedge_2\) has order dividing four. Let \(\nu \in \pi_3(S)^\wedge_2\) be a representative for \(h_2\). Then \(\pi_6(S)^\wedge_2=\inte/2\inte \ang{\nu^2}\), and \(\nu^2 \sigma=0\). By exactness, we see that \(j\) is surjective, so \(\pi_6(S)^\wedge_2\cong \pi_{14}(C \sigma)^\wedge_2/\ker j=\pi_{14}(C \sigma)^\wedge_2/\im i\). We know \(\pi_{14}(C \sigma)^\wedge_2\) has order dividing 4 and \(\pi_6(S)^\wedge_2\) has order 2, so \(\im i\) has order dividing 2. 
 
-\item \text{[}Above, he seems to mean the honest \(\pi_*(S)\), as opposed to \(\text{}_2\pi_*(S)\). If \(\pi_{14}(C \sigma)\) is finite (which it had better be, if its 2-completion has order dividing 4), we can make the following argument: whenever we have an exact sequence 
-\[\cdots \to G_1 \xrightarrow{\phi} G_2 \xrightarrow{\psi} G_3 \to \cdots\]
-of finite abelian groups, we get an exact sequence
-\[\cdots \to G_1/T_1 \xrightarrow{\overline\phi} G_2/T_2 \xrightarrow{\overline\psi} G_3/T_3 \to \cdots\]
-where \(T_i\) is the torsion in \(G_i\) coprime to some fixed \(p\). It's well defined, because group homomorphisms send elements of order \(k\) to elements of order dividing \(k\), and exact, which can be seen as follows: 
+Now, \(\pi_7(S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by graded commutativity, so the first isomorphism theorem implies that \(\pi_{14}(S)^\wedge_2\) has order dividing four. Thus, \(h_0d_0\) and \(h_0^2d_0\) must be boundaries, and \(d_3(h_0h_4)=h_0d_0\) is the only possibility.
+\done
+\end{ourproof}
 
-Let \([g']\in \im \overline\phi\). Then \([g']=\overline\phi[g]=[\phi g]\), so \(\overline\psi[g']=[\psi\phi g]=[0]\). Thus, \(\im\overline \phi \subq \overline\psi\). On the other hand, if \([\psi g']=[0]\) then \(\psi g' = t\in T_2\). We then have \(\psi(o(t)g')=o(t)\psi(g')=0\), so \(o(t)g'\in \ker\psi=\im\phi\). Write \(\phi(g)=o(t)g'\), so \([\phi g]=[o(t)g']\in G_2/T_2\). Since multiplication by \(o(t)\) is an isomorphism in \(G_2/T_2\), \([g']=\left[\phi \left(\frac{g}{o(t)}\right)\right]=\overline\phi \left[\frac{g}{o(t)}\right]\), so \([g']\in\im\overline\phi\). Thus, \(\im\overline\phi=\ker\overline\psi\). 
+%whenever we have an exact sequence 
+%\[\cdots \to G_1 \xrightarrow{\phi} G_2 \xrightarrow{\psi} G_3 \to \cdots\]
+%of finite abelian groups, we get an exact sequence
+%\[\cdots \to G_1/T_1 \xrightarrow{\overline\phi} G_2/T_2 \xrightarrow{\overline\psi} G_3/T_3 \to \cdots\]
+%where \(T_i\) is the torsion in \(G_i\) coprime to some fixed \(p\). It's well defined, because group homomorphisms send elements of order \(k\) to elements of order dividing \(k\), and exact, which can be seen as follows: 
 
-All this is to say, I'm going to assume from now on whenever he says \(\pi_*\)(whatever) he means \(\pi_*\text{(whatever)}^\wedge_2\).]
-\end{itemize}
-
-%Found something useful!! Not sure where to put it though.
-
-%\begin{theorem}[{\autocite{ass}, Cor 4.17}]
-%Let \(f : Y \to Z\) be a map of connective spectra of finite type. Then there is a map
-%\[f_* : \{E_r(Y), d_r\}_r \to \{E_r(Z), d_r\}_r\]
-%of Adams spectral sequences, given at the \(E_2\)-level by the homomorphism
-%\[(f^*)^* : \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2) \to \Ext^{s,t}_{\A}(H^*(Z), \bb{F}_2)\]
-%induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), with abutment the homomorphism 
-%\[f_* : \pi_*(Y) \to \pi_*(Z).\]
-%\end{theorem}
-
-\begin{itemize}
-\item In \(E_2(C \sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\) (by \ref{2504131851}), so \(\pi_{14}(C \sigma)^\wedge_2\) has order dividing four.
-
-\item \(\pi_6(S)^\wedge_2=\inte/2\inte \ang{\nu^2}\). [Assuming \(\nu\) is the thing represented by \(h_2^2\)]
-
-\item \(\nu^2 \sigma=0\). [It lands in the 2-torsion of \(\pi_{13}(S)\), which is zero.]
-
-\item The image of \(i\) has order dividing two. [Exactness: \(\sigma\) is the zero map, so \(j\) is surjective, so \(\pi_6(S)^\wedge_2\cong \pi_{14}(C \sigma)^\wedge_2/\ker j=\pi_{14}(C \sigma)^\wedge_2/\im i\). We know \(\pi_{14}(C \sigma)^\wedge_2\) has order dividing 4 and \(\pi_6(S)^\wedge_2\) has order 2 so \(\im i\) has order dividing 2.]
-
-\item \(\pi_7(S)^\wedge_2=\inte/16\inte \ang{\sigma}\). [All assuming \(h_3\) detects \(\sigma\).]
-
-\item \(2 \sigma^2=0\) by graded commutativity.
-
-\item \(\pi_{14}(S)^\wedge_2\) has order dividing four. [First isomorphism theorem.]
-
-\item \(h_0d_0\) and \(h_0^2d_0\) must be boundaries, and \(d_3(h_0h_4)=h_0d_0\) is the only possibility.
-%\item , which uses a differential \(d_2\) of \(E_2(C\sigma)\) which is on table 14.9 (4)(!)).}
-\end{itemize}
-
-The \(d_3\) differential at \(E_3^{3, 18}\) is nontrivial: \(d_3(h_0^2h_4)=h_0d_3(h_0h_4)=h_0(h_0 d_0)\neq 0\), where \(d_0\) is the generator at \(E_3^{4, 18}\).  
-
-\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{rognes2}.
+%Let \([g']\in \im \overline\phi\). Then \([g']=\overline\phi[g]=[\phi g]\), so \(\overline\psi[g']=[\psi\phi g]=[0]\). Thus, \(\im\overline \phi \subq \overline\psi\). On the other hand, if \([\psi g']=[0]\) then \(\psi g' = t\in T_2\). We then have \(\psi(o(t)g')=o(t)\psi(g')=0\), so \(o(t)g'\in \ker\psi=\im\phi\). Write \(\phi(g)=o(t)g'\), so \([\phi g]=[o(t)g']\in G_2/T_2\). Since multiplication by \(o(t)\) is an isomorphism in \(G_2/T_2\), \([g']=\left[\phi \left(\frac{g}{o(t)}\right)\right]=\overline\phi \left[\frac{g}{o(t)}\right]\), so \([g']\in\im\overline\phi\). Thus, \(\im\overline\phi=\ker\overline\psi\). 
 
 \begin{figure}[H]
 \centering
@@ -1212,6 +1182,8 @@ The \(d_3\) differential at \(E_3^{3, 18}\) is nontrivial: \(d_3(h_0^2h_4)=h_0d_
 \input{e4page.tex}
 \caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
 \end{figure}
+
+\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{rognes2}.
 
 \appendix 
 
@@ -1501,8 +1473,6 @@ Now:
 \item Find a way to translate the calculations in Figure \ref{2504041920} into readable and coherent LaTeX'd calculations.
 
 \item Make the \(\alpha^i_j\) notation not appalling - link it to the usual \(h\) notation.
-
-\item Prove that the \(d_3\) differential at \(E^{2,17}\) is nontrivial.
 \end{itemize}
 
 Eventually:
