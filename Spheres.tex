@@ -185,21 +185,21 @@ CW complexes] is representable\footnote{As a set, or is this some sort of enrich
 
 \item ?Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\widetilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
 
-\item Axioms for a homology theory \(h_*\):
+\item ?Axioms for a homology theory \(h_*\):
 \begin{enumerate}
 \item If \(f\simeq g : X \to Y\), then \(f_*=g_* : h_n(X)\to h_n(Y)\).
 \item For each \(A\subq X\), there is a long exact sequence
 \[\cdots \xleftarrow{\del}h_n(X/A)\xleftarrow{q_*}h_n(X) \xleftarrow{i_*}h_n(A) \xleftarrow{\del} h_{n+1}(X/A)\xleftarrow{q_*}\cdots.\]
 \item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the coproduct map \(\bigoplus_\alpha (i_\alpha)_* : \bigoplus_\alpha h_n(X_\alpha) \to  h_n(X)\) is an isomorphism for each \(n\). 
 \end{enumerate}
-Axioms for a (reduced) cohomology theory \(h^*\):
+?Axioms for a (reduced) cohomology theory \(h^*\):
 \begin{enumerate}
 \item If \(f\simeq g : X \to Y\), then \(f^*=g^* : h^n(Y)\to h^n(X)\).
 \item For each \(A\subq X\), there is a long exact sequence
 \[\cdots \xrightarrow{\delta}h^n(X/A)\xrightarrow{q^*}h^n(X) \xrightarrow{i^*}h^n(A) \xrightarrow{\delta} h^{n+1}(X/A)\xrightarrow{q^*}\cdots.\]
 \item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the product map \((i^*_\alpha) : h^n(X) \to \prod_\alpha h^n(X_\alpha)\) is an isomorphism for each \(n\).
 \end{enumerate}
-\item Stable homotopy groups are a homology theory.
+\item ?Stable homotopy groups are a homology theory.
 \end{itemize}
 
 \autocite{ass}, \autocite{hatcher}
@@ -216,7 +216,7 @@ The following is from \autocite{hatcher} 4L.
 \item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\). [Something is a little strange here, I think maybe it doesn't matter which suspension isomorphism you pick, though it's not immediately clear why. It's just that the wikipedia page that \(\sigma\) is the connecting homomorphism of the long exact sequence in cohomology. \autocite{rognes2} just says it's the suspension isomorphism \(:\hspace{-0.75ex}|\). Something interesting: on p219 of \autocite{hatcher}, it says ``the suspension isomorphisms \(\widetilde H^n(X;R)\cong \widetilde H^{n+k}(\Sigma^kX;R)\) derivable by elementary exact sequence arguments can also be obtained via cross product with a generator of \(\wildetilde H^*(S^k; R)\)''. Does he mean the \textit{same} isomorphism, or just the fact that there is (at least) one?].
 \item \(Sq^i(\alpha)=\alpha^2\) if \(i=\deg(\alpha)\) and \(Sq^i(\alpha)=0\) if \(i> \deg(\alpha)\). 
 \item \(Sq^0=\id.\)
-\item \(Sq^1\) is the \(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\).\footnote{Check properties 4 and 7 are actually needed, because \autocite{rognes2} only takes 1-3 and 5-6, giving 4 as Prop 7.2.4 and 7 as as consequence of Prop 7.6.5. In particular, I don't think I actually ever use property 7.}
+%\item \(Sq^1\) is the \(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\).\footnote{Check properties 4 and 7 are actually needed, because \autocite{rognes2} only takes 1-3 and 5-6, giving 4 as Prop 7.2.4 and 7 as as consequence of Prop 7.6.5. In particular, I don't think I actually ever use property 7.}
 \end{enumerate}
 \item Define \(Sq:=Sq^0+Sq^1+\cdots\). Then \(Sq(\alpha\smile \beta)=Sq(\alpha)\smile Sq(\beta)\) (since \((Sq(\alpha\smile \beta))_n=\sum_iSq^i(\alpha)\smile Sq^{n-i}(\beta)=(Sq(\alpha)\smile Sq(\beta))_n\)). Thus, \(Sq\) is a ring homomorphism. 
 \item Adem relations:
@@ -310,22 +310,19 @@ If \(X\) is a finite (resp. finite type) CW complex, then \(\Sigma^\infty\) is a
 
 \subsection{Homology and cohomology}
 
-[From Hatcher: ``the inclusions \(\Sigma X_n \inj X_{n+1}\) induce inclusions \(C_*(X_n; G)\inj C_*(X_{n+1}; G)\) with a dimension shift to account for the suspension''. Below is my vague explanation of what I understand this to mean.
+%[From Hatcher: ``the inclusions \(\Sigma X_n \inj X_{n+1}\) induce inclusions \(C_*(X_n; G)\inj C_*(X_{n+1}; G)\) with a dimension shift to account for the suspension''.
 
-\(C^\text{cell}_i(X_n; G)\) is the free abelian group on the \(i\)-cells of \(X_n\). We have an injection
+Recall that \(C^\text{cell}_i(X_n; G)\) is the free abelian group on the \(i\)-cells of \(X_n\). We have an injection
 \begin{align*}
 C_i^\text{cell}(X_n;G) &\to C_{i+1}^\text{cell}(\Sigma X_n; G)\\
-e^i_\alpha &\mapsto \Sigma e^i_\alpha.
+e^i_\alpha &\mapsto \Sigma e^i_\alpha,
 \end{align*}
-We also have an injection \(C^\text{cell}_{i+1}(\Sigma X_n; G)\to C^\text{cell}_{i+1}(X_{n+1}; G)\) induced by the structure map \(\sigma_n\), so we get an injection \(C^\text{cell}_i(X_n;G)\inj C^\text{cell}_{i+1}(X_{n+1};G)\), which indeed has a dimension shift.
+and an injection \(C^\text{cell}_{i+1}(\Sigma X_n; G)\to C^\text{cell}_{i+1}(X_{n+1}; G)\) induced by the structure map \(\sigma_n\), so we get an injection \(C^\text{cell}_i(X_n;G)\inj C^\text{cell}_{i+1}(X_{n+1};G)\).
 
-We then have that ``the union \(C_*(X ; G)\) of this increasing sequence of chain complexes is then a chain complex having one \(G\) summand for each cell of \(X\)''. I think that 
-\[C_n(X ; G)=\bigcup_{i\in \inte}C^\text{cell}_{i+n}(X_i; G),\] 
-so that there's a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating suspensions of cells as equivalent to the cells themselves (since they include in), i.e. a \(G\) summand for every \(n\)-cell of \(X\), since that's how we defined them.
-
-%The way it's phrased, it seems to be that this is a morphism of chain complexes - i.e. these maps commute with the \(\del\)s. Why would they? %I don't think so?
-
-We define \(H^*\) and \(H_*\) to be the cohomology and homology of this chain complex, respectively.]
+%We then have that ``the union \(C_*(X ; G)\) of this increasing sequence of chain complexes is then a chain complex having one \(G\) summand for each cell of \(X\)''. I think that 
+We define
+\[C_n(X ; G):=\bigcup_{i\in \inte}C^\text{cell}_{i+n}(X_i; G).\] 
+Note that there is a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating suspensions of cells as equivalent to the cells themselves, i.e. a \(G\) summand for every \(n\)-cell of \(X\). We define \(H^*(X;G)\) and \(H_*(X;G)\) to be the cohomology and homology of this chain complex, respectively.
 
 [Important example:
 
@@ -339,11 +336,22 @@ H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\
 \end{align*}
 (since they're all just either \(0\) or \(\inte/2\inte\), at least eventually). So, \(H^*(\bb{S})=\inte/2\inte\) in degree zero and nothing else.]
 
+\begin{lemma}\label{2504141556}
+Let \(X\) be a connective CW spectrum of finite type. Then \(H_i(X), H^i(X)\), and \(\pi_i(X)\) are finitely generated for all \(i\). 
+\end{lemma}
+
+\begin{ourproof}
+First, note that \(H_i(X)=H_{i+n}(X_n)\) for sufficiently large \(n\), since for large enough \(n\), \(X_n\) contains all the cells of dimension \(\leq i\). Similarly, \(H^i=H^{i+n}(X_n)\) for sufficiently large \(n\). Each \(H_{i+n}(X_n)\) is finitely generated, since \(X_n\) has only finitely many cells in each dimension, and thus each \(H^{i+n}(X_n)\) is also finitely generated (\autocite{hatcher} Cor 3.3). Thus, \(H_i(X), H^i(X)\) are finitely generated. 
+
+Now, \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\), and the groups \(\pi_{i+n}(X_n)\) stabilise by the Freudenthal suspension theorem.\footnote{You also need an extra ingredient: the problem is that we need the composition \(\pi_{i+n}(X_n) \xrightarrow{\Sigma}\pi_{i+n+1}(\Sigma X_n) \xrightarrow{(\sigma_n)_*}\pi_{i+n+1}(X_{n+1})\) to stabilise, and the FTT only gives us that the first map stabilises. Roughly, the second map stabilises because whenever \((X_{n+1}, \Sigma X_n)\) are such that \(X_{n+1}\setminus X_n\) has no cells in dimension \(\leq k\), the map \(\pi_i(\Sigma X_n)\to \pi_i(X_{n+1})\) induced by the inclusion is an isomorphism (\autocite{hatcher}, Cor 4.12 and a long exact sequence). So, if \((\sigma)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}(X_{n+1})\) never stabilises, it means you can find a strictly increasing sequence of natural numbers \(N_j\) such that \((X_{N_j+1}, \Sigma X_{N_j})\) is not \((i+N_j+2)\)-connected. In other words, there are infinitely many \(N_j\) such that \(X_{N_j+1}\setminus \Sigma X_{N_j}\) has cells of dimension \(\leq i+N_j+2\). By connectedness, these cells are of dimension \(N_j+k+1\) for \(-l\leq k \leq i+1\) (fixed \(l\)). But now \(l\) and \(i\) are fixed, so there must be some \(k\) such that for infinitely many of the \(X_{N_j+1}\) they have a \((k+N_j+1)\)-cell not included in \(\Sigma X_{N_j}\). In other words, \(X\) has infinitely many \(k\)-cells, contradicting finite type-ness.} 
+Now, the \(X_n\) must eventually be simply-connected, since \(X\) is connective\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective. \label{2504071143}}. A simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups (see e.g. \autocite{hatcher}, Thm 5.7), and we have just seen that the \(H_{i+n}(X_n)\) are finitely generated, so \(\pi_i(X)=\pi_{i+n}(X_n)\) is finitely generated. \done
+\end{ourproof}
+
 \begin{definition}
 Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} \(X'\) of \(X\) is a sequence of subcomplexes \(\{X_n'\subq X_n\}\) satisfying \(\Sigma X_n'\subq X_{n+1}'\). The subspectrum \(X'\) is \textit{cofinal} if, for each \(n\) and each cell \(e^i_\alpha\) of \(X_n\), the cell \(\Sigma^k e_\alpha^i\) belongs to \(X'_{n+k}\) for all sufficiently large \(k\).
 \end{definition}
 
-[If \(\Sigma^ke^i_\alpha\) belongs to \(X'_{n+k}\) then \(\SIgma^{k+1}e^i_\alpha\) belongs to \(\Sigma X'_{n+k}\inj X'_{n+k+1}\), so if it happens once it'll happen for all time after that. Thus, if \(X'\), \(X''\) are cofinal spectra of \(X\) with \(\Sigma^k e_{\alpha}^i\) a cell of \(X_{n+k}'\) and \(\Sigma^l e_\alpha^i\) a cell of \(X_{n+l}''\) (\(l\geq k\)) then \(\Sigma^l e_\alpha^i\) is a cell of \(X_{n+l}'\) and therefore of \(X_{n+l}'\cap X_{n+l}''\). In other words, the intersection of two cofinal spectra is a cofinal spectrum.]
+Note that if \(\Sigma^ke^i_\alpha\) belongs to \(X'_{n+k}\) then \(\SIgma^{k+1}e^i_\alpha\) belongs to \(\Sigma X'_{n+k}\subq X'_{n+k+1}\subq X'_{k+k+2}\subq \cdots\). Thus, if \(X'\), \(X''\) are cofinal spectra of \(X\) with \(\Sigma^k e_{\alpha}^i\) a cell of \(X_{n+k}'\) and \(\Sigma^l e_\alpha^i\) a cell of \(X_{n+l}''\) (with \(l\geq k\)) then \(\Sigma^l e_\alpha^i\) is a cell of \(X_{n+l}'\) and therefore of \(X_{n+l}'\cap X_{n+l}''\). In other words, the intersection of two cofinal spectra is a cofinal spectrum.
 
 \begin{definition}
 Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence of cellular maps \(f_n : X_n \to Y_n\) such that the diagram below commutes.
@@ -352,8 +360,6 @@ Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence 
 \SIgma Y_n \arrow[r, swap, "\sigma_n"]  & Y_{n+1}
 \end{tikzcd}\]
 \end{definition}
-
-%\textcolour{teal}{[this induces maps \(\pi_i(X)\to\pi_i(Y)\), \(H^*(Y)\to H^*(X)\), \(H_*(X)\to H_*(Y)\).]} % true, but more important that it does so for the actual maps 
 
 [Some intuition: it's enough for maps to be `defined eventually']
 
@@ -371,7 +377,7 @@ Further, any map \(\Sigma^\infty S^i \to X\) can be represented by a map \(S^{i+
 Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) and \(g : Y \to X\) such that \(fg=\id_{Y}\) and \(gf=\id_X\).
 \end{definition}
 
-[maybe something on weak equivalence?]
+?[maybe something on weak equivalence?]
 
 Note that a spectrum is equivalent to any of its cofinal subspectra. In particular, if \(X=\{X_n\}\) is a spectrum, then \(X'=\{\Sigma X_{n-1}\}\) is a cofinal subspectrum of \(X\) (where we take \(X_{-1}\) to be the basepoint of \(X_0\)). We define \(\Sigma^{-1}X:=\{X_{n-1}\}\), noting that \(\Sigma \Sigma^{-1}X=X'\simeq X\). Thus, a spectrum is always equivalent to the suspension of some other spectrum.
 
@@ -406,18 +412,13 @@ Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum} %\footnot
 Let \(X\) be a spectrum, \(A\subq X\) a subspectrum. Then \(A\) is \textit{closed} in \(X\) if for every cell \(e_\alpha^n\) of \(X_n\), if \(\Sigma^k e_\alpha^n \in A_{n+k}\) then \(e_\alpha^n \in A_n\). 
 \end{definition}
 
-Note that any subspectrum is cofinal in (and thus equivalent to) its closure. We define \(X/A\) to be the CW spectrum with \((X/A)_n=X_n/A_n'\), where \(A'=\{A_n'\}\) is the closure of \(A\). 
-
-Note that a quotient of connective spectra of finite type is again a connective spectrum of finite type. [This is obvious - the quotient has fewer cells in each dimension then the original space, it is not going to magically generate new ones.]
-
-[The rest of the section:
+Any subspectrum is cofinal in (and thus equivalent to) its closure. We define \(X/A\) to be the CW spectrum with \((X/A)_n=X_n/A_n'\), where \(A'=\{A_n'\}\) is the closure of \(A\). Note that a quotient of connective spectra of finite type is again a connective spectrum of finite type (since the quotient has fewer cells in each dimension than the original space).
 
 \begin{itemize}
 \item \textcolour{violet}{Fact: for spectra \(X, Y\) and a subspectrum \(A\subq X\) we have exact sequences\footnote{Check if I actually need the first one.}}
 \[\textcolour{violet}{\cdots \to [\Sigma X, Y]\to [\Sigma A, Y]\to [X/A,Y]\to[X,Y]\to[A,Y]}\]
 \[\textcolour{violet}{[Y,A]\to[Y,X]\to[Y,X/A]\to[Y,\Sigma A]\to[Y,\Sigma X]\to\cdots}\]
 \end{itemize}
-]
 
 \begin{lemma}\label{2504140954}
 Let \(A \xinj f X \xrightarrow{i} Cf \xrightarrow{j} \Sigma A \to \cdots\) be a cofibration, where \(X, A\) are CW spectra of finite type. Then there is a long exact sequence 
@@ -466,9 +467,7 @@ Define a homomorphism \(A\otimes\inte_p\to A/T\) sending \(a\otimes z \mapsto [\
 If \(A\) is finite with order \(np^r\) for \(p\nvert n\), then \(\abs{\text{}_pA}=p^r\), by Cauchy's theorem. 
 \end{remark}
 
-The following definition is from \autocite{spectra}, Chapter 9.
-
-\begin{definition}
+\begin{definition}[{\autocite{spectra}, p129}]
 Let \(X\) be a CW spectrum. Then a \textit{\(p\)-completion} of \(X\) is a map \(f : X \to \text{}_pX\) such that for all \(i\), \(\pi_if\) expresses \(\pi_i(\text{}_2X)\) as the \(p\)-completion of \(\pi_i(X)\).
 \end{definition}
 
@@ -564,7 +563,7 @@ If \(\mathcal{C}=\{D, E, i, j, k\}\) is an exact couple, then \(\mathcal{C}'\) i
 \end{proposition}
 
 \begin{theorem}[{\autocite{spectral_sequences}, Thm 2.8}]\label{2503301131}
-Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,1)\)\footnote{This is the wrong index. For my purposes it should be \((-1, -1)\). So, the spectral sequence will not be of cohomological type, but hopefully the proof still goes through.}, \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of cohomological type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r)}\circ k^{(r)}\). \footnote{Is this supposed to be \(d_r = j^{(r-1)}\circ k^{(r-1)}\)? Because \(d_1\) is supposed to be a map on \(E_1=E\), but \(j'\) and \(k'\) are between \(E'=E_2\) and \(D'\).}
+Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,1)\)\footnote{This is the wrong index. For my purposes it should be \((-1, -1)\). So, the spectral sequence will not be of cohomological type, but hopefully the proof still goes through.}, \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of cohomological type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r-1)}\circ k^{(r-1)}\).
 \end{theorem}
 
 A bigraded exact couple may be displayed in the following diagram, known as a \textit{staircase diagram}:
@@ -583,8 +582,6 @@ A bigraded exact couple may be displayed in the following diagram, known as a \t
 
 Let \(X\) be a connective CW spectrum of finite type.
 
-[Each \(H^i(X)\) is finitely generated: Hatcher says on p586 of \autocite{hatcher5} that \(H^i(X)=H^i(X_n)\) for sufficiently large \(n\) as long as \(X\) is of finite type (which I think should actually read \(H^{i+n}(X_n)\), but it doesn't matter for this particular point), and \(H^i(X_n)\) (or \(H^{i+n}(X_n)\)) is supposed to be finitely generated because all the \(H_j(X_n)\) are finitely generated\footnote{The cohomology groups are finitely generated if the homology ones are, see \autocite{hatcher} Cor 3.3.}, since \(X_n\) should have finitely many cells in each dimension (if it didn't, \(X\) certainly wouldn't).]
-
 [Claim: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. Either use \ref{2503221328} (i.e. \(H^m(X;G)\cong[X,K(G,m)]\)) to give the action, or the above mentioned fact that for spectra of finite type, \(H^i(X; G)=H^{i+n}(X_n;G)\). To define a map \(Sq^j : H^{i}(X;G)\to H^{i+j}(X;G)\) we can either hit \(H^{i+n}(X_n;G)\) with \(Sq^j\) and then push it along the sequence of cohomology groups until it's stable, or first push it along until \(H^{i+j+n}(X_n;G)\) is stable and then hit \(H^{i+n}(X_n;G)\) with \(Sq^j\). And these are the same thing, because of this handy commutative diagram:
 \[\begin{tikzcd} 
  & H^{i+n}(X_n;G)  \arrow[dl, "\sigma"'] \arrow[dr, "Sq^j"] & \\ 
@@ -594,7 +591,7 @@ Let \(X\) be a connective CW spectrum of finite type.
 \end{tikzcd}\] 
 which follows from the properties in Section  \ref{2503221247}. \textcolour{violet}{Is this an actual module action? Is the former one also a module action?}]
 
-We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\) [since each \(H^n(X)\) is finitely generated, and that finite generating set would certainly also generate it as an \(\A\)-module (we could be more efficient, though)].
+We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\) [since each \(H^n(X)\) is finitely generated (\ref{2504141556}), and that finite generating set would certainly also generate it as an \(\A\)-module (we could be more efficient, though)].
 
 [\textcolour{purple}{Claim: these \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type}. Very confused about this - each \(\alpha_i\in H^{n_i}(X;G)\) gives a map \(X \to K(G,n_i)\) by \ref{2503221328}, but shouldn't they  come together to give a map into a product\footnote{And on that note, what is a product of spectra? Surely it's not a smash product? Is it just a pointed product? Are we allowed to do that?} of EM spaces, not a wedge sum? Isn't a wedge sum a sort of reduced \textit{coproduct}, not a product?? Is this something to do with the `fibrations and cofibrations are the same' nonsense?
 
@@ -648,10 +645,6 @@ These form a staircase diagram,
 \end{tikzcd}\]
 %where the rows are given by applying \(\pi_*\) to the diagram (\ref{2503301114}), and the columns <-- actually you get the rows for free
 This gives rise to a spectral sequence, by [some version of] \ref{2503301131}.
-
-\begin{itemize}
-\item ?Fact: If \(Z\) is a connective CW spectrum of finite type, then \(\pi_t(Z)\) is finitely generated. [Halfway down p586 of \autocite{hatcher5}, Hatcher says that ``for a connective CW spectrum \(X\) of finite type the groups \(\pi_{i+n}(X_n)\) do eventually stabilise by the Freudenthal theorem''. Since the homotopy groups are just the colimits of these guys, they're equal to the stable values. \autocite{hatcher}, Thm 5.7 says in particular that a simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups. Now, the \(X_n\) must eventually by simply-connected because otherwise \(X\) would not be connective\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective. \label{2504071143}}, and we've already seen the \(H_i\) are finitely generated, so yes, the \(\pi_i\) are also finitely generated.]
-\end{itemize}
 
 Now, since \(K_s = \bigvee_i \bb{K}(G, n_{s_i})\),  \ref{2503231218}, tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(G, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
 %talk about death by indices...
@@ -1215,22 +1208,22 @@ A free resolution is \textit{minimal} if at each stage of its construction we ch
 
 [The above definition is bad but I'm keeping it just for the moment.]
 
-\subsection{Other homological algebra}
+%\subsection{Other homological algebra}
 
-Let 
-\begin{equation}\label{2504071140}
-0 \to G \to H \to K \to 0
-\end{equation}
-be a short exact sequence of abelian groups. Then, for any space \(X\), 
-\[0 \to \Hom(C_n(X), G)\to \Hom(C_n(X), H) \to \Hom(C_n(X), K)\to 0\]
-is also exact, since \(C_n(X)\) is free, so we get a short exact sequence
-\[0 \to C^n(X;G)\to C^n(X; H) \to C^n(X; K)\to 0,\]
-giving rise to a long exact sequence
-\[\cdots \to H^n(X; G)\to H^n(X; H)\to H^n(X; K) \xrightarrow{\delta} H^{n+1}(X; G)\to \cdots.\]
+%Let 
+%\begin{equation}\label{2504071140}
+%0 \to G \to H \to K \to 0
+%\end{equation}
+%be a short exact sequence of abelian groups. Then, for any space \(X\), 
+%\[0 \to \Hom(C_n(X), G)\to \Hom(C_n(X), H) \to \Hom(C_n(X), K)\to 0\]
+%is also exact, since \(C_n(X)\) is free, so we get a short exact sequence
+%\[0 \to C^n(X;G)\to C^n(X; H) \to C^n(X; K)\to 0,\]
+%giving rise to a long exact sequence
+%\[\cdots \to H^n(X; G)\to H^n(X; H)\to H^n(X; K) \xrightarrow{\delta} H^{n+1}(X; G)\to \cdots.\]
 
-\begin{definition}
-The \textbf{Bockstein homomorphism} associated to the short exact sequence in  (\ref{2504071140}) is the connecting map \(\delta\).
-\end{definition}
+%\begin{definition}
+%The \textbf{Bockstein homomorphism} associated to the short exact sequence in  (\ref{2504071140}) is the connecting map \(\delta\).
+%\end{definition}
 
 \section{Topology}
 
@@ -1265,7 +1258,7 @@ g[x,2t] &t\leq \frac{1}{2}.
 This is well defined, since both \(f\) and \(g\) are basepoint-preserving. %\(f[x,0]=f[x_0,0]=y_0=g[x_0,1]=g[x,1]\). Essentially, it's just because the maps are basepoint-preserving, and \([x,0]\) and \([x,1]\) are both just the basepoint.
 
 \begin{remark}\label{2504091052}
-This defines a group structure on \([\Sigma X, Z]\), and thus \([\Sigma^i X, Z]\) is a group for all \(i\geq 1\). For \(i\geq 2\), these can be shown to be abelian, via the Eckmann-Hilton argument. The suspension map \([\Sigma X, Y]\to [\Sigma^2X, \Sigma Y]\) is a homomorphism.\footnote{Probably follows from the result for \(\pi_*(Y)\) and induction on the cells of \(X\), but I'll check this}
+This defines a group structure on \([\Sigma X, Z]\), and thus \([\Sigma^i X, Z]\) is a group for all \(i\geq 1\). For \(i\geq 2\), these can be shown to be abelian, via the Eckmann-Hilton argument. The suspension map \([\Sigma X, Y]\to [\Sigma^2X, \Sigma Y]\) is a homomorphism.\footnote{Probably follows from the result for \(\pi_*(Y)\) and induction on the cells of \(X\), but I'll check this.}
 \end{remark}
 
 \begin{remark}\label{2502200937}
@@ -1473,6 +1466,8 @@ Now:
 \item Find a way to translate the calculations in Figure \ref{2504041920} into readable and coherent LaTeX'd calculations.
 
 \item Make the \(\alpha^i_j\) notation not appalling - link it to the usual \(h\) notation.
+
+\item Make the proof of \ref{2504141556} coherent and not such that half of it is in footnotes.
 \end{itemize}
 
 Eventually:
