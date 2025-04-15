@@ -158,12 +158,18 @@ Key:
 
 \begin{itemize}
 \item Define homotopy groups
-\item Freudenthal's suspension theorem (\autocite{cobordism}, Thm 1.1.4): if \(\pi_i(X)=0\) for \(i\leq k\) (i.e. \(X\) is \(k\)-connected) then the map 
+\end{itemize}
+
+\begin{theorem}[{\autocite{cobordism}, Thm 1.1.4}, Freudenthal suspension theorem]\label{2504151046}
+If \(\pi_i(X)=0\) for \(i\leq k\) (i.e. \(X\) is \(k\)-connected) then the map 
 \begin{align*}
 \pi_n(X) \;\;&\to\;\; \pi_{n+1}(\Sigma X)\\
 [\gamma : S^n \to X] &\mapsto [\Sigma \gamma : \Sigma S^n=S^{n+1} \to \Sigma X]
 \end{align*}
 is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
+\end{theorem}
+
+\begin{itemize}
 \item This implies \(\pi_{n+k}(S^n)\) depends only on \(k\) for \(n\geq k+2\)
 \item (Obviously be careful with basepoints above)
 \item Suppose \(X\) is \(k\)-connected. Then, for \(k\geq 0\), \(0=\pi_k(X)\cong \pi_{k+1}(\Sigma X)\), so whenever a space is \(k\)-connected its suspension is \(k+1\)-connected. 
@@ -258,10 +264,9 @@ based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of 
 
 \subsection{Definitions and examples}
 
-Below follows \autocite{hatcher5}, Section 
-5.2.
+[Some intro, below follows \autocite{hatcher5}, Section 5.2. Some intuition on spectra and why we're doing this.]
 
-[Maybe I could also look at \autocite{hatcher} p454 onwards?]
+%[Maybe I could also look at \autocite{hatcher} p454 onwards?]
 
 \begin{definition}
 A \textit{spectrum} is a collection of pointed topological spaces \(\{X_n\}_{n\in \nat}\), together with basepoint-preserving maps \(\sigma_n : \Sigma X_n \to X_{n+1}\).
@@ -271,7 +276,7 @@ A \textit{spectrum} is a collection of pointed topological spaces \(\{X_n\}_{n\i
 Let \(X\) be a topological space. The \textit{suspension spectrum} of \(X\), denoted by \(\Sigma^\infty X\), has \(X_n=\Sigma^nX\) and \(\sigma_n=\id : \Sigma X_n \to X_{n+1}\).
 \end{example}
 
-We write \(\bb{S}:=\Sigma^\infty S^0\), and call \(\bb{S}\) the \textit{sphere spectrum}. For \(i>0\), we write \(\bb{S}^i:=\Sigma^i \bb{S}=\Sigma^\infty S^i\).
+We write \(\bb{S}\) for the suspension spectrum \(\Sigma^\infty S^0\), and call \(\bb{S}\) the \textit{sphere spectrum}. For \(i>0\), we write \(\bb{S}^i\) for \(\Sigma^\infty S^i\).%, where \(S^i\) has the usual cell structure. 
 
 \begin{example}
 The \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\) and \(\sigma_n : \Sigma K(G,m+n)\to K(G,m+n+1)\) is the adjoint of the CW approximation \(K(G, m+n)\to \Omega K(G,m+n+1)\).
@@ -295,18 +300,30 @@ A CW spectrum is a spectrum \(X\) consisting of CW complexes \(X_n\) with the ma
 \end{definition}
 
 \begin{definition}
-Let \(X\) be a CW spectrum. Then the \textit{\(k\)-cells} of \(X\) are the equivalence classes of non-basepoint \((k+n)\)-cells in \(X_n\), where two cells are equivalent if one is an \(m\)-fold suspension of the other. 
+Let \(X\) be a CW spectrum. Then the \textit{\(k\)-cells} of \(X\) are the equivalence classes of non-basepoint \((k+n)\)-cells in \(X_n\), where two cells are equivalent if one is an \(m\)-fold suspension of the other, for some \(m>0\). 
 \end{definition}
 
 %[\autocite{hatcher} says on p12 (god, way to make me feel stupid) that ``in \(\Sigma X\) there is a single 0-cell and an \((n+1)\)-cell for each \(n\)-cell of \(X\) other than [the basepoint]''.]
 
 \begin{definition}
-A CW spectrum \(X\) is \textit{connective} if it has no cells below a given dimension. Further, \(X\) is \textit{finite} if it has only finitely many cells, and \textit{of finite type} if it has only finitely many cells in each dimension.
+A CW spectrum \(X\) is \textit{connective} if it has no cells below a given dimension, \textit{finite} if it has only finitely many cells, and \textit{of finite type} if it has only finitely many cells in each dimension.
 \end{definition}
 
 \begin{example}
 If \(X\) is a finite (resp. finite type) CW complex, then \(\Sigma^\infty\) is a finite (resp. finite type) CW spectrum. In particular, \(\bb{S}\) is a finite CW spectrum with a unique cell in dimension 1.
 \end{example}
+
+\begin{lemma}\label{2504151105}
+Let \(X\) be a connective spectrum of finite type. Then the groups \(\pi_{i+n}(X_n)\) eventually stabilise; i.e. the maps \(\pi_{i+n}(X_n) \xrightarrow{(\sigma_n)_*\circ \Sigma} \pi_{i+n+1}(X_{n+1})\) are isomorphisms for large enough \(n\). 
+\end{lemma}
+
+\begin{ourproof}
+First, note that that maps \(\pi_{i+n}(X_n) \xrightarrow{\Sigma} \pi_{i+n+1}(\Sigma X_n)\) are eventually isomorphisms by \ref{2504151046}. 
+
+Recall that whenever \((X_{n+1}, \Sigma X_n)\) are such that \(X_{n+1}\setminus X_n\) has no cells in dimension \(\leq k\), the map \(\pi_i(\Sigma X_n)\to \pi_i(X_{n+1})\) induced by the inclusion is an isomorphism (\autocite{hatcher}, Cor 4.12 and a long exact sequence). Thus, if \((\sigma_n)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}\) never stabilises, there must be infinitely many natural numbers \(N_j\) such that \((X_{N_j+1}, \Sigma X_{N_j})\) is not \((i+N_j+1)\)-connected, and thus that \(X_{N_j+1}\setminus \Sigma X_{N_j}\) has cells of dimension \(\leq i+N_j+2\). By connectivity, there is some fixed \(l\) such that these cells are of dimension \(N_j+k+1\) for \(-l\leq k \leq i+1\). Thus, there must be some \(k\) such that infinitely many of the \(X_{N_j+1}\) have a \((k+N_j+1)\)-cell not included in \(\Sigma X_{N_j}\). This then contradicts the assumption that \(X\) is of finite type, since it has infinitely many \(k\)-cells. 
+
+Thus, the maps \((\sigma_n)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}\) are also eventually isomorphisms, so the groups \(\pi_{i+n}(X_n)\) do stabilise.\done
+\end{ourproof}
 
 \subsection{Homology and cohomology}
 
@@ -343,8 +360,8 @@ Let \(X\) be a connective CW spectrum of finite type. Then \(H_i(X), H^i(X)\), a
 \begin{ourproof}
 First, note that \(H_i(X)=H_{i+n}(X_n)\) for sufficiently large \(n\), since for large enough \(n\), \(X_n\) contains all the cells of dimension \(\leq i\). Similarly, \(H^i=H^{i+n}(X_n)\) for sufficiently large \(n\). Each \(H_{i+n}(X_n)\) is finitely generated, since \(X_n\) has only finitely many cells in each dimension, and thus each \(H^{i+n}(X_n)\) is also finitely generated (\autocite{hatcher} Cor 3.3). Thus, \(H_i(X), H^i(X)\) are finitely generated. 
 
-Now, \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\), and the groups \(\pi_{i+n}(X_n)\) stabilise by the Freudenthal suspension theorem.\footnote{You also need an extra ingredient: the problem is that we need the composition \(\pi_{i+n}(X_n) \xrightarrow{\Sigma}\pi_{i+n+1}(\Sigma X_n) \xrightarrow{(\sigma_n)_*}\pi_{i+n+1}(X_{n+1})\) to stabilise, and the FTT only gives us that the first map stabilises. Roughly, the second map stabilises because whenever \((X_{n+1}, \Sigma X_n)\) are such that \(X_{n+1}\setminus X_n\) has no cells in dimension \(\leq k\), the map \(\pi_i(\Sigma X_n)\to \pi_i(X_{n+1})\) induced by the inclusion is an isomorphism (\autocite{hatcher}, Cor 4.12 and a long exact sequence). So, if \((\sigma)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}(X_{n+1})\) never stabilises, it means you can find a strictly increasing sequence of natural numbers \(N_j\) such that \((X_{N_j+1}, \Sigma X_{N_j})\) is not \((i+N_j+2)\)-connected. In other words, there are infinitely many \(N_j\) such that \(X_{N_j+1}\setminus \Sigma X_{N_j}\) has cells of dimension \(\leq i+N_j+2\). By connectedness, these cells are of dimension \(N_j+k+1\) for \(-l\leq k \leq i+1\) (fixed \(l\)). But now \(l\) and \(i\) are fixed, so there must be some \(k\) such that for infinitely many of the \(X_{N_j+1}\) they have a \((k+N_j+1)\)-cell not included in \(\Sigma X_{N_j}\). In other words, \(X\) has infinitely many \(k\)-cells, contradicting finite type-ness.} 
-Now, the \(X_n\) must eventually be simply-connected, since \(X\) is connective\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective. \label{2504071143}}. A simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups (see e.g. \autocite{hatcher}, Thm 5.7), and we have just seen that the \(H_{i+n}(X_n)\) are finitely generated, so \(\pi_i(X)=\pi_{i+n}(X_n)\) is finitely generated. \done
+Now, \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\), and the groups \(\pi_{i+n}(X_n)\) stabilise by \ref{2504151105}. The \(X_n\) must eventually be simply-connected, since \(X\) is connective. %\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective. \label{2504071143}}. 
+A simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups (see e.g. \autocite{hatcher}, Thm 5.7), and we have just seen that the \(H_{i+n}(X_n)\) are finitely generated, so \(\pi_i(X)=\pi_{i+n}(X_n)\) is finitely generated. \done
 \end{ourproof}
 
 \begin{definition}
@@ -377,9 +394,9 @@ Further, any map \(\Sigma^\infty S^i \to X\) can be represented by a map \(S^{i+
 Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) and \(g : Y \to X\) such that \(fg=\id_{Y}\) and \(gf=\id_X\).
 \end{definition}
 
-?[maybe something on weak equivalence?]
+%?[maybe something on weak equivalence?]
 
-Note that a spectrum is equivalent to any of its cofinal subspectra. In particular, if \(X=\{X_n\}\) is a spectrum, then \(X'=\{\Sigma X_{n-1}\}\) is a cofinal subspectrum of \(X\) (where we take \(X_{-1}\) to be the basepoint of \(X_0\)). We define \(\Sigma^{-1}X:=\{X_{n-1}\}\), noting that \(\Sigma \Sigma^{-1}X=X'\simeq X\). Thus, a spectrum is always equivalent to the suspension of some other spectrum.
+Note that a spectrum is equivalent to any of its cofinal subspectra. In particular, if \(X=\{X_n\}\) is a spectrum, then \(X'=\{\Sigma X_{n-1}\}\) is a cofinal subspectrum of \(X\) (where we take \(X_{-1}\) to be the basepoint of \(X_0\)). We define \(\Sigma^{-1}X:=\{X_{n-1}\}\), noting that \(\Sigma \Sigma^{-1}X=\Sigma^{-1}\Sigma=X'\simeq X\). Thus, a spectrum is always equivalent to the suspension of some other spectrum.
 
 \begin{definition}
 A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where \(X\times I\) is the spectrum with \((X\times I)_n=X_n\times_{\text{red}} I\).
@@ -388,18 +405,26 @@ A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where 
 Note that \(\Sigma(X_n\times_{\text{red}}I)=\Sigma X_n\times_{\text{red}}I\). The set of homotopy classes of maps \(X\to Y\) is denoted by \([X,Y]\). 
 
 \begin{remark}
-For any CW spectra \(Z\), \([\Sigma^\infty S^t, Z]=\pi_t(Z)\). [they satisfy the same universal property]
+For any CW spectra \(Z\), \([\Sigma^\infty S^t, Z]=\pi_t(Z)\). %[they satisfy the same universal property]
 \end{remark}
 
 For any CW spectra \(X,Y\), the set \([X,Y]\) can the structure of an abelian group, since \(X\) has be written as a double suspension \(\Sigma^2X'\), and each set \([\Sigma^2X'_n, Y_n]\) has the structure of an abelian group by \ref{2504091052}. 
 
-\textcolour{violet}{![The suspension map \([X,Y]\to[\Sigma X, \Sigma Y]\) is an isomorphism of groups (important later!)]}
+\begin{theorem}\label{2504151310}
+The suspension map \([X,Y]\to [\Sigma X, \Sigma Y]\) is an isomorphism of groups.
+\end{theorem}
 
-?[\ref{2502211419} and \ref{2502211420} are both true for CW spectra too]
+\begin{ourproof}
+The suspension map is a homomorphism, since it is a homomorphism on maps between CW complexes. Thus, it suffices to show it is a bijection on maps between spectra. 
 
-?[Whitehead's theorem: a map between CW spectra that induces isomorphisms on all homotopy groups is a homotopy equivalence.]
+Recall that \(\Sigma^{-1}\Sigma X=\Sigma\Sigma^{-1}X\simeq X\). For any map \(f : X \to Y\) given by strict maps \(f_n : X_n'\to Y_n\), define \(\Sigma^{-1}f : \Sigma^{-1}X \to \Sigma^{-1}Y\) by \(\{f_{n-1} : X'_{n-1}\to Y_{n-1}\}\). Then \(\Sigma\Sigma^{-1}f=\{\Sigma f_{n-1}\}=\{f_n|_{\Sigma X_{n-1}}\}=f\), and similarly \(\Sigma^{-1}\Sigma f =f\). Thus, we have bijections \([X,Y]\cong [\Sigma\Sigma^{-1}X, \Sigma\Sigma^{-1}Y]\cong [\Sigma^{-1}\Sigma X, \Sigma^{-1}\Sigma Y]\), so \(\Sigma\) has a two-sided inverse. \done
+\end{ourproof}
 
-?[Prop: If a CW spectrum \(X\) is \(n\)-connected in the sense that \(\pi_i(X)=0\) for \(i\leq n\), then \(X\) is homotopy equivalent to a CW spectrum with no cells of dimension \(\leq n\)]
+%?[\ref{2502211419} and \ref{2502211420} are both true for CW spectra too]
+
+%?[Whitehead's theorem: a map between CW spectra that induces isomorphisms on all homotopy groups is a homotopy equivalence.]
+
+%?[Prop: If a CW spectrum \(X\) is \(n\)-connected in the sense that \(\pi_i(X)=0\) for \(i\leq n\), then \(X\) is homotopy equivalent to a CW spectrum with no cells of dimension \(\leq n\)]
 
 \subsection{Cofibration sequences}\label{2503291211}
 
@@ -414,15 +439,18 @@ Let \(X\) be a spectrum, \(A\subq X\) a subspectrum. Then \(A\) is \textit{close
 
 Any subspectrum is cofinal in (and thus equivalent to) its closure. We define \(X/A\) to be the CW spectrum with \((X/A)_n=X_n/A_n'\), where \(A'=\{A_n'\}\) is the closure of \(A\). Note that a quotient of connective spectra of finite type is again a connective spectrum of finite type (since the quotient has fewer cells in each dimension than the original space).
 
-\begin{itemize}
-\item \textcolour{violet}{Fact: for spectra \(X, Y\) and a subspectrum \(A\subq X\) we have exact sequences\footnote{Check if I actually need the first one.}}
-\[\textcolour{violet}{\cdots \to [\Sigma X, Y]\to [\Sigma A, Y]\to [X/A,Y]\to[X,Y]\to[A,Y]}\]
-\[\textcolour{violet}{[Y,A]\to[Y,X]\to[Y,X/A]\to[Y,\Sigma A]\to[Y,\Sigma X]\to\cdots}\]
-\end{itemize}
+\textcolour{violet}{[The map \(X\cup CA\to X/A\) is a homotopy equivalence of spectra]}
+
+\begin{theorem}
+Let \(X,Y\) be spectra, and \(A\subq X\) a subspectrum. Then there is an exact sequence
+\[[Y,A]\to[Y,X]\to[Y,X/A]\to[Y,\Sigma A]\to[Y,\Sigma X]\to\cdots.\]
+\end{theorem}
+
+\textcolour{violet}{(proof)}
 
 \begin{lemma}\label{2504140954}
-Let \(A \xinj f X \xrightarrow{i} Cf \xrightarrow{j} \Sigma A \to \cdots\) be a cofibration, where \(X, A\) are CW spectra of finite type. Then there is a long exact sequence 
-\[\cdots \leftarrow H^{n-1}(\Sigma A) \leftarrow H^n(X) \xleftarrow{i^*} H^n(Cf) \xleftarrow{j^*} H^n(\Sigma A)\leftarrow H^{n+1}(X) \leftarrow \cdots.\]
+Let \(A \xinj f X \xrightarrow{i} C_f \xrightarrow{j} \Sigma A \to \cdots\) be a cofibration, where \(X, A\) are CW spectra of finite type. Then there is a long exact sequence 
+\[\cdots \leftarrow H^{n-1}(\Sigma A) \leftarrow H^n(X) \xleftarrow{i^*} H^n(C_f) \xleftarrow{j^*} H^n(\Sigma A)\leftarrow H^{n+1}(X) \leftarrow \cdots.\]
 \end{lemma}
 
 \textcolour{teal}{(proof) [Should follow from the fact that it's true for CW complexes]}
@@ -1073,10 +1101,10 @@ induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), with abutm
 
 \begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
 Consider the cofibration
-\[\bb{S}^7 \xrightarrow{\sigma} \bb{S} \xrightarrow{i} C \sigma \xrightarrow{j} \bb{S}^8\to \cdots.\]
-Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C \sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\), where \(\hat i : \Ext^{s,t}(\bb{S})\to \Ext^{s,t}(C \sigma)\) is the map induced by filling in the diagram below with the unique dotted lifts.\footnote{Make this explanation make any sense.}
+\[\bb{S}^7 \xrightarrow{\sigma} \bb{S} \xrightarrow{i} C_\sigma \xrightarrow{j} \bb{S}^8\to \cdots.\]
+Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\), where \(\hat i : \Ext^{s,t}(\bb{S})\to \Ext^{s,t}(C_\sigma)\) is the map induced by filling in the diagram below with the unique dotted lifts.\footnote{Make this explanation make any sense.}
 \[\begin{tikzcd} 
- \cdots \arrow[r, ""] & F_2 \arrow[r, ""] \arrow[d, "", dashrightarrow] & F_1 \arrow[d, "", dashrightarrow] \arrow[r, ""] & F_0 \arrow[d, "", dashrightarrow] \arrow[r, ""] & H^*(C \sigma) \arrow[d, "i^*"]\\ 
+ \cdots \arrow[r, ""] & F_2 \arrow[r, ""] \arrow[d, "", dashrightarrow] & F_1 \arrow[d, "", dashrightarrow] \arrow[r, ""] & F_0 \arrow[d, "", dashrightarrow] \arrow[r, ""] & H^*(C_\sigma) \arrow[d, "i^*"]\\ 
  \cdots \arrow[r, swap, ""]  & P_2 \arrow[r, ""'] & P_1 \arrow[r, ""'] & P_0 \arrow[r, ""'] & H^*(\bb{S})
  \end{tikzcd}\] 
 \end{lemma}
@@ -1086,21 +1114,21 @@ Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C \sigma)\) be the generator 
 [Some note about how we're calling \(i(h_2)\) just \(h_2\) because for anything in the range \(t-s<7\) \(i\) is injective]
 
 We first show that \(d_2(h_2 \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By \ref{2504140954}, we have a long exact sequence
-\[\cdots \leftarrow H^{n-1}(\bb{S}^8) \leftarrow H^n(\bb{S}) \xleftarrow{i^*} H^n(C \sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow H^{n+1}(\bb{S}) \leftarrow \cdots.\]
+\[\cdots \leftarrow H^{n-1}(\bb{S}^8) \leftarrow H^n(\bb{S}) \xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow H^{n+1}(\bb{S}) \leftarrow \cdots.\]
 However, any map \(H^n(\bb{S})\to H^{n-1}(\bb{S}^8)\) must be zero, so we get short exact sequences 
-\[0 \leftarrow H^n(\bb{S})\xleftarrow{i^*} H^n(C \sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow 0.\]
+\[0 \leftarrow H^n(\bb{S})\xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow 0.\]
 Taking a direct sum gives a short exact sequence
-\[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C \sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0.\]
+\[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C_\sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0.\]
 From the short exact sequence above, we get\footnote{This is a homological algebra fact, but maybe I should state it somewhere.} a long exact sequence 
 
 \[\begin{tikzcd}[row sep=8ex, column sep=3ex]
-\cdots \arrow[r, ""] & \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
-\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s+1,t}(H^*(C \sigma), \bb{F}_2) \arrow[r, "j"] & \Ext^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
+\cdots \arrow[r, ""] & \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
+\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] & \Ext^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
 \end{tikzcd}\]
 
 %\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 Now, \(f_0\in \Ext^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
-\[\Ext^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{4,22}(H^*(C \sigma), \bb{F}_2).\]
+\[\Ext^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
 Figure \ref{1304251243} shows us that \(\Ext^{3,14}=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext^{4,15}=0\) and \(\Ext^{0,8}=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication \footnote{I've just drawn some diagrams, and I think that yes, \(i(\alpha \beta)=i(\alpha)i(\beta)\). Essentially because the way you multiply in \(\Ext\) involves writing down unique lifts that make certain squares commute, but both \(i(\alpha \beta)\) and \(i(\alpha)i(\beta)\) are lifts making the appropriate squares commute, so by uniqueness they must be the same.}, \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+h_2\hat{i}(h_4)\). In either case, by linearity of \(d_2\), \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(h_2\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)\footnote{Explain.}).
 
 Now, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
@@ -1136,7 +1164,7 @@ d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\), as required. \done
 \begin{figure}[H]\label{2504131812}
 \centering
 \input{ext_csigma.tex}
-\caption{The \(E_2\) page of the Adams spectral sequence for \(C \sigma\), in the range \(t-s\leq 18\), with the generator \(\overline{\overline{h_0^2h_3}}\) shown in red.}
+\caption{The \(E_2\) page of the Adams spectral sequence for \(C_\sigma\), in the range \(t-s\leq 18\), with the generator \(\overline{\overline{h_0^2h_3}}\) shown in red.}
 \end{figure}
 
 \begin{theorem}[{\autocite{rognes2}, Table 14.2 (10)}]
@@ -1145,12 +1173,12 @@ d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\), as required. \done
 
 \begin{ourproof}
 From the cofibration 
-\[\bb{S}^7 \xinj{\sigma} \bb{S} \xrightarrow{i}C \sigma \xrightarrow{j}\bb{S}^8 \inj \bb{S}^1 \to\cdots,\]
+\[\bb{S}^7 \xinj{\sigma} \bb{S} \xrightarrow{i}C_\sigma \xrightarrow{j}\bb{S}^8 \inj \bb{S}^1 \to\cdots,\]
 we get an exact sequence
-\[\pi_{7}(S) \xrightarrow{\sigma} \pi_{14}(S) \xrightarrow{i} \pi_{14}(C \sigma) \xrightarrow{j} \pi_6(S) \to \pi_{13}(S),\]
-by [the work in Section \ref{2503291211}]. Since these stable homotopy groups are all finite\footnote{A priori \(\pi_{14}(C \sigma)\) is only finitely generated, but from Figure \ref{2504131812} we see that its 2-completion is finite, so the group itself must be finite.}, this induces\footnote{Explain or have as a lemma somewhere else (I've commented it out for the moment).} a exact sequence
-\[\pi_{7}(S)^\wedge_2 \xrightarrow{\sigma} \pi_{14}(S)^\wedge_2 \xrightarrow{i} \pi_{14}(C \sigma)^\wedge_2 \xrightarrow{j} \pi_6(S)^\wedge_2 \xrightarrow{\sigma} \pi_{13}(S)^\wedge_2=0.\]
-In \(E_2(C \sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\) (by \ref{2504131851}), so \(\pi_{14}(C \sigma)^\wedge_2\) has order dividing four. Let \(\nu \in \pi_3(S)^\wedge_2\) be a representative for \(h_2\). Then \(\pi_6(S)^\wedge_2=\inte/2\inte \ang{\nu^2}\), and \(\nu^2 \sigma=0\). By exactness, we see that \(j\) is surjective, so \(\pi_6(S)^\wedge_2\cong \pi_{14}(C \sigma)^\wedge_2/\ker j=\pi_{14}(C \sigma)^\wedge_2/\im i\). We know \(\pi_{14}(C \sigma)^\wedge_2\) has order dividing 4 and \(\pi_6(S)^\wedge_2\) has order 2, so \(\im i\) has order dividing 2. 
+\[\pi_{7}(S) \xrightarrow{\sigma} \pi_{14}(S) \xrightarrow{i} \pi_{14}(C_\sigma) \xrightarrow{j} \pi_6(S) \to \pi_{13}(S),\]
+by [the work in Section \ref{2503291211}]. Since these stable homotopy groups are all finite\footnote{A priori \(\pi_{14}(C_\sigma)\) is only finitely generated, but from Figure \ref{2504131812} we see that its 2-completion is finite, so the group itself must be finite.}, this induces\footnote{Explain or have as a lemma somewhere else (I've commented it out for the moment).} a exact sequence
+\[\pi_{7}(S)^\wedge_2 \xrightarrow{\sigma} \pi_{14}(S)^\wedge_2 \xrightarrow{i} \pi_{14}(C_\sigma)^\wedge_2 \xrightarrow{j} \pi_6(S)^\wedge_2 \xrightarrow{\sigma} \pi_{13}(S)^\wedge_2=0.\]
+In \(E_2(C_\sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\) (by \ref{2504131851}), so \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing four. Let \(\nu \in \pi_3(S)^\wedge_2\) be a representative for \(h_2\). Then \(\pi_6(S)^\wedge_2=\inte/2\inte \ang{\nu^2}\), and \(\nu^2 \sigma=0\). By exactness, we see that \(j\) is surjective, so \(\pi_6(S)^\wedge_2\cong \pi_{14}(C_\sigma)^\wedge_2/\ker j=\pi_{14}(C_\sigma)^\wedge_2/\im i\). We know \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing 4 and \(\pi_6(S)^\wedge_2\) has order 2, so \(\im i\) has order dividing 2. 
 
 Now, \(\pi_7(S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by graded commutativity, so the first isomorphism theorem implies that \(\pi_{14}(S)^\wedge_2\) has order dividing four. Thus, \(h_0d_0\) and \(h_0^2d_0\) must be boundaries, and \(d_3(h_0h_4)=h_0d_0\) is the only possibility.
 \done
@@ -1427,6 +1455,8 @@ A compact subspace of a CW complex is contained in a finite subcomplex.
 The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+spectrum}{the nLab}: ``[some smash product] is non-canonically equivalent to a product of EM-spectra (hence a wedge sum of EM-spectra in the finite case)''. ???????
 
 \item Question: so I have this multiplicative structure on the entire spectral sequence, right? And on the second page it's just the Yoneda product. But say I compute, I don't know, \(\alpha^2_5=h_0h_2\) on the \(E_2\)  page. Since none of those guys are touched by differentials, is that computation still valid on the \(E_3\) page? And on higher pages?
+
+\item I'm a bit suspicious of the proof of \ref{2504151310}, because the proof is more complicated in \autocite{hatcher5}. Maybe raise this.
 \end{itemize}
 
 \subsection{To do}\label{2503221342}
@@ -1434,8 +1464,6 @@ The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+s
 Now:
 
 \begin{itemize}
-\item Prove that the suspension map \([X,Y]\to [\Sigma X, \Sigma Y]\) is a group isomorphism. 
-
 \item Derive the exact sequence
 \[[Y,A]\to [Y,X]\to [Y, X/A]\to [Y, \Sigma A]\to [Y, \Sigma X].\]
 
@@ -1467,7 +1495,7 @@ Now:
 
 \item Make the \(\alpha^i_j\) notation not appalling - link it to the usual \(h\) notation.
 
-\item Make the proof of \ref{2504141556} coherent and not such that half of it is in footnotes.
+\item State this whole `replacing a map by an inclusion' business somewhere early.
 \end{itemize}
 
 Eventually:
@@ -1518,7 +1546,7 @@ Eventually:
 
 \item Where it's ambiguous, I'm marking things I definitely need by ! and things I think I may not need by ?.
 
-\item By the way, the argument at footnote \ref{2504071143} looks a little unsettling, because it seems like you could use it to show that \textit{all} homotopy groups are trivial eventually. And that's true! But when you take the colimit \(\pi_i(X)=\colim_n \pi_{i+n}X_n\), notice that it's over \(\pi_{i+n}\), not \(\pi_{i}\). So yes, the connectivity of \(X_n\) increases with \(n\), but the index of \(\pi\) also does. Basically, it's all fine. I'm putting this note here because I will invariably forget this and have a heart attack a day before this is due thinking everything is broken. 
+%\item By the way, the argument at footnote \ref{2504071143} looks a little unsettling, because it seems like you could use it to show that \textit{all} homotopy groups are trivial eventually. And that's true! But when you take the colimit \(\pi_i(X)=\colim_n \pi_{i+n}X_n\), notice that it's over \(\pi_{i+n}\), not \(\pi_{i}\). So yes, the connectivity of \(X_n\) increases with \(n\), but the index of \(\pi\) also does. Basically, it's all fine. I'm putting this note here because I will invariably forget this and have a heart attack a day before this is due thinking everything is broken. 
 
 \item In literature, \(A^\wedge_p\) is the \(p\)-adic completion of \(A\). Sometimes I'll write this as \(\text{}_pA\) because of some stupid notational decisions I made earlier.
 
