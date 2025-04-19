@@ -1,7 +1,8 @@
 \documentclass{MetricNotes2023}
 
-\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.2cm,right=2.2cm,marginparwidth=1.75cm]{geometry}
 
+% figure stuff
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
 \usepackage{float}
@@ -14,6 +15,8 @@
 %\caption{The compound pendulum}
 %\end{figure}
 %\setcounter{MaxMatrixCols}{20}
+
+% font stuff
 \usepackage{amsmath}
 \usepackage{enumitem}
 \usepackage{amssymb}
@@ -22,9 +25,11 @@
 \usepackage{mathtools}
 \usepackage{parskip}
 \usepackage{mathrsfs}
-\usepackage{float}
 \usepackage{xcolor}
 \usepackage{spectralsequences}
+
+\usepackage{pdflscape}
+%\usepackage{lscape}
 
 % knots stuff
 
@@ -177,38 +182,42 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 \item Suppose \(X\) is \(k\)-connected. Then, for \(k\geq 0\), \(0=\pi_k(X)\cong \pi_{k+1}(\Sigma X)\), so whenever a space is \(k\)-connected its suspension is \(k+1\)-connected. 
 \item As you take suspensions, then, your successive bounds are \(n \leq 2k\), \(n+1\leq 2k+2\implies n \leq 2k+1\), \(n\leq 2k+2\), etc ... so the sequence \(\pi_n(X)\to \pi_{n+1}(\Sigma X)\to \cdots\) will eventually stabilise.  
 \item Thus, if you take the colimit of that direct system, it'll just equal the stable value, with the higher legs just being the inverse isomorphisms.
-\item ?\autocite{ass}, Cor 1.9 [not 100\% convinced of how this follows, but believing it for now]: if \(X\) is a CW complex of dimension \(d\) and \(Y\) a \((k-1)\)-connected space, then the suspension homomorphism\footnote{Hang on, the what?? \(X\) isn't the suspension of anything, why on earth would this be a group?} \([X, Y]\to[\Sigma X, \Sigma Y]\) is bijective if \(d<2k-1\) and surjective if \(d=2k-1\). 
-
-\item \autocite{cobordism}, Thm 1.1.8: \(\pi_{n+k}(S^n)\) is finite for \(k>0\) except when \(n=2m\), \(k=2m-1\). 
-
-\item Immediate corollary: \(\pi_i^S\) is finite for \(i>0\). 
+%\item ?\autocite{ass}, Cor 1.9 [not 100\% convinced of how this follows, but believing it for now]: if \(X\) is a CW complex of dimension \(d\) and \(Y\) a \((k-1)\)-connected space, then the suspension homomorphism\footnote{Hang on, the what?? \(X\) isn't the suspension of anything, why on earth would this be a group?} \([X, Y]\to[\Sigma X, \Sigma Y]\) is bijective if \(d<2k-1\) and surjective if \(d=2k-1\). 
 \end{itemize}
 
-Miscellaneous facts I might need later:
-\begin{itemize}
-\item Cohomology [possibly only of pointed %\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?} %I think it's just that it's reduced
-CW complexes] is representable\footnote{As a set, or is this some sort of enriched thing? If it's enriched, is that over \textbf{Ab} or \textbf{Rng}? \autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups. So, it's over \textbf{Ab}? N.B: There's a lot of talk about `reduced cohomology theories', so a good next step would be to figure out what those are - if they only involve groups and not rings, maybe the cup product on \(H^*\) is not relevant here.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
-\item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
-\item The map \(\mathscr A_2 \to \widetilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
+\begin{theorem}[{\autocite{cobordism}, Thm 1.1.8}]
+\(\pi_{n+k}(S^n)\) is finite for \(k>0\) except when \(n=2m\), \(k=2m-1\). 
+\end{theorem}
 
-\item ?Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\widetilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
+\begin{corollary}
+\(\pi_i^S\) is finite for \(i>0\). 
+\end{corollary}
 
-\item ?Axioms for a homology theory \(h_*\):
-\begin{enumerate}
-\item If \(f\simeq g : X \to Y\), then \(f_*=g_* : h_n(X)\to h_n(Y)\).
-\item For each \(A\subq X\), there is a long exact sequence
-\[\cdots \xleftarrow{\del}h_n(X/A)\xleftarrow{q_*}h_n(X) \xleftarrow{i_*}h_n(A) \xleftarrow{\del} h_{n+1}(X/A)\xleftarrow{q_*}\cdots.\]
-\item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the coproduct map \(\bigoplus_\alpha (i_\alpha)_* : \bigoplus_\alpha h_n(X_\alpha) \to  h_n(X)\) is an isomorphism for each \(n\). 
-\end{enumerate}
-?Axioms for a (reduced) cohomology theory \(h^*\):
-\begin{enumerate}
-\item If \(f\simeq g : X \to Y\), then \(f^*=g^* : h^n(Y)\to h^n(X)\).
-\item For each \(A\subq X\), there is a long exact sequence
-\[\cdots \xrightarrow{\delta}h^n(X/A)\xrightarrow{q^*}h^n(X) \xrightarrow{i^*}h^n(A) \xrightarrow{\delta} h^{n+1}(X/A)\xrightarrow{q^*}\cdots.\]
-\item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the product map \((i^*_\alpha) : h^n(X) \to \prod_\alpha h^n(X_\alpha)\) is an isomorphism for each \(n\).
-\end{enumerate}
-\item ?Stable homotopy groups are a homology theory.
-\end{itemize}
+%Miscellaneous facts I might need later:
+%\begin{itemize}
+%\item Cohomology [possibly only of pointed %\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?} %I think it's just that it's reduced
+%CW complexes] is representable\footnote{\autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
+%\item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
+%\item The map \(\mathscr A_2 \to \widetilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
+
+%\item ?Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\widetilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
+
+%\item ?Axioms for a homology theory \(h_*\):
+%\begin{enumerate}
+%\item If \(f\simeq g : X \to Y\), then \(f_*=g_* : h_n(X)\to h_n(Y)\).
+%\item For each \(A\subq X\), there is a long exact sequence
+%\[\cdots \xleftarrow{\del}h_n(X/A)\xleftarrow{q_*}h_n(X) \xleftarrow{i_*}h_n(A) \xleftarrow{\del} h_{n+1}(X/A)\xleftarrow{q_*}\cdots.\]
+%\item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the coproduct map \(\bigoplus_\alpha (i_\alpha)_* : \bigoplus_\alpha h_n(X_\alpha) \to  h_n(X)\) is an isomorphism for each \(n\). 
+%\end{enumerate}
+%?Axioms for a (reduced) cohomology theory \(h^*\):
+%\begin{enumerate}
+%\item If \(f\simeq g : X \to Y\), then \(f^*=g^* : h^n(Y)\to h^n(X)\).
+%\item For each \(A\subq X\), there is a long exact sequence
+%\[\cdots \xrightarrow{\delta}h^n(X/A)\xrightarrow{q^*}h^n(X) \xrightarrow{i^*}h^n(A) \xrightarrow{\delta} h^{n+1}(X/A)\xrightarrow{q^*}\cdots.\]
+%\item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the product map \((i^*_\alpha) : h^n(X) \to \prod_\alpha h^n(X_\alpha)\) is an isomorphism for each \(n\).
+%\end{enumerate}
+%\item ?Stable homotopy groups are a homology theory.
+%\end{itemize}
 
 \autocite{ass}, \autocite{hatcher}
 
@@ -386,7 +395,7 @@ Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence 
 A \textit{map} of CW spectra \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a cofinal subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal subspectrum. 
 \end{definition}
 
-Given two maps \(f : X \to Y\), \(g : Y \to Z\) represented by \(f' : X' \to Y\), \(g' : Y' \to Z\) respectively, we compose as follows: let \(X''\) be the subspectrum of \(X'\), where the cells of \(X''_n\) consist of the cells of \(X'_n\) mapped to \(Y'_n\) under \(f'_n\). Then, for any cell \(e^i_\alpha\) of \(X'_n\), \(f_n(e^i_\alpha)\) is contained in a finite union of cells\footnote{Since the image of a compact set is compact.} of \(Y_n\), whose \(k\)-fold suspension lies in \(Y'_{n+k}\) for large enough \(k\). Since \(f'\) is a strict map, \(\Sigma^kf'_n(e^i_\alpha)=f'_{n+k}\Sigma^ke^i_\alpha\), so \(\Sigma^ke^i_\alpha\) is a cell of \(X'_{n+k}\). Thus, \(X''\) is cofinal in \(X'\) and hence in \(X\). We define \(gf := [X'' \xrightarrow{f'|_{X''}}Y' \xrightarrow{g'}Z]\), which is well-defined since the intersection of cofinal subspectra is again a cofinal subspectrum. 
+Given two maps \(f : X \to Y\), \(g : Y \to Z\) represented by \(f' : X' \to Y\), \(g' : Y' \to Z\) respectively, we compose as follows: let \(X''\) be the subspectrum of \(X'\), where the cells of \(X''_n\) consist of the cells of \(X'_n\) mapped to \(Y'_n\) under \(f'_n\). Then, for any cell \(e^i_\alpha\) of \(X'_n\), \(f_n(e^i_\alpha)\) is contained in a finite union of cells of \(Y_n\) (since the image of a compact set is compact), whose \(k\)-fold suspension lies in \(Y'_{n+k}\) for large enough \(k\). Since \(f'\) is a strict map, \(\Sigma^kf'_n(e^i_\alpha)=f'_{n+k}\Sigma^ke^i_\alpha\), so \(\Sigma^ke^i_\alpha\) is a cell of \(X'_{n+k}\). Thus, \(X''\) is cofinal in \(X'\) and hence in \(X\). We define \(gf := [X'' \xrightarrow{f'|_{X''}}Y' \xrightarrow{g'}Z]\), which is well-defined since the intersection of cofinal subspectra is again a cofinal subspectrum. 
 
 Since any strict map \(f' : X' \to Y\) can be taken to be cellular, a map \(f : X \to Y\) induces a well-defined map \(C_*(X)\to C_*(Y)\) (by cofinality), and thus maps on homology and cohomology. 
 
@@ -490,10 +499,10 @@ The map \(F : [X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\) is an 
 
 \begin{definition}[{\autocite{concise}, Def 10.1.1}]
 Let \(A\) be an abelian group. Then its \textit{\(p\)-adic completion} is the limit 
-\[\text{}_pA=\lim\limits_{\leftarrow n} (A/p^nA).\]
+\[A^\wedge_p=\lim\limits_{\leftarrow n} (A/p^nA).\]
 \end{definition}
 
-If \(A=\inte\), we instead write \(\inte_p\) for the \(p\)-adic integers. There is a natural map \(A \to \text{}_pA\), whose component at \(n\) is reduction modulo \(p^nA\). 
+If \(A=\inte\), we instead write \(\inte_p\) for the \(p\)-adic integers. There is a natural map \(A \to A^\wedge_p\), whose component at \(n\) is reduction modulo \(p^nA\). 
 
 %[\autocite{concise} p154]:
 When \(A\) is finitely generated, its \(p\)-adic completion is given by the map \(A \to A\otimes \inte_p\); \(a\mapsto a\otimes 1\). 
@@ -508,11 +517,11 @@ Define a homomorphism \(A\otimes\inte_p\to A/T\) sending \(a\otimes z \mapsto [\
 \end{ourproof}
 
 \begin{remark}
-If \(A\) is finite with order \(np^r\) for \(p\nvert n\), then \(\abs{\text{}_pA}=p^r\), by Cauchy's theorem. 
+If \(A\) is finite with order \(np^r\) for \(p\nvert n\), then \(\abs{A^\wedge_p}=p^r\), by Cauchy's theorem. 
 \end{remark}
 
 \begin{definition}[{\autocite{spectra}, p129}]
-Let \(X\) be a CW spectrum. Then a \textit{\(p\)-completion} of \(X\) is a map \(f : X \to \text{}_pX\) such that for all \(i\), \(\pi_if\) expresses \(\pi_i(\text{}_pX)\) as the \(p\)-completion of \(\pi_i(X)\).
+Let \(X\) be a CW spectrum. Then a \textit{\(p\)-completion} of \(X\) is a map \(f : X \to X^\wedge_p\) such that for all \(i\), \(\pi_if\) expresses \(\pi_i(X^\wedge_p)\) as the \(p\)-completion of \(\pi_i(X)\).
 \end{definition}
 
 \begin{theorem}[{\autocite{spectra}, Thm 9.1.1}]
@@ -724,56 +733,64 @@ There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s
 
 \autocite{spectral_sequences}, \autocite{hatcher5}
 
+\subsection{First computations}
+
+\begin{lemma}[{\autocite{hatcher5}, Lem 5.49}]\label{2503171645shutupitsbeenalongterm}
+For a minimal free resolution 
+\[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2 \to 0\]
+of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\), where \(\Hom^t_{\A}(F_s, \bb{F}_2)\subq \Hom_{\A}(F_s, \bb{F}_2)\) consists of the morphisms which lower the degree by \(t\).
+\end{lemma}
+
+\textcolour{violet}{(proof)}
+
+[Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
+
+\autocite{ass}, \autocite{hatcher5}, \autocite{rognes2}
+
+\input{table.tex}
+
+\textcolour{violet}{[Explain the table above]}
+
+Looking at the table above, we can see that \((\pi^S_3)^\wedge_2\) has order \(8\). However, we do not currently have the tools to determine whether it is isomorphic to \((\inte/2\inte)^3\), \(\inte/2\inte\oplus \inte/4\inte\), or \(\inte/8\inte\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
+
 \subsection{Multiplicative structure}
 
 \subsubsection{The Yoneda product}\label{2504171922}
 
-\autocite{rognes2}: For any algebra \(A\) and \(A\)-modules \(L,M,N\), there is a product, the \textit{Yoneda product}
-\[\circ : \Ext_A^s(M,N)\otimes \Ext^u_A(L,M)\to \Ext_A^{s+u}(L,N).\]
+\autocite{rognes2}:
 
-Let 
+\begin{definition}
+For any algebra \(A\) and \(A\)-modules \(L,M,N\), there is a product, the \textit{Yoneda product}
+\[\circ : \Ext_A^{s,t}(M,N)\otimes \Ext^{u,v}_A(L,M)\to \Ext_A^{s+u}(L,N),\]
+defined as follows: let 
 \[\cdots \xrightarrow{f_3} F_2 \xrightarrow{f_2} F_1 \xrightarrow{f_1} F_0 \xrightarrow{f_0} L\to 0,\]
 \[\cdots \xrightarrow{f'_3} F'_2 \xrightarrow{f'_2} F'_1 \xrightarrow{f'_1} F'_0 \xrightarrow{f'_0} M\to 0\]
-be free resolutions for \(L\) and \(M\). Then, given \([g] \in \Ext^{s,t}(F'_s, N)\), \([h]\in \Ext^{u,v}(F_u, M)\), we form their product by inductively filling in the commutative diagram below, and setting \([g]\cdot[h]=[gh_s]\). 
+be free resolutions for \(L\) and \(M\). Then, given \([g] \in \Ext^{s,t}(M, N)\), \([h]\in \Ext^{u,v}(L, M)\), we inductively construct a chain map \(h_\bullet : F_{u+\bullet} \to F'_{\bullet}[v]\), as shown in the diagram below.
 \[\begin{tikzcd} 
 F_{u+s} \arrow[r, "f_{u+s}"] \arrow[d, swap, "h_s", dashrightarrow]  & F_{u+s-1} \arrow[r, "f_{u+s-1}"] \arrow[d, "h_{s-1}"', dashrightarrow] & \cdots \arrow[r, "f_{u+1}"] & F_u \arrow[d, "h_0"', dashrightarrow] \arrow[dr, "h"] \arrow[r, "f_u"] & F_{u-1} \arrow[r, "f_{u-1}"] & \cdots \arrow[r, "f_1"] & F_0 \arrow[r, "f_0"] & L \\ 
 F'_{s}[v] \arrow[r, swap, "f'_s"] \arrow[d, swap, "g"] & F'_{s-1}[v] \arrow[r, "f'_{s-1}"'] & \cdots \arrow[r, "f'_1"'] & F'_0[v] \arrow[r, "f'_0"', twoheadrightarrow] & M[v] & & & \\ 
 N[v+t] & & & & & & & \\ 
 \end{tikzcd}\]
-
-[The \([t]\) means shifted by \(t\) i.e. in degree \(t\) because the maps are.]
-
-The map \(h_0\) is constructed as follows: let \(\alpha \in F_u\) be a generator, and consider \(h(\alpha)\in M[v]\). Since \(f'_0\) is surjective, there exists some \(\beta\in F'_0[v]\) such that \(f'_0(\beta)=h(\alpha)\). We define \(h_0(\alpha)=\beta\). Now, suppose the \(h_i\) have been constructed for \(i<w\), and consider the diagram below.
+%[The \([t]\) means shifted by \(t\) i.e. in degree \(t\) because the maps are.]
+The map \(h_0\) is defined as follows: let \(\alpha \in F_u\) be a generator, and consider \(h(\alpha)\in M[v]\). Since \(f'_0\) is surjective, there exists some \(\beta\in F'_0[v]\) such that \(f'_0(\beta)=h(\alpha)\). We define \(h_0(\alpha)=\beta\). Now, suppose the \(h_i\) have been constructed for \(i<w\), and consider the diagram below.
 \[\begin{tikzcd}
 F_{u+w} \arrow[r, "f_{u+w}"] \arrow[d, swap, "h_w", dashrightarrow]  & F_{u+w-1} \arrow[r, "f_{u+w-1}"] \arrow[d, "h_{w-1}"] & F_{u+w-2} \arrow[d, "h_{w-2}"] \\ 
 F'_w[v] \arrow[r, swap, "f'_w"]  & F'_{w-1}[v] \arrow[r, "f'_{w-1}"'] & F'_{w-2}[v] 
  \end{tikzcd}\] 
 Let \(\alpha\in F_{u+w}\) be a generator, and consider \(f'_{w-1}h_{w-1}f_{u+w}(\alpha)\in F'_{w-2}[v]\). By induction, the right square commutes, so \(f'_{w-1}h_{w-1}f_{u+w}(\alpha)=h_{w-2}f_{u+w-1}f_{u+w}(\alpha)=0\), by exactness of the top row. Thus, \(h_{w-1}f_{u+w}(\alpha)\in \ker f'_{w-1}=\im f'_w\). Write \(h_{w-1}f_{u+w}(\alpha)=f'_w(\beta)\), and define \(h_w(\alpha)=\beta\).  
 
-We need to check that this product is well-defined. First, we check \(gh_uf_{s+u+1}=0\). Consider the diagram below.
+Now, consider the diagram below.
 \[\begin{tikzcd}
 F_{u+s+1} \arrow[r, "f_{u+s+1}"] \arrow[d, swap, "h_{s+1}", dashrightarrow]  & F_{u+s} \arrow[d, "h_{s}"]  \\
 F'_{s+1}[v] \arrow[r, swap, "f'_{s+1}"]  & F'_{s}[v] \arrow[d, "g"]\\
 & N[v+t]
 \end{tikzcd}\]
-We have \(gh_sf_{u+s+1}=gf'_{s+1}h_{s+1}=0\), since \([g] \in \Ext^{s,t}(F'_s, N)\), so \([gh_s]\in \Ext^{u+s, v+t}\).
+We have \(gh_sf_{u+s+1}=gf'_{s+1}h_{s+1}=0\), since \([g] \in \Ext^{s,t}(F'_s, N)\), so \([gh_s]\in \Ext^{u+s, v+t}\). We thus define \([g]\cdot  [h]=[gh_s]\). 
+\end{definition}
 
-Now, suppose we have two chain maps \(\{h_i\}, \{h'_i\}\), and define \(k_0 : F_{u-1}\to F_0'[v]\) to be the zero map. By construction, \(f'_0h_0=f'_0h'_0=h\), so \(f'_0(h_0-h_0')=0\). Thus, \(\im(h_0-h'_0)\subq \ker f'_0=\im f'_1\), so \(h_0-h'_0=f'_1k_1=f'_1k_1+k_0f_{u}\) for some map \(k_1 : F_u \to F_1'[v]\). Now, suppose we have \(k_i, k_{i-1}\) such that \(h_{i-1}-h'_{i-1} = f'_{i}k_i+k_{i-1}f_{u+i-1}\). Then \(f'_ih_i=h_{i-1}f_{u+i}\) and \(f'_ih'_i=h'_{i-1}f_{u+i}\), so \(f'_i(h_i-h'_i)=(h_{i-1}-h'_{i-1})f_{u+i}=(f'_{i}k_i+k_{i-1}f_{u+i-1})f_{u+i}=f'_ik_if_{u+i}\), so we can construct \(k_{i+1}\) such that \(h_i-h'_i=f'_{i+1}k_{i+1}+k_if_{u+i}\). Now, \(g(h_s-h'_s)=g(f'_{s+1}k_{s+1}+k_sf_{u+s})=gk_sf_{u+s}\), and thus \([g(h_s-h'_s)]=[gk_sf_{u+s}]=[0]\).
+This definition is independent of the lifts chosen, which can be seen as follows. Suppose we have two chain maps \(\{h_i\}, \{h'_i\}\); we will construct a chain homotopy between them. Define \(k_0 : F_{u-1}\to F_0'[v]\) to be the zero map. By construction, \(f'_0h_0=f'_0h'_0=h\), so \(f'_0(h_0-h_0')=0\). Thus, \(\im(h_0-h'_0)\subq \ker f'_0=\im f'_1\), so \(h_0-h'_0=f'_1k_1=f'_1k_1+k_0f_{u}\) for some map \(k_1 : F_u \to F_1'[v]\). Now, suppose we have \(k_i, k_{i-1}\) such that \(h_{i-1}-h'_{i-1} = f'_{i}k_i+k_{i-1}f_{u+i-1}\). Then \(f'_ih_i=h_{i-1}f_{u+i}\) and \(f'_ih'_i=h'_{i-1}f_{u+i}\), so \(f'_i(h_i-h'_i)=(h_{i-1}-h'_{i-1})f_{u+i}=(f'_{i}k_i+k_{i-1}f_{u+i-1})f_{u+i}=f'_ik_if_{u+i}\), and thus we can construct \(k_{i+1}\) such that \(h_i-h'_i=f'_{i+1}k_{i+1}+k_if_{u+i}\). Now, \(g(h_s-h'_s)=g(f'_{s+1}k_{s+1}+k_sf_{u+s})=gk_sf_{u+s}\), and therefore \([g(h_s-h'_s)]=[gk_sf_{u+s}]=[0]\).
 
-Finally, if \(h=lf_u\) for some \(l : F_{u-1}\to M[v]\), with a chain map\footnote{This is not well explained...} [filling?] \(\{l_i\}\), then \(\{l_if_{u+i}\}\) is a filling for \(h\), so \([g]\cdot [h]=[gl_sf_{u+s}]=[0]\). On the other hand, if \(g=mf'_{s}\), then \([g]\cdot[h]=[gh_s]=[mf'_sh_s]=[mh_{s-1}f_{u+s}]=[0]\).
-
-%[The stuff below is old and needs to be rewritten but I'm putting it here for the moment. Essentially I've specialised to the case  where the resolution is free so \(\Ext=\Hom\).]
-
-%Using \ref{2503171645shutupitsbeenalongterm} (which comes later but whatever, I'll reorder things), we get \(E_2^{s,t}=\Hom^t_{\A}(F_s, \bb{F}_2)\). So, if we have a minimal free resolution 
-%\[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2\]
-%of \(\bb{F}_2\) as an \(\A\)-module, and we have \(f \in \Hom^t_{\A}(F_s, \bb{F}_2), g \in \Hom^{t'}_{\A}(F_{s'}, \bb{F}_2)\), we multiply them as follows:
-
-%First, we put these resolutions side by side.
-%\[\begin{tikzcd} 
-%F_{s+s'} \arrow[r, ""] \arrow[d, swap, "", dashrightarrow]  & F_{s+s'-1} \arrow[r, ""] \arrow[d, ""', dashrightarrow] & \cdots \arrow[r, ""] & F_s \arrow[d, ""', dashrightarrow] \arrow[dr, "f"] \arrow[r, ""] & F_{s-1} \arrow[r, ""'] & \cdots \arrow[r] & F_0 \arrow[r] & \bb{F}_2 \\ 
-%F_{s'}[t] \arrow[r, swap, ""] \arrow[d, swap, "g"] & F_{s'-1}[t] \arrow[r, ""'] & \cdots \arrow[r, ""'] & F_0[t] \arrow[r, ""', twoheadrightarrow] & \bb{F}_2[t] & & & \\ 
-%\bb{F}_2[t+t'] & & & & & & & \\ 
-% \end{tikzcd}\] 
+Finally, if \(h=lf_u\) for some \(l : F_{u-1}\to M[v]\), with filling \(\{l_i\}\), then \(\{l_if_{u+i}\}\) is a filling for \(h\), so \([g]\cdot [h]=[gl_sf_{u+s}]=[0]\). On the other hand, if \(g=mf'_{s}\), then \([g]\cdot[h]=[gh_s]=[mf'_sh_s]=[mh_{s-1}f_{u+s}]=[0]\). Thus, the Yoneda product is well defined.
 
 \subsubsection{The composition product}
 
@@ -784,10 +801,10 @@ Let \(X, Y, Z\) be spectra. The \textit{composition pairing} \(\circ : [Y, Z]_* 
 [g : \Sigma^v Y \to Z]\otimes [f : \Sigma^t X\to Y] &\mapsto [g \circ \Sigma^v f : \Sigma^{v+t}X\to Z],
 \end{align*}
 %sort of appalling, I'm sorry. I'll fix it later.
-where \([X,Y]_n=[\Sigma^n X, Y]\) %(previously S^n\vee X)[which is the same as \([\Sigma^n X, Y]\) by the version of \ref{2503311142} for spectra\footnote{Note, by the way, that this notation is defined in \autocite{rognes2} Def 11.1.1, and yes, he really means \(S^n\), as in the normal \(n\)-dimensional sphere, so we're taking the smash product of a spectrum and a space, which is fine.}]
+where \([X,Y]_n=[\Sigma^n X, Y]\).
 \end{definition}
 
-In particular, if \(X=Y=Z=\bb{S}\), we have a product \(\pi_v \bb{S}\otimes \pi_t \bb{S}\to \pi_{v+t}\bb{S}\).%, or, in other words, a product \(\pi_v^S\otimes \pi_t^S\to \pi_{v+t}^S\). 
+In particular, if \(X=Y=Z=\bb{S}\), we have a product \(\pi_v^S\otimes \pi_t^S\to \pi_{v+t}^S\).
 
 \begin{lemma}[{\autocite{hatcher}, Prop 4.56}]
 The composition product makes \(\pi_*^S\) into a graded commutative ring. 
@@ -814,13 +831,13 @@ The composition product makes \(\pi_*^S\) into a graded commutative ring.
 %\end{itemize}
 
 \begin{lemma}\label{2504071013}
-There is a unique ring structure on \(\text{}_2\pi_*^S\) which makes the completion map \(c : \pi_*^S \to \text{}_2\pi_*^S\) into a ring homomorphism. 
+There is a unique ring structure on \((\pi_*^S)^\wedge_2\) which makes the completion map \(c : \pi_*^S \to (\pi_*^S)^\wedge_2\) into a ring homomorphism. 
 \end{lemma}
 
 \begin{ourproof}
-We show uniqueness first. Let \(f \in \text{}_2\pi_i^S\), \(g \in \text{}_2\pi_j^S\). If \(i,j \geq 1\), then the completion map is surjective, so \(f=c(\tilde f), g = c(\tilde g)\) for some \(\tilde f \in \pi_i^S, \tilde g \in \pi_j^S\). Then \(fg=c(\tilde f)c(\tilde g)=c(\tilde f \tilde g)\).
+We show uniqueness first. Let \(f \in (\pi_i^S)^\wedge_2\), \(g \in (\pi_j^S)^\wedge_2\). If \(i,j \geq 1\), then the completion map is surjective, so \(f=c(\tilde f), g = c(\tilde g)\) for some \(\tilde f \in \pi_i^S, \tilde g \in \pi_j^S\). Then \(fg=c(\tilde f)c(\tilde g)=c(\tilde f \tilde g)\).
 
-If \(i=0, j\geq 1\), then let \(\hat f\in \pi_0^S\) be a lift of \(q(f)\in \pi_0^S/2^r\pi_0^S\), where \(2^r\) is the highest power of 2 dividing the order of \(\pi_j^S\). Then \(f\equiv c(\hat f) \mod 2^r\), so \(f=c(\hat f) + 2^rw\). We have \(fg=fc(\tilde g)=(c(\hat f) + 2^r w)c(\tilde g)=c(\hat f) c(\tilde g)+2^r(wc(\tilde g))=c(\hat f \tilde g)\in \text{}_2\pi_j^S\). 
+If \(i=0, j\geq 1\), then let \(\hat f\in \pi_0^S\) be a lift of \(q(f)\in \pi_0^S/2^r\pi_0^S\), where \(2^r\) is the highest power of 2 dividing the order of \(\pi_j^S\). Then \(f\equiv c(\hat f) \mod 2^r\), so \(f=c(\hat f) + 2^rw\). We have \(fg=fc(\tilde g)=(c(\hat f) + 2^r w)c(\tilde g)=c(\hat f) c(\tilde g)+2^r(wc(\tilde g))=c(\hat f \tilde g)\in (\pi_j^S)^\wedge_2\). 
 
 Finally, if \(i=j=0\), we claim that any two multiplications on \(\inte_2\) which agree on \(\inte\) must agree on all of \(\inte_2\), and thus the multiplication is given by the usual product on \(\inte_2\). 
 
@@ -837,19 +854,19 @@ Now, given spectra \(X, Y, Z\), we can define a pairing \(\circ : [Y, \text{}_2Z
 %\item Note that suspension commutes with \(p\)-completion; the \(i\)th suspension of the canonical map \(\Sigma^i Y \to \Sigma^iY^\wedge_p\) descends to a map \(\pi_j(\Sigma^iY)\to \pi_j(\Sigma^iY^\wedge_p)\), but \(\pi_j(\Sigma^iY)\) is just \(\pi_{j-i}(Y)\) and \(\pi_{j}(\Sigma^i Y^\wedge_p)\) is \(\pi_{j-i}(Y^\wedge_p)\), so the map on homotopy groups is the one witnessing \(p\)-completion. 
 
 \begin{lemma}
-The completion map \(\pi_*(S) \to \pi_*(S^\wedge_2)\) is a ring homomorphism. In particular, by \ref{2504071013}, the composition product on \(\pi_*(S^\wedge_2)\) coincides with the product on \(\pi_*(S)^\wedge_2\) inherited from \(\pi_*^S\), so the two groups are also isomorphic as rings. 
+The completion map \(c_* : \pi_*^S \to \pi_*(\bb{S}^\wedge_2)\) is a ring homomorphism. In particular, by \ref{2504071013}, the composition product on \(\pi_*(\bb{S}^\wedge_2)\) coincides with the product on \((\pi_*^S)^\wedge_2\) inherited from \(\pi_*^S\), so the two groups are also isomorphic as rings. 
 \end{lemma}
 
 \begin{ourproof}
-Let \(f : S^i \to S\), \(g : S^j \to S\) be elements of \(\pi_i(S)\) and \(\pi_j(S)\) respectively. Then \(c(f)c(g)=(cf)(cg)\)\footnote{Oh god I'm so sorry I didn't realise that notation was so appalling, I'll fix it later!!} is given by factorising \(cg=\overline{cg}c\) and composing to get \(\overline{cg}c\Sigma^jf\). We thus have the commutative diagram below.
+Let \(f : \bb{S}^i \to \bb{S}\), \(g : \bb{S}^j \to \bb{S}\) be elements of \(\pi_i^S\) and \(\pi_j^S\) respectively. Then \(c_*(f)c_*(g)=(cf)(cg)\) is given by factorising \(cg=\overline{cg}c\) and composing to get \(\overline{cg}c\Sigma^jf\). We thus have the commutative diagram below.
 \[\begin{tikzcd}
-S^{i+j} \arrow[r, "\Sigma^j f"]  & S^j \arrow[r, "g"] \arrow[d, "c"] & S \arrow[d, "c"] \\ 
- & \Sigma^jS^\wedge_2  \arrow[r, "\overline{cg}"'] & S^\wedge_2 
+\bb{S}^{i+j} \arrow[r, "\Sigma^j f"]  & \bb{S}^j \arrow[r, "g"] \arrow[d, "c"] & \bb{S} \arrow[d, "c"] \\ 
+ & \Sigma^j \bb{S}^\wedge_2  \arrow[r, "\overline{cg}"'] & \bb{S}^\wedge_2 
  \end{tikzcd}\] 
-The upper path is exactly \(c(fg)\), so \(c(f)c(g)=c(fg)\). Further, the completion map clearly preserves the identity, so it is a ring homomorphism.\done
+The upper path is exactly \(c_*(fg)\), so \(c_*(f)c_*(g)=c_*(fg)\). Further, the completion map clearly preserves the identity, so it is a ring homomorphism.\done
 \end{ourproof}
 
-[Throughout this section I use \(c\) to mean, at various points, literally any completion map I like on spectra (including two different maps in the same proof), and also any completion map on groups. It's not a huge deal because it's obvious what I mean, but I should either decorate them or make a remark about this.]
+%[Throughout this section I use \(c\) to mean, at various points, literally any completion map I like on spectra (including two different maps in the same proof), and also any completion map on groups. It's not a huge deal because it's obvious what I mean, but I should either decorate them or make a remark about this.]
 
 %\item Why does this definition of the product on \(\text{}_2\pi_*^S\) agree with the one induced by the product on \(\pi_*^S\)?
 
@@ -891,39 +908,11 @@ The upper path is exactly \(c(fg)\), so \(c(f)c(g)=c(fg)\). Further, the complet
 
 %Finally, suppose \(f, g : S^0 \to S^\wedge_2\). We know that the completion map \(\pi_*(S)\to \pi_*(S^\wedge_2)\) is a ring homomorphism, so if we had two different products on \(\inte_2\) they must agree on \(\inte\). But this is impossible: suppose \(\star, \cdot\) are two products on \(\inte_2\), with \(f\star g \neq f \cdot g\). Then there is some \(k\) such that \(f \star g \not\equiv f \cdot g \mod k\). Pick integers \(n, m \) such that \(n\equiv f \mod k\) and \(m \equiv g \mod k\). Then, modulo \(k\), \(f\cdot g \equiv n\cdot m =n\star m \equiv f \star g\), contradicting distinctness. So the composition product can't differ from the usual one. 
 
-%\item Does the product
-%\[[Y, Z]_*\otimes [X, Y]_*\to [X, Z]_*\]
-%induce the product
-%\[[Y, \text{}_2Z]_*\otimes [X, \text{}_2Y]_*\to [X, \text{}_2Z]_*,\]
-%or vice versa?
-
-%Let's restrict to normal composition: i.e. degree 0. Suppose I already have a product 
-%\[[Y, \text{}_2Z]_0\otimes [X, \text{}_2Y]_0\to [X, \text{}_2Z]_0,\]
-%and let \(f : Y \to Z\), \(g : X \to Y\). I can form,
-%\[\begin{tikzcd}
-%Y \arrow[r, "f"] \arrow[d, swap, "\wedge_Y"]  & Z \arrow[d, "\wedge_Z"]  \\
-%Y^\wedge_p \arrow[r, swap, "\overline{\wedge_Z \circ f}", dashrightarrow]  & Z^\wedge_p
-%\end{tikzcd}\qquad \begin{tikzcd}
-%X \arrow[r, "g"] \arrow[d, swap, "\wedge_X"]  & Y \arrow[d, "\wedge_Y"]  \\
-%X^\wedge_p \arrow[r, swap, "\overline{\wedge_Y \circ g}", dashrightarrow]  & Y^\wedge_p
-%\end{tikzcd}\]
-%giving maps \(Y \xrightarrow{\overline{\wedge_Z \circ f}\circ \wedge_Y} Z^\wedge_p\) and \(X \xrightarrow{\overline{\wedge_Y \circ g}\circ \wedge_X} Y^\wedge_p\). Using the product we already have, we get \(X \xrightarrow{\overline{\wedge_Y \circ g}\circ \wedge_X} Y^\wedge_p \xrightarrow{\overline{\wedge_Z \circ f}} Z^\wedge_p\). Using the commutative diagram below, we see that this is just \(X \xrightarrow{\wedge_Z\circ f\circ g}Z^\wedge_p\). 
-%\[\begin{tikzcd}
- %X \arrow[r, "g"] \arrow[d, swap, "\wedge_X"]  & Y \arrow[r, "f"] \arrow[d, "\wedge_Y"] & Z \arrow[d, "\wedge_Z"] \\ 
-% X^\wedge_p \arrow[r, swap, "\overline{\wedge_Y \circ g}"]  & Y^\wedge_p \arrow[r, "\overline{\wedge_Z \circ f}"'] & Z^\wedge_p 
-% \end{tikzcd}\] 
-%But that's what we'd have gotten if we took \(X \xrightarrow{fg}Z\) and made it into a map \(X \to Z^\wedge_p\) directly. So I guess what I've shown is that the diagram below commutes.
-%\[\begin{tikzcd}
-%\left[Y, Z\right]\otimes \left[X, Y\right] \arrow[r, ""] \arrow[d, swap, ""]  & \left[X,Z\right] \arrow[d, ""]  \\
-%\left[Y, Z^\wedge_p\right] \otimes \left[X, Y^\wedge_p\right] \arrow[r, swap, ""]  & \left[X, Z^\wedge_p\right]
-%\end{tikzcd}\]
-%In other words, completion is a ring homomorphism. 
-
-\subsubsection{Multiplication on the spectral sequence}
+\subsubsection{Multiplication on the Adams spectral sequence}
 
 \begin{definition}[{\autocite{ass}, Def 5.5}]
 Let \(\{'E_r\}, \{''E_r\}, \{E_r\}\) be three spectral sequences. A \textit{pairing} of these spectral sequences is a sequence of homomorphisms 
-\[\phi_r : \text{}'E_r^{*,*}\otimes \text{}''E_r^{*,*} \to E_r^{*,*}\]
+\[\phi_r : \text{}'E_r^{*,*}\otimes \text{}''E_r^{*,*} \to E_r^{*,*},\]
 such that the Leibniz rule
 \[d_r\phi_r(x\otimes y)=\phi_r(d_r(x)\otimes y)+(-1)^{\deg x}\phi_r(x\otimes d_r(y))\]
 holds, and
@@ -963,7 +952,7 @@ which agrees for \(r=2\) with the Yoneda pairing
 \[\Ext^{*,*}_{\A}(H^*(Z), H^*(Y))\otimes \Ext_{\A}^{*,*}(H^*(Y), H^*(X))\to \Ext_{\A}^{*,*}(H^*(Z), H^*(X))\]
 and which converges %\footnote{What does that mean? The spectral sequence itself only converges to a filtration of \(\text{}_{2}\pi_*^S\), so is this saying that the composition product (graded commutative) on \(\pi_*^S\) induces (descends to? lifts to?) a product on \(\text{}_2\pi_*^S\), which itself descends to a product on \(E^{s,t}_\infty=F^{s,t}/F^{s+1,t+1}\)? Even if the first part works, why would the product land in the correct subgroup?} % removing the footnote for the moment because while it's a valid point, the whole `it lands in the correct subgroup' business is part of the theorem and also is explained in the source.
 to the composition pairing
-\[[Y, \text{}_2Z]_*\otimes [X,\text{}_2Y]_* \to [X, \text{}_2Z]_*.\]
+\[[Y, Z^\wedge_2]_*\otimes [X,Y^\wedge_2]_* \to [X, Z^\wedge_2]_*.\]
 The pairing is associative and unital.
 \end{theorem}
 
@@ -973,54 +962,7 @@ The pairing is associative and unital.
 
 \section{Calculating stable homotopy groups}
 
-\subsection{The \(E_2\) page}
-
-\begin{lemma}[{\autocite{hatcher5}, Lem 5.49}]\label{2503171645shutupitsbeenalongterm}
-For a minimal free resolution 
-\[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2 \to 0\]
-of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\), where \(\Hom^t_{\A}(F_s, \bb{F}_2)\subq \Hom_{\A}(F_s, \bb{F}_2)\) consists of the morphisms which lower the degree by \(t\).
-\end{lemma}
-
-\textcolour{violet}{(proof)}
-
-[Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
-
-\autocite{ass}, \autocite{hatcher5}, \autocite{rognes2}
-
-\input{table.tex}
-
-\textcolour{violet}{[Explain the table above]}
-
-%\begin{figure}[H]\label{2504041920}
-%\centering
-%\includegraphics[width=0.4\textwidth]{ext3}
-%\caption{Calculating the first 5 rows}
-%\end{figure}
-
-\begin{figure}[H]\label{1304251243}
-\centering
-\input{ext.tex}
-\caption[\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).]{\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).\protect\footnotemark}
-\end{figure}
-\footnotetext{By the way, \(f_0\) is the node on the right, i.e. the node at (18,4,2).}
-
-\begin{lemma}
-There are no nontrivial differentials for \(t-s\leq 13\). 
-\end{lemma}
-
-\begin{ourproof}
-First, note that the only possible nontrivial differentials in this range are \(d_r : E_r^{1,2} \to E_r^{1+r, 1+r}\) and \(d_2 : E_2^{2, 10} \to E_2^{4, 11}\). 
-
-Now, \(0=d_r(h_0h_1)=d_r(h_0)h_1 + h_0d_r(h_1)=h_0d_r(h_1)\), so \(d_r(h_1)=0\). Since \(E_r^{1, 2}\) is generated by \(h_1\), we must have \(d_r=0\). 
-
-On the other hand, \(E^{2, 10}\) is generated by \(h_1h_3\), and \(d_2(h_1h_3)=d_2(h_1)h_3+h_1d_2(h_3)=0+0=0\) (the first factor is zero by the previous computation, and the second is an element of a trivial group). \done
-\end{ourproof}
-
-\textcolour{teal}{[Obviously justify the \(h\) notation and the claims above that the generators are what I say they are]}
-
 \subsection{Resolving extensions}
-
-%Some slightly less cryptic comments are made in \autocite{cobordism}, in particular stemming from Lemma 3.1.3. If I just believe this lemma for the moment, assuming its \(a_0\) is the same as my \(\alpha^1_1\), and further believe the calculations done in \autocite{ass} in 6.2, then (I think!) this solves my problems.]
 
 \begin{proposition}[{\autocite{ass}, Cor 6.5}]
 We have the following relations:
@@ -1032,36 +974,55 @@ We have the following relations:
 \end{align*}
 \end{proposition}
 
-A few other things:
-\begin{enumerate}
-\item We know that \(\pi_0^S=\inte\) since \(\pi_1S^1=\inte\) and \(n=1\leq 2=2(1)\), so this lies in the stable region. Now, \(E^{s,t}\) is actually supposed to converge to some filtration of \(\inte_2\) (i.e. the 2-adics) (i.e. \(\text{}_2\inte\)) I think? But either way, we know that for our filtration all the quotients are \(\inte/2\inte\). I claim\footnote{Here is an absolutely ridiculous argument for that: \((\inte_2, +)\) is a topological group. For any subgroup \(H\) of finite index \(n=2^km\), \(H\) is open (since by Lagrange's theorem \(n\inte_2\subq H\) and thus \(n\inte_2=2^k\inte_2\), so \(x+2^k\inte_2\) is an open ball around any \(x\in H\)). Now, every open subgroup of \(\inte_2\) is also closed (since it's complement is a union of open cosets), and it's apparently the case [elaborate] that the closed subgroups of \(\inte_2\) are the ideals \(2^k\inte_2\). These facts then imply that the filtration I give is the only possible one. Short answer: finite index subgroups of \(\inte_p\) are of the form \(p^k\inte_p\).} then that the filtration must be \(\cdots 4\inte_2 \subq 2\inte_2 \subq \inte_2\). 
-\item If that's true then \(\iota=[1]\in \inte_2/2\inte_2\), and using the multiplication above we see \(\iota\) is a unit. We also have \(h_0=[2]\in 2\inte_2/4\inte_2\) so \(h_0=[2]=[2[1]]=[2\iota]\), so \(h_0\) acts on \(\iota\) by multiplication by 2.
-\item Now, for any \(\kappa\in E^{s,t}_2\), \(h_0\cdot \kappa = (\iota h_0)\cdot \kappa=2\kappa\). 
-\end{enumerate}
-The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\).
+\textcolour{teal}{(Proof/calculation)}
+
+From now on, we will write \(h_i\) for the generator \(\alpha^1_{2^i}\).
+
+\begin{proposition}
+Suppose \(\alpha \in (\pi_i^S)^\wedge_2\) represents \(a \in E_\infty\). Then \(2\alpha\) represents \(h_0a\). In other words, multiplication by \(h_0\) is induced by multiplication by 2. 
+\end{proposition}
+
+\begin{ourproof}
+Recall that \(\pi_0^S=\inte\), since \(\pi_1S^1=\inte\) and \(n=1\leq 2=2(1)\), so this lies in the stable region. Now, \(E^{s,s}_r(\bb{S})\) converges to some filtration of \(\inte_2\) whose quotients are all \(\inte/2\inte\). The filtration must therefore be 
+\[\cdots\subq 4\inte_2 \subq 2\inte_2 \subq \inte_2,\]
+since finite index subgroups of \(\inte_p\) are of the form \(p^k\inte_p\). %\footnote{Here is an absolutely ridiculous argument for that: \((\inte_2, +)\) is a topological group. For any subgroup \(H\) of finite index \(n=2^km\), \(H\) is open (since by Lagrange's theorem \(n\inte_2\subq H\) and thus \(n\inte_2=2^k\inte_2\), so \(x+2^k\inte_2\) is an open ball around any \(x\in H\)). Now, every open subgroup of \(\inte_2\) is also closed (since it's complement is a union of open cosets), and it's apparently the case [elaborate] that the closed subgroups of \(\inte_2\) are the ideals \(2^k\inte_2\). These facts then imply that the filtration I give is the only possible one.} 
+
+Thus, \(\iota=[1]\in \inte_2/2\inte_2\), and by computing the Yoneda product we see that \(\iota\) is a unit. We also have \(h_0=[2]\in 2\inte_2/4\inte_2\) so \(h_0=[2]=[2[1]]=[2\iota]\), and hence \(h_0\) acts on \(\iota\) by multiplication by 2. Now, for any \(\kappa\in E^{s,t}_r(\bb{S})\), \(h_0\cdot \kappa = (\iota h_0)\cdot \kappa=2\kappa\in E^{s+1,t+1}_r(\bb{S})\). \done
+\end{ourproof}
+
+[The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\).
 
 All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]
 
-%[Should I even have the below as a proposition? Should I cite \autocite{cobordism}? His \(a_0\) is defined completely differently to my \(\alpha^1_1\) and his proof uses some sort of naturality? I think my explanation aligns much more closely with \autocite{ass} or \autocite{rognes2}.]
-
-%\begin{proposition}[{\autocite{cobordism}, Lem 3.1.3(b)}]
-%If \(x \in \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\) is a permanent cycle in the Adams spectral sequence represented by \(\alpha \in \pi_*^S\), then \(\alpha^1_1x\) is a permanent cycle represented by \(2 \alpha\). 
-%\end{proposition}
-
-\textcolour{violet}{[Justify the below with sseq, not quite sure how to do this in a satisfying way though. See note in Section \ref{2503221342}]}
-
 \begin{theorem}
 \begin{align*}
-\text{}_{2}\pi_i^S = \begin{cases}
-\inte/2\inte & i = 1, 2, 6,10\\
-\inte/8\inte & i = 3, 11\\
-0 & i = 4, 5, 12, 13\\
-\inte/16\inte & i = 7\\
-(\inte/2\inte)^2 & i = 8\\
-(\inte/2\inte)^3 & i=9.
+(\pi_i^S)^\wedge_2 = \begin{cases}
+\inte/2\inte & i = 1, 2\\
+\inte/8\inte & i = 3\\
+0 & i = 4, 5.
 \end{cases}
 \end{align*}
 \end{theorem}
+
+\subsection{The \(E_2\) page for \(t-s\leq 15\)}
+
+\begin{figure}[H]\label{1304251243}
+\centering
+\input{ext.tex}
+\caption[\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).]{\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names.}
+\end{figure}
+
+\begin{lemma}
+There are no nontrivial differentials for \(t-s\leq 13\). 
+\end{lemma}
+
+\begin{ourproof}
+First, note that the only possible nontrivial differentials in this range are \(d_r : E_r^{1,2}(\bb{S}) \to E_r^{1+r, 1+r}(\bb{S})\) and \(d_2 : E_2^{2, 10}(\bb{S}) \to E_2^{4, 11}(\bb{S})\). 
+
+Now, \(0=d_r(h_0h_1)=d_r(h_0)h_1 + h_0d_r(h_1)=h_0d_r(h_1)\), so \(d_r(h_1)=0\). Since \(E_r^{1, 2}(\bb{S})\) is generated by \(h_1\), we must have \(d_r=0\). 
+
+On the other hand, \(E^{2, 10}_2(\bb{S})\) is generated by \(h_1h_3\), and \(d_2(h_1h_3)=d_2(h_1)h_3+h_1d_2(h_3)=0+0=0\) (the first factor is zero by the previous computation, and the second is an element of a trivial group). \done
+\end{ourproof}
 
 \subsection{Differentials at \(14\leq t-s\leq 15\)}
 
@@ -1072,10 +1033,10 @@ All this is to say if I start multiplying higher things by \(h_0\), that \textit
 \end{theorem}
 
 \begin{ourproof}
-We have shown that \(h_0\) detects \(2\in \text{}_2\pi_*^S\) (i.e. \(2\) is a representative for \(h_0\)). Let \(\sigma\in \text{}_2\pi_7^S\) be a representative for \(h_3\). Then \(2 \sigma^2\) is a representative for \(h_0h_3^2\). By graded commutativity of \(\text{}_2\pi_*^S\), \(\sigma^2=-\sigma^2\), so \(2 \sigma^2=0\), and thus \(h_0h_3^2=0\) in \(E_\infty\). Therefore, \(h_0h_3^2\) is the boundary of a differential, and the only possibility is \(d_2(h_4)=h_0h_3^2\).\done
+We have shown that \(h_0\) detects \(2\in (\pi_*^S)^\wedge_2\) (i.e. \(2\) is a representative for \(h_0\)). Let \(\sigma\in (\pi_7^S)^\wedge_2\) be a representative for \(h_3\). Then \(2 \sigma^2\) is a representative for \(h_0h_3^2\). By graded commutativity of \((\pi_*^S)^\wedge_2\), \(\sigma^2=-\sigma^2\), so \(2 \sigma^2=0\), and thus \(h_0h_3^2=0\) in \(E_\infty^{3,17}(\bb{S})\). Therefore, \(h_0h_3^2\) is the boundary of a differential, and the only possibility is \(d_2(h_4)=h_0h_3^2\).\done
 \end{ourproof}
 
-The \(d_2\) differentials at \(E_2^{2, 17},  E_2^{3, 18}, E_2^{4, 19}\) are all trivial: \(d_2(h_0^nh_4)=h_0^nd_2(h_4)=h_0^{n-1}(h_0h_3^2)=0\). 
+The \(d_2\) differentials at \(E_2^{2, 17}(\bb{S}),  E_2^{3, 18}(\bb{S}), E_2^{4, 19}(\bb{S})\) are all trivial: \(d_2(h_0^nh_4)=h_0^nd_2(h_4)=h_0^{n-1}(h_0h_3^2)=0\). 
 
 \begin{figure}[H]
 \centering
@@ -1085,7 +1046,14 @@ The \(d_2\) differentials at \(E_2^{2, 17},  E_2^{3, 18}, E_2^{4, 19}\) are all 
 
 [I promise we're gonna do the \(d_3\) differential but first we need a few lemmas.]
 
-\begin{lemma}[{\autocite{rognes2}, Table 14.1 (9)}]
+\begin{landscape}
+\begin{figure}[H]
+\input{extra.tex}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names. The \(d_2\) differentials referenced in the proof of \ref{2504192017} are shown in green.}
+\end{figure}
+\end{landscape}
+
+\begin{lemma}[{\autocite{rognes2}, Table 14.1 (9)}]\label{2504192017}
 \(d_2(f_0)\neq 0\).
 \end{lemma}
 
@@ -1107,11 +1075,11 @@ induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), with abutm
 \begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
 Consider the cofibration
 \[\bb{S}^7 \xrightarrow{\sigma} \bb{S} \xrightarrow{i} C_\sigma \xrightarrow{j} \bb{S}^8\to \cdots.\]
-Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\), where \(\hat i : \Ext^{s,t}(\bb{S})\to \Ext^{s,t}(C_\sigma)\) is the map induced by filling in the diagram below with the unique dotted lifts.\footnote{Make this explanation make any sense.}
-\[\begin{tikzcd} 
- \cdots \arrow[r, ""] & F_2 \arrow[r, ""] \arrow[d, "", dashrightarrow] & F_1 \arrow[d, "", dashrightarrow] \arrow[r, ""] & F_0 \arrow[d, "", dashrightarrow] \arrow[r, ""] & H^*(C_\sigma) \arrow[d, "i^*"]\\ 
- \cdots \arrow[r, swap, ""]  & P_2 \arrow[r, ""'] & P_1 \arrow[r, ""'] & P_0 \arrow[r, ""'] & H^*(\bb{S})
- \end{tikzcd}\] 
+Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\), where \(\hat i = (i^*)^* : \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}(C_\sigma, \bb{F}_2)\) is the map induced by \(i^* : H^*(C_\sigma)\to H^*(\bb{S})\). %filling in the diagram below with the unique dotted lifts.\footnote{Make this explanation make any sense.}
+%\[\begin{tikzcd} 
+% \cdots \arrow[r, ""] & F_2 \arrow[r, ""] \arrow[d, "", dashrightarrow] & F_1 \arrow[d, "", dashrightarrow] \arrow[r, ""] & F_0 \arrow[d, "", dashrightarrow] \arrow[r, ""] & H^*(C_\sigma) \arrow[d, "i^*"]\\ 
+% \cdots \arrow[r, swap, ""]  & P_2 \arrow[r, ""'] & P_1 \arrow[r, ""'] & P_0 \arrow[r, ""'] & H^*(\bb{S})
+% \end{tikzcd}\] 
 \end{lemma}
 
 \begin{ourproof}
@@ -1124,8 +1092,12 @@ However, any map \(H^n(\bb{S})\to H^{n-1}(\bb{S}^8)\) must be zero, so we get sh
 \[0 \leftarrow H^n(\bb{S})\xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow 0.\]
 Taking a direct sum gives a short exact sequence
 \[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C_\sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0.\]
-From the short exact sequence above, we get\footnote{This is a homological algebra fact, but maybe I should state it somewhere.} a long exact sequence 
-
+From the short exact sequence above, we get\footnote{This is a homological algebra fact, but maybe I should state it somewhere - trouble is I'd have to define Ext in terms of injective resolutions instead of projective ones...} 
+% Issue with the below is that I defined Ext in terms of projective (well, actually, free) resolutions, instead of injective resolutions. Oops!
+%a short exact sequence of chain complexes
+%\[0 \to \Hom(\bb{F}_2, I_\bullet) \xrightarrow{i^*} \Hom(H^*(C_\sigma), I_\bullet) \xrightarrow{j^*} \Hom(\bb{F}_2[8], I_\bullet)\to 0,\]
+%and thus 
+a long exact sequence 
 \[\begin{tikzcd}[row sep=8ex, column sep=3ex]
 \cdots \arrow[r, ""] & \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
 \Ext^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] & \Ext^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
@@ -1134,7 +1106,7 @@ From the short exact sequence above, we get\footnote{This is a homological algeb
 %\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 Now, \(f_0\in \Ext^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
 \[\Ext^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
-Figure \ref{1304251243} shows us that \(\Ext^{3,14}=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext^{4,15}=0\) and \(\Ext^{0,8}=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication \footnote{I've just drawn some diagrams, and I think that yes, \(i(\alpha \beta)=i(\alpha)i(\beta)\). Essentially because the way you multiply in \(\Ext\) involves writing down unique lifts that make certain squares commute, but both \(i(\alpha \beta)\) and \(i(\alpha)i(\beta)\) are lifts making the appropriate squares commute, so by uniqueness they must be the same.}, \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+h_2\hat{i}(h_4)\). In either case, by linearity of \(d_2\), \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(h_2\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)\footnote{Explain.}).
+Figure \ref{1304251243} shows us that \(\Ext^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext^{0,8}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication\footnote{I've just drawn some diagrams, and I think that yes, \(i(\alpha \beta)=i(\alpha)i(\beta)\). Essentially because the way you multiply in \(\Ext\) involves writing down unique (up to chain homotopy) lifts that make certain squares commute, but both \(i(\alpha \beta)\) and \(i(\alpha)i(\beta)\) are lifts making the appropriate squares commute, so they must be chain homotopic and hence give rise to the same element in \(\Ext\).}, \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+h_2\hat{i}(h_4)\). In either case, by linearity of \(d_2\), \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(h_2\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)\footnote{Explain.}).
 
 Now, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
 d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\), as required. \done
@@ -1169,7 +1141,7 @@ d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\), as required. \done
 \begin{figure}[H]\label{2504131812}
 \centering
 \input{ext_csigma.tex}
-\caption{The \(E_2\) page of the Adams spectral sequence for \(C_\sigma\), in the range \(t-s\leq 18\), with the generator \(\overline{\overline{h_0^2h_3}}\) shown in red.}
+\caption{The \(E_2\) page of the Adams spectral sequence for \(C_\sigma\), in the range \(t-s\leq 18\), with the generator \(\overline{\overline{h_0^2h_3}}\) shown in red, and two of the differentials shown in green.}
 \end{figure}
 
 \begin{theorem}[{\autocite{rognes2}, Table 14.2 (10)}]
@@ -1180,12 +1152,12 @@ d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\), as required. \done
 From the cofibration 
 \[\bb{S}^7 \xinj{\sigma} \bb{S} \xrightarrow{i}C_\sigma \xrightarrow{j}\bb{S}^8 \inj \bb{S}^1 \to\cdots,\]
 we get an exact sequence
-\[\pi_{7}(S) \xrightarrow{\sigma} \pi_{14}(S) \xrightarrow{i} \pi_{14}(C_\sigma) \xrightarrow{j} \pi_6(S) \to \pi_{13}(S),\]
-by [the work in Section \ref{2503291211}]. Since these stable homotopy groups are all finite\footnote{A priori \(\pi_{14}(C_\sigma)\) is only finitely generated, but from Figure \ref{2504131812} we see that its 2-completion is finite, so the group itself must be finite.}, this induces\footnote{Explain or have as a lemma somewhere else (I've commented it out for the moment).} a exact sequence
-\[\pi_{7}(S)^\wedge_2 \xrightarrow{\sigma} \pi_{14}(S)^\wedge_2 \xrightarrow{i} \pi_{14}(C_\sigma)^\wedge_2 \xrightarrow{j} \pi_6(S)^\wedge_2 \xrightarrow{\sigma} \pi_{13}(S)^\wedge_2=0.\]
-In \(E_2(C_\sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=i(h_0d_0)\) (by \ref{2504131851}), so \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing four. Let \(\nu \in \pi_3(S)^\wedge_2\) be a representative for \(h_2\). Then \(\pi_6(S)^\wedge_2=\inte/2\inte \ang{\nu^2}\), and \(\nu^2 \sigma=0\). By exactness, we see that \(j\) is surjective, so \(\pi_6(S)^\wedge_2\cong \pi_{14}(C_\sigma)^\wedge_2/\ker j=\pi_{14}(C_\sigma)^\wedge_2/\im i\). We know \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing 4 and \(\pi_6(S)^\wedge_2\) has order 2, so \(\im i\) has order dividing 2. 
+\[\pi_{7}^S \xrightarrow{\sigma_*} \pi_{14}^S \xrightarrow{i_*} \pi_{14}(C_\sigma) \xrightarrow{j_*} \pi_6^S \to \pi_{13}^S,\]
+by \ref{2504151709}. Since these stable homotopy groups are all finite\footnote{A priori \(\pi_{14}(C_\sigma)\) is only finitely generated, but from Figure \ref{2504131812} we see that its 2-completion is finite, so the group itself must be finite.}, this induces an exact sequence % explanation commented out below :-)
+\[(\pi_{7}^S)^\wedge_2 \xrightarrow{\sigma_*} (\pi_{14}^S)^\wedge_2 \xrightarrow{i_*} \pi_{14}(C_\sigma)^\wedge_2 \xrightarrow{j_*} (\pi_6^S)^\wedge_2 \xrightarrow{\sigma_*} (\pi_{13}^S)^\wedge_2=0.\]
+In \(E_2(C_\sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\) (by \ref{2504131851}), so \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing four. Let \(\nu \in (\pi_3^S)^\wedge_2\) be a representative for \(h_2\). Then \((\pi_6^S)^\wedge_2=\inte/2\inte \ang{\nu^2}\), and \(\nu^2 \sigma=0\). By exactness, we see that \(j_*\) is surjective, so \((\pi_6^S)^\wedge_2\cong \pi_{14}(C_\sigma)^\wedge_2/\ker j_*=\pi_{14}(C_\sigma)^\wedge_2/\im i_*\). We know \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing 4 and \((\pi_6^S)^\wedge_2\) has order 2, so \(\im i_*\) has order dividing 2. 
 
-Now, \(\pi_7(S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by graded commutativity, so the first isomorphism theorem implies that \(\pi_{14}(S)^\wedge_2\) has order dividing four. Thus, \(h_0d_0\) and \(h_0^2d_0\) must be boundaries, and \(d_3(h_0h_4)=h_0d_0\) is the only possibility.
+Now, \((\pi_7^S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by graded commutativity, so the first isomorphism theorem implies that \((\pi_{14}^S)^\wedge_2\) has order dividing four. Thus, \(h_0d_0\) and \(h_0^2d_0\) must be boundaries, and \(d_3(h_0h_4)=h_0d_0\) is the only possibility.
 \done
 \end{ourproof}
 
@@ -1462,6 +1434,8 @@ The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+s
 \item Question: so I have this multiplicative structure on the entire spectral sequence, right? And on the second page it's just the Yoneda product. But say I compute, I don't know, \(\alpha^2_5=h_0h_2\) on the \(E_2\)  page. Since none of those guys are touched by differentials, is that computation still valid on the \(E_3\) page? And on higher pages?
 
 \item I'm a bit suspicious of the proof of \ref{2504151310}, because the proof is more complicated in \autocite{hatcher5}. Maybe raise this.
+
+\item Is anything lost/does anything become false if I replace every instance of the word `free' with `projective'?
 \end{itemize}
 
 \subsection{To do}\label{2503221342}
@@ -1489,15 +1463,11 @@ Now:
 
 \item Prove that \(\pi_*^S\) is a graded commutative ring.
 
-\item Find a way to translate the calculations in Figure \ref{2504041920} into readable and coherent LaTeX'd calculations.
-
-\item Make the \(\alpha^i_j\) notation not appalling - link it to the usual \(h\) notation.
-
 \item State this whole `replacing a map by an inclusion' business somewhere early.
 
 \item Finish the proof of \ref{2504151709}.
 
-\item Fix \ref{2504171922}.
+\item Fix Section \ref{2504171922}.
 \end{itemize}
 
 Eventually:
