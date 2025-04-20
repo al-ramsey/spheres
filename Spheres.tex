@@ -7,15 +7,6 @@
 \graphicspath{ {./images/} }
 \usepackage{float}
 
-%inserting a figure:
-
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=0.5\textwidth]{pfigure_1}
-%\caption{The compound pendulum}
-%\end{figure}
-%\setcounter{MaxMatrixCols}{20}
-
 % font stuff
 \usepackage{amsmath}
 \usepackage{enumitem}
@@ -31,11 +22,8 @@
 \usepackage{pdflscape}
 %\usepackage{lscape}
 
-% knots stuff
-
 \usepackage{tikz}
 \usetikzlibrary{cd}
-\usetikzlibrary{shapes,snakes}
 \usetikzlibrary{tikzmark}
 \usepackage{array}
 \usepackage{listings}
@@ -43,10 +31,6 @@
 %\graphicspath{ {figs/} }
 
 \usepackage{cleveref}
-\newcommand{\notimplies}{%
-  \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
-
-%keyword: edit
 
 \newcommand{\surj}{\rightarrow\mathrel{\mkern-14mu}\rightarrow}
 
@@ -60,60 +44,36 @@
   }{\scriptstyle#1}{U}{c}{F}{F}{S}%
 }}}
 
+\newcommand{\nathaniel}[1]{{\leavevmode\color{teal}[#1]}}
+
 \def\bb{\ensuremath\mathbb}
 \def\la{\ensuremath\langle}
 \def\ra{\ensuremath\rangle}
-\def\notto{\ensuremath\nrightarrow}
 \def\subq{\ensuremath\subseteq}
 \def\inj{\ensuremath\hookrightarrow}
 \def\xinj{\ensuremath\xhookrightarrow}
-\def\comp{\ensuremath\mathbb{C}}
-\def\real{\ensuremath\mathbb{R}}
-\def\rat{\ensuremath\mathbb{Q}}
 \def\inte{\ensuremath\mathbb{Z}}
 \def\nat{\ensuremath\mathbb{N}}
-\def\topo{\ensuremath\mathcal{T}}
 \def\del{\ensuremath\partial}
 \def\SIgma{\ensuremath\Sigma}
 
 \def\A{\ensuremath{\mathscr{A}_2}}
 
-\def\sequiv{\ensuremath\stackrel{\text{S}}{\sim}}
-\def\rr{\ensuremath\mathcal{R}}
-\def\com{\ensuremath\Delta}
 \def\id{\ensuremath\text{id}}
-\def\hopf{\ensuremath\mathcal{H}}
 \def\wildetilde{\ensuremath\widetilde}
 \def\wildetile{\ensuremath\widetilde}
 
-\DeclareMathOperator{\Arg}{Arg}
 \DeclareMathOperator{\can}{can}
 \DeclareMathOperator{\charr}{char}
-\DeclareMathOperator{\cod}{cod}
-\DeclareMathOperator{\coev}{coev}
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\colim}{colim}
-\DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\ev}{ev}
 \DeclareMathOperator{\Ext}{Ext}
-\DeclareMathOperator{\Fix}{Fix}
 \DeclareMathOperator{\Frac}{Frac}
 \DeclareMathOperator{\Gr}{Gr}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\lk}{lk}
-\DeclareMathOperator{\mor}{mor}
-\DeclareMathOperator{\ob}{ob}
-\DeclareMathOperator{\Open}{Open}
-\DeclareMathOperator{\Rep}{Rep}
-\DeclareMathOperator{\Sk}{Sk}
-\DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\SPec}{Spec}
-\DeclareMathOperator{\str}{str}
 \DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\trace}{trace}
-\DeclareMathOperator{\cvec}{Vec}
 
 \def\done{\begin{flushright}\vspace{-4.35ex}\(\qed\)\end{flushright}}
 
@@ -127,23 +87,19 @@
 \DeclareSymbolFontAlphabet{\mathbbold}{bbold}
 
 % \limits\sum or \sum\limits (one of them) will put the text under the sum
-% [upquote=true] on \begin{lstlisting} will stop backticks being interpreted as quotes
-%[backend=bibtex, style=ieee]
+
 \usepackage[backend=bibtex]{biblatex}
-%\bibliographystyle{plain}
-%\usepackage{csquotes}
 \addbibresource{References.bib}
 
 \author{\vspace{-5ex}}
-%\title{Something True and Beautiful [DRAFT]}
-\title{Stable Homotopy Groups of Spheres  [DRAFT]}
+\title{Something True and Beautiful [DRAFT]}
+%\title{Stable Homotopy Groups of Spheres  [DRAFT]}
 \date{\vspace{-5ex}}
 
 \counterwithin{figure}{section}
 
 \begin{document}
 \maketitle
-%\input{titlepage.tex}
 
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert} 
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} 
@@ -223,43 +179,45 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 
 \section{The Steenrod algebra}\label{2503221247}
 
-The following is from \autocite{hatcher} 4L.
+\textcolour{teal}{[Intro. Sources: \autocite{hatcher}]}
 
-\begin{itemize}
-\item There are maps \(Sq^i : H^n(-; \inte/2\inte)\to H^{n+i}(- ; \inte/2\inte)\) for each \(i\), and they satisfy the following properties: \begin{enumerate}
-\item \(Sq^i_X(f^*(\alpha))=f^*(Sq^i_Y(\alpha))\) for \(f : X \to Y\) (i.e. \(Sq^i\) is a natural transformation).
-\item \(Sq^i_X(\alpha + \beta)=Sq^i_X(\alpha)+Sq^i_X(\beta)\) (i.e. \(Sq_X^i\) respects the group operation for all \(X\)).
+\begin{proposition}[{\autocite{hatcher}, p489}]\label{2504201153}
+There are maps \(Sq^i : H^n(-; \inte/2\inte)\to H^{n+i}(- ; \inte/2\inte)\) for each \(i\), and they satisfy the following properties: \begin{enumerate}
+\item \(Sq^i(f^*(\alpha))=f^*(Sq^i(\alpha))\) for \(f : X \to Y\) (i.e. \(Sq^i\) is a natural transformation).
+\item \(Sq^i(\alpha + \beta)=Sq^i(\alpha)+Sq^i_X(\beta)\) (i.e. \(Sq^i\) respects the group operation for all \(X\)).
 \item \(Sq^i(\alpha \smile \beta)=\sum\limits_{0\leq j \leq i} (Sq^j(\alpha)\smile Sq^{i-j}(\beta))\) (the Cartan formula)
-\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\). [Something is a little strange here, I think maybe it doesn't matter which suspension isomorphism you pick, though it's not immediately clear why. It's just that the wikipedia page that \(\sigma\) is the connecting homomorphism of the long exact sequence in cohomology. \autocite{rognes2} just says it's the suspension isomorphism \(:\hspace{-0.75ex}|\). Something interesting: on p219 of \autocite{hatcher}, it says ``the suspension isomorphisms \(\widetilde H^n(X;R)\cong \widetilde H^{n+k}(\Sigma^kX;R)\) derivable by elementary exact sequence arguments can also be obtained via cross product with a generator of \(\wildetilde H^*(S^k; R)\)''. Does he mean the \textit{same} isomorphism, or just the fact that there is (at least) one?].
+\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\).\footnote{Something is a little strange here, I think maybe it doesn't matter which suspension isomorphism you pick, though it's not immediately clear why. It's just that the wikipedia page that \(\sigma\) is the connecting homomorphism of the long exact sequence in cohomology. \autocite{rognes2} just says it's the suspension isomorphism \(:\hspace{-0.75ex}|\). Something interesting: on p219 of \autocite{hatcher}, it says ``the suspension isomorphisms \(\widetilde H^n(X;R)\cong \widetilde H^{n+k}(\Sigma^kX;R)\) derivable by elementary exact sequence arguments can also be obtained via cross product with a generator of \(\wildetilde H^*(S^k; R)\)''. Does he mean the \textit{same} isomorphism, or just the fact that there is (at least) one?.}
 \item \(Sq^i(\alpha)=\alpha^2\) if \(i=\deg(\alpha)\) and \(Sq^i(\alpha)=0\) if \(i> \deg(\alpha)\). 
 \item \(Sq^0=\id.\)
 %\item \(Sq^1\) is the \(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\).\footnote{Check properties 4 and 7 are actually needed, because \autocite{rognes2} only takes 1-3 and 5-6, giving 4 as Prop 7.2.4 and 7 as as consequence of Prop 7.6.5. In particular, I don't think I actually ever use property 7.}
 \end{enumerate}
-\item Define \(Sq:=Sq^0+Sq^1+\cdots\). Then \(Sq(\alpha\smile \beta)=Sq(\alpha)\smile Sq(\beta)\) (since \((Sq(\alpha\smile \beta))_n=\sum_iSq^i(\alpha)\smile Sq^{n-i}(\beta)=(Sq(\alpha)\smile Sq(\beta))_n\)). Thus, \(Sq\) is a ring homomorphism. 
-\item Adem relations:
+\end{proposition}
+
+Define \(Sq:=Sq^0+Sq^1+\cdots\). Then \(Sq(\alpha\smile \beta)=Sq(\alpha)\smile Sq(\beta)\) (since \((Sq(\alpha\smile \beta))_n=\sum_iSq^i(\alpha)\smile Sq^{n-i}(\beta)=(Sq(\alpha)\smile Sq(\beta))_n\)). Thus, \(Sq\) is a ring homomorphism. 
+
+\begin{proposition}[{\autocite{hatcher}, p496}]
+The Steenrod squares satisfy the following relations, known as the \textit{Adem relations}:
 \[Sq^aSq^b=\sum_j {b-j-1\choose a-2j}Sq^{a+b-j}Sq^j \quad \text{if } a<2b,\]
 where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \({m \choose 0}=1\) for \(m \geq 0\).
-\end{itemize}
+\end{proposition}
 
 \begin{definition}
 The \textit{Steenrod algebra} \(\mathscr{A}_2\) is the algebra over \(\inte/2\inte\) that is the quotient of the algebra of polynomials in the noncommuting variables \(Sq^1, Sq^2, ...\) by the two-sided ideal generated by the Adem relations. Thus, for every space \(X\), \(H^*(X; \inte/2\inte)\) is a module over \(\mathscr A_2\).
 \end{definition}
 
-\begin{itemize}
-\item \(\mathscr A_2\) is graded, and its elements of degree \(k\) are those that map \(H^n(X; \inte/2\inte)\) to \(H^{n+k}(X, \inte/2\inte)\) for all \(n\). [Presumably you've fixed a space \(X\) while you're doing all this?]
-\end{itemize}
+Note that \(\mathscr A_2\) is graded, with elements of degree \(k\) those that map \(H^n(X; \inte/2\inte)\) to \(H^{n+k}(X, \inte/2\inte)\) for all \(n\). 
 
 \begin{definition}
 Write \(Sq^I\) for the monomial \(Sq^{i_1}Sq^{i_2}\cdots Sq^{i_n}\). Then \(Sq^I\) is \textit{admissible} if \(i_j\geq 2i_{j+1}\) for all \(0\leq j < n\). 
 \end{definition}
 
-Note the admissible monomials are exactly those to which no Adem relations can be applied. Thus, \(\A\) is generated as a \(\inte/2\inte\) module by admissible monomials. 
+The admissible monomials are exactly those to which no Adem relations can be applied. Thus, \(\A\) is generated as a \(\inte/2\inte\) module by admissible monomials. 
 
-\autocite{hatcher}
+\section{Spectra may not be your friends, but I can introduce you}
 
-%\section{Spectra may not be your friends, but I can introduce you}
-\section{Spectra}
+\textcolour{teal}{[Intro. Sources: \autocite{ass}, \autocite{hatcher5}, \autocite{concise}, \autocite{spectra}]}
 
+\begin{comment}
 \subsection{?Categorical nonsense}
 
 \begin{itemize}
@@ -272,10 +230,11 @@ based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of 
 \item We can formally adjoin desuspensions \(\Sigma^{-n}X\) for all \(n\) [does this mean just putting the objects there and defining \(\Hom(Y, \Sigma^{-n}X):=\Hom(\Sigma^nY, X)\) and \(\Hom(\Sigma^{-n}X, Y):=\Hom(X, \Sigma^n Y)\)?], but this category does not have weak colimits (i.e. colimits w/o uniqueness property). [why does it not, and why do we even want that?]
 \item We instead consider formal sequences of desuspensions \(X_0 \to \Sigma^{-1}X_1 \to \cdots\), or sequences \((X_n)\) and maps \(\Sigma X_n \to X_{n+1}\), i.e. spectra. [and this fixes the problem?]
 \end{itemize}
+\end{comment}
 
 \subsection{Definitions and examples}
 
-[Some intro, below follows \autocite{hatcher5}, Section 5.2. Some intuition on spectra and why we're doing this.]
+\textcolour{teal}{[Some intro, below follows \autocite{hatcher5}, Section 5.2. Some intuition on spectra and why we're doing this.]}
 
 %[Maybe I could also look at \autocite{hatcher} p454 onwards?]
 
@@ -352,9 +311,9 @@ We define
 \[C_n(X ; G):=\bigcup_{i\in \inte}C^\text{cell}_{i+n}(X_i; G).\] 
 Note that there is a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating suspensions of cells as equivalent to the cells themselves, i.e. a \(G\) summand for every \(n\)-cell of \(X\). We define \(H^*(X;G)\) and \(H_*(X;G)\) to be the cohomology and homology of this chain complex, respectively.
 
-[Important example:
+\nathaniel{Important example:
 
-At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules\footnote{Maybe I need to move this somewhere else. I haven't  defined the \(\A\)-action yet...}. Thus, since \(\bb{S}\) is of finite type (it is actually finite), we have
+At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules\footnote{\textcolour{teal}{Maybe I need to move this somewhere else. I haven't  defined the \(\A\)-action yet...}}. Thus, since \(\bb{S}\) is of finite type (it is actually finite), we have
 \begin{align*}
 H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\\
 &=\begin{cases}
@@ -362,7 +321,7 @@ H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\
 0 & \text{otherwise.}
 \end{cases}
 \end{align*}
-(since they're all just either \(0\) or \(\inte/2\inte\), at least eventually). So, \(H^*(\bb{S})=\inte/2\inte\) in degree zero and nothing else.]
+(since they're all just either \(0\) or \(\inte/2\inte\), at least eventually). So, \(H^*(\bb{S})=\inte/2\inte\) in degree zero and nothing else.}
 
 \begin{lemma}\label{2504141556}
 Let \(X\) be a connective CW spectrum of finite type. Then \(H_i(X), H^i(X)\), and \(\pi_i(X)\) are finitely generated for all \(i\). 
@@ -389,7 +348,7 @@ Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence 
 \end{tikzcd}\]
 \end{definition}
 
-[Some intuition: it's enough for maps to be `defined eventually']
+\textcolour{teal}{[Some intuition: it's enough for maps to be `defined eventually']}
 
 \begin{definition}
 A \textit{map} of CW spectra \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a cofinal subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal subspectrum. 
@@ -532,15 +491,11 @@ If \(X\) has finite type, then it has a \(p\)-completion unique up to equivalenc
 Let \(X\) be a connective spectrum of finite type, and let \(Y\) be \(p\)-complete. Then the map \([X^\wedge_p, Y]\to [X, Y]\) is an isomorphism. That is, given any map \(X \xrightarrow{f} Y\), there exists a unique (up to homotopy) map \(X^\wedge_p \xrightarrow{\overline f} Y\) such that \(f\) factors as \(X \to X^\wedge_p \xrightarrow{\overline f} Y\). 
 \end{theorem}
 
-\autocite{ass}, \autocite{hatcher5}, \autocite{concise}, \autocite{spectra}
-
 \section{The Adams spectral sequence}
 
 \subsection{Spectral sequences}\label{2504041910}
 
-[Maybe add some notes from \autocite{ass}]
-
-[Some notes from \autocite{spectral_sequences}, C2 - just here as a placeholder/reference and I'll probably completely rewrite this bit.]
+\textcolour{teal}{[Some notes from \autocite{spectral_sequences}, C2 - just here as a placeholder/reference and I'll probably completely rewrite this bit. Maybe add some notes from \autocite{ass}]}
 
 \begin{definition}
 A \textit{differential bigraded module} \(E\) over a ring \(R\) is a collection of \(R\)-modules \(\{E^{p, q}\}\), \(p, q\in \inte\), together with a map \(d : E^{p, q} \to E^{p+s, q-s+1}\) for each \(p, q\) and some fixed \(s \in \inte\), satisfying \(d^2=0\). 
@@ -590,7 +545,7 @@ Thus, \(E_\infty^{p,q}=E_N^{p,q}\).
 
 \subsection{Exact couples}\label{2503301333}
 
-(Following \autocite{spectral_sequences}, C2)
+\textcolour{teal}{[Following \autocite{spectral_sequences}, C2]}
 
 \begin{definition}
 Let \(D, E\) be \(R\)-modules, and let \(i : D \to D\), \(j : D\to E\), \(k : E \to D\) be module homomorphisms. We call \(\mathcal{C}=\{D, E, i, j, k\}\) an \textit{exact couple} if the diagram below is exact.
@@ -629,30 +584,30 @@ A bigraded exact couple may be displayed in the following diagram, known as a \t
  & \vdots &  & \vdots & 
 \end{tikzcd}\]
 
-[This is the same staircase diagram that Hatcher is talking about (set \(D^{*,*}=\pi_*^SX_*\) and \(E^{*,*}=\pi_*K_*\)) - just modulo some tweak of \(i\)'s bigrading because the bigrading is a bit weird in the Adams spectral sequence.]
+\textcolour{teal}{[This is the same staircase diagram that Hatcher is talking about (set \(D^{*,*}=\pi_*^SX_*\) and \(E^{*,*}=\pi_*K_*\)) - just modulo some tweak of \(i\)'s bigrading because the bigrading is a bit weird in the Adams spectral sequence.]}
 
 \subsection{Setting up the Adams spectral sequence}
 
-Let \(X\) be a connective CW spectrum of finite type.
+Let \(X\) be a connective CW spectrum of finite type. Then \(H^*(X)\) is an \(\A\)-module, since \(H^i(X)\cong H^{i+n}(X_n)\) for sufficiently large \(n\), so we can define \(Sq^j : H^i(X)\to H^{i+j}(X)\) by evaluating \(Sq^j : H^{i+n}(X_n)\to H^{i+j+n}(X_n)\) followed by enough suspensions. Note that we could also have first suspended \(H^{i+n}(X_n)\) and \(H^{i+j+n}(X_n)\) until they were both stable, and then evaluated \(Sq^j\), but that these two \(\A\)-actions coincide by \ref{2504201153} (4). \textcolour{violet}{[Is this an actual module action? Is the former one also a module action?]}
 
-[Claim: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. Either use \ref{2503221328} (i.e. \(H^m(X;G)\cong[X,K(G,m)]\)) to give the action, or the above mentioned fact that for spectra of finite type, \(H^i(X; G)=H^{i+n}(X_n;G)\). To define a map \(Sq^j : H^{i}(X;G)\to H^{i+j}(X;G)\) we can either hit \(H^{i+n}(X_n;G)\) with \(Sq^j\) and then push it along the sequence of cohomology groups until it's stable, or first push it along until \(H^{i+j+n}(X_n;G)\) is stable and then hit \(H^{i+n}(X_n;G)\) with \(Sq^j\). And these are the same thing, because of this handy commutative diagram:
-\[\begin{tikzcd} 
- & H^{i+n}(X_n;G)  \arrow[dl, "\sigma"'] \arrow[dr, "Sq^j"] & \\ 
- H^{i+n+1}(\Sigma X_n;G) \arrow[d, "i^*"'] & & H^{i+j+n}(X_n;G) \arrow[d, "\sigma"] \\ 
- H^{i+n+1}(X_{n+1};G) \arrow[dr, "Sq^j"'] & & H^{i+j+n+1}(\Sigma X_n;G) \arrow[dl, "i^*"] \\ 
- & H^{i+j+n+1}(X_{n+1};G) &  
-\end{tikzcd}\] 
-which follows from the properties in Section  \ref{2503221247}. \textcolour{violet}{Is this an actual module action? Is the former one also a module action?}]
+%[Claim: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. Either use \ref{2503221328} (i.e. \(H^m(X;G)\cong[X,K(G,m)]\)) to give the action, or the above mentioned fact that for spectra of finite type, \(H^i(X; G)=H^{i+n}(X_n;G)\). To define a map \(Sq^j : H^{i}(X;G)\to H^{i+j}(X;G)\) we can either hit \(H^{i+n}(X_n;G)\) with \(Sq^j\) and then push it along the sequence of cohomology groups until it's stable, or first push it along until \(H^{i+j+n}(X_n;G)\) is stable and then hit \(H^{i+n}(X_n;G)\) with \(Sq^j\). And these are the same thing, because of this handy commutative diagram:
+%\[\begin{tikzcd} 
+% & H^{i+n}(X_n;G)  \arrow[dl, "\sigma"'] \arrow[dr, "Sq^j"] & \\ 
+% H^{i+n+1}(\Sigma X_n;G) \arrow[d, "i^*"'] & & H^{i+j+n}(X_n;G) \arrow[d, "\sigma"] \\ 
+% H^{i+n+1}(X_{n+1};G) \arrow[dr, "Sq^j"'] & & H^{i+j+n+1}(\Sigma X_n;G) \arrow[dl, "i^*"] \\ 
+% & H^{i+j+n+1}(X_{n+1};G) &  
+%\end{tikzcd}\] 
+%which follows from the properties in Section  \ref{2503221247}. \textcolour{violet}{Is this an actual module action? Is the former one also a module action?}]
 
-We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\) [since each \(H^n(X)\) is finitely generated (\ref{2504141556}), and that finite generating set would certainly also generate it as an \(\A\)-module (we could be more efficient, though)].
+We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\) (since each \(H^n(X)\) is finitely generated by \ref{2504141556}, and such a finite generating set would certainly also generate it as an \(\A\)-module). 
 
-[\textcolour{purple}{Claim: these \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type}. Very confused about this - each \(\alpha_i\in H^{n_i}(X;G)\) gives a map \(X \to K(G,n_i)\) by \ref{2503221328}, but shouldn't they  come together to give a map into a product\footnote{And on that note, what is a product of spectra? Surely it's not a smash product? Is it just a pointed product? Are we allowed to do that?} of EM spaces, not a wedge sum? Isn't a wedge sum a sort of reduced \textit{coproduct}, not a product?? Is this something to do with the `fibrations and cofibrations are the same' nonsense?
+\textcolour{purple}{[Claim: these \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type. Very confused about this - each \(\alpha_i\in H^{n_i}(X;G)\) gives a map \(X \to K(G,n_i)\) by \ref{2503221328}, but shouldn't they  come together to give a map into a product\footnote{\textcolour{purple}{And on that note, what is a product of spectra? Surely it's not a smash product? Is it just a pointed product? Are we allowed to do that?}} of EM spaces, not a wedge sum? Isn't a wedge sum a sort of reduced \textit{coproduct}, not a product?? Is this something to do with the `fibrations and cofibrations are the same' nonsense?}
 
-Vague idea: we have \ref{2503231218}, which tells us that \([X, \bigvee_i \bb{K}(G,n_i)]\cong \prod_i[X, \bb{K}(G,n_i)]\). Now, \(X\) is connective, so \(H^*(X;G)\) has some smallest degree. Let's just pretend it starts from zero for the moment, and we can reindex or whatever later. Let's say each \(H^k(X;G)\) has \(i_k\) generators \(\alpha_{i_0+\cdots+i_{k-1}+1}, ...,\alpha_{i_0+\cdots+i_k}\)  , and write \(n_0=\cdots=n_{i_0}\), \(n_{i_0+1}=\cdots= n_{i_0+i_1}\), etc., \(n_{i_0+i_1+\cdots+i_{k-1}+1}=\cdots = n_{i_0+i_1+\cdots+i_k}\). So, the \(\alpha_{i_0+\cdots+i_{k-1}+j}\in H^k(X;G)\) determine maps \(X\to \bb{K}(G,n_k)\). Putting all these maps together, one in each coordinate, gives an element of \(\prod_i[X, \bb{K}(G,n_i)]\), which by the proposition corresponds to an element of \([X, \bigvee_i \bb{K}(G,n_i)]\).] 
+\textcolour{purple}{Vague idea: we have \ref{2503231218}, which tells us that \([X, \bigvee_i \bb{K}(G,n_i)]\cong \prod_i[X, \bb{K}(G,n_i)]\). Now, \(X\) is connective, so \(H^*(X;G)\) has some smallest degree. Let's just pretend it starts from zero for the moment, and we can reindex or whatever later. Let's say each \(H^k(X;G)\) has \(i_k\) generators \(\alpha_{i_0+\cdots+i_{k-1}+1}, ...,\alpha_{i_0+\cdots+i_k}\)  , and write \(n_0=\cdots=n_{i_0}\), \(n_{i_0+1}=\cdots= n_{i_0+i_1}\), etc., \(n_{i_0+i_1+\cdots+i_{k-1}+1}=\cdots = n_{i_0+i_1+\cdots+i_k}\). So, the \(\alpha_{i_0+\cdots+i_{k-1}+j}\in H^k(X;G)\) determine maps \(X\to \bb{K}(G,n_k)\). Putting all these maps together, one in each coordinate, gives an element of \(\prod_i[X, \bb{K}(G,n_i)]\), which by the proposition corresponds to an element of \([X, \bigvee_i \bb{K}(G,n_i)]\).]}
 
-\textcolour{teal}{We can replace that map with an inclusion.} [I sort of believe this - \ref{2503231306} and my comment at the end of Section \ref{2503231313} say we can do this for CW complexes, so I should check it for spectra. But it seems true (and I'm currently suffering from spectrum fatigue).]
+\textcolour{teal}{We can replace that map with an inclusion. [I sort of believe this - \ref{2503231306} and my comment at the end of Section \ref{2503231313} say we can do this for CW complexes, so I should check it for spectra. But it seems true (and I'm currently suffering from spectrum fatigue).]}
 
-[Set \(X_1=K_0/X\), and repeat the construction to get a diagram:
+Now, we set \(X_1=K_0/X\), and repeat the construction to get a diagram:
 \begin{equation}\label{2503301114}
 \begin{tikzcd}[column sep=3ex] 
  X \arrow[rr, ""]  & & K_0 \arrow[rr, ""] \arrow[dr, ""] & & K_1 \arrow[dr, ""] \arrow[rr, ""] & & K_2 \arrow[dr, ""] \arrow[rr, ""] & & \cdots \\ 
@@ -665,10 +620,9 @@ Taking cohomology, we get a diagram
   &&&&& H^*(X_1) \arrow[ur, ""] \arrow[dr] & & H^*(X_2) \arrow[ur, ""] \arrow[dr] & & H^*(X_3) \arrow[ur, ""] \arrow[dr] &  &\\
 &&&& 0 \arrow[ur] && 0 \arrow[ur] && 0 \arrow[ur] && 0
  \end{tikzcd}\] 
-]
 
 \begin{itemize}
-\item \textcolour{purple}{Fact: \(K_0\) has finite type} (and thus so do all the \(K_s\)'s) [I'm sure this is supposed to follow from \(H^i(X)\) being finitely generated for all \(i\), but I can't at all see how].
+\item \textcolour{purple}{Fact: \(K_0\) has finite type (and thus so do all the \(K_s\)'s) [I'm sure this is supposed to follow from \(H^i(X)\) being finitely generated for all \(i\), but I can't at all see how].}
 \item \textcolour{purple}{Fact: the top row of the diagram above is exact.} [Suffices to show that we have exact sequences: 
 \[0 \leftarrow H^*(X_s)\leftarrow H^*(K_s),\]
 \[H^*(X) \leftarrow H^*(K_0) \leftarrow H^*(X_1)\leftarrow 0,\]
@@ -747,11 +701,14 @@ of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F
 
 \autocite{ass}, \autocite{hatcher5}, \autocite{rognes2}
 
+\begin{figure}\label{2504201106}
 \input{table.tex}
+\caption{Table}
+\end{figure}
 
 \textcolour{violet}{[Explain the table above]}
 
-Looking at the table above, we can see that \((\pi^S_3)^\wedge_2\) has order \(8\). However, we do not currently have the tools to determine whether it is isomorphic to \((\inte/2\inte)^3\), \(\inte/2\inte\oplus \inte/4\inte\), or \(\inte/8\inte\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
+Looking at Figure \ref{2504201106}, we can see that \((\pi^S_3)^\wedge_2\) has order \(8\). However, we do not currently have the tools to determine whether it is isomorphic to \((\inte/2\inte)^3\), \(\inte/2\inte\oplus \inte/4\inte\), or \(\inte/8\inte\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
 
 \subsection{Multiplicative structure}
 
@@ -1046,13 +1003,6 @@ The \(d_2\) differentials at \(E_2^{2, 17}(\bb{S}),  E_2^{3, 18}(\bb{S}), E_2^{4
 
 [I promise we're gonna do the \(d_3\) differential but first we need a few lemmas.]
 
-\begin{landscape}
-\begin{figure}[H]
-\input{extra.tex}
-\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names. The \(d_2\) differentials referenced in the proof of \ref{2504192017} are shown in green.}
-\end{figure}
-\end{landscape}
-
 \begin{lemma}[{\autocite{rognes2}, Table 14.1 (9)}]\label{2504192017}
 \(d_2(f_0)\neq 0\).
 \end{lemma}
@@ -1060,6 +1010,13 @@ The \(d_2\) differentials at \(E_2^{2, 17}(\bb{S}),  E_2^{3, 18}(\bb{S}), E_2^{4
 \begin{ourproof}
 First, note that \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Now, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).\done
 \end{ourproof}
+
+\begin{landscape}
+\begin{figure}
+\input{extra.tex}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names. The \(d_2\) differentials referenced in the proof of \ref{2504192017} are shown in green.}
+\end{figure}
+\end{landscape}
 
 [Probably need to move the theorem below but I'll leave it here for the moment]
 
