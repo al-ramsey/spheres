@@ -46,6 +46,8 @@
 
 \newcommand{\nathaniel}[1]{{\leavevmode\color{teal}[#1]}}
 
+\newcommand{\purple}[1]{{\leavevmode\color{purple}[#1]}}
+
 \def\bb{\ensuremath\mathbb}
 \def\la{\ensuremath\langle}
 \def\ra{\ensuremath\rangle}
@@ -186,7 +188,7 @@ There are maps \(Sq^i : H^n(-; \inte/2\inte)\to H^{n+i}(- ; \inte/2\inte)\) for 
 \item \(Sq^i(f^*(\alpha))=f^*(Sq^i(\alpha))\) for \(f : X \to Y\) (i.e. \(Sq^i\) is a natural transformation).
 \item \(Sq^i(\alpha + \beta)=Sq^i(\alpha)+Sq^i_X(\beta)\) (i.e. \(Sq^i\) respects the group operation for all \(X\)).
 \item \(Sq^i(\alpha \smile \beta)=\sum\limits_{0\leq j \leq i} (Sq^j(\alpha)\smile Sq^{i-j}(\beta))\) (the Cartan formula)
-\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\).\footnote{Something is a little strange here, I think maybe it doesn't matter which suspension isomorphism you pick, though it's not immediately clear why. It's just that the wikipedia page that \(\sigma\) is the connecting homomorphism of the long exact sequence in cohomology. \autocite{rognes2} just says it's the suspension isomorphism \(:\hspace{-0.75ex}|\). Something interesting: on p219 of \autocite{hatcher}, it says ``the suspension isomorphisms \(\widetilde H^n(X;R)\cong \widetilde H^{n+k}(\Sigma^kX;R)\) derivable by elementary exact sequence arguments can also be obtained via cross product with a generator of \(\wildetilde H^*(S^k; R)\)''. Does he mean the \textit{same} isomorphism, or just the fact that there is (at least) one?.}
+\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \inte/2\inte)\to H^{n+1}(\Sigma X; \inte/2\inte)\) is the suspension isomorphism given by reduced cross product with a generator of \(H^1(S^1; \inte/2\inte)\).%\footnote{Something is a little strange here, I think maybe it doesn't matter which suspension isomorphism you pick, though it's not immediately clear why. It's just that the wikipedia page that \(\sigma\) is the connecting homomorphism of the long exact sequence in cohomology. \autocite{rognes2} just says it's the suspension isomorphism \(:\hspace{-0.75ex}|\). Something interesting: on p219 of \autocite{hatcher}, it says ``the suspension isomorphisms \(\widetilde H^n(X;R)\cong \widetilde H^{n+k}(\Sigma^kX;R)\) derivable by elementary exact sequence arguments can also be obtained via cross product with a generator of \(\wildetilde H^*(S^k; R)\)''. Does he mean the \textit{same} isomorphism, or just the fact that there is (at least) one?.}
 \item \(Sq^i(\alpha)=\alpha^2\) if \(i=\deg(\alpha)\) and \(Sq^i(\alpha)=0\) if \(i> \deg(\alpha)\). 
 \item \(Sq^0=\id.\)
 %\item \(Sq^1\) is the \(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\).\footnote{Check properties 4 and 7 are actually needed, because \autocite{rognes2} only takes 1-3 and 5-6, giving 4 as Prop 7.2.4 and 7 as as consequence of Prop 7.6.5. In particular, I don't think I actually ever use property 7.}
@@ -493,6 +495,8 @@ Let \(X\) be a connective spectrum of finite type, and let \(Y\) be \(p\)-comple
 
 \section{The Adams spectral sequence}
 
+\textcolour{teal}{[Some intro. Following \autocite{spectral_sequences}, \autocite{hatcher5}]}
+
 \subsection{Spectral sequences}\label{2504041910}
 
 \textcolour{teal}{[Some notes from \autocite{spectral_sequences}, C2 - just here as a placeholder/reference and I'll probably completely rewrite this bit. Maybe add some notes from \autocite{ass}]}
@@ -622,8 +626,8 @@ Taking cohomology, we get a diagram
  \end{tikzcd}\] 
 
 \begin{itemize}
-\item \textcolour{purple}{Fact: \(K_0\) has finite type (and thus so do all the \(K_s\)'s) [I'm sure this is supposed to follow from \(H^i(X)\) being finitely generated for all \(i\), but I can't at all see how].}
-\item \textcolour{purple}{Fact: the top row of the diagram above is exact.} [Suffices to show that we have exact sequences: 
+\item[\textcolour{purple}{\textbullet}] \textcolour{purple}{Fact: \(K_0\) has finite type (and thus so do all the \(K_s\)'s) [I'm sure this is supposed to follow from \(H^i(X)\) being finitely generated for all \(i\), but I can't at all see how].}
+\item[\textcolour{purple}{\textbullet}] \textcolour{purple}{Fact: the top row of the diagram above is exact.} \purple{Suffices to show that we have exact sequences: 
 \[0 \leftarrow H^*(X_s)\leftarrow H^*(K_s),\]
 \[H^*(X) \leftarrow H^*(K_0) \leftarrow H^*(X_1)\leftarrow 0,\]
 \[H^*(K_s) \leftarrow H^*(K_{s+1}) \leftarrow H^*(X_{s+2})\leftarrow 0,\]
@@ -631,61 +635,55 @@ and that the map \(H^*(K_0)\to H^*(X)\) is surjective. Actually, I think the fir
 
 I'm extremely confused by the supposed surjectivity - going back to the sketch of the construction for CW complexes, the corresponding statement is supposed to be that if we choose generators \(\alpha_i\) for \(H^*(X)\) as an \(\A\)-module giving maps \(f_i : X \to K(G, \deg(\alpha_i))\), the product of these maps induces a surjection on \(H^*\). But I can't see how it does? So, we know by \autocite{hatcher}, Thm 4.57  that there are natural bijections \(T : [X, K(G,n)]\to H^n(X;G)\) with \(T[f]=f^*(\beta)\) for some class \(\beta \in H^n(K(G,n); G)\). So, for any given \(\alpha^i\in H^n(X;G)\), it's equal to \(f^*(\beta_i)\), so definitely \(f^*\) hits it. But if I have some enormous product of EM spaces, and all these maps \(f_i : X \to K(G, n_i)\) come together to give a map \(f : X \to \prod_i K(G,n_i)\), then Hatcher is trying to tell me I get a surjection \(H^*(\prod_i K(G, n_i))\to H^*(X)\)?? I know nothing about the cohomology of an infinite product, there's no reason it would be e.g. the product of the cohomologies.]
 
-[Something something reduced cohomology theories for spectra and the wedge axiom?? Suppose \(K_0\) had finite type, which I'm not convinced it does. Then for some \(n\), \((K_0)_n=\left(\bigvee_i \bb{K}(G, n_i)\right)_n=\bigvee_i (\bb{K}(G, n_i))_n=\bigvee_i K(G, n+n_i)\), and \(H^i(K_0)=H^{i+n}(\bigvee_i K(G, n+n_i))=\prod_i H^{i+n}(K(G, n+n_i))\). Does that help?]
+[Something something reduced cohomology theories for spectra and the wedge axiom?? Suppose \(K_0\) had finite type, which I'm not convinced it does. Then for some \(n\), \((K_0)_n=\left(\bigvee_i \bb{K}(G, n_i)\right)_n=\bigvee_i (\bb{K}(G, n_i))_n=\bigvee_i K(G, n+n_i)\), and \(H^i(K_0)=H^{i+n}(\bigvee_i K(G, n+n_i))=\prod_i H^{i+n}(K(G, n+n_i))\). Does that help?]}
 
-\item \textcolour{teal}{Fact: each \(H^*(K_s)\) is a free \(\A\)-module}, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]
+\item[\textcolour{teal}{\textbullet}] \textcolour{teal}{Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]}
 \end{itemize}
 
-[The work in Section \ref{2503291211} gives us long exact sequences
+By \ref{2504151709}, we obtain a long exact sequences
 \[\cdots \to [\bb{S}^{t+1}, X_s] \to [\bb{S}^{t+1}, K_s] \to [\bb{S}^{t+1}, X_{s+1}]\to [\bb{S}^{t+1}, \Sigma X_s]\to [\bb{S}^{t+1}, \Sigma K_s] \to \cdots.\]
 Using the isomorphism \([Y,Z]\cong [\Sigma Y, \Sigma Z]\), we get long exact sequences
-\[\cdots \to [\Sigma^\infty S^{t+1}, X_s] \to [\bb{S}^{t+1}, K_s] \to [\bb{S}^{t+1}, X_{s+1}]\to [\bb{S}^{t}, X_s]\to [\bb{S}^{t}, K_s] \to \cdots,\]
-i.e.
-\[\cdots \to \pi_{t+1}X_s \to \pi_{t+1}K_s \to \pi_{t+1}X_{s+1}\to \pi_t X_s\to \pi_t K_s \to \cdots.\]
-These form a staircase diagram,
-\[\begin{tikzcd}[column sep=4ex]
+\[\cdots \to \pi_{t+1}X_s \to \pi_{t+1}K_s \to \pi_{t+1}X_{s+1}\to \pi_t X_s\to \pi_t K_s \to \cdots,\]
+which form the staircase diagram shown below.
+\begin{equation}\label{2504201907}
+\begin{tikzcd}[column sep=4ex]
    &  \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] & \\
  \cdots \arrow[r, "k"] & \pi_{t+1}X_s \arrow[d, "i"] \arrow[r, "j"] & \pi_{t+1}K_s  \arrow[r, "k"] & \pi_{t+1}X_{s+1} \arrow[d, "i"] \arrow[r, "j"] & \pi_{t+1}K_{s+1} \arrow[r, "k"] & \pi_{t+1}X_{s+2} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  \cdots \arrow[r, "k"] & \pi_t X_{s-1} \arrow[d, "i"] \arrow[r, "j"] & \pi_t K_{s-1}  \arrow[r, "k"] & \pi_t X_s \arrow[d, "i"] \arrow[r, "j"] & \pi_t K_s \arrow[r, "k"] & \pi_t X_{s+1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  \cdots \arrow[r, "k"] & \pi_{t-1}X_{s-2}  \arrow[d, "i"] \arrow[r, "j"] & \pi_{t-1}K_{s-2}  \arrow[r, "k"] & \pi_{t-1}X_{s-1} \arrow[d, "i"] \arrow[r, "j"] & \pi_{t-1}K_{s-1} \arrow[r, "k"] & \pi_{t-1}X_s \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  & \vdots &  & \vdots & & \vdots &
-\end{tikzcd}\]
+\end{tikzcd}
+\end{equation}
 %where the rows are given by applying \(\pi_*\) to the diagram (\ref{2503301114}), and the columns <-- actually you get the rows for free
-This gives rise to a spectral sequence, by [some version of] \ref{2503301131}.
+This gives rise to a spectral sequence, by \textcolour{teal}{[some version of]} \ref{2503301131}.
 
 Now, since \(K_s = \bigvee_i \bb{K}(G, n_{s_i})\),  \ref{2503231218}, tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(G, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
 %talk about death by indices...
 
-\begin{itemize}
-\item Def: \(\Hom^t_{\A}\) [it's just the homs that lower the degree by \(t\)]
+\textcolour{teal}{[Def: \(\Hom^t_{\A}\) (it's just the homs that lower the degree by \(t\))]}
 
-\item \textcolour{purple}{Fact: there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and it's an isomorphism.} [??]
-\end{itemize}
+\textcolour{purple}{[Fact: there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and it's an isomorphism. [??]]}
 
-[We thus have
+We thus have
 \[[\Sigma^t \bb{S}, K_s]=\Hom^0_{\A}(H^*(K_s), H^*(\Sigma^t \bb{S}))=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})).\]
-In the case of CW complexes, we have \(H^*(\Sigma^t X)\cong H^{*-t}(X)\) via the map \(\sigma\) mentioned in Section  \ref{2503221247}. Since \(\bb{S}\) has finite type, for \(i\) large enough we have \(H^n(\Sigma^t\bb{S})=H^{n+i}(\Sigma^t S^i)=H^{n+i-t}(S^i)=H^{n-t}(\bb{S})\).]
+In the case of CW complexes, we have \(H^*(\Sigma^t X)\cong H^{*-t}(X)\). Since \(\bb{S}\) has finite type, for \(i\) large enough we have \(H^n(\Sigma^t\bb{S})=H^{n+i}(\Sigma^t S^i)\cong H^{n+i-t}(S^i)=H^{n-t}(\bb{S})\).
 
-[\(E_1^{s,t} = \pi_t K_s (=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})))\), since the staircase diagram comes from (or gives rise to, depending on your point of view) the exact couple:
+Now, \(E_1^{s,t} = \pi_t K_s =\Hom^t_{\A}(H^*(K_s), H^*(\bb{S}))\), since the staircase diagram comes from \textcolour{teal}{(or gives rise to, depending on your point of view)} the exact couple:
 \[\begin{tikzcd}
  \pi_*X_* \arrow[rr, "i"] & & \pi_* X_* \arrow[dl, "j"] \\ 
  & \pi_*K_* \arrow[ul, "k"] & 
  \end{tikzcd}\]
-where \(i : \pi_{t+1}X_{s+1}\to \pi_tX_s\), \(j : \pi_{t+1}X_s \to \pi_{t+1}K_s\), and \(k : \pi_{t+1}X_{s+1}\) all come from the diagram we set up earlier. The differential \(d_1 : \pi_t(K_s)\to\pi_t K_{s+1}\) is induced by the map \(K_s \to K_{s+1}\), since it's just \(j\circ k\), according to the way things are set up in Section \ref{2503301333}, possibly modulo some typos.]
+where \(i : \pi_{t+1}X_{s+1}\to \pi_tX_s\), \(j : \pi_{t+1}X_s \to \pi_{t+1}K_s\), and \(k : \pi_{t+1}X_{s+1}\) are as in (\ref{2504201907}). The differential \(d_1 : \pi_t(K_s)\to\pi_t K_{s+1}\) is induced by the map \(K_s \to K_{s+1}\), since it is defined to be \(j\circ k\).
 
-[Then, \(E^{s,t}_2=H^{s,t}(E_1^{*,*}, d_1)\), so each \(E^{*, t}\) is the homology of the chain complex
+Further, \(E^{s,t}_2=H^{s,t}(E_1^{*,*}, d_1)\), so each \(E^{*, t}\) is the homology of the chain complex
 \[0 \to E^{0,t}_1 \to E^{1,t}\to E^{2,t}\to \cdots,\]
-or, in other words,
+which is by construction the chain complex below.
 \[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots.\]
 The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).]
 
 \begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]\label{2504081125}
 There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_{t-s}^S\) modulo torsion of odd order. \textcolour{violet}{[which is probably a lie but let's worry about that later]}
 \end{theorem}
-
-
-
-\autocite{spectral_sequences}, \autocite{hatcher5}
 
 \subsection{First computations}
 
@@ -697,26 +695,24 @@ of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F
 
 \textcolour{violet}{(proof)}
 
-[Now, since \(\bb{F}_2\) just has stuff in degree 0, the only things that can be sent to \(1 \in \bb{F}_2\) are the things in degree \(t\), so for every generator for \(F_s\) in degree \(t\), there's an \(\bb{F}_2\)'s worth of such homs.]
-
-\autocite{ass}, \autocite{hatcher5}, \autocite{rognes2}
+Now, since \(\bb{F}_2\) is concentrated in degree 0, the only elements of \(F_s\) which can be sent to \(1 \in \bb{F}_2\) are the elements of degree \(t\), so for every generator of \(F_s\) in degree \(t\), there is an \(\bb{F}_2\) summand in \(\Hom^t_{\A}(F_s, \bb{F}_2)\). 
 
 \begin{figure}\label{2504201106}
 \input{table.tex}
-\caption{Table}
+\caption{\textcolour{teal}{Table}}
 \end{figure}
 
-\textcolour{violet}{[Explain the table above]}
+\textcolour{violet}{[Explain the table in Figure \ref{2504201106}]}
 
-Looking at Figure \ref{2504201106}, we can see that \((\pi^S_3)^\wedge_2\) has order \(8\). However, we do not currently have the tools to determine whether it is isomorphic to \((\inte/2\inte)^3\), \(\inte/2\inte\oplus \inte/4\inte\), or \(\inte/8\inte\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
+From Figure \ref{2504201106}, we see that \((\pi^S_3)^\wedge_2\) has order \(8\). However, we do not currently have the tools to determine whether it is isomorphic to \((\inte/2\inte)^3\), \(\inte/2\inte\oplus \inte/4\inte\), or \(\inte/8\inte\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
 
 \subsection{Multiplicative structure}
 
+\textcolour{teal}{[Intro. Sources: \autocite{ass}, \autocite{rognes2}, \autocite{hatcher}]}
+
 \subsubsection{The Yoneda product}\label{2504171922}
 
-\autocite{rognes2}:
-
-\begin{definition}
+\begin{definition}[\autocite{rognes2}, Def 11.8.1]
 For any algebra \(A\) and \(A\)-modules \(L,M,N\), there is a product, the \textit{Yoneda product}
 \[\circ : \Ext_A^{s,t}(M,N)\otimes \Ext^{u,v}_A(L,M)\to \Ext_A^{s+u}(L,N),\]
 defined as follows: let 
@@ -915,9 +911,9 @@ The pairing is associative and unital.
 
 \textcolour{violet}{[Explain why if I compute a product on the \(E_2\) page, and both terms survive to the \(E_3\) page, that computation is still valid.]}
 
-\autocite{ass}, \autocite{rognes2}, \autocite{spectra}
-
 \section{Calculating stable homotopy groups}
+
+\nathaniel{Some intro. Sources: \autocite{ass}, \autocite{rognes2}}
 
 \subsection{Resolving extensions}
 
@@ -947,9 +943,9 @@ since finite index subgroups of \(\inte_p\) are of the form \(p^k\inte_p\). %\fo
 Thus, \(\iota=[1]\in \inte_2/2\inte_2\), and by computing the Yoneda product we see that \(\iota\) is a unit. We also have \(h_0=[2]\in 2\inte_2/4\inte_2\) so \(h_0=[2]=[2[1]]=[2\iota]\), and hence \(h_0\) acts on \(\iota\) by multiplication by 2. Now, for any \(\kappa\in E^{s,t}_r(\bb{S})\), \(h_0\cdot \kappa = (\iota h_0)\cdot \kappa=2\kappa\in E^{s+1,t+1}_r(\bb{S})\). \done
 \end{ourproof}
 
-[The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\).
+\nathaniel{[The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\).
 
-All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]
+All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]}
 
 \begin{theorem}
 \begin{align*}
@@ -963,7 +959,7 @@ All this is to say if I start multiplying higher things by \(h_0\), that \textit
 
 \subsection{The \(E_2\) page for \(t-s\leq 15\)}
 
-\begin{figure}[H]\label{1304251243}
+\begin{figure}\label{1304251243}
 \centering
 \input{ext.tex}
 \caption[\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).]{\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names.}
@@ -983,7 +979,7 @@ On the other hand, \(E^{2, 10}_2(\bb{S})\) is generated by \(h_1h_3\), and \(d_2
 
 \subsection{Differentials at \(14\leq t-s\leq 15\)}
 
-[The point here is that all differentials interacting with \(E^{s,t}\) for \(t-s<14\) are trivial, and thus computing the stable homotopy groups is purely mechanical, because everything that appears on this part of the \(E_2\) page has to survive to \(E_\infty\). Thus, the `ambiguity' at \(t-s=14\) is just the fact that this is the first time you need to actually compute differentials.]
+\nathaniel{[The point here is that all differentials interacting with \(E^{s,t}\) for \(t-s<14\) are trivial, and thus computing the stable homotopy groups is purely mechanical, because everything that appears on this part of the \(E_2\) page has to survive to \(E_\infty\). Thus, the `ambiguity' at \(t-s=14\) is just the fact that this is the first time you need to actually compute differentials.]}
 
 \begin{theorem}[{\autocite{rognes2}, Thm 11.10.2}]
 \(d_2(h_4)=h_0h_3^2\).
@@ -995,39 +991,43 @@ We have shown that \(h_0\) detects \(2\in (\pi_*^S)^\wedge_2\) (i.e. \(2\) is a 
 
 The \(d_2\) differentials at \(E_2^{2, 17}(\bb{S}),  E_2^{3, 18}(\bb{S}), E_2^{4, 19}(\bb{S})\) are all trivial: \(d_2(h_0^nh_4)=h_0^nd_2(h_4)=h_0^{n-1}(h_0h_3^2)=0\). 
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \input{e2page.tex}
 \caption{The \(E_2\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the unique \(d_2\) differential is shown in green.}
 \end{figure}
 
-[I promise we're gonna do the \(d_3\) differential but first we need a few lemmas.]
-
-\begin{lemma}[{\autocite{rognes2}, Table 14.1 (9)}]\label{2504192017}
-\(d_2(f_0)\neq 0\).
-\end{lemma}
-
-\begin{ourproof}
-First, note that \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Now, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).\done
-\end{ourproof}
-
-\begin{landscape}
-\begin{figure}
-\input{extra.tex}
-\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names. The \(d_2\) differentials referenced in the proof of \ref{2504192017} are shown in green.}
-\end{figure}
-\end{landscape}
-
-[Probably need to move the theorem below but I'll leave it here for the moment]
+There are two possible \(d_3\) differentials for \(t-s\leq 15\) (emanating from \(E_3^{2,17}\) and \(E_3^{3,18}\)), and in fact it will turn out that both are nontrivial. The method of proof will be by comparison to the Adams spectral sequence of a different spectrum, so we will first state a result comparing the Adams spectral sequences of two spectra with a map between them.
 
 \begin{theorem}[{\autocite{ass}, Cor 4.17}]\label{2504141019}
 Let \(f : Y \to Z\) be a map of connective spectra of finite type. Then there is a map
 \[f_* : \{E_r(Y), d_r\}_r \to \{E_r(Z), d_r\}_r\]
 of Adams spectral sequences, given at the \(E_2\)-level by the homomorphism
 \[(f^*)^* : \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2) \to \Ext^{s,t}_{\A}(H^*(Z), \bb{F}_2)\]
-induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), with abutment the homomorphism 
+induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), converging to the homomorphism 
 \[f_* : \pi_*(Y) \to \pi_*(Z).\]
 \end{theorem}
+
+\begin{remark}\label{2504211139}
+For any map \(f : Y \to Z\) of connective spectra of finite type, the induced map 
+\[(f^*)^* : \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2)\to \Ext^{s,t}_{\A}(H^*(Z), \bb{F}_2)\]
+satisfies \((f^*)^*(\alpha \beta)=(f^*)^*(\alpha)(f^*)^*(\beta)\). This follows from the definition of the Yoneda product, since \(f^*\) induces a chain homotopy between resolutions of \(H^*(Z)\) and \(H^*(Y)\), so both \((f^*)^*(\alpha \beta)\) and \((f^*)^*(\alpha)(f^*)^*(\beta)\) arise from chain homotopies, and thus descend to same element in \(\Ext^{*,*}(H^*(Z), \bb{F}_2)\).
+\end{remark}
+
+\begin{lemma}[{\autocite{rognes2}, Table 14.1 (9)}]\label{2504192017}
+\(d_2(f_0)\neq 0\).
+\end{lemma}
+
+\begin{ourproof}
+Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. \nathaniel{Using sseq or ext, we calculate \(h_4i=0\) and \(h_0h_3^2i\neq 0\), using the Yoneda product}. Now, \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Further, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).\done
+\end{ourproof}
+
+\begin{landscape}
+\begin{figure}\label{2504201924}
+\input{extra.tex}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names. The \(d_2\) differentials referenced in the proof of \ref{2504192017} are shown in green.}
+\end{figure}
+\end{landscape}
 
 \begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
 Consider the cofibration
@@ -1040,33 +1040,30 @@ Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator 
 \end{lemma}
 
 \begin{ourproof}
-
-[Some note about how we're calling \(i(h_2)\) just \(h_2\) because for anything in the range \(t-s<7\) \(i\) is injective]
-
-We first show that \(d_2(h_2 \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By \ref{2504140954}, we have a long exact sequence
+We first show that \(d_2(\hat i(h_2) \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By \ref{2504140954}, we have a long exact sequence
 \[\cdots \leftarrow H^{n-1}(\bb{S}^8) \leftarrow H^n(\bb{S}) \xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow H^{n+1}(\bb{S}) \leftarrow \cdots.\]
 However, any map \(H^n(\bb{S})\to H^{n-1}(\bb{S}^8)\) must be zero, so we get short exact sequences 
 \[0 \leftarrow H^n(\bb{S})\xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow 0.\]
 Taking a direct sum gives a short exact sequence
-\[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C_\sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0.\]
-From the short exact sequence above, we get\footnote{This is a homological algebra fact, but maybe I should state it somewhere - trouble is I'd have to define Ext in terms of injective resolutions instead of projective ones...} 
+\[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C_\sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0,\]
+and from this we get\footnote{\textcolour{teal}{This is a homological algebra fact, but maybe I should state it somewhere - trouble is I'd have to define Ext in terms of injective resolutions instead of projective ones...}} 
 % Issue with the below is that I defined Ext in terms of projective (well, actually, free) resolutions, instead of injective resolutions. Oops!
 %a short exact sequence of chain complexes
 %\[0 \to \Hom(\bb{F}_2, I_\bullet) \xrightarrow{i^*} \Hom(H^*(C_\sigma), I_\bullet) \xrightarrow{j^*} \Hom(\bb{F}_2[8], I_\bullet)\to 0,\]
 %and thus 
-a long exact sequence 
+the long exact sequence below.
 \[\begin{tikzcd}[row sep=8ex, column sep=3ex]
 \cdots \arrow[r, ""] & \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
 \Ext^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] & \Ext^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
 \end{tikzcd}\]
-
+Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
 %\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 Now, \(f_0\in \Ext^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
 \[\Ext^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
-Figure \ref{1304251243} shows us that \(\Ext^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext^{0,8}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication\footnote{I've just drawn some diagrams, and I think that yes, \(i(\alpha \beta)=i(\alpha)i(\beta)\). Essentially because the way you multiply in \(\Ext\) involves writing down unique (up to chain homotopy) lifts that make certain squares commute, but both \(i(\alpha \beta)\) and \(i(\alpha)i(\beta)\) are lifts making the appropriate squares commute, so they must be chain homotopic and hence give rise to the same element in \(\Ext\).}, \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+h_2\hat{i}(h_4)\). In either case, by linearity of \(d_2\), \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(h_2\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)\footnote{Explain.}).
+Figure \ref{1304251243} shows us that \(\Ext^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext^{0,8}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication (by \ref{2504211139}), \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+\hat i(h_2)\hat{i}(h_4)\). In either case, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(\hat i (h_2)\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)\footnote{\textcolour{teal}{Explain: \(d_2(h_2h_4)=0\) because if it wasn't it would be \(e_0\). But \(d_2(e_0)\neq 0\), so this would contradict the fact that \(d_2\) is a differential.}}).
 
-Now, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(h_2d_2(\overline{\overline{h_0^2h_3}})= d_2(h_2\overline{\overline{h_0^2h_3}})=
-d_2(i(f_0))=i(d_2(f_0))=i(h_0^2e_0)\neq 0\), as required. \done
+Now, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(\hat i(h_2)d_2(\overline{\overline{h_0^2h_3}})= d_2(\hat i(h_2)\overline{\overline{h_0^2h_3}})=
+d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\), as required. \done
 \end{ourproof}
 
 %\begin{itemize}
@@ -1137,8 +1134,6 @@ Now, \((\pi_7^S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 \input{e4page.tex}
 \caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
 \end{figure}
-
-\autocite{stable_homotopy}, \autocite{cobordism}, \autocite{ass}, \autocite{rognes2}.
 
 \appendix 
 
