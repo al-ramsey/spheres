@@ -495,7 +495,7 @@ Let \(X\) be a connective spectrum of finite type, and let \(Y\) be \(p\)-comple
 
 \section{The Adams spectral sequence}
 
-\textcolour{teal}{[Some intro. Following \autocite{spectral_sequences}, \autocite{hatcher5}]}
+\textcolour{teal}{[Some intro. Following \autocite{spectral_sequences}, \autocite{hatcher5}, \autocite{weibel}, \autocite{hatcher}.]}
 
 \subsection{Spectral sequences}\label{2504041910}
 
@@ -590,6 +590,43 @@ A bigraded exact couple may be displayed in the following diagram, known as a \t
 
 \textcolour{teal}{[This is the same staircase diagram that Hatcher is talking about (set \(D^{*,*}=\pi_*^SX_*\) and \(E^{*,*}=\pi_*K_*\)) - just modulo some tweak of \(i\)'s bigrading because the bigrading is a bit weird in the Adams spectral sequence.]}
 
+\subsection{\(\Ext\)}
+Before constructing the Adams spectral sequence, we briefly recall the definition of the Ext functor and some of its basic properties, which will be of importance later. We mainly follow \autocite{weibel}.
+
+\begin{definition}\label{2504211942}
+Let \(M, N\) be modules over a ring \(R\). A \textit{projective resolution} \(P\) of \(M\) is an exact sequence,
+\[\cdots \to P_2 \to P_1 \to P_0 \to M \to 0.\]
+where each \(P_i\) is projective. If, in addition, each \(P_i\) is free, then the resolution is called \textit{free}. 
+
+Dually, an \textit{injective resolution} \(I\) of \(M\) is a exact sequence
+\[0 \to M \to I_0 \to I_1 \to I_2 \to \cdots.\]
+\end{definition}
+
+The following result can be obtained from \autocite{weibel}, Lemmas 2.2.5, 2.3.6, and Exercise 2.3.5. 
+
+\begin{lemma}
+Every \(R\)-module \(M\) has a projective resolution and an injective resolution. 
+\end{lemma}
+
+Given a projective resolution as in \ref{2504211942}, applying \(\Hom_R(-, N)\) gives us a chain complex
+\[\cdots \leftarrow \Hom_R(P_2, N) \leftarrow \Hom_R(P_1, N) \leftarrow \Hom_R(P_0, N) \leftarrow \Hom_R(M, N) \leftarrow 0.\]
+Dropping the term \(\Hom_R(M, N)\), we get the chain complex
+\[\cdots \leftarrow \Hom_R(P_2, N) \leftarrow \Hom_R(P_1, N) \leftarrow \Hom_R(P_0, N) \leftarrow 0,\]
+which we denote by \(\Hom_R(P_\bullet, N)\). 
+%and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain complex. 
+
+Dually, given an injective resolution as in \ref{2504211942}, we can form the chain complex
+\[\cdots \leftarrow \Hom_R(N, I_2) \leftarrow \Hom_R(N, I_1) \leftarrow \Hom_R(N, I_0)\leftarrow 0,\]
+denoted by \(\Hom_R(N, I_\bullet)\).
+
+The result below is a combination of \autocite{weibel}, Lemma 2.4.1 and Theorem 2.7.6. 
+
+\begin{proposition}
+Let \(M, N\) be \(R\)-modules. For any projective resolution \(P\) and any injective resolution \(I\) of \(M\), \(H^*(\Hom_R(P_\bullet, N))=H^*(\Hom_R(N,I_\bullet))\).
+\end{proposition}
+
+We define \(\Ext^{n}(M,N):=H^n(\Hom_R(P_\bullet, N))=H^n(\Hom_R(N, I_\bullet))\). 
+
 \subsection{Setting up the Adams spectral sequence}
 
 Let \(X\) be a connective CW spectrum of finite type. Then \(H^*(X)\) is an \(\A\)-module, since \(H^i(X)\cong H^{i+n}(X_n)\) for sufficiently large \(n\), so we can define \(Sq^j : H^i(X)\to H^{i+j}(X)\) by evaluating \(Sq^j : H^{i+n}(X_n)\to H^{i+j+n}(X_n)\) followed by enough suspensions. Note that we could also have first suspended \(H^{i+n}(X_n)\) and \(H^{i+j+n}(X_n)\) until they were both stable, and then evaluated \(Sq^j\), but that these two \(\A\)-actions coincide by \ref{2504201153} (4). \textcolour{violet}{[Is this an actual module action? Is the former one also a module action?]}
@@ -660,15 +697,14 @@ This gives rise to a spectral sequence, by \textcolour{teal}{[some version of]} 
 Now, since \(K_s = \bigvee_i \bb{K}(G, n_{s_i})\),  \ref{2503231218}, tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(G, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
 %talk about death by indices...
 
-\textcolour{teal}{[Def: \(\Hom^t_{\A}\) (it's just the homs that lower the degree by \(t\))]}
-
 \textcolour{purple}{[Fact: there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and it's an isomorphism. [??]]}
 
 We thus have
-\[[\Sigma^t \bb{S}, K_s]=\Hom^0_{\A}(H^*(K_s), H^*(\Sigma^t \bb{S}))=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})).\]
-In the case of CW complexes, we have \(H^*(\Sigma^t X)\cong H^{*-t}(X)\). Since \(\bb{S}\) has finite type, for \(i\) large enough we have \(H^n(\Sigma^t\bb{S})=H^{n+i}(\Sigma^t S^i)\cong H^{n+i-t}(S^i)=H^{n-t}(\bb{S})\).
+\[[\Sigma^t \bb{S}, K_s]=\Hom^0_{\A}(H^*(K_s), H^*(\Sigma^t \bb{S}))=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})),\]
+where \(\Hom^t_{\A}(H^*(K_s), H^*(\bb{S}))\) is the set of algebra morphisms which lower the degree by \(t\). In the case of CW complexes, we have \(H^*(\Sigma^t X)\cong H^{*-t}(X)\). Since \(\bb{S}\) has finite type, for \(i\) large enough we have \(H^n(\Sigma^t\bb{S})=H^{n+i}(\Sigma^t S^i)\cong H^{n+i-t}(S^i)=H^{n-t}(\bb{S})\).
 
-Now, \(E_1^{s,t} = \pi_t K_s =\Hom^t_{\A}(H^*(K_s), H^*(\bb{S}))\), since the staircase diagram comes from \textcolour{teal}{(or gives rise to, depending on your point of view)} the exact couple:
+Now, \(E_1^{s,t} = \pi_t K_s =\Hom^t_{\A}(H^*(K_s), H^*(\bb{S}))\), since the staircase diagram comes from %\textcolour{teal}{(or gives rise to, depending on your point of view)} 
+the exact couple
 \[\begin{tikzcd}
  \pi_*X_* \arrow[rr, "i"] & & \pi_* X_* \arrow[dl, "j"] \\ 
  & \pi_*K_* \arrow[ul, "k"] & 
@@ -686,6 +722,8 @@ There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s
 \end{theorem}
 
 \subsection{First computations}
+
+We will say that a free resolution is \textit{minimal} if at each stage of its construction we choose the minimal number of free generators for \(F_i\) in each degree.
 
 \begin{lemma}[{\autocite{hatcher5}, Lem 5.49}]\label{2503171645shutupitsbeenalongterm}
 For a minimal free resolution 
@@ -943,9 +981,9 @@ since finite index subgroups of \(\inte_p\) are of the form \(p^k\inte_p\). %\fo
 Thus, \(\iota=[1]\in \inte_2/2\inte_2\), and by computing the Yoneda product we see that \(\iota\) is a unit. We also have \(h_0=[2]\in 2\inte_2/4\inte_2\) so \(h_0=[2]=[2[1]]=[2\iota]\), and hence \(h_0\) acts on \(\iota\) by multiplication by 2. Now, for any \(\kappa\in E^{s,t}_r(\bb{S})\), \(h_0\cdot \kappa = (\iota h_0)\cdot \kappa=2\kappa\in E^{s+1,t+1}_r(\bb{S})\). \done
 \end{ourproof}
 
-\nathaniel{[The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\).
+%\nathaniel{[The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\).
 
-All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]}
+%All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]}
 
 \begin{theorem}
 \begin{align*}
@@ -977,9 +1015,20 @@ Now, \(0=d_r(h_0h_1)=d_r(h_0)h_1 + h_0d_r(h_1)=h_0d_r(h_1)\), so \(d_r(h_1)=0\).
 On the other hand, \(E^{2, 10}_2(\bb{S})\) is generated by \(h_1h_3\), and \(d_2(h_1h_3)=d_2(h_1)h_3+h_1d_2(h_3)=0+0=0\) (the first factor is zero by the previous computation, and the second is an element of a trivial group). \done
 \end{ourproof}
 
+\begin{theorem}
+\[(\pi_i^S)^\wedge_2=\begin{cases}
+\inte/2\inte & i = 6, 10,\\
+\inte/16\inte & i = 7,\\
+(\inte/2\inte)^2 & i = 8,\\
+(\inte/2\inte)^3 & i = 9,\\
+\inte/8\inte & i = 11,\\
+0 & i = 12, 13.
+\end{cases}\]
+\end{theorem}
+
 \subsection{Differentials at \(14\leq t-s\leq 15\)}
 
-\nathaniel{[The point here is that all differentials interacting with \(E^{s,t}\) for \(t-s<14\) are trivial, and thus computing the stable homotopy groups is purely mechanical, because everything that appears on this part of the \(E_2\) page has to survive to \(E_\infty\). Thus, the `ambiguity' at \(t-s=14\) is just the fact that this is the first time you need to actually compute differentials.]}
+For \(t-s<14\), the computation of \((\pi_{t-s}^S)^\wedge_2\) is purely mechanical, since there are no nontrivial differentials in this range.  However, the first nonzero differential will appear at \(t-s=15\), and in fact there are many differentials after this point, though we will only fully compute those in the range \(14\leq t-s\leq 15\). In general, the problem of computing differentials is much harder than  determining \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\), and is not algorithmic. 
 
 \begin{theorem}[{\autocite{rognes2}, Thm 11.10.2}]
 \(d_2(h_4)=h_0h_3^2\).
@@ -1022,22 +1071,23 @@ satisfies \((f^*)^*(\alpha \beta)=(f^*)^*(\alpha)(f^*)^*(\beta)\). This follows 
 Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. \nathaniel{Using sseq or ext, we calculate \(h_4i=0\) and \(h_0h_3^2i\neq 0\), using the Yoneda product}. Now, \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Further, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).\done
 \end{ourproof}
 
-\begin{landscape}
-\begin{figure}\label{2504201924}
-\input{extra.tex}
-\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names. The \(d_2\) differentials referenced in the proof of \ref{2504192017} are shown in green.}
-\end{figure}
-\end{landscape}
-
 \begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
 Consider the cofibration
 \[\bb{S}^7 \xrightarrow{\sigma} \bb{S} \xrightarrow{i} C_\sigma \xrightarrow{j} \bb{S}^8\to \cdots.\]
-Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\), where \(\hat i = (i^*)^* : \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}(C_\sigma, \bb{F}_2)\) is the map induced by \(i^* : H^*(C_\sigma)\to H^*(\bb{S})\). %filling in the diagram below with the unique dotted lifts.\footnote{Make this explanation make any sense.}
+Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\), where \(\hat i = (i^*)^* : \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}(C_\sigma, \bb{F}_2)\) is the map induced by \(i^* : H^*(C_\sigma)\to H^*(\bb{S})\). %filling in the diagram below with the unique dotted lifts.
 %\[\begin{tikzcd} 
 % \cdots \arrow[r, ""] & F_2 \arrow[r, ""] \arrow[d, "", dashrightarrow] & F_1 \arrow[d, "", dashrightarrow] \arrow[r, ""] & F_0 \arrow[d, "", dashrightarrow] \arrow[r, ""] & H^*(C_\sigma) \arrow[d, "i^*"]\\ 
 % \cdots \arrow[r, swap, ""]  & P_2 \arrow[r, ""'] & P_1 \arrow[r, ""'] & P_0 \arrow[r, ""'] & H^*(\bb{S})
 % \end{tikzcd}\] 
 \end{lemma}
+
+\begin{landscape}
+\begin{figure}\label{2504201924}
+\centering
+\input{extra.tex}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with naming conventions as in \autocite{rognes2}. The \(d_2\) differentials referenced in the proof of \ref{2504192017} are shown in green.}
+\end{figure}
+\end{landscape}
 
 \begin{ourproof}
 We first show that \(d_2(\hat i(h_2) \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By \ref{2504140954}, we have a long exact sequence
@@ -1092,7 +1142,7 @@ d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\), as required. \done
 %\end{enumerate}
 %\end{itemize}
 
-\begin{figure}[H]\label{2504131812}
+\begin{figure}\label{2504131812}
 \centering
 \input{ext_csigma.tex}
 \caption{The \(E_2\) page of the Adams spectral sequence for \(C_\sigma\), in the range \(t-s\leq 18\), with the generator \(\overline{\overline{h_0^2h_3}}\) shown in red, and two of the differentials shown in green.}
@@ -1123,47 +1173,26 @@ Now, \((\pi_7^S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 
 %Let \([g']\in \im \overline\phi\). Then \([g']=\overline\phi[g]=[\phi g]\), so \(\overline\psi[g']=[\psi\phi g]=[0]\). Thus, \(\im\overline \phi \subq \overline\psi\). On the other hand, if \([\psi g']=[0]\) then \(\psi g' = t\in T_2\). We then have \(\psi(o(t)g')=o(t)\psi(g')=0\), so \(o(t)g'\in \ker\psi=\im\phi\). Write \(\phi(g)=o(t)g'\), so \([\phi g]=[o(t)g']\in G_2/T_2\). Since multiplication by \(o(t)\) is an isomorphism in \(G_2/T_2\), \([g']=\left[\phi \left(\frac{g}{o(t)}\right)\right]=\overline\phi \left[\frac{g}{o(t)}\right]\), so \([g']\in\im\overline\phi\). Thus, \(\im\overline\phi=\ker\overline\psi\). 
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \input{e3page.tex}
 \caption{The \(E_3\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the differentials are shown in green.}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \input{e4page.tex}
 \caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
 \end{figure}
 
+\begin{theorem}
+\[(\pi_i^S)^\wedge_2=\begin{cases}
+(\inte/2\inte)^2 & i = 14,\\
+\inte/32\inte \oplus \inte/2\inte & i = 15.
+\end{cases}\]
+\end{theorem}
+
 \appendix 
-
-\section{Algebra}
-
-\subsection{Free resolutions}\label{2502220958}
-
-\begin{definition}
-Let \(M, N\) be modules over a ring \(R\). A \textit{resolution} \(F\) of \(M\) is an exact sequence 
-\[\cdots \to F_2 \to F_1 \to F_0 \to M \to 0.\]
-If in addition each \(F_i\) is a free \(R\)-module, then the resolution is called \textit{free}. 
-\end{definition}
-
-Given a free resolution as above, applying \(\Hom_R(-, N)\) gives us a chain complex
-\[\cdots \leftarrow \Hom_R(F_2, N) \leftarrow \Hom_R(F_1, N) \leftarrow \Hom_R(F_0, N) \leftarrow \Hom_R(M, N) \leftarrow 0.\]
-Dropping the term \(\Hom_R(M, N)\) [why?] we get the sequence
-\[\cdots \leftarrow \Hom_R(F_2, N) \leftarrow \Hom_R(F_1, N) \leftarrow \Hom_R(F_0, N) \leftarrow 0,\]
-and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain complex. 
-
-%we write \(H^n(F; G):=\ker f^*_{n+1}/\im f_n^*\). Any abelian group \(H\) has a free resolution of the form 
-%\[0 \to F_1 \to F_0 \to H \to 0\]
-%(the one you think it is). So we get a chain complex
-%\[0 \leftarrow F_1^* \leftarrow F_0^* \leftarrow H^* \leftarrow 0.\]
-%We have \(H^n(F; G)=0\) for \(n>1\). Define \(\Ext(H;G):=H^1(F;G)\). 
-
-\textcolour{teal}{[these do not depend on the choice of free resolution of \(M\)]}
-
-A free resolution is \textit{minimal} if at each stage of its construction we choose the minimal number of free generators for \(F_i\) in each degree.
-
-[The above definition is bad but I'm keeping it just for the moment.]
 
 %\subsection{Other homological algebra}
 
@@ -1480,7 +1509,7 @@ Eventually:
 \end{itemize}
 
 Sources I've used: \autocite{cobordism}, 
-\autocite{ass}, \autocite{spectra}, \autocite{hatcher5}, \autocite{hatcher}, \autocite{rognes2}, \autocite{concise}, \autocite{spectral_sequences}
+\autocite{ass}, \autocite{spectra}, \autocite{hatcher5}, \autocite{hatcher}, \autocite{rognes2}, \autocite{concise}, \autocite{spectral_sequences}, \autocite{weibel}
 
 Sources I probably won't use: \autocite{suspension}, \autocite{stable_homotopy}, \autocite{foundations}, \autocite{primer}, \autocite{mazelgee} (I think the construction I need is in Hatcher)
 
