@@ -25,6 +25,7 @@
 \usepackage{tikz}
 \usetikzlibrary{cd}
 \usetikzlibrary{tikzmark}
+\newsavebox{\tempbox} % for labelling the table
 \usepackage{array}
 \usepackage{listings}
 
@@ -102,6 +103,12 @@
 
 \begin{document}
 \maketitle
+
+% for labelling the table
+% (I know)
+\savebox{\tempbox}{\begin{tabular}{@{}r@{}l@{\space}}
+&\hspace{-1ex}\footnotesize{\(s\)}\\\hspace{-0.5ex}\footnotesize{\(t-s\)}\;\;\;
+\end{tabular}} 
 
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert} 
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} 
@@ -313,28 +320,27 @@ We define
 \[C_n(X ; G):=\bigcup_{i\in \inte}C^\text{cell}_{i+n}(X_i; G).\] 
 Note that there is a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating suspensions of cells as equivalent to the cells themselves, i.e. a \(G\) summand for every \(n\)-cell of \(X\). We define \(H^*(X;G)\) and \(H_*(X;G)\) to be the cohomology and homology of this chain complex, respectively.
 
-\nathaniel{Important example:
-
-At the bottom of p592 of \autocite{hatcher5}, it's mentioned that for a spectrum \(X\) of finite type, \(H^i(X)\cong \lim\limits_{\leftarrow n}H^{i+n}(X_n)\) as \(\mathscr{A}_2\)-modules\footnote{\textcolour{teal}{Maybe I need to move this somewhere else. I haven't  defined the \(\A\)-action yet...}}. Thus, since \(\bb{S}\) is of finite type (it is actually finite), we have
-\begin{align*}
-H^i(\bb{S}; \inte/2\inte)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \inte/2\inte)\\
-&=\begin{cases}
-\inte/2\inte & i = 0,\\
-0 & \text{otherwise.}
-\end{cases}
-\end{align*}
-(since they're all just either \(0\) or \(\inte/2\inte\), at least eventually). So, \(H^*(\bb{S})=\inte/2\inte\) in degree zero and nothing else.}
-
 \begin{lemma}\label{2504141556}
-Let \(X\) be a connective CW spectrum of finite type. Then \(H_i(X), H^i(X)\), and \(\pi_i(X)\) are finitely generated for all \(i\). 
+Let \(X\) be a connective CW spectrum of finite type. Then \(H_i(X;G), H^i(X;G)\), and \(\pi_i(X)\) are finitely generated for all \(i\). 
 \end{lemma}
 
 \begin{ourproof}
-First, note that \(H_i(X)=H_{i+n}(X_n)\) for sufficiently large \(n\), since for large enough \(n\), \(X_n\) contains all the cells of dimension \(\leq i\). Similarly, \(H^i=H^{i+n}(X_n)\) for sufficiently large \(n\). Each \(H_{i+n}(X_n)\) is finitely generated, since \(X_n\) has only finitely many cells in each dimension, and thus each \(H^{i+n}(X_n)\) is also finitely generated (\autocite{hatcher} Cor 3.3). Thus, \(H_i(X), H^i(X)\) are finitely generated. 
+First, note that \(H_i(X;G)=H_{i+n}(X_n;G)\) for sufficiently large \(n\), since for large enough \(n\), \(X_n\) contains all the cells of dimension \(\leq i\). Similarly, \(H^i=H^{i+n}(X_n;G)\) for sufficiently large \(n\). Each \(H_{i+n}(X_n;G)\) is finitely generated, since \(X_n\) has only finitely many cells in each dimension, and thus each \(H^{i+n}(X_n;G)\) is also finitely generated (\autocite{hatcher} Cor 3.3). Thus, \(H_i(X;G), H^i(X;G)\) are finitely generated. 
 
 Now, \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\), and the groups \(\pi_{i+n}(X_n)\) stabilise by \ref{2504151105}. The \(X_n\) must eventually be simply-connected, since \(X\) is connective. %\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective. \label{2504071143}}. 
-A simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups (see e.g. \autocite{hatcher}, Thm 5.7), and we have just seen that the \(H_{i+n}(X_n)\) are finitely generated, so \(\pi_i(X)=\pi_{i+n}(X_n)\) is finitely generated. \done
+A simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups (see e.g. \autocite{hatcher}, Thm 5.7), and we have just seen that the \(H_{i+n}(X_n;G)\) are finitely generated, so \(\pi_i(X)=\pi_{i+n}(X_n)\) is finitely generated. \done
 \end{ourproof}
+
+\begin{example}
+Recall that \(\bb{S}\) is a finite spectrum. We thus have
+\begin{align*}
+H^i(\bb{S}; \bb{F}_2)&=\lim\limits_{\leftarrow n}H^{i+n}(S^n; \bb{F}_2)\\
+&=\begin{cases}
+\bb{F}_2 & i = 0,\\
+0 & \text{otherwise.}
+\end{cases}
+\end{align*}
+\end{example}
 
 \begin{definition}
 Let \(X=\{X_n\}\) be a CW spectrum. A \textit{subspectrum} \(X'\) of \(X\) is a sequence of subcomplexes \(\{X_n'\subq X_n\}\) satisfying \(\Sigma X_n'\subq X_{n+1}'\). The subspectrum \(X'\) is \textit{cofinal} if, for each \(n\) and each cell \(e^i_\alpha\) of \(X_n\), the cell \(\Sigma^k e_\alpha^i\) belongs to \(X'_{n+k}\) for all sufficiently large \(k\).
@@ -353,7 +359,7 @@ Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence 
 \textcolour{teal}{[Some intuition: it's enough for maps to be `defined eventually']}
 
 \begin{definition}
-A \textit{map} of CW spectra \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a cofinal subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal subspectrum. 
+A \textit{map of CW spectra} \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a cofinal subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal subspectrum. 
 \end{definition}
 
 Given two maps \(f : X \to Y\), \(g : Y \to Z\) represented by \(f' : X' \to Y\), \(g' : Y' \to Z\) respectively, we compose as follows: let \(X''\) be the subspectrum of \(X'\), where the cells of \(X''_n\) consist of the cells of \(X'_n\) mapped to \(Y'_n\) under \(f'_n\). Then, for any cell \(e^i_\alpha\) of \(X'_n\), \(f_n(e^i_\alpha)\) is contained in a finite union of cells of \(Y_n\) (since the image of a compact set is compact), whose \(k\)-fold suspension lies in \(Y'_{n+k}\) for large enough \(k\). Since \(f'\) is a strict map, \(\Sigma^kf'_n(e^i_\alpha)=f'_{n+k}\Sigma^ke^i_\alpha\), so \(\Sigma^ke^i_\alpha\) is a cell of \(X'_{n+k}\). Thus, \(X''\) is cofinal in \(X'\) and hence in \(X\). We define \(gf := [X'' \xrightarrow{f'|_{X''}}Y' \xrightarrow{g'}Z]\), which is well-defined since the intersection of cofinal subspectra is again a cofinal subspectrum. 
@@ -401,9 +407,16 @@ Recall that \(\Sigma^{-1}\Sigma X=\Sigma\Sigma^{-1}X\simeq X\). For any map \(f 
 \subsection{Cofibration sequences}\label{2503291211}
 
 \begin{definition}
-Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum} %\footnote{This definition comes from \autocite{local}, but I'm a little suspicious because the nLab page says a wedge sum should always identify the basepoints, but the basepoint of a spectra surely isn't given by just a basepoint from each \(X_n\)? That's the only thing being identified here.} I think it's fine? just won't be an omega spectrum anymore, if that matters
- is \(X\vee Y :=\{X_n \vee Y_n\}\). Note that \ref{2502211505} gives us an inclusion \(\Sigma(X_n\vee Y_n)\inj X_{n+1}\vee Y_{n+1}\). 
+Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum} is \(X\vee Y :=\{X_n \vee Y_n\}\). Note that \ref{2502211505} gives us an inclusion \(\Sigma(X_n\vee Y_n)\inj X_{n+1}\vee Y_{n+1}\). 
 \end{definition}
+
+\begin{definition}
+Let \(f : X \to Y\) be a map of CW spectra, and let \(f' : X' \to Y\) be a representative for \(f\), where \(X'\subq X\) is cofinal. The \textbf{mapping cylinder} \(M_f\) has components \((M_f)_n=M_{f'_n}\), where \(M_{f'_n}\) is the reduced mapping cylinder of \(f'_n\), and is independent of the choice of \(X'\) up to equivalence.
+\end{definition}
+
+\begin{remark}\label{2504231152}
+Given any map \(f : X \to Y\) of CW spectra, we have a deformation retraction of \(M_f\) onto \(Y\). Since we will only be interested in spectra up to homotopy equivalence, by replacing \(Y\) by \(M_f\) we may assume any map \(f : X \to Y\) is an inclusion. 
+\end{remark}
 
 \begin{definition}
 Let \(X\) be a spectrum, \(A\subq X\) a subspectrum. Then \(A\) is \textit{closed} in \(X\) if for every cell \(e_\alpha^n\) of \(X_n\), if \(\Sigma^k e_\alpha^n \in A_{n+k}\) then \(e_\alpha^n \in A_n\). 
@@ -495,7 +508,7 @@ Let \(X\) be a connective spectrum of finite type, and let \(Y\) be \(p\)-comple
 
 \section{The Adams spectral sequence}
 
-\textcolour{teal}{[Some intro. Following \autocite{spectral_sequences}, \autocite{hatcher5}, \autocite{weibel}, \autocite{hatcher}.]}
+\textcolour{teal}{[Some intro. Following \autocite{spectral_sequences}, \autocite{hatcher5}, \autocite{weibel}, \autocite{hatcher}. From this point on, all homology and cohomology will be taken with \(\bb{F}_2\) coefficients, and we will thus ease notation by writing \(H^*(X)\) (resp. \(H_*(X)\)) for \(H^*(X, \bb{F}_2)\) (resp. \(H_*(X;\bb{F}_2)\)). ]}
 
 \subsection{Spectral sequences}\label{2504041910}
 
@@ -625,7 +638,7 @@ The result below is a combination of \autocite{weibel}, Lemma 2.4.1 and Theorem 
 Let \(M, N\) be \(R\)-modules. For any projective resolution \(P\) and any injective resolution \(I\) of \(M\), \(H^*(\Hom_R(P_\bullet, N))=H^*(\Hom_R(N,I_\bullet))\).
 \end{proposition}
 
-We define \(\Ext^{n}(M,N):=H^n(\Hom_R(P_\bullet, N))=H^n(\Hom_R(N, I_\bullet))\). 
+We define \(\Ext^{n}_R(M,N):=H^n(\Hom_R(P_\bullet, N))=H^n(\Hom_R(N, I_\bullet))\). 
 
 \subsection{Setting up the Adams spectral sequence}
 
@@ -646,7 +659,7 @@ We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-modul
 
 \textcolour{purple}{Vague idea: we have \ref{2503231218}, which tells us that \([X, \bigvee_i \bb{K}(G,n_i)]\cong \prod_i[X, \bb{K}(G,n_i)]\). Now, \(X\) is connective, so \(H^*(X;G)\) has some smallest degree. Let's just pretend it starts from zero for the moment, and we can reindex or whatever later. Let's say each \(H^k(X;G)\) has \(i_k\) generators \(\alpha_{i_0+\cdots+i_{k-1}+1}, ...,\alpha_{i_0+\cdots+i_k}\)  , and write \(n_0=\cdots=n_{i_0}\), \(n_{i_0+1}=\cdots= n_{i_0+i_1}\), etc., \(n_{i_0+i_1+\cdots+i_{k-1}+1}=\cdots = n_{i_0+i_1+\cdots+i_k}\). So, the \(\alpha_{i_0+\cdots+i_{k-1}+j}\in H^k(X;G)\) determine maps \(X\to \bb{K}(G,n_k)\). Putting all these maps together, one in each coordinate, gives an element of \(\prod_i[X, \bb{K}(G,n_i)]\), which by the proposition corresponds to an element of \([X, \bigvee_i \bb{K}(G,n_i)]\).]}
 
-\textcolour{teal}{We can replace that map with an inclusion. [I sort of believe this - \ref{2503231306} and my comment at the end of Section \ref{2503231313} say we can do this for CW complexes, so I should check it for spectra. But it seems true (and I'm currently suffering from spectrum fatigue).]}
+We can replace that map with an inclusion, by \ref{2504231152}.
 
 Now, we set \(X_1=K_0/X\), and repeat the construction to get a diagram:
 \begin{equation}\label{2503301114}
@@ -723,24 +736,42 @@ There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s
 
 \subsection{First computations}
 
-We will say that a free resolution is \textit{minimal} if at each stage of its construction we choose the minimal number of free generators for \(F_i\) in each degree.
+We will say that a free resolution
+\[\cdots \xrightarrow{f_3} F_2 \xrightarrow{f_2} F_1 \xrightarrow{f_1} F_0 \xrightarrow{f_0} H^*(X)\]
+is \textit{minimal} if \(\im f_i \subq \A^+F_{i-1}\) for all \(i\), where \(\A^+\subq \A\) is the irrelevant ideal. 
 
 \begin{lemma}[{\autocite{hatcher5}, Lem 5.49}]\label{2503171645shutupitsbeenalongterm}
 For a minimal free resolution 
-\[\cdots \to F_2 \to F_1 \to F_0 \to \bb{F}_2 \to 0\]
-of \(\bb{F}_2=H^*(\bb{S})\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\), where \(\Hom^t_{\A}(F_s, \bb{F}_2)\subq \Hom_{\A}(F_s, \bb{F}_2)\) consists of the morphisms which lower the degree by \(t\).
+\[\cdots \xrightarrow{f_3} F_2 \xrightarrow{f_2} F_1 \xrightarrow{f_1} F_0 \xrightarrow{f_1} H^*(X) \to 0\]
+of \(H^*(X)\) as an \(\A\)-module, we have \(\Ext_{\A}^{s,t}(H^*(X), \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\).
 \end{lemma}
 
-\textcolour{violet}{(proof)}
+\begin{ourproof}
+Let \(x \in F_i\). Since \(f_{i-1}f_i=0\), we have \(f_i(x)\in \ker f_{i-1}=\im f_i\subq \A^+F_{i-1}\). We can thus write \(f_i(x)=\sum_j a_j x_{i-1,j}\) with \(a_j \in \A^+\). Now, for \(g \in \Hom_{\A}(F_{i-1}, \bb{F}_2)\), we have \(gf_i(x)=\sum_j a_j g(x_{i-1},j)=0\), since \(a_j\) acts trivially on elements of \(\bb{F}_2\). 
+
+Thus, the boundary maps in the complex
+\[\cdots \xleftarrow{-\circ f_3}\Hom_{\A}(F_2, \bb{F}_2) \xleftarrow{-\circ f_2}\Hom_{\A}(F_1, \bb{F}_2) \xleftarrow{-\circ f_1} \Hom_{\A}(F_0, \bb{F}_2)\leftarrow 0\]
+are all zero, so \(\Ext_{\A}^{s,t}(H^*(X), \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\).\done
+\end{ourproof}
 
 Now, since \(\bb{F}_2\) is concentrated in degree 0, the only elements of \(F_s\) which can be sent to \(1 \in \bb{F}_2\) are the elements of degree \(t\), so for every generator of \(F_s\) in degree \(t\), there is an \(\bb{F}_2\) summand in \(\Hom^t_{\A}(F_s, \bb{F}_2)\). 
 
-\begin{figure}\label{2504201106}
+Figure \ref{2504201106} shows part of a construction of a minimal free resolution of \(H^*(\bb{S})=\bb{F}_2\), where position \((t-s, s)\) consists of degree \(t-s\) elements of \(F_s\). Instead of inducting on \(s\) and calculating column by column, we will instead induct on \(t-s\), assuming the previous rows have been computed. Note that since we will add the minimum number of generators needed in each row, the addition of new generators in later rows will not affect the induction (because a new generator will not impact the kernel of any \(f_i\)). 
+
+For the first row, at position \((0,0)\), we need a generator \(\iota\in F_0\) to map to \(1 \in \bb{F}_2\), in order to make \(f_0\) a surjection. The kernel of \(f_0\) thus contains every multiple of \(\iota\) by an element of \(\A\), which by exactness should be contained in the image of \(f_1\). Thus, we need a new generator \(\alpha^1_1\) at \((0,1)\) mapping to \(Sq^1\iota\). The element \(Sq^1\alpha^1_1\in F_1\) is therefore in the kernel of \(f_1\), since \(Sq^1Sq^1=0\), so we need a generator \(\alpha^2_2\) at \((0,2)\) mapping to \(Sq^1\alpha^1_1\). Now, it is clear that each position \((0,s)\) will require a new generator \(\alpha^s_s\), since each \(Sq^1\alpha^{s-1}_{s-1}\) maps to \(Sq^1Sq^1 \alpha^{s-2}_{s-2}=0\), so the first row is completely determined, and \(\Ext^{s,s}=\bb{F}_2\). 
+
+In the second row, a generator \(\alpha^1_2\) is needed in position \((1,1)\) mapping to \(Sq^2\iota\), since \(f_1(Sq^1\alpha^1_1)=0\) but \(Sq^2\iota\in \ker f_0\). No other generators are needed, since \(Sq^1\alpha^1_2\) maps to \(Sq^3\iota\) and \(Sq^2\alpha^s_s\) maps to \(Sq^2Sq^1\alpha^{s-1}_{s-1}\neq 0\) for all \(s>1\).
+
+In row three, generators \(\alpha^1_4\), \(\alpha^2_5\), and \(\alpha^3_6\) are needed to map to \(Sq^4\iota\), \(Sq^4\alpha^1_1+Sq^2Sq^1\alpha^1_2+Sq^1 \alpha^1_4\), and \(Sq^4\alpha^2_2+Sq^2\alpha^2_4+Sq^1\alpha^2_5\) respectively, since the latter elements are in the kernel of their respective \(f_i\)'s. No new generators are needed after \(s=4\), since \(Sq^1\alpha^3_6\) maps to \(Sq^5\alpha^2_2+Sq^3\alpha^2_4\), \(Sq^4\alpha^s_s\) maps to \(Sq^4Sq^1\alpha^{s-1}_{s-1}\), and although \(Sq^3Sq^1\alpha^s_s\) maps to zero, it is hit by \(Sq^3\alpha^{s+1,s+1}\). 
+
+Continuing in this fashion, the computations for rows 4 and 5 are shown in \ref{2504201106}, though the Adem relations required to justify them are not. Note that although to compute each row, knowledge of maps involving the next two rows is required, rows 6 and 7 do not contain all the new generators needed. 
+
+\begin{figure}
 \input{table.tex}
-\caption{\textcolour{teal}{Table}}
+\caption{A construction of a minimal free resolution of \(H^*(\bb{S})=\bb{F}_2\). Generators are highlighted in pink.}\label{2504201106}
 \end{figure}
 
-\textcolour{violet}{[Explain the table in Figure \ref{2504201106}]}
+\nathaniel{What I've written below is not quite right - what we actually see is that we have 3 dots on the \(E_2\) page, but we haven't yet shown that there are no differentials in this range. I'll have to move some things around... Also, I need to mention that we know \((\pi_1^S)^\wedge_2\) and \((\pi_2^S)^\wedge_2\), since there's no ambiguity.}
 
 From Figure \ref{2504201106}, we see that \((\pi^S_3)^\wedge_2\) has order \(8\). However, we do not currently have the tools to determine whether it is isomorphic to \((\inte/2\inte)^3\), \(\inte/2\inte\oplus \inte/4\inte\), or \(\inte/8\inte\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
 
@@ -756,7 +787,7 @@ For any algebra \(A\) and \(A\)-modules \(L,M,N\), there is a product, the \text
 defined as follows: let 
 \[\cdots \xrightarrow{f_3} F_2 \xrightarrow{f_2} F_1 \xrightarrow{f_1} F_0 \xrightarrow{f_0} L\to 0,\]
 \[\cdots \xrightarrow{f'_3} F'_2 \xrightarrow{f'_2} F'_1 \xrightarrow{f'_1} F'_0 \xrightarrow{f'_0} M\to 0\]
-be free resolutions for \(L\) and \(M\). Then, given \([g] \in \Ext^{s,t}(M, N)\), \([h]\in \Ext^{u,v}(L, M)\), we inductively construct a chain map \(h_\bullet : F_{u+\bullet} \to F'_{\bullet}[v]\), as shown in the diagram below.
+be free resolutions for \(L\) and \(M\). Then, given \([g] \in \Ext_A^{s,t}(M, N)\), \([h]\in \Ext_A^{u,v}(L, M)\), we inductively construct a chain map \(h_\bullet : F_{u+\bullet} \to F'_{\bullet}[v]\), as shown in the diagram below.
 \[\begin{tikzcd} 
 F_{u+s} \arrow[r, "f_{u+s}"] \arrow[d, swap, "h_s", dashrightarrow]  & F_{u+s-1} \arrow[r, "f_{u+s-1}"] \arrow[d, "h_{s-1}"', dashrightarrow] & \cdots \arrow[r, "f_{u+1}"] & F_u \arrow[d, "h_0"', dashrightarrow] \arrow[dr, "h"] \arrow[r, "f_u"] & F_{u-1} \arrow[r, "f_{u-1}"] & \cdots \arrow[r, "f_1"] & F_0 \arrow[r, "f_0"] & L \\ 
 F'_{s}[v] \arrow[r, swap, "f'_s"] \arrow[d, swap, "g"] & F'_{s-1}[v] \arrow[r, "f'_{s-1}"'] & \cdots \arrow[r, "f'_1"'] & F'_0[v] \arrow[r, "f'_0"', twoheadrightarrow] & M[v] & & & \\ 
@@ -776,7 +807,7 @@ F_{u+s+1} \arrow[r, "f_{u+s+1}"] \arrow[d, swap, "h_{s+1}", dashrightarrow]  & F
 F'_{s+1}[v] \arrow[r, swap, "f'_{s+1}"]  & F'_{s}[v] \arrow[d, "g"]\\
 & N[v+t]
 \end{tikzcd}\]
-We have \(gh_sf_{u+s+1}=gf'_{s+1}h_{s+1}=0\), since \([g] \in \Ext^{s,t}(F'_s, N)\), so \([gh_s]\in \Ext^{u+s, v+t}\). We thus define \([g]\cdot  [h]=[gh_s]\). 
+We have \(gh_sf_{u+s+1}=gf'_{s+1}h_{s+1}=0\), since \([g] \in \Ext_A^{s,t}(F'_s, N)\), so \([gh_s]\in \Ext_A^{u+s, v+t}\). We thus define \([g]\cdot  [h]=[gh_s]\). 
 \end{definition}
 
 This definition is independent of the lifts chosen, which can be seen as follows. Suppose we have two chain maps \(\{h_i\}, \{h'_i\}\); we will construct a chain homotopy between them. Define \(k_0 : F_{u-1}\to F_0'[v]\) to be the zero map. By construction, \(f'_0h_0=f'_0h'_0=h\), so \(f'_0(h_0-h_0')=0\). Thus, \(\im(h_0-h'_0)\subq \ker f'_0=\im f'_1\), so \(h_0-h'_0=f'_1k_1=f'_1k_1+k_0f_{u}\) for some map \(k_1 : F_u \to F_1'[v]\). Now, suppose we have \(k_i, k_{i-1}\) such that \(h_{i-1}-h'_{i-1} = f'_{i}k_i+k_{i-1}f_{u+i-1}\). Then \(f'_ih_i=h_{i-1}f_{u+i}\) and \(f'_ih'_i=h'_{i-1}f_{u+i}\), so \(f'_i(h_i-h'_i)=(h_{i-1}-h'_{i-1})f_{u+i}=(f'_{i}k_i+k_{i-1}f_{u+i-1})f_{u+i}=f'_ik_if_{u+i}\), and thus we can construct \(k_{i+1}\) such that \(h_i-h'_i=f'_{i+1}k_{i+1}+k_if_{u+i}\). Now, \(g(h_s-h'_s)=g(f'_{s+1}k_{s+1}+k_sf_{u+s})=gk_sf_{u+s}\), and therefore \([g(h_s-h'_s)]=[gk_sf_{u+s}]=[0]\).
@@ -1060,25 +1091,11 @@ induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), converging
 \begin{remark}\label{2504211139}
 For any map \(f : Y \to Z\) of connective spectra of finite type, the induced map 
 \[(f^*)^* : \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2)\to \Ext^{s,t}_{\A}(H^*(Z), \bb{F}_2)\]
-satisfies \((f^*)^*(\alpha \beta)=(f^*)^*(\alpha)(f^*)^*(\beta)\). This follows from the definition of the Yoneda product, since \(f^*\) induces a chain homotopy between resolutions of \(H^*(Z)\) and \(H^*(Y)\), so both \((f^*)^*(\alpha \beta)\) and \((f^*)^*(\alpha)(f^*)^*(\beta)\) arise from chain homotopies, and thus descend to same element in \(\Ext^{*,*}(H^*(Z), \bb{F}_2)\).
+satisfies \((f^*)^*(\alpha \beta)=(f^*)^*(\alpha)(f^*)^*(\beta)\). This follows from the definition of the Yoneda product, since \(f^*\) induces a chain homotopy between resolutions of \(H^*(Z)\) and \(H^*(Y)\), so both \((f^*)^*(\alpha \beta)\) and \((f^*)^*(\alpha)(f^*)^*(\beta)\) arise from chain homotopies, and thus descend to same element in \(\Ext_{\A}^{*,*}(H^*(Z), \bb{F}_2)\).
 \end{remark}
 
 \begin{lemma}[{\autocite{rognes2}, Table 14.1 (9)}]\label{2504192017}
-\(d_2(f_0)\neq 0\).
-\end{lemma}
-
-\begin{ourproof}
-Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. \nathaniel{Using sseq or ext, we calculate \(h_4i=0\) and \(h_0h_3^2i\neq 0\), using the Yoneda product}. Now, \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Further, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).\done
-\end{ourproof}
-
-\begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
-Consider the cofibration
-\[\bb{S}^7 \xrightarrow{\sigma} \bb{S} \xrightarrow{i} C_\sigma \xrightarrow{j} \bb{S}^8\to \cdots.\]
-Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\), where \(\hat i = (i^*)^* : \Ext^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}(C_\sigma, \bb{F}_2)\) is the map induced by \(i^* : H^*(C_\sigma)\to H^*(\bb{S})\). %filling in the diagram below with the unique dotted lifts.
-%\[\begin{tikzcd} 
-% \cdots \arrow[r, ""] & F_2 \arrow[r, ""] \arrow[d, "", dashrightarrow] & F_1 \arrow[d, "", dashrightarrow] \arrow[r, ""] & F_0 \arrow[d, "", dashrightarrow] \arrow[r, ""] & H^*(C_\sigma) \arrow[d, "i^*"]\\ 
-% \cdots \arrow[r, swap, ""]  & P_2 \arrow[r, ""'] & P_1 \arrow[r, ""'] & P_0 \arrow[r, ""'] & H^*(\bb{S})
-% \end{tikzcd}\] 
+\(d_2(f_0), d_2(e_0)\neq 0\).
 \end{lemma}
 
 \begin{landscape}
@@ -1090,29 +1107,42 @@ Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator 
 \end{landscape}
 
 \begin{ourproof}
+Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. \nathaniel{Using sseq or ext, we calculate \(h_4i=0\) and \(h_0h_3^2i\neq 0\), using the Yoneda product}. Now, \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Further, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).
+
+Now, \(d_2(f_0)\neq 0\), so looking at Figure \ref{2504201924} we see that \(0\neq h_0d_2(f_0)=d_2(h_0f_0)=d_2(h_1e_0)=h_1d_2(e_0)\), and thus \(d_2(e_0)\neq 0\).\done
+\end{ourproof}
+
+\begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
+Consider the cofibration
+\[\bb{S}^7 \xrightarrow{\sigma} \bb{S} \xrightarrow{i} C_\sigma \xrightarrow{j} \bb{S}^8\to \cdots.\]
+Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\), where \(\hat i = (i^*)^* : \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{s,t}(C_\sigma, \bb{F}_2)\) is the map induced by \(i^* : H^*(C_\sigma)\to H^*(\bb{S})\). %filling in the diagram below with the unique dotted lifts.
+%\[\begin{tikzcd} 
+% \cdots \arrow[r, ""] & F_2 \arrow[r, ""] \arrow[d, "", dashrightarrow] & F_1 \arrow[d, "", dashrightarrow] \arrow[r, ""] & F_0 \arrow[d, "", dashrightarrow] \arrow[r, ""] & H^*(C_\sigma) \arrow[d, "i^*"]\\ 
+% \cdots \arrow[r, swap, ""]  & P_2 \arrow[r, ""'] & P_1 \arrow[r, ""'] & P_0 \arrow[r, ""'] & H^*(\bb{S})
+% \end{tikzcd}\] 
+\end{lemma}
+
+\begin{ourproof}
 We first show that \(d_2(\hat i(h_2) \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By \ref{2504140954}, we have a long exact sequence
 \[\cdots \leftarrow H^{n-1}(\bb{S}^8) \leftarrow H^n(\bb{S}) \xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow H^{n+1}(\bb{S}) \leftarrow \cdots.\]
 However, any map \(H^n(\bb{S})\to H^{n-1}(\bb{S}^8)\) must be zero, so we get short exact sequences 
 \[0 \leftarrow H^n(\bb{S})\xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow 0.\]
 Taking a direct sum gives a short exact sequence
 \[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C_\sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0,\]
-and from this we get\footnote{\textcolour{teal}{This is a homological algebra fact, but maybe I should state it somewhere - trouble is I'd have to define Ext in terms of injective resolutions instead of projective ones...}} 
-% Issue with the below is that I defined Ext in terms of projective (well, actually, free) resolutions, instead of injective resolutions. Oops!
-%a short exact sequence of chain complexes
-%\[0 \to \Hom(\bb{F}_2, I_\bullet) \xrightarrow{i^*} \Hom(H^*(C_\sigma), I_\bullet) \xrightarrow{j^*} \Hom(\bb{F}_2[8], I_\bullet)\to 0,\]
-%and thus 
-the long exact sequence below.
+and from this we get a short exact sequence of chain complexes
+\[0 \to \Hom(\bb{F}_2, I_\bullet) \xrightarrow{i^*} \Hom(H^*(C_\sigma), I_\bullet) \xrightarrow{j^*} \Hom(\bb{F}_2[8], I_\bullet)\to 0,\]
+for any injective resolution \(I\), and thus the long exact sequence below.
 \[\begin{tikzcd}[row sep=8ex, column sep=3ex]
-\cdots \arrow[r, ""] & \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
-\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] & \Ext^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
+\cdots \arrow[r, ""] & \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext_{\A}^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
+\Ext_{\A}^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext_{\A}^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] & \Ext_{\A}^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
 \end{tikzcd}\]
-Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
+Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
 %\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
-Now, \(f_0\in \Ext^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
-\[\Ext^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
-Figure \ref{1304251243} shows us that \(\Ext^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext^{0,8}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication (by \ref{2504211139}), \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+\hat i(h_2)\hat{i}(h_4)\). In either case, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(\hat i (h_2)\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)\footnote{\textcolour{teal}{Explain: \(d_2(h_2h_4)=0\) because if it wasn't it would be \(e_0\). But \(d_2(e_0)\neq 0\), so this would contradict the fact that \(d_2\) is a differential.}}).
+Now, \(f_0\in \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
+\[\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext_{\A}^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
+Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext_{\A}^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext_{\A}^{0,8}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication (by \ref{2504211139}), \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+\hat i(h_2)\hat{i}(h_4)\). Now, \(d_2(h_2h_4)=0\), since otherwise it would be equal to \(e_0\), and we would have \(d_2^2(h_2h_4)\neq 0\), contradicting the fact that \(d_2\) is a differential. Thus, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(\hat i (h_2)\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)).
 
-Now, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(\hat i(h_2)d_2(\overline{\overline{h_0^2h_3}})= d_2(\hat i(h_2)\overline{\overline{h_0^2h_3}})=
+Finally, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext_{\A}^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(\hat i(h_2)d_2(\overline{\overline{h_0^2h_3}})= d_2(\hat i(h_2)\overline{\overline{h_0^2h_3}})=
 d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\), as required. \done
 \end{ourproof}
 
@@ -1291,7 +1321,7 @@ Note that \(\Sigma(X\vee Y)\cong \Sigma X\vee \Sigma Y\).
 \end{remark}
 
 \begin{itemize}
-\item The Eilenberg-MacLane space is \(K(G, n)\), and it has the property that 
+\item An Eilenberg-MacLane space is \(K(G, n)\), and it has the property that 
 \[\pi_i(K(G, n))=\begin{cases}
 G & i=n,\\
 0 & i\neq n.
@@ -1443,8 +1473,6 @@ Now:
 \item Explain the Yoneda product at all coherently, and compute some examples.
 
 \item Prove that \(\pi_*^S\) is a graded commutative ring.
-
-\item State this whole `replacing a map by an inclusion' business somewhere early.
 
 \item Finish the proof of \ref{2504151709}.
 

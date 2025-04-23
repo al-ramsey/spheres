@@ -1,5 +1,7 @@
-\begin{tabular}{|m{0.6em}|m{7em}|m{10em}|m{7em}|m{6em}|m{6em}|}
+\begin{tabular}{|m{2em}|m{7em}|m{10em}|m{7em}|m{6em}|m{6em}|}
 \hline
+\tikz[overlay]{\draw (0pt,\ht\tempbox) -- (\wd\tempbox,-\dp\tempbox);}%
+\usebox{\tempbox}\hspace{\dimexpr 0.5pt-\tabcolsep}
  & 0 & 1 & 2 & 3 & 4 \\
 \hline\hline
 0 & \colorbox{pink}{\(\iota\)}  &  \tikzmark{01} \colorbox{pink}{\(\alpha^1_1\)} & \tikzmark{02} \colorbox{pink}{\(\alpha^2_2\)} & \tikzmark{03} \colorbox{pink}{\(\alpha^3_3\)} & \tikzmark{04} \colorbox{pink}{\(\alpha^4_4\)} \\
@@ -30,7 +32,7 @@
 
 & & \tikzmark{41co} \(Sq^2Sq^1 \alpha^1_2\) \tikzmark{41ci} &\;\;\;\; \tikzmark{42co} \(Sq^2 \alpha^2_4\) \tikzmark{42ci} & \tikzmark{43co} \(Sq^1 \alpha^3_6\) \tikzmark{43ci} & \\
 
-& & \;\;\;\; \tikzmark{41do} \(Sq^3 \alpha^1_2\) \tikzmark{41di} & \;\;\;\; \tikzmark{42do} \(Sq^1 \alpha^2_4\) \tikzmark{42di} &  & \\
+& & \;\;\;\; \tikzmark{41do} \(Sq^3 \alpha^1_2\) \tikzmark{41di} & \;\;\;\; \tikzmark{42do} \(Sq^1 \alpha^2_5\) \tikzmark{42di} &  & \\
 
 & &  \;\;\;\;\;\tikzmark{41eo} \(Sq^1 \alpha^1_4\) \tikzmark{41ei} & & & \\
 \hline
