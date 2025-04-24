@@ -758,7 +758,7 @@ Now, since \(\bb{F}_2\) is concentrated in degree 0, the only elements of \(F_s\
 
 Figure \ref{2504201106} shows part of a construction of a minimal free resolution of \(H^*(\bb{S})=\bb{F}_2\), where position \((t-s, s)\) consists of degree \(t-s\) elements of \(F_s\). Instead of inducting on \(s\) and calculating column by column, we will instead induct on \(t-s\), assuming the previous rows have been computed. Note that since we will add the minimum number of generators needed in each row, the addition of new generators in later rows will not affect the induction (because a new generator will not impact the kernel of any \(f_i\)). 
 
-For the first row, at position \((0,0)\), we need a generator \(\iota\in F_0\) to map to \(1 \in \bb{F}_2\), in order to make \(f_0\) a surjection. The kernel of \(f_0\) thus contains every multiple of \(\iota\) by an element of \(\A\), which by exactness should be contained in the image of \(f_1\). Thus, we need a new generator \(\alpha^1_1\) at \((0,1)\) mapping to \(Sq^1\iota\). The element \(Sq^1\alpha^1_1\in F_1\) is therefore in the kernel of \(f_1\), since \(Sq^1Sq^1=0\), so we need a generator \(\alpha^2_2\) at \((0,2)\) mapping to \(Sq^1\alpha^1_1\). Now, it is clear that each position \((0,s)\) will require a new generator \(\alpha^s_s\), since each \(Sq^1\alpha^{s-1}_{s-1}\) maps to \(Sq^1Sq^1 \alpha^{s-2}_{s-2}=0\), so the first row is completely determined, and \(\Ext^{s,s}=\bb{F}_2\). 
+For the first row, at position \((0,0)\), we need a generator \(\iota\in F_0\) to map to \(1 \in \bb{F}_2\), in order to make \(f_0\) a surjection. The kernel of \(f_0\) thus contains every multiple of \(\iota\) by an element of \(\A\), which by exactness should be contained in the image of \(f_1\). Thus, we need a new generator \(\alpha^1_1\) at \((0,1)\) mapping to \(Sq^1\iota\). The element \(Sq^1\alpha^1_1\in F_1\) is therefore in the kernel of \(f_1\), since \(Sq^1Sq^1=0\), so we need a generator \(\alpha^2_2\) at \((0,2)\) mapping to \(Sq^1\alpha^1_1\). Now, it is clear that each position \((0,s)\) will require a new generator \(\alpha^s_s\), since each \(Sq^1\alpha^{s-1}_{s-1}\) maps to \(Sq^1Sq^1 \alpha^{s-2}_{s-2}=0\), so the first row is completely determined, and \(\Ext^{s,s}_{\A}(\bb{F}_2, \bb{F}_2)=\bb{F}_2\). 
 
 In the second row, a generator \(\alpha^1_2\) is needed in position \((1,1)\) mapping to \(Sq^2\iota\), since \(f_1(Sq^1\alpha^1_1)=0\) but \(Sq^2\iota\in \ker f_0\). No other generators are needed, since \(Sq^1\alpha^1_2\) maps to \(Sq^3\iota\) and \(Sq^2\alpha^s_s\) maps to \(Sq^2Sq^1\alpha^{s-1}_{s-1}\neq 0\) for all \(s>1\).
 
@@ -767,13 +767,19 @@ In row three, generators \(\alpha^1_4\), \(\alpha^2_5\), and \(\alpha^3_6\) are 
 Continuing in this fashion, the computations for rows 4 and 5 are shown in \ref{2504201106}, though the Adem relations required to justify them are not. Note that although to compute each row, knowledge of maps involving the next two rows is required, rows 6 and 7 do not contain all the new generators needed. 
 
 \begin{figure}
+\centering
 \input{table.tex}
 \caption{A construction of a minimal free resolution of \(H^*(\bb{S})=\bb{F}_2\). Generators are highlighted in pink.}\label{2504201106}
 \end{figure}
 
-\nathaniel{What I've written below is not quite right - what we actually see is that we have 3 dots on the \(E_2\) page, but we haven't yet shown that there are no differentials in this range. I'll have to move some things around... Also, I need to mention that we know \((\pi_1^S)^\wedge_2\) and \((\pi_2^S)^\wedge_2\), since there's no ambiguity.}
+\begin{figure}
+\centering
+\input{mini_ext.tex}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 5\).}
+\label{2504241018}
+\end{figure}
 
-From Figure \ref{2504201106}, we see that \((\pi^S_3)^\wedge_2\) has order \(8\). However, we do not currently have the tools to determine whether it is isomorphic to \((\inte/2\inte)^3\), \(\inte/2\inte\oplus \inte/4\inte\), or \(\inte/8\inte\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
+From Figure \ref{2504241018}, we see that \((\pi_1^S)^\wedge_2\) has order dividing 2, \((\pi_2^S)^\wedge_2=\inte/2\inte\), \((\pi_3^S)^\wedge_2\) has order 8, and \((\pi_4^S)^\wedge_2=(\pi_5^S)^\wedge_2=0\). However, we do not currently have the tools to determine whether or not \(\alpha^1_2\) survives to the \(E_\infty\) page, or the isomorphism class of \((\pi_3^S)^\wedge_2\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
 
 \subsection{Multiplicative structure}
 
@@ -932,13 +938,15 @@ The upper path is exactly \(c_*(fg)\), so \(c_*(f)c_*(g)=c_*(fg)\). Further, the
 
 \subsubsection{Multiplication on the Adams spectral sequence}
 
-\begin{definition}[{\autocite{ass}, Def 5.5}]
+\begin{definition}[{\autocite{ass}, Def 5.5}]\label{2504241258}
 Let \(\{'E_r\}, \{''E_r\}, \{E_r\}\) be three spectral sequences. A \textit{pairing} of these spectral sequences is a sequence of homomorphisms 
 \[\phi_r : \text{}'E_r^{*,*}\otimes \text{}''E_r^{*,*} \to E_r^{*,*},\]
 such that the Leibniz rule
 \[d_r\phi_r(x\otimes y)=\phi_r(d_r(x)\otimes y)+(-1)^{\deg x}\phi_r(x\otimes d_r(y))\]
 holds, and
-\[\phi_{r+1}([x]\otimes[y])=[\phi_r(x\otimes y)],\]
+\begin{equation}\label{2504241255}
+\phi_{r+1}([x]\otimes[y])=[\phi_r(x\otimes y)],
+\end{equation}
 where \([x]\in \text{}'E_{r+1}^{*,*}\) is the homology class of a \(d_r\)-cycle \(x\in \text{}'E_r^{*,*}\), and similarly for \(y\) and the right hand side. 
 \end{definition}
 
@@ -978,7 +986,9 @@ to the composition pairing
 The pairing is associative and unital.
 \end{theorem}
 
-\textcolour{violet}{[Explain why if I compute a product on the \(E_2\) page, and both terms survive to the \(E_3\) page, that computation is still valid.]}
+\begin{remark}
+Condition (\ref{2504241255}) of \ref{2504241258} ensures that if a product is computed on the \(E_2\) page, and both terms survive to the \(E_r\) page for some \(r>2\), then the computation is still valid on that page.
+\end{remark}
 
 \section{Calculating stable homotopy groups}
 
@@ -996,7 +1006,31 @@ We have the following relations:
 \end{align*}
 \end{proposition}
 
-\textcolour{teal}{(Proof/calculation)}
+\begin{ourproof}
+We show the first two relations; the final two are obtained similarly.
+
+Consider the diagram below. 
+\[\begin{tikzcd}[row sep = 0.8ex, column sep=0.8ex]
+\textcolour{red}{\alpha^s_s} \arrow[rr, "", mapsto, red] \arrow[dd, swap, "", red, mapsto]  & & \textcolour{red}{Sq^1\alpha^{s-1}_{s-1}}  \arrow[dd, ""', red, mapsto] & & \textcolour{red}{\alpha^{s-1}_{s-1}}  \arrow[dd, ""', red, mapsto] \arrow[rrdd, "", red, mapsto] & &&&& \\
+& F_s \arrow[rr, swap, ""] \arrow[dd, ""', dashrightarrow] & & F_{s-1} \arrow[dd, ""', dashrightarrow] \arrow[rr, ""'] \arrow[rrdd] & & \cdots \arrow[rr] && F_0 \arrow[rr] && \bb{F}_2 \\
+\textcolour{red}{\alpha^1_1} \arrow[rr, swap, "", red, mapsto] \arrow[dd, ""', red, mapsto] & & \textcolour{red}{Sq^1\iota} & & \textcolour{red}{\iota}\;\;\;\; \arrow[rr, ""', red, mapsto] & & \textcolour{red}{1} & & & \\
+& F_1[s-1] \arrow[rr, swap, ""] \arrow[dd, ""'] & & F_0[s-1] \arrow[rr, ""'] & & \bb{F}_2[s-1] & & & &\\
+\textcolour{red}{1} & &&&&&&&&\\
+& \bb{F}_2[s] &&&&&&&&
+\end{tikzcd}\]
+Since \(\alpha^{s-1}_{s-1}\in F_{s-1}\) is the only generator of degree \(s-1\), to write down a lift \(F_{s-1}\to F_0[s-1]\) it suffices to say where \(\alpha^{s-1}_{s-1}\) is sent. In order for the right triangle to commute, we must send \(\alpha^{s-1}_{s-1}\) to \(\iota\). Now, to write down a lift \(F_s \to F_1[s-1]\), it again suffices to write down the image of \(\alpha^s_s\). In order for the left square to commute, we must send \(\alpha^s_s\) to \(\alpha^1_1\). The composite map \(F_s \to \bb{F}_2[2]\) is the unique map sending \(\alpha^s_s\) to \(1\), so \(\alpha^1_1\cdot \alpha^{s-1}_{s-1}=\alpha^s_s\) for all \(s>0\). Thus, \(\alpha^s_s=(\alpha^1_1)^s\). 
+
+Similarly, the calculation below shows that \(\alpha^1_2\cdot \alpha^1_2=\alpha^2_4\).
+\[\begin{tikzcd}[row sep = 0.8ex, column sep=0.8ex]
+\textcolour{red}{\alpha^2_4} \arrow[rr, "", mapsto, red] \arrow[dd, swap, "", red, mapsto]  & & \textcolour{red}{Sq^3\alpha^1_1}\textcolour{red}{+}\mathrlap{\textcolour{red}{Sq^2\alpha^1_2}}  \arrow[dd, ""', red, mapsto] & & \textcolour{red}{\alpha^{1}_{2}}  \arrow[dd, ""', red, mapsto] \arrow[rrdd, "", red, mapsto] & && \\
+& F_2 \arrow[rr, swap, ""] \arrow[dd, ""', dashrightarrow] & & F_{1} \arrow[dd, ""', dashrightarrow] \arrow[rr, ""'] \arrow[rrdd] & & F_0 \arrow[rr] && \bb{F}_2 \\
+\textcolour{red}{\alpha^1_2} \arrow[rr, swap, "", red, mapsto] \arrow[dd, ""', red, mapsto] & & \textcolour{red}{Sq^2\iota} & & \textcolour{red}{\iota}\;\;\;\; \arrow[rr, ""', red, mapsto] & & \textcolour{red}{1} & & & \\
+& F_1[2] \arrow[rr, swap, ""] \arrow[dd, ""'] & & F_0[2] \arrow[rr, ""'] & & \bb{F}_2[2] & &\\
+\textcolour{red}{1} & &&&&&&\\
+& \bb{F}_2[4] &&&&&&
+\end{tikzcd}\]
+\done
+\end{ourproof}
 
 From now on, we will write \(h_i\) for the generator \(\alpha^1_{2^i}\).
 
@@ -1016,6 +1050,14 @@ Thus, \(\iota=[1]\in \inte_2/2\inte_2\), and by computing the Yoneda product we 
 
 %All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]}
 
+\begin{lemma}\label{2504241225}
+There are no nontrivial differentials for \(t-s\leq 5\). 
+\end{lemma}
+
+\begin{ourproof}
+First, note that the only possible nontrivial differentials in this range are the differentials \(d_r : E_r^{1,2}(\bb{S}) \to E_r^{1+r, 1+r}(\bb{S})\). Now, \(0=d_r(h_0h_1)=d_r(h_0)h_1 + h_0d_r(h_1)=h_0d_r(h_1)\), so \(d_r(h_1)=0\). Since \(E_r^{1, 2}(\bb{S})\) is generated by \(h_1\), we must have \(d_r=0\). \done
+\end{ourproof}
+
 \begin{theorem}
 \begin{align*}
 (\pi_i^S)^\wedge_2 = \begin{cases}
@@ -1028,10 +1070,11 @@ Thus, \(\iota=[1]\in \inte_2/2\inte_2\), and by computing the Yoneda product we 
 
 \subsection{The \(E_2\) page for \(t-s\leq 15\)}
 
-\begin{figure}\label{1304251243}
+\begin{figure}
 \centering
-\input{ext.tex}
-\caption[\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).]{\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names.}
+\input{smaller_ext.tex}
+\caption[\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 18\).]{\(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 15\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with their standard names.}
+\label{1304251243}
 \end{figure}
 
 \begin{lemma}
@@ -1039,11 +1082,9 @@ There are no nontrivial differentials for \(t-s\leq 13\).
 \end{lemma}
 
 \begin{ourproof}
-First, note that the only possible nontrivial differentials in this range are \(d_r : E_r^{1,2}(\bb{S}) \to E_r^{1+r, 1+r}(\bb{S})\) and \(d_2 : E_2^{2, 10}(\bb{S}) \to E_2^{4, 11}(\bb{S})\). 
+We have shown in \ref{2504241225} that there are no nontrivial differentials for \(t-s\leq 5\); the only remaining possibility is that \(d_2 : E_2^{2, 10}(\bb{S}) \to E_2^{4, 11}(\bb{S})\) is nonzero.
 
-Now, \(0=d_r(h_0h_1)=d_r(h_0)h_1 + h_0d_r(h_1)=h_0d_r(h_1)\), so \(d_r(h_1)=0\). Since \(E_r^{1, 2}(\bb{S})\) is generated by \(h_1\), we must have \(d_r=0\). 
-
-On the other hand, \(E^{2, 10}_2(\bb{S})\) is generated by \(h_1h_3\), and \(d_2(h_1h_3)=d_2(h_1)h_3+h_1d_2(h_3)=0+0=0\) (the first factor is zero by the previous computation, and the second is an element of a trivial group). \done
+From Figure \ref{2504241227}, we see that \(E^{2, 10}_2(\bb{S})\) is generated by \(h_1h_3\), and \(d_2(h_1h_3)=d_2(h_1)h_3+h_1d_2(h_3)=0+0=0\) (the first factor is zero by \ref{2504241225}, and the second is an element of a trivial group). \done
 \end{ourproof}
 
 \begin{theorem}
@@ -1075,6 +1116,7 @@ The \(d_2\) differentials at \(E_2^{2, 17}(\bb{S}),  E_2^{3, 18}(\bb{S}), E_2^{4
 \centering
 \input{e2page.tex}
 \caption{The \(E_2\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the unique \(d_2\) differential is shown in green.}
+\label{2504241227}
 \end{figure}
 
 There are two possible \(d_3\) differentials for \(t-s\leq 15\) (emanating from \(E_3^{2,17}\) and \(E_3^{3,18}\)), and in fact it will turn out that both are nontrivial. The method of proof will be by comparison to the Adams spectral sequence of a different spectrum, so we will first state a result comparing the Adams spectral sequences of two spectra with a map between them.
@@ -1209,7 +1251,7 @@ Now, \((\pi_7^S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 \caption{The \(E_3\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the differentials are shown in green.}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \input{e4page.tex}
 \caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
@@ -1221,6 +1263,8 @@ Now, \((\pi_7^S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 \inte/32\inte \oplus \inte/2\inte & i = 15.
 \end{cases}\]
 \end{theorem}
+
+\clearpage
 
 \appendix 
 
@@ -1442,8 +1486,6 @@ A compact subspace of a CW complex is contained in a finite subcomplex.
 
 The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+spectrum}{the nLab}: ``[some smash product] is non-canonically equivalent to a product of EM-spectra (hence a wedge sum of EM-spectra in the finite case)''. ???????
 
-\item Question: so I have this multiplicative structure on the entire spectral sequence, right? And on the second page it's just the Yoneda product. But say I compute, I don't know, \(\alpha^2_5=h_0h_2\) on the \(E_2\)  page. Since none of those guys are touched by differentials, is that computation still valid on the \(E_3\) page? And on higher pages?
-
 \item I'm a bit suspicious of the proof of \ref{2504151310}, because the proof is more complicated in \autocite{hatcher5}. Maybe raise this.
 
 \item Is anything lost/does anything become false if I replace every instance of the word `free' with `projective'?
@@ -1466,17 +1508,11 @@ Now:
 
 \item Show that there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and that it's an isomorphism (Yoneda?). 
 
-\item Find out how much of this you should be proving.
-
 \item Figure out how to state \ref{2504081125} without lying about \(2\)-completion.
-
-\item Explain the Yoneda product at all coherently, and compute some examples.
 
 \item Prove that \(\pi_*^S\) is a graded commutative ring.
 
 \item Finish the proof of \ref{2504151709}.
-
-\item Fix Section \ref{2504171922}.
 \end{itemize}
 
 Eventually:
@@ -1496,13 +1532,9 @@ Eventually:
 
 \item I want to at some point compute \(h_0h_1h_3\) or something like that, just to show that sometimes a product can be zero even if it lands in a nonzero group (i.e. the stable groups aren't all cyclic). The trouble is by the time you get to \(\pi_8^S\) the free resolution is an awful mess. Maybe I can try and wrangle with the sseq program to get it to show me kernels and the like?
 
-\item Ease notation by not writing \(G\) in e.g. \(H^*(X;G)\). Say we're taking coefficients in \(\bb{F}_2\), but actually a lot of the time it doesn't matter so maybe note that.
-
 \item Have any sort of consistency in using or not using brackets (e.g. \(\pi_t X_s\) v.s. \(\pi_t(X_s)\)). 
 
 \item When I say `spectrum' at any point after defining CW spectra I mean `CW spectrum'. And I basically always mean `connective CW spectrum of finite type' too. 
-
-\item Make clear in the spectral sequence diagrams which towers terminate and which don't (e.g. the ones at \(t-s=0\) obviously don't but unfortunately the spectral sequence package can't draw the entire infinite chain).
 
 \item Connect \(1\) and \(h_1\) (if possible without messing up the labels). 
 

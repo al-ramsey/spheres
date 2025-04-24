@@ -1,0 +1,29 @@
+\begin{sseqpage}[ classes = fill, class labels = {below left = 0.02em }, xscale = 0.9, yscale=0.9, axes gap = 0.7cm, x range = {0}{5} ]
+\begin{scope}[background]
+\node at (\xmax/2,-2) {t-s};
+\node at (-2,\ymax/2) {s};
+\draw[step = 1, lightgray, ultra thin] (\xmin-0.5,\ymin-0.5) grid (\xmax+0.4,\ymax+0.5);
+%\draw
+%(0,10) -- (0,10.5);
+\end{scope}
+\class(0,0)
+\class(0,1)
+\class(0,2)
+\class(0,3)
+\class(0,4)
+\class(1,1)
+\class(2,2)
+\class(3,1)
+\class(3,2)
+\class(3,3)
+\classoptions["\iota"](0,0)
+\classoptions["\alpha^1_1"](0,1)
+\classoptions["\alpha^2_2"](0,2)
+\classoptions["\alpha^3_3"](0,3)
+\classoptions["\alpha^4_4"](0,4)
+\classoptions["\alpha^1_2"](1,1)
+\classoptions["\alpha^1_4"](3,1)
+\classoptions["\alpha^2_4"](2,2)
+\classoptions["\alpha^2_5"](3,2)
+\classoptions["\alpha^3_6"](3,3)
+\end{sseqpage}
