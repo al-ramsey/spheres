@@ -356,7 +356,7 @@ Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence 
 \end{tikzcd}\]
 \end{definition}
 
-Taking strict maps to be our notion of maps between spectra, however, turns out to be to strong. For instance, a map \(\bb{S}^i \to \Sigma^\infty X\) would be given simply by a map \(S^i \to X\), whereas if we want to know about the stable homotopy groups of \(X\), we should also consider maps \(S^{i+n}\to \Sigma^n X\) which cannot necessarily by desuspended. We will therefore relax the definition of maps between spectra to include maps that are `defined eventually', in the following sense. 
+Taking strict maps to be our notion of maps between spectra, however, turns out to be too strong. For instance, a strict map \(\bb{S}^i \to \Sigma^\infty X\) would be given simply by a map \(S^i \to X\), whereas if we want to know about the stable homotopy groups of \(X\), we should also consider maps \(S^{i+n}\to \Sigma^n X\) which cannot necessarily by desuspended. We will therefore relax the definition of maps between spectra to include maps that are `defined eventually', in the following sense. 
 
 \begin{definition}
 A \textit{map of CW spectra} \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a cofinal subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal subspectrum. 
@@ -444,7 +444,7 @@ Now, we show exactness at \([Y,X]\). Again, the composition \([Y,A]\to [Y,X]\to 
 Y \arrow[r, "\id"] \arrow[d, swap, "", dashrightarrow]  & Y \arrow[r, "", hookrightarrow] \arrow[d, "f"] & CY \arrow[d, "h"] \arrow[r, "", hookrightarrow] & \Sigma Y \arrow[d, "", dashrightarrow] \arrow[r, "\id"] & \Sigma Y \arrow[d, "\Sigma f", dashrightarrow]\\ 
  A \arrow[r, swap, "i", hookrightarrow]  & X \arrow[r, ""', hookrightarrow] & X\cup CA \arrow[r, ""'] & \Sigma A \arrow[r, "\Sigma i"', hookrightarrow] & \Sigma X 
  \end{tikzcd}\] 
-\textcolour{purple}{[\autocite{hatcher5} says that ``we can then automatically fill in the next two vertical maps to make homotopy commutative squares''. Vaguely, I think this is because of some sort of naturality argument, which \autocite{hatcher} says is `evident' on p398. If we can, then...]}
+\textcolour{purple}{[\autocite{hatcher5} says that ``we can then automatically fill in the next two vertical maps to make homotopy commutative squares''. I believe that we can write down a map making the left square commute, but I have no idea why that map makes the right square commute. But if it does...]}
 
 By \ref{2504151310}, we can take the map \(\Sigma Y \to \Sigma A\) to be \(\Sigma g\) for some \(g : Y \to A\). Then \(\Sigma f \simeq (\Sigma i)(\Sigma g)=\Sigma(ig)\), so \(f\simeq ig\), as required.\done
 \end{ourproof}
@@ -643,7 +643,7 @@ We define \(\Ext^{n}_R(M,N):=H^n(\Hom_R(P_\bullet, N))=H^n(\Hom_R(N, I_\bullet))
 
 \subsection{Setting up the Adams spectral sequence}
 
-Let \(X\) be a connective CW spectrum of finite type. Then \(H^*(X)\) is an \(\A\)-module, since \(H^i(X)\cong H^{i+n}(X_n)\) for sufficiently large \(n\), so we can define \(Sq^j : H^i(X)\to H^{i+j}(X)\) by evaluating \(Sq^j : H^{i+n}(X_n)\to H^{i+j+n}(X_n)\) followed by enough suspensions. Note that we could also have first suspended \(H^{i+n}(X_n)\) and \(H^{i+j+n}(X_n)\) until they were both stable, and then evaluated \(Sq^j\), but that these two \(\A\)-actions coincide by \ref{2504201153} (4). \textcolour{violet}{[Is this an actual module action? Is the former one also a module action?]}
+Let \(X\) be a connective CW spectrum of finite type. Then \(H^*(X)\) is an \(\A\)-module, since \(H^i(X)\cong H^{i+n}(X_n)\) for sufficiently large \(n\), so we can define \(Sq^j : H^i(X)\to H^{i+j}(X)\) by evaluating \(Sq^j : H^{i+n}(X_n)\to H^{i+j+n}(X_n)\) followed by enough suspensions. Note that we could also have first suspended \(H^{i+n}(X_n)\) and \(H^{i+j+n}(X_n)\) until they were both stable, and then evaluated \(Sq^j\), but that these two \(\A\)-actions coincide by \ref{2504201153} (4). %\textcolour{violet}{[Is this an actual module action? Is the former one also a module action?]} A: Yes, because it was for normal CW complexes. 
 
 %[Claim: \(H^*(X)\) is an \(\mathscr{A}_2\)-module. Either use \ref{2503221328} (i.e. \(H^m(X;G)\cong[X,K(G,m)]\)) to give the action, or the above mentioned fact that for spectra of finite type, \(H^i(X; G)=H^{i+n}(X_n;G)\). To define a map \(Sq^j : H^{i}(X;G)\to H^{i+j}(X;G)\) we can either hit \(H^{i+n}(X_n;G)\) with \(Sq^j\) and then push it along the sequence of cohomology groups until it's stable, or first push it along until \(H^{i+j+n}(X_n;G)\) is stable and then hit \(H^{i+n}(X_n;G)\) with \(Sq^j\). And these are the same thing, because of this handy commutative diagram:
 %\[\begin{tikzcd} 
@@ -688,7 +688,9 @@ I'm extremely confused by the supposed surjectivity - going back to the sketch o
 
 [Something something reduced cohomology theories for spectra and the wedge axiom?? Suppose \(K_0\) had finite type, which I'm not convinced it does. Then for some \(n\), \((K_0)_n=\left(\bigvee_i \bb{K}(G, n_i)\right)_n=\bigvee_i (\bb{K}(G, n_i))_n=\bigvee_i K(G, n+n_i)\), and \(H^i(K_0)=H^{i+n}(\bigvee_i K(G, n+n_i))=\prod_i H^{i+n}(K(G, n+n_i))\). Does that help?]}
 
-\item[\textcolour{teal}{\textbullet}] \textcolour{teal}{Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]}
+\item[\textcolour{violet}{\textbullet}] \textcolour{violet}{Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]}
+
+\textcolour{violet}{[Ok, sort of. The real problem is: why is the cohomology \(H^*(K(\bb{F}_2,n))\)  free over \(\A\) in dimensions less than \(2n\)? What does that even mean? Another reference for this is \autocite{rognes2} Thm 7.5.5 which looks slightly more coherent than \autocite{hatcher5} Thm 5,32]}
 \end{itemize}
 
 By \ref{2504151709}, we obtain a long exact sequences
@@ -711,7 +713,14 @@ This gives rise to a spectral sequence, by \textcolour{teal}{[some version of]} 
 Now, since \(K_s = \bigvee_i \bb{K}(G, n_{s_i})\),  \ref{2503231218}, tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(G, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
 %talk about death by indices...
 
-\textcolour{purple}{[Fact: there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and it's an isomorphism. [??]]}
+% oh my god I may be stupid
+Now, we have a map 
+\begin{align*}
+[\bb{S}, K_s]&\to \Hom_{\A}^0(H^*(K_s))\\
+f &\mapsto f^*,
+\end{align*}
+since \(f^*\) is an \(\A\)-module homomorphism by \ref{2504201153} (1). 
+\textcolour{purple}{[Fact: it's an isomorphism.]}
 
 We thus have
 \[[\Sigma^t \bb{S}, K_s]=\Hom^0_{\A}(H^*(K_s), H^*(\Sigma^t \bb{S}))=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})),\]
@@ -895,8 +904,6 @@ Let \(f : \bb{S}^i \to \bb{S}\), \(g : \bb{S}^j \to \bb{S}\) be elements of \(\p
 The upper path is exactly \(c_*(fg)\), so \(c_*(f)c_*(g)=c_*(fg)\). Further, the completion map clearly preserves the identity, so it is a ring homomorphism.\done
 \end{ourproof}
 
-%[Throughout this section I use \(c\) to mean, at various points, literally any completion map I like on spectra (including two different maps in the same proof), and also any completion map on groups. It's not a huge deal because it's obvious what I mean, but I should either decorate them or make a remark about this.]
-
 %\item Why does this definition of the product on \(\text{}_2\pi_*^S\) agree with the one induced by the product on \(\pi_*^S\)?
 
 %Answer: Suppose \(i,j\geq 1\). We know that the map \(\pi_*(\wedge) : \pi_*(S) \to \pi_*(S^\wedge_2)\) is the 2-completion, so in particular \(\pi_i(S) \xsurj{\pi_*(\wedge)} \pi_i(S^\wedge_2)\) (and likewise for \(j\)). Let \(f : S^i \to S^\wedge_2\), \(g : S^j \to S^\wedge_2\). Then there are two ways of multiplying them in \(S^\wedge_2\):
@@ -981,8 +988,7 @@ Let \(X,Y,Z\) be spectra, with \(Y, Z\) connective and of finite type. There is 
 \[E^{*,*}_r(Y,Z)\otimes E^{*,*}_r(X,Y)\to E^{*,*}_r(X,Z)\]
 which agrees for \(r=2\) with the Yoneda pairing
 \[\Ext^{*,*}_{\A}(H^*(Z), H^*(Y))\otimes \Ext_{\A}^{*,*}(H^*(Y), H^*(X))\to \Ext_{\A}^{*,*}(H^*(Z), H^*(X))\]
-and which converges %\footnote{What does that mean? The spectral sequence itself only converges to a filtration of \(\text{}_{2}\pi_*^S\), so is this saying that the composition product (graded commutative) on \(\pi_*^S\) induces (descends to? lifts to?) a product on \(\text{}_2\pi_*^S\), which itself descends to a product on \(E^{s,t}_\infty=F^{s,t}/F^{s+1,t+1}\)? Even if the first part works, why would the product land in the correct subgroup?} % removing the footnote for the moment because while it's a valid point, the whole `it lands in the correct subgroup' business is part of the theorem and also is explained in the source.
-to the composition pairing
+and which converges to the composition pairing
 \[[Y, Z^\wedge_2]_*\otimes [X,Y^\wedge_2]_* \to [X, Z^\wedge_2]_*.\]
 The pairing is associative and unital.
 \end{theorem}
