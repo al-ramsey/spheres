@@ -351,12 +351,12 @@ Note that if \(\Sigma^ke^i_\alpha\) belongs to \(X'_{n+k}\) then \(\SIgma^{k+1}e
 \begin{definition}
 Let \(X, Y\) be CW spectra. A \textit{strict map} \(f : X \to Y\) is a sequence of cellular maps \(f_n : X_n \to Y_n\) such that the diagram below commutes.
 \[\begin{tikzcd}
-\Sigma X_n \arrow[r, "\sigma_n"] \arrow[d, swap, "\sigma f_n"]  & X_{n+1} \arrow[d, "f_{n+1}"]  \\
+\Sigma X_n \arrow[r, "\sigma_n"] \arrow[d, swap, "\Sigma f_n"]  & X_{n+1} \arrow[d, "f_{n+1}"]  \\
 \SIgma Y_n \arrow[r, swap, "\sigma_n"]  & Y_{n+1}
 \end{tikzcd}\]
 \end{definition}
 
-\textcolour{teal}{[Some intuition: it's enough for maps to be `defined eventually']}
+Taking strict maps to be our notion of maps between spectra, however, turns out to be to strong. For instance, a map \(\bb{S}^i \to \Sigma^\infty X\) would be given simply by a map \(S^i \to X\), whereas if we want to know about the stable homotopy groups of \(X\), we should also consider maps \(S^{i+n}\to \Sigma^n X\) which cannot necessarily by desuspended. We will therefore relax the definition of maps between spectra to include maps that are `defined eventually', in the following sense. 
 
 \begin{definition}
 A \textit{map of CW spectra} \(f : X \to Y\) is an equivalence class of strict maps \(f' : X' \to Y\) with \(X'\) a cofinal subspectrum of \(X\), where two strict maps \(f' : X' \to Y\) and \(f'' : X'' \to Y\) are equivalent if they agree on some common cofinal subspectrum. 
@@ -424,7 +424,8 @@ Let \(X\) be a spectrum, \(A\subq X\) a subspectrum. Then \(A\) is \textit{close
 
 Any subspectrum is cofinal in (and thus equivalent to) its closure. We define \(X/A\) to be the CW spectrum with \((X/A)_n=X_n/A_n'\), where \(A'=\{A_n'\}\) is the closure of \(A\). Note that a quotient of connective spectra of finite type is again a connective spectrum of finite type (since the quotient has fewer cells in each dimension than the original space).
 
-\textcolour{violet}{[The map \(X\cup CA\to X/A\) is a homotopy equivalence of spectra]}
+The map \(X\cup CA\to X/A\) is a homotopy equivalence of spectra, since each quotient \(X_n \cup CA_n \to X_n/A_n\) is, so we have a cofibration sequence
+\[A \inj X \to X\cap CA \to \Sigma A \inj \Sigma X \to \cdots.\]
 
 \begin{theorem}\label{2504151709}
 Let \(X,Y\) be spectra, and \(A\subq X\) a subspectrum. Then there is an exact sequence
@@ -1487,8 +1488,6 @@ A compact subspace of a CW complex is contained in a finite subcomplex.
 The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+spectrum}{the nLab}: ``[some smash product] is non-canonically equivalent to a product of EM-spectra (hence a wedge sum of EM-spectra in the finite case)''. ???????
 
 \item I'm a bit suspicious of the proof of \ref{2504151310}, because the proof is more complicated in \autocite{hatcher5}. Maybe raise this.
-
-\item Is anything lost/does anything become false if I replace every instance of the word `free' with `projective'?
 \end{itemize}
 
 \subsection{To do}\label{2503221342}
@@ -1529,8 +1528,6 @@ Eventually:
 \item Sometimes I say \(\pi_*^S\) or \(\text{}_{(2)}\pi_*^S\) (localised at 2?) instead of its completion at 2 or whatever. So make sure it's correct.
 
 \item Stick to a convention on suspension/cone/homotopy numbering. I.e. Does a homotopy start at 0 or 1? Does a suspension go from -1 to 1 with the space in the middle at 0, or 0 to 1 with the space at \(1/2\)? Do cones go from 0 to 1, and if so, make sure when they include into suspensions they do so consistently. 
-
-\item I want to at some point compute \(h_0h_1h_3\) or something like that, just to show that sometimes a product can be zero even if it lands in a nonzero group (i.e. the stable groups aren't all cyclic). The trouble is by the time you get to \(\pi_8^S\) the free resolution is an awful mess. Maybe I can try and wrangle with the sseq program to get it to show me kernels and the like?
 
 \item Have any sort of consistency in using or not using brackets (e.g. \(\pi_t X_s\) v.s. \(\pi_t(X_s)\)). 
 
