@@ -220,7 +220,7 @@ Note that \(\mathscr A_2\) is graded, with elements of degree \(k\) those that m
 Write \(Sq^I\) for the monomial \(Sq^{i_1}Sq^{i_2}\cdots Sq^{i_n}\). Then \(Sq^I\) is \textit{admissible} if \(i_j\geq 2i_{j+1}\) for all \(0\leq j < n\). 
 \end{definition}
 
-The admissible monomials are exactly those to which no Adem relations can be applied. Thus, \(\A\) is generated as a \(\inte/2\inte\) module by admissible monomials. 
+The admissible monomials are exactly those to which no Adem relations can be applied. Thus, \(\A\) is generated as an \(\bb{F}_2\) module by admissible monomials. 
 
 \section{Spectra may not be your friends, but I can introduce you}
 
@@ -670,27 +670,40 @@ Now, we set \(X_1=K_0/X\), and repeat the construction to get a diagram:
  \end{tikzcd}\nonumber
 \end{equation}
 Taking cohomology, we get a diagram
-\[\begin{tikzcd}[column sep=1.5ex, row sep = 2ex, arrows=<-]
+\begin{equation}\label{2504251239}
+\begin{tikzcd}[column sep=1.5ex, row sep = 2ex, arrows=<-]
  0 \arrow[rr, ""] && H^*(X) \arrow[rr,""] & & H^*(K_0) \arrow[rr, ""] \arrow[dr, ""] & & H^*(K_1) \arrow[dr, ""] \arrow[rr, ""] & & H^*(K_2) \arrow[dr, ""] \arrow[rr, ""] & & \cdots \\ 
   &&&&& H^*(X_1) \arrow[ur, ""] \arrow[dr] & & H^*(X_2) \arrow[ur, ""] \arrow[dr] & & H^*(X_3) \arrow[ur, ""] \arrow[dr] &  &\\
 &&&& 0 \arrow[ur] && 0 \arrow[ur] && 0 \arrow[ur] && 0
- \end{tikzcd}\] 
+ \end{tikzcd}
+\end{equation}
 
 \begin{itemize}
 \item[\textcolour{purple}{\textbullet}] \textcolour{purple}{Fact: \(K_0\) has finite type (and thus so do all the \(K_s\)'s) [I'm sure this is supposed to follow from \(H^i(X)\) being finitely generated for all \(i\), but I can't at all see how].}
-\item[\textcolour{purple}{\textbullet}] \textcolour{purple}{Fact: the top row of the diagram above is exact.} \purple{Suffices to show that we have exact sequences: 
-\[0 \leftarrow H^*(X_s)\leftarrow H^*(K_s),\]
-\[H^*(X) \leftarrow H^*(K_0) \leftarrow H^*(X_1)\leftarrow 0,\]
-\[H^*(K_s) \leftarrow H^*(K_{s+1}) \leftarrow H^*(X_{s+2})\leftarrow 0,\]
-and that the map \(H^*(K_0)\to H^*(X)\) is surjective. Actually, I think the first exact sequence will follow from \(H^*(K_0)\to H^*(X)\) being surjective, since they're all constructed in the same way.
+
+\item[\textcolour{purple}{\textbullet}] \purple{Fact: The induced map
+\[H^*(X) \leftarrow H^*(K_0)\]
+is surjective, and thus by construction each sequence
+\[0 \leftarrow H^*(X_s) \leftarrow H^*(K_s)\]
+is exact.
 
 I'm extremely confused by the supposed surjectivity - going back to the sketch of the construction for CW complexes, the corresponding statement is supposed to be that if we choose generators \(\alpha_i\) for \(H^*(X)\) as an \(\A\)-module giving maps \(f_i : X \to K(G, \deg(\alpha_i))\), the product of these maps induces a surjection on \(H^*\). But I can't see how it does? So, we know by \autocite{hatcher}, Thm 4.57  that there are natural bijections \(T : [X, K(G,n)]\to H^n(X;G)\) with \(T[f]=f^*(\beta)\) for some class \(\beta \in H^n(K(G,n); G)\). So, for any given \(\alpha^i\in H^n(X;G)\), it's equal to \(f^*(\beta_i)\), so definitely \(f^*\) hits it. But if I have some enormous product of EM spaces, and all these maps \(f_i : X \to K(G, n_i)\) come together to give a map \(f : X \to \prod_i K(G,n_i)\), then Hatcher is trying to tell me I get a surjection \(H^*(\prod_i K(G, n_i))\to H^*(X)\)?? I know nothing about the cohomology of an infinite product, there's no reason it would be e.g. the product of the cohomologies.]
 
 [Something something reduced cohomology theories for spectra and the wedge axiom?? Suppose \(K_0\) had finite type, which I'm not convinced it does. Then for some \(n\), \((K_0)_n=\left(\bigvee_i \bb{K}(G, n_i)\right)_n=\bigvee_i (\bb{K}(G, n_i))_n=\bigvee_i K(G, n+n_i)\), and \(H^i(K_0)=H^{i+n}(\bigvee_i K(G, n+n_i))=\prod_i H^{i+n}(K(G, n+n_i))\). Does that help?]}
+\end{itemize}
 
+Now, as with CW complexes, we have a long exact sequence
+\[\cdots \leftarrow H^{n+1}(X_{s+1})\leftarrow H^n(X_{s})\leftarrow H^n(K_s)\leftarrow H^n(X_{s+1})\leftarrow H^{n-1}(X_s)\leftarrow \cdots,\]
+and surjectivity of the maps \(H^*(X_s)\leftarrow H^*(K_s)\) implies that the boundary maps \(H^{n+1}(X_{s+1})\leftarrow H^n(X_s)\) are all zero (writing \(X_0:=X\)). We thus get short exact sequences
+\[0\leftarrow H^n(X_{s})\leftarrow H^n(K_s)\leftarrow H^n(X_{s+1})\leftarrow0,\]
+giving rise to a short exact sequence
+\[0\leftarrow H^*(X_{s})\leftarrow H^*(K_s)\leftarrow H^*(X_{s+1})\leftarrow0,\]
+for each \(s\). This then implies that the top row of (\ref{2504251239}) is exact.
+
+\begin{itemize}
 \item[\textcolour{violet}{\textbullet}] \textcolour{violet}{Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]}
 
-\textcolour{violet}{[Ok, sort of. The real problem is: why is the cohomology \(H^*(K(\bb{F}_2,n))\)  free over \(\A\) in dimensions less than \(2n\)? What does that even mean? Another reference for this is \autocite{rognes2} Thm 7.5.5 which looks slightly more coherent than \autocite{hatcher5} Thm 5,32]}
+\textcolour{violet}{[Ok, sort of. The real problem is: why is the cohomology \(H^*(K(\bb{F}_2,n))\)  free over \(\A\) in dimensions less than \(2n\)? What does that even mean? Another reference for this is \autocite{rognes2} Thm 7.5.5 which looks slightly more coherent than \autocite{hatcher5} Thm 5.32]}
 \end{itemize}
 
 By \ref{2504151709}, we obtain a long exact sequences
@@ -713,14 +726,13 @@ This gives rise to a spectral sequence, by \textcolour{teal}{[some version of]} 
 Now, since \(K_s = \bigvee_i \bb{K}(G, n_{s_i})\),  \ref{2503231218}, tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(G, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
 %talk about death by indices...
 
-% oh my god I may be stupid
 Now, we have a map 
 \begin{align*}
-[\bb{S}, K_s]&\to \Hom_{\A}^0(H^*(K_s))\\
-f &\mapsto f^*,
+[\bb{S}, K_s]&\to \Hom_{\A}^0(H^*(K_s), H^*(\bb{S}))\\
+f \;\;&\mapsto\;\; f^*,
 \end{align*}
-since \(f^*\) is an \(\A\)-module homomorphism by \ref{2504201153} (1). 
-\textcolour{purple}{[Fact: it's an isomorphism.]}
+since \(f^*\) is an \(\A\)-module homomorphism by \ref{2504201153} (1), and the fact that \(H^*(K_s)\) is free implies that it is an isomorphism.
+% Here's the rough idea: we have identifications \([\bb{S}, K_s]\xrightarrow{\sim} \prod_i [\bb{S}, \bb{K}(G, n_{s_i})] \xrightarrow{\sim} \prod_i H^{n_{s_i}}(\bb{S}; G)\), and under these identifications a map \(f\) gets sent to a tuple \((f_i^*(\alpha_{n_{si}}))\), where the \(\alpha_{n_{s_i}}\) are fundamental classes. But they're exactly the generators of \(H^*(K_s)\) as an \(\A\)-module, and the fact that \(H^*(K_s)\) is a free \(\A\)-module implies that any \(\A\)-module homomorphism \(H^*(K_s)\to H^*(\bb{S})\) is determined exactly by where its generators go, so we can also identify \(\Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\) with \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). The square commutes and 3 of the maps are isomorphisms so the last one is too. 
 
 We thus have
 \[[\Sigma^t \bb{S}, K_s]=\Hom^0_{\A}(H^*(K_s), H^*(\Sigma^t \bb{S}))=\Hom^t_{\A}(H^*(K_s), H^*(\bb{S})),\]
@@ -738,7 +750,7 @@ Further, \(E^{s,t}_2=H^{s,t}(E_1^{*,*}, d_1)\), so each \(E^{*, t}\) is the homo
 \[0 \to E^{0,t}_1 \to E^{1,t}\to E^{2,t}\to \cdots,\]
 which is by construction the chain complex below.
 \[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots.\]
-The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).]
+The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).
 
 \begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]\label{2504081125}
 There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_{t-s}^S\) modulo torsion of odd order. \textcolour{violet}{[which is probably a lie but let's worry about that later]}
@@ -1503,15 +1515,11 @@ Now:
 \begin{itemize}
 \item Rewrite Sections \ref{2504041910} and \ref{2503301333} and fix the grading.
 
-\item Show the action of \(\A\) on \(H^*(X)\) is actually a module action.
-
 \item Figure out the whole wedge/product of EM spectra nonsense and why \(K_0\) has finite type.
 
 \item Figure out why applying \(H^*\) to the sequence \(K_0\to K_1 \to \cdots\) makes it exact.
 
 \item Show that the \(H^*(K_s)\)'s are free \(\A\)-modules.
-
-\item Show that there is a natural map \([\bb{S}, K_s]\to \Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\), and that it's an isomorphism (Yoneda?). 
 
 \item Figure out how to state \ref{2504081125} without lying about \(2\)-completion.
 
