@@ -257,13 +257,17 @@ Let \(X\) be a topological space. The \textit{suspension spectrum} of \(X\), den
 
 We write \(\bb{S}\) for the suspension spectrum \(\Sigma^\infty S^0\), and call \(\bb{S}\) the \textit{sphere spectrum}. For \(i>0\), we write \(\bb{S}^i\) for \(\Sigma^\infty S^i\).%, where \(S^i\) has the usual cell structure. 
 
-\begin{example}
-The \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\) and \(\sigma_n : \Sigma K(G,m+n)\to K(G,m+n+1)\) is the adjoint of the CW approximation \(K(G, m+n)\to \Omega K(G,m+n+1)\).
+%\begin{example}
+%The \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\) and \(\sigma_n : \Sigma K(G,m+n)\to K(G,m+n+1)\) is the adjoint of the CW approximation \(K(G, m+n)\to \Omega K(G,m+n+1)\).
+%\end{example}
+
+% terrible definition above. The one below is much clearer!
+
+\begin{example}\label{2504251659}
+An \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\), and can be constructed inductively by attaching cells to \(\Sigma K(G, m+n))\) to kill \(\pi_i(\Sigma K(G, m+n))\) for \(i > m+n+1\). By \ref{2504151046}, \(\pi_i(K(G, m+n))\cong \pi_{i+1}(\Sigma K(G, m+n))\) for \(i \leq 2m+2n-2\), so the cells attached can be taken to have dimension \(\geq 2m+2n-1\). The maps \(\sigma_n\) are inclusions of subcomplexes. 
 \end{example}
 
-%No it's ok Hatcher, just use the exact same notation for spaces and spectra, that's fine.
-
-%[N.B. the important point of the above is not that it's `an' EM space rather than `the' (they're all homotopy equivalent). It's that a) we can definitely construct one that's a CW complex, and b) even though \(\Omega\)(a CW complex) is not necessarily a CW complex, we can make it one via CW approximation.]
+% No it's ok Hatcher, just use the exact same notation for spaces and spectra, that's fine.
 
 \begin{definition}
 Let \(X=\{X_n\}\) be a spectrum. We define \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\), where the map \(\pi_{i+n}(X_n)\to \pi_{i+n+1}(X_{n+1})\) is given by the composition
@@ -290,6 +294,10 @@ A CW spectrum \(X\) is \textit{connective} if it has no cells below a given dime
 
 \begin{example}
 If \(X\) is a finite (resp. finite type) CW complex, then \(\Sigma^\infty\) is a finite (resp. finite type) CW spectrum. In particular, \(\bb{S}\) is a finite CW spectrum with a unique cell in dimension 1.
+\end{example}
+
+\begin{example}\label{2504251704}
+For each \(m\), the Eilenberg-MacLane spectrum \(\bb{K}(G, m)\) constructed in \ref{2504251659} has finite type. This follows from the fact that the dimension of the cells added to \(\Sigma K(G,n+m)\) is eventually larger than \(n+i\) for any \(i\), so \(\bb{K}(G, m)\) only has finitely many \(i\)-cells. 
 \end{example}
 
 \begin{lemma}\label{2504151105}
@@ -321,7 +329,7 @@ We define
 Note that there is a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating suspensions of cells as equivalent to the cells themselves, i.e. a \(G\) summand for every \(n\)-cell of \(X\). We define \(H^*(X;G)\) and \(H_*(X;G)\) to be the cohomology and homology of this chain complex, respectively.
 
 \begin{lemma}\label{2504141556}
-Let \(X\) be a connective CW spectrum of finite type. Then \(H_i(X;G), H^i(X;G)\), and \(\pi_i(X)\) are finitely generated for all \(i\). 
+Let \(X\) be a connective CW spectrum of finite type. Then \(H_i(X;G)\), \(H^i(X;G)\), and \(\pi_i(X)\) are finitely generated for all \(i\). 
 \end{lemma}
 
 \begin{ourproof}
@@ -469,8 +477,6 @@ The map \(F : [X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\) is an 
 \end{proposition}
 
 \subsection{\(p\)-completion of spectra}
-
-
 
 \begin{definition}[{\autocite{concise}, Def 10.1.1}]
 Let \(A\) be an abelian group. Then its \textit{\(p\)-adic completion} is the limit 
@@ -627,7 +633,6 @@ Given a projective resolution as in \ref{2504211942}, applying \(\Hom_R(-, N)\) 
 Dropping the term \(\Hom_R(M, N)\), we get the chain complex
 \[\cdots \leftarrow \Hom_R(P_2, N) \leftarrow \Hom_R(P_1, N) \leftarrow \Hom_R(P_0, N) \leftarrow 0,\]
 which we denote by \(\Hom_R(P_\bullet, N)\). 
-%and we define \(\Ext^n_R(M, N)\) to be the \(n\)th homology group of this chain complex. 
 
 Dually, given an injective resolution as in \ref{2504211942}, we can form the chain complex
 \[\cdots \leftarrow \Hom_R(N, I_2) \leftarrow \Hom_R(N, I_1) \leftarrow \Hom_R(N, I_0)\leftarrow 0,\]
@@ -652,15 +657,13 @@ Let \(X\) be a connective CW spectrum of finite type. Then \(H^*(X)\) is an \(\A
 % H^{i+n+1}(X_{n+1};G) \arrow[dr, "Sq^j"'] & & H^{i+j+n+1}(\Sigma X_n;G) \arrow[dl, "i^*"] \\ 
 % & H^{i+j+n+1}(X_{n+1};G) &  
 %\end{tikzcd}\] 
-%which follows from the properties in Section  \ref{2503221247}. \textcolour{violet}{Is this an actual module action? Is the former one also a module action?}]
+%which follows from the properties in Section  \ref{2503221247}. 
 
-We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\) (since each \(H^n(X)\) is finitely generated by \ref{2504141556}, and such a finite generating set would certainly also generate it as an \(\A\)-module). 
+We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-module such that there are at most finitely many in each \(H^n(X)\) (since each \(H^n(X)\) is finitely generated by \ref{2504141556}, and such a finite generating set would certainly also generate it as an \(\A\)-module). Each generator \(\alpha_i\in H^{n_i}(X)\) corresponds to a map \(X \to \bb{K}(\bb{F}_2, n_i)\) by \ref{2503221328}, so putting these maps together gives an element of \(\pi_i [X, \bb{K}(\bb{F}_2, n_i)]\). Now, \(n_i \to\infty\) as \(i\to \infty\) since there are only finitely many \(\alpha_i\) in each \(H^{n_i}(X)\), so \ref{2503231218} implies that we get an element of \([X, \bigvee_i \bb{K}(\bb{F}_2, n_i)]\).  We write \(K_0 := \bigvee_i \bb{K}(\bb{F}_2, n_i)\), and replace the map \(X \to K_0\) by an inclusion (see \ref{2504231152}).
 
-\textcolour{purple}{[Claim: these \(\alpha_i\) determine a map \(X \to K_0\), where \(K_0\) is a wedge of EM spectra, and \(K_0\) has finite type. Very confused about this - each \(\alpha_i\in H^{n_i}(X;G)\) gives a map \(X \to K(G,n_i)\) by \ref{2503221328}, but shouldn't they  come together to give a map into a product\footnote{\textcolour{purple}{And on that note, what is a product of spectra? Surely it's not a smash product? Is it just a pointed product? Are we allowed to do that?}} of EM spaces, not a wedge sum? Isn't a wedge sum a sort of reduced \textit{coproduct}, not a product?? Is this something to do with the `fibrations and cofibrations are the same' nonsense?}
-
-\textcolour{purple}{Vague idea: we have \ref{2503231218}, which tells us that \([X, \bigvee_i \bb{K}(G,n_i)]\cong \prod_i[X, \bb{K}(G,n_i)]\). Now, \(X\) is connective, so \(H^*(X;G)\) has some smallest degree. Let's just pretend it starts from zero for the moment, and we can reindex or whatever later. Let's say each \(H^k(X;G)\) has \(i_k\) generators \(\alpha_{i_0+\cdots+i_{k-1}+1}, ...,\alpha_{i_0+\cdots+i_k}\)  , and write \(n_0=\cdots=n_{i_0}\), \(n_{i_0+1}=\cdots= n_{i_0+i_1}\), etc., \(n_{i_0+i_1+\cdots+i_{k-1}+1}=\cdots = n_{i_0+i_1+\cdots+i_k}\). So, the \(\alpha_{i_0+\cdots+i_{k-1}+j}\in H^k(X;G)\) determine maps \(X\to \bb{K}(G,n_k)\). Putting all these maps together, one in each coordinate, gives an element of \(\prod_i[X, \bb{K}(G,n_i)]\), which by the proposition corresponds to an element of \([X, \bigvee_i \bb{K}(G,n_i)]\).]}
-
-We can replace that map with an inclusion, by \ref{2504231152}.
+\begin{remark}
+\(K_0\) has finite type, which can be seen as follows: first, recall from \ref{2504251704} that each spectrum \(\bb{K}(G, n_i)\) has finite type. Now, the \(j\)-cells of \(\bigvee_i \bb{K}(G, n_i)\) consist of the \((j+k)\)-cells of \(\bigvee_i K(G, n_i+k)\) for each \(k\), up to equivalence under suspension. However, there are only finitely many \(n_i\) with \(n_i\leq j\), and if \(n_i>j\) the space \(K(G, n_i)\) can be taken to have no cells of dimension \(\leq j\). Thus, the \(j\)-cells of \(\bigvee_i \bb{K}(G, n_i)\) are the \(j\)-cells of the finite wedge \(\bigvee_{i, n_i\leq j}\bb{K}(G, n_i)\), of which there are only finitely many (since a finite wedge of finite-type spectra has finite type). 
+\end{remark}
 
 Now, we set \(X_1=K_0/X\), and repeat the construction to get a diagram:
 \begin{equation}\label{2503301114}
@@ -679,8 +682,6 @@ Taking cohomology, we get a diagram
 \end{equation}
 
 \begin{itemize}
-\item[\textcolour{purple}{\textbullet}] \textcolour{purple}{Fact: \(K_0\) has finite type (and thus so do all the \(K_s\)'s) [I'm sure this is supposed to follow from \(H^i(X)\) being finitely generated for all \(i\), but I can't at all see how].}
-
 \item[\textcolour{purple}{\textbullet}] \purple{Fact: The induced map
 \[H^*(X) \leftarrow H^*(K_0)\]
 is surjective, and thus by construction each sequence
@@ -700,11 +701,9 @@ giving rise to a short exact sequence
 \[0\leftarrow H^*(X_{s})\leftarrow H^*(K_s)\leftarrow H^*(X_{s+1})\leftarrow0,\]
 for each \(s\). This then implies that the top row of (\ref{2504251239}) is exact.
 
-\begin{itemize}
-\item[\textcolour{violet}{\textbullet}] \textcolour{violet}{Fact: each \(H^*(K_s)\) is a free \(\A\)-module, and thus the diagram above gives a resolution of \(H^*(X)\) by free \(\A\)-modules. [Vague idea: Hatcher claims on p582 that ``the cohomology \(H^*(K(\bb{F}_2,n))\) is free over \(\A\) in dimensions less than \(2n\)'' (this may be \autocite{ass} Prop 3.22 but I'm not sure what's going on with the suspension there). Assuming this, I said earlier that if \(X\) has finite type you can act on \(H^*(X)\) with \(Sq^i\) by first pushing it along the limit as far as you need to to make \(H^{i+j+n}(X_{n+j})\) stable and then applying \(Sq^i\) to \(H^{i+n}(X_n)\). But the point here is that I can make \(n\) as big as I like, so I can just make it big enough so that any action of \(\A\) I like is free.]}
+Now, each \(H^*(K_s)\) is a free \(\A\)-module, since \(K_s\) has finite type and the cohomology of a wedge of Eilenberg-MacLane spaces \(K(G, n_i)\) (with \(n_i \geq n\) and only finitely many \(n_i\) of each dimension) is free below dimension \(2n\) (this can be shown by combining \autocite{rognes2} Cor 7.5.6 and the wedge axiom). Thus, the top row of (\ref{2504251239}) gives a free resolution of \(H^*(X)\). 
 
-\textcolour{violet}{[Ok, sort of. The real problem is: why is the cohomology \(H^*(K(\bb{F}_2,n))\)  free over \(\A\) in dimensions less than \(2n\)? What does that even mean? Another reference for this is \autocite{rognes2} Thm 7.5.5 which looks slightly more coherent than \autocite{hatcher5} Thm 5.32]}
-\end{itemize}
+% essentially if you have a minimal generating set \(\{x_i\}\) and some sum \(a_1x_1+\cdots + a_kx_k=0\), then just look far enough along the limit that the x_i are all in degrees small enough, so that that sum being zero implies that either the a_i are all zero or the x_i weren't minimal.
 
 By \ref{2504151709}, we obtain a long exact sequences
 \[\cdots \to [\bb{S}^{t+1}, X_s] \to [\bb{S}^{t+1}, K_s] \to [\bb{S}^{t+1}, X_{s+1}]\to [\bb{S}^{t+1}, \Sigma X_s]\to [\bb{S}^{t+1}, \Sigma K_s] \to \cdots.\]
@@ -726,7 +725,7 @@ This gives rise to a spectral sequence, by \textcolour{teal}{[some version of]} 
 Now, since \(K_s = \bigvee_i \bb{K}(G, n_{s_i})\),  \ref{2503231218}, tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(G, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
 %talk about death by indices...
 
-Now, we have a map 
+We have a map 
 \begin{align*}
 [\bb{S}, K_s]&\to \Hom_{\A}^0(H^*(K_s), H^*(\bb{S}))\\
 f \;\;&\mapsto\;\; f^*,
@@ -755,6 +754,9 @@ The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), 
 \begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]\label{2504081125}
 There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_{t-s}^S\) modulo torsion of odd order. \textcolour{violet}{[which is probably a lie but let's worry about that later]}
 \end{theorem}
+
+%\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]
+% I want to cite what's above, but it's in terms of X/2 instead of X, and X/2 is defined by taking a smash product, and I REALLY don't want to get into that...
 
 \subsection{First computations}
 
@@ -816,6 +818,7 @@ defined as follows: let
 \[\cdots \xrightarrow{f_3} F_2 \xrightarrow{f_2} F_1 \xrightarrow{f_1} F_0 \xrightarrow{f_0} L\to 0,\]
 \[\cdots \xrightarrow{f'_3} F'_2 \xrightarrow{f'_2} F'_1 \xrightarrow{f'_1} F'_0 \xrightarrow{f'_0} M\to 0\]
 be free resolutions for \(L\) and \(M\). Then, given \([g] \in \Ext_A^{s,t}(M, N)\), \([h]\in \Ext_A^{u,v}(L, M)\), we inductively construct a chain map \(h_\bullet : F_{u+\bullet} \to F'_{\bullet}[v]\), as shown in the diagram below.
+
 \[\begin{tikzcd} 
 F_{u+s} \arrow[r, "f_{u+s}"] \arrow[d, swap, "h_s", dashrightarrow]  & F_{u+s-1} \arrow[r, "f_{u+s-1}"] \arrow[d, "h_{s-1}"', dashrightarrow] & \cdots \arrow[r, "f_{u+1}"] & F_u \arrow[d, "h_0"', dashrightarrow] \arrow[dr, "h"] \arrow[r, "f_u"] & F_{u-1} \arrow[r, "f_{u-1}"] & \cdots \arrow[r, "f_1"] & F_0 \arrow[r, "f_0"] & L \\ 
 F'_{s}[v] \arrow[r, swap, "f'_s"] \arrow[d, swap, "g"] & F'_{s-1}[v] \arrow[r, "f'_{s-1}"'] & \cdots \arrow[r, "f'_1"'] & F'_0[v] \arrow[r, "f'_0"', twoheadrightarrow] & M[v] & & & \\ 
@@ -830,6 +833,7 @@ F'_w[v] \arrow[r, swap, "f'_w"]  & F'_{w-1}[v] \arrow[r, "f'_{w-1}"'] & F'_{w-2}
 Let \(\alpha\in F_{u+w}\) be a generator, and consider \(f'_{w-1}h_{w-1}f_{u+w}(\alpha)\in F'_{w-2}[v]\). By induction, the right square commutes, so \(f'_{w-1}h_{w-1}f_{u+w}(\alpha)=h_{w-2}f_{u+w-1}f_{u+w}(\alpha)=0\), by exactness of the top row. Thus, \(h_{w-1}f_{u+w}(\alpha)\in \ker f'_{w-1}=\im f'_w\). Write \(h_{w-1}f_{u+w}(\alpha)=f'_w(\beta)\), and define \(h_w(\alpha)=\beta\).  
 
 Now, consider the diagram below.
+
 \[\begin{tikzcd}
 F_{u+s+1} \arrow[r, "f_{u+s+1}"] \arrow[d, swap, "h_{s+1}", dashrightarrow]  & F_{u+s} \arrow[d, "h_{s}"]  \\
 F'_{s+1}[v] \arrow[r, swap, "f'_{s+1}"]  & F'_{s}[v] \arrow[d, "g"]\\
@@ -855,6 +859,14 @@ where \([X,Y]_n=[\Sigma^n X, Y]\).
 \end{definition}
 
 In particular, if \(X=Y=Z=\bb{S}\), we have a product \(\pi_v^S\otimes \pi_t^S\to \pi_{v+t}^S\).
+
+\begin{lemma}
+Let \(f, g : S^n \to S^n\) be pointed maps such that \(\deg f = \deg g\). Then \(f \simeq g\). 
+\end{lemma}
+
+\begin{ourproof}
+We prove the contrapositive. Suppose \(f \not\simeq g\). Then \(f, g\) represent two different elements in \(\pi_nS^n \simeq \inte\), say \([f]=n\neq m=[g]\) for \(n, m \in \inte\). The Hurewicz theorem then implies that for a fixed generator \(u_n \in H^n(S^n)\), \(f_*(u_n)\neq g_*(u_n)\in H^n(S^n)\), so \(\deg f \neq \deg g\), as required.\done
+\end{ourproof}
 
 \begin{lemma}[{\autocite{hatcher}, Prop 4.56}]
 The composition product makes \(\pi_*^S\) into a graded commutative ring. 
@@ -1481,10 +1493,6 @@ A compact subspace of a CW complex is contained in a finite subcomplex.
 %\item What does Hatcher mean when he says two spectra are `equivalent'? (usual definition of sameness)
 
 \item On p588 of \autocite{hatcher5}, he says ``every CW spectrum is equivalent to a suspension spectrum''. Does he actually mean that, or does he mean `equivalent to the suspension of a spectrum'? The former seems way too strong, although in fairness I still don't know what an equivalence of spectra actually \textit{is}. 
-
-%\item Suppose I have the \(E_2\) page for the appropriate spectral sequence. That in principle only gives me the `dots' and possibly the differentials. But if I just want to calculate, say, \(\pi^S_3\), I get \(\inte_2\) summands at \(E^{1, 4}_2, E^{2, 5}_2,\) and \(E^{3, 6}_2\). So, that says I have a filtration 
-%\[0 \subq \inte_2 \subq F^{2,5}\subq F^{1,4}=\pi^S_3,\]
-%and \(F^{2,5}/\inte_2\cong \inte_2\), \(F^{1,4}/F^{2,5}\cong \inte_2\). So \(\pi^S_3\) has order 8 and a filtration by \(\inte_2\)'s, but that still doesn't tell me whether it's \(\inte_8, \inte_4\times \inte_2\) or \(\inte_2^3\)? Thm 5.47 of \autocite{hatcher5} tells me that \(F^{s,t}\) is the image of the map \(\pi_t(\bb{S}_s)\to \pi_3^S\), so do I have to go back to the constructing and figure out what that map actually is, or is there something algebraic I can do?\footnote{I think this related to something \autocite{ass} calls the Yoneda product on p47-50 and 61-62 - this is a multiplicative structure on \(E_2\) and should tell me something about the additive structure of \(\pi_*^S\).}
 
 \item On p586 of \autocite{hatcher5}, Hatcher says ``If \(X\) is of finite type then for each \(i\) there is an \(n\) such that \(X_n\) contains all the \(i\)-cells of \(X\). It follows that \(H_i(X;G)=H_i(X_n;G)\) for all sufficiently large \(n\), and the same is true for cohomology.'' But from the way he set up \(H_*\) and \(H^*\) earlier, shouldn't this be \(H_i(X;G)=H_{i+n}(X_n; G)\)? Because \(H_i(X;G)=\lim\limits_{\rightarrow}H_{i+n}(X_n)\), and he talks about things stabilising in the next sentence, so shouldn't the stable point be at some \(H_{i+n}\)?
 
