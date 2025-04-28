@@ -433,7 +433,7 @@ Let \(X\) be a spectrum, \(A\subq X\) a subspectrum. Then \(A\) is \textit{close
 Any subspectrum is cofinal in (and thus equivalent to) its closure. We define \(X/A\) to be the CW spectrum with \((X/A)_n=X_n/A_n'\), where \(A'=\{A_n'\}\) is the closure of \(A\). Note that a quotient of connective spectra of finite type is again a connective spectrum of finite type (since the quotient has fewer cells in each dimension than the original space).
 
 The map \(X\cup CA\to X/A\) is a homotopy equivalence of spectra, since each quotient \(X_n \cup CA_n \to X_n/A_n\) is, so we have a cofibration sequence
-\[A \inj X \to X\cap CA \to \Sigma A \inj \Sigma X \to \cdots.\]
+\[A \inj X \to X\cup CA \to \Sigma A \inj \Sigma X \to \cdots.\]
 
 \begin{theorem}\label{2504151709}
 Let \(X,Y\) be spectra, and \(A\subq X\) a subspectrum. Then there is an exact sequence
@@ -448,13 +448,25 @@ is exact.
 We first show exactness at \([Y,X/A]\). The composition \([Y, X]\to [Y, X/A]\to [Y, \Sigma A]\) is clearly zero. Now, if \(Y \xrightarrow{f} X\cup CA \to \Sigma A\) is homotopic to the constant map, then \(f\) must be homotopic to a map contained entirely in \(X\), and thus is in the image of \([Y,X]\to [Y,X/A]\).
 
 Now, we show exactness at \([Y,X]\). Again, the composition \([Y,A]\to [Y,X]\to [Y,X/A]\) is clearly zero. Suppose \(Y \xrightarrow{f} X \to X\cup CA\) is homotopic to the constant map. Then we have a map \(h : CY \to X\cup CA\) making the solid diagram below commute.
+\begin{equation*}\label{2504282249}
+\begin{tikzcd} 
+Y \arrow[r, "\id"] \arrow[d, swap, "", dashrightarrow]  & Y \arrow[r, "", hookrightarrow] \arrow[d, "f"] & CY \arrow[d, "h"] \arrow[r, ""] & \Sigma Y \arrow[d, "", dashrightarrow] \arrow[r, "-\id"] & \Sigma Y \arrow[d, "\Sigma f", dashrightarrow]\\ 
+ A \arrow[r, swap, "i", hookrightarrow]  & X \arrow[r, ""', hookrightarrow] & X\cup CA \arrow[r, ""'] & \Sigma A \arrow[r, "-\Sigma i"', hookrightarrow] & \Sigma X 
+\end{tikzcd}
+\end{equation*}
+We claim that we can fill in the two dotted maps on the right to make homotopy commutative squares. To see this, consider the diagram below,
 \[\begin{tikzcd} 
-Y \arrow[r, "\id"] \arrow[d, swap, "", dashrightarrow]  & Y \arrow[r, "", hookrightarrow] \arrow[d, "f"] & CY \arrow[d, "h"] \arrow[r, "", hookrightarrow] & \Sigma Y \arrow[d, "", dashrightarrow] \arrow[r, "\id"] & \Sigma Y \arrow[d, "\Sigma f", dashrightarrow]\\ 
- A \arrow[r, swap, "i", hookrightarrow]  & X \arrow[r, ""', hookrightarrow] & X\cup CA \arrow[r, ""'] & \Sigma A \arrow[r, "\Sigma i"', hookrightarrow] & \Sigma X 
+Y \arrow[r, "\id"] \arrow[d, swap, "", dashrightarrow]  & Y \arrow[r, "", hookrightarrow] \arrow[d, "f"] & Y\cup CY \arrow[d, "h"] \arrow[r, "", hookrightarrow] & (Y\cup CY)\cup CY \arrow[d, "h\cup Cf"] \arrow[r, "", hookrightarrow] & ((Y\cup CY)\cup CY)\cup C(Y\cup CY) \arrow[d, "(h\cup Cf)\cup Ch"]\\ 
+ A \arrow[r, swap, "i", hookrightarrow]  & X \arrow[r, ""', hookrightarrow] & X\cup CA \arrow[r, ""', hookrightarrow] & (X\cup CA)\cup CX \arrow[r, ""', hookrightarrow] & ((X\cup CA)\cup CX) \cup C(X\cup CA)
  \end{tikzcd}\] 
-\textcolour{purple}{[\autocite{hatcher5} says that ``we can then automatically fill in the next two vertical maps to make homotopy commutative squares''. I believe that we can write down a map making the left square commute, but I have no idea why that map makes the right square commute. But if it does...]}
+where \(h\cup Cf\) is given by applying \(h\) to \(Y\cup CY\) and \(Cf\) to \(CY\) (which is well-defined since the maps agree on the intersection), and likewise for \((h\cup Cf)\cup Ch\). Now, the square below commutes, since the identification \(((Y\cup CY)\cup \textcolour{red}{CY})\cup C(Y\cup CY)\simeq \Sigma Y\) collapses everything except the factor in red, and similarly for \(X\). 
+\[\begin{tikzcd}
+((Y\cup CY)\cup CY)\cup C(Y\cup CY) \arrow[r, "\simeq", twoheadrightarrow] \arrow[d, swap, "h\cup Cf"]  & \Sigma Y \arrow[d, "\Sigma f"]  \\
+((X\cup CA)\cup CX)\cup C(X\cup CA) \arrow[r, swap, "\simeq", twoheadrightarrow]  & \Sigma X
+\end{tikzcd}\]
+Now, let \(p_Y : (Y\cup CY)\cup CY \to \Sigma Y\) and \(p_A : (X\cup CA)\cup CX\to \Sigma A\) be the projections, with homotopy inverses \(h_Y\) and \(h_A\) respectively. We define \(g : \Sigma Y \to \Sigma A\) by \(g := p_A \circ (h\cup Cf)\circ h_Y^{-1}\). This \(g\) makes the diagram in (\ref{2504282249}) commute up to homotopy, where the minus signs arise from the fact that opposite hemispheres of the spaces \(((Y\cup CY)\cup CY)\cup C(Y\cup CY)\) and \((Y\cup CY)\cup CY\) are collapsed under the quotient map (and likewise for the bottom row). 
 
-By \ref{2504151310}, we can take the map \(\Sigma Y \to \Sigma A\) to be \(\Sigma g\) for some \(g : Y \to A\). Then \(\Sigma f \simeq (\Sigma i)(\Sigma g)=\Sigma(ig)\), so \(f\simeq ig\), as required.\done
+By \ref{2504151310}, we can take the map \(g : \Sigma Y \to \Sigma A\) to be \(\Sigma k\) for some \(k : Y \to A\). Then \((\Sigma f)\circ (-\id) \simeq (-\Sigma i)(\Sigma k)\), so \(\Sigma f\simeq \Sigma(ik)\), and thus \(f \simeq ik\) as required.\done
 \end{ourproof}
 
 Finally, we get the lemma below, which follows from the equivalent result for CW complexes. 
@@ -521,25 +533,29 @@ Let \(X\) be a connective spectrum of finite type, and let \(Y\) be \(p\)-comple
 
 \textcolour{teal}{[Some notes from \autocite{spectral_sequences}, C2 - just here as a placeholder/reference and I'll probably completely rewrite this bit. Maybe add some notes from \autocite{ass}]}
 
+% I made up the definition below but I mean come on. Why are people so weird about the gradings??
 \begin{definition}
-A \textit{differential bigraded module} \(E\) over a ring \(R\) is a collection of \(R\)-modules \(\{E^{p, q}\}\), \(p, q\in \inte\), together with a map \(d : E^{p, q} \to E^{p+s, q-s+1}\) for each \(p, q\) and some fixed \(s \in \inte\), satisfying \(d^2=0\). 
+A \textit{differential bigraded module} \(E\) over a ring \(R\) is a collection of \(R\)-modules \(\{E^{p, q}\}\), \(p, q\in \inte\), together with a map \(d : E^{p, q} \to E^{p+s, q+r}\) for each \(p, q\) and some fixed \(s,r \in \inte\), satisfying \(d^2=0\). 
 \end{definition}
 
-We can take the homology of \((E, d)\):
-\[H^{p, q}(E^{*, *}, d)=\ker(d : E^{p, q}\to E^{p+s, q-s+1})/\im(d : E^{p-s, q+s-1}\to E^{p, q}).\]
+We can take the homology\footnote{\textcolour{violet}{Cohomology or homology?}} of \((E, d)\):
+\[H^{p, q}(E^{*, *}, d)=\ker(d : E^{p, q}\to E^{p+s, q+r})/\im(d : E^{p-s, q-r}\to E^{p, q}).\]
+
+\nathaniel{There are lots of different possible gradings but let's focus on the Adams grading since it's the only one we'll actually encounter.}
 
 \begin{definition}
-A \textit{spectral sequence} (of \textit{cohomological type}\footnote{\textcolour{violet}{I'll have to rewrite this section because the Adams spectral sequence is not a cohomological or a homological spectral sequence I don't think - the grading is \(d_r : E^{s,t}\to E^{s+r,t+r-1}\).}}) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, 1-r)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
+A \textit{spectral sequence} (of \textit{Adams type}%\footnote{\textcolour{violet}{I'll have to rewrite this section because the Adams spectral sequence is not a cohomological or a homological spectral sequence I don't think - the grading is \(d_r : E^{s,t}\to E^{s+r,t+r-1}\).}}
+) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, r-1)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
 \end{definition}
 
-We will sometimes write \(d^{p, q}_r\) for the differential \(d_r : E^{p, q}\to E^{p+r,q-s+1}\). 
+We will sometimes write \(d^{p, q}_r\) for the differential \(d_r : E^{p, q}\to E^{p+r,q+r-1}\). 
 
 Consider the term \(E_2^{*, *}\). Define 
-\[Z_2^{p, q}:=\ker d_2^{p,q} \quad \text{and} \quad B_2^{p,q}:=\im d_2^{p-2,q+1}.\]
+\[Z_2^{p, q}:=\ker d_2^{p,q} \quad \text{and} \quad B_2^{p,q}:=\im d_2^{p-2,q-1}.\]
 The condition \(d^2=0\) implies that \(B_2^{p,q}\subq Z_2^{p,q}\subq E_2^{p,q}\), and by definition we have \(E_3^{p,q}\cong Z^{p,q}_2/B_2^{p,q}\). 
 
 Now, write 
-\[Z_3^{p, q}:=\ker d_3^{p,q} \quad \text{and} \quad B_3^{p,q}:=\im d_3^{p-3,q+2}.\]
+\[Z_3^{p, q}:=\ker d_3^{p,q} \quad \text{and} \quad B_3^{p,q}:=\im d_3^{p-3,q-2}.\]
 Since \(Z_3^{p,q}\subq E^{p,q}_3\), it can be written as \(\overline{Z}_3^{p,q}/B_2^{p,q}\) for some \(\overline{Z}_3^{p,q}\subq Z_2^{p,q}\). Similarly, \(B_3^{p,q}\cong \overline B_3^{p,q}/B_2^{p,q}\) for some \(\overline B_3^{p,q}\subq Z_2^{p,q}\). Thus,
 \[E_4^{p,q}\cong Z_3^{p,q}/B_3^{p,q}\cong \frac{\overline Z_2^{p,q}/B_2^{p,q}}{\overline B_3^{p,q}/B_2^{p,q}}\cong \overline Z_3^{p,q}/\overline B_3^{p,q}.\]
 
@@ -567,9 +583,18 @@ the condition \(d_r^{p,q}\) forces  \(\overline{Z}^{p,q}_r=\overline{Z}_{r-1}^{p
 \[B_2^{p,q}\subq \overline B_3^{p,q}\subq \cdots \subq \overline B_{N-1}^{p,q}=B_N^{p,q}= \cdots=B_\infty^{p,q} \subq Z_\infty^{p,q}= \cdots = \overline Z_N^{p,q}=\overline Z^{p,q}_{N-1}\subq \cdots \subq \overline Z_3^{p,q}\subq Z_2^{p,q}\subq E_2^{p,q}.\]
 Thus, \(E_\infty^{p,q}=E_N^{p,q}\). 
 
+Let \(M^*\) be a graded \(R\)-module, and suppose \(M^*\) has a filtration
+\[\cdots \subq F^{n+1}M^*\subq F^nM^* \subq F^{n-1}M^*\subq \cdots \subq M^*.\]
+We define the \textit{associated graded} \(E^{*,*}_0(M^*, )\) of \(M\) to be the bigraded module whose degree \((p,q)\) summand is
+\[E^{p,q}_0(M)= F^pM^{p+q}/F^{p+1}M^{p+q}.\]
+
+\begin{definition}
+A spectral sequence \(\{E_r^{*,*}\}\) \textit{converges} to a graded \(R\)-module \(M^*\) if there is a filtration \(F\) on \(M^*\) such that \(E_\infty^{p,q}\cong E^{p,q}_0(M^*, F)\).
+\end{definition}
+
 \subsection{Exact couples}\label{2503301333}
 
-\textcolour{teal}{[Following \autocite{spectral_sequences}, C2]}
+\textcolour{teal}{[Following \autocite{spectral_sequences}, C2. The way in which our spectral sequence will arise is from an exact couple, so that's what we'll look at next.]}
 
 \begin{definition}
 Let \(D, E\) be \(R\)-modules, and let \(i : D \to D\), \(j : D\to E\), \(k : E \to D\) be module homomorphisms. We call \(\mathcal{C}=\{D, E, i, j, k\}\) an \textit{exact couple} if the diagram below is exact.
@@ -594,21 +619,23 @@ We call \(\mathcal{C}'=\{D', E'. i', j', k'\}\) the \textit{derived couple} of \
 If \(\mathcal{C}=\{D, E, i, j, k\}\) is an exact couple, then \(\mathcal{C}'\) is also an exact couple.
 \end{proposition}
 
+\textcolour{violet}{Check that the theorem below is true as written; i.e., check that changing the grading has the effect you would hope it does.}
+
 \begin{theorem}[{\autocite{spectral_sequences}, Thm 2.8}]\label{2503301131}
-Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,1)\)\footnote{This is the wrong index. For my purposes it should be \((-1, -1)\). So, the spectral sequence will not be of cohomological type, but hopefully the proof still goes through.}, \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of cohomological type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r-1)}\circ k^{(r-1)}\).
+Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,-1)\), \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of Adams type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r-1)}\circ k^{(r-1)}\).
 \end{theorem}
 
-A bigraded exact couple may be displayed in the following diagram, known as a \textit{staircase diagram}:
+Such a bigraded exact couple may be displayed in the diagram below, known as a \textit{staircase diagram}.
 
 \[\begin{tikzcd} 
    &  \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] & \\
- \cdots \arrow[r, "k"] & D^{p+2, q-1} \arrow[d, "i"] \arrow[r, "j"] & E^{p+2,q-1}  \arrow[r, "k"] & D^{p+3,q-1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
- \cdots \arrow[r, "k"] & D^{p+1,q} \arrow[d, "i"] \arrow[r, "j"] & E^{p+1,q}  \arrow[r, "k"] & D^{p+2,q} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
- \cdots \arrow[r, "k"] & D^{p,q+1}  \arrow[d, "i"] \arrow[r, "j"] & E^{p,q+1}  \arrow[r, "k"] & D^{p+1,q+1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, "k"] & D^{p+1, q+1} \arrow[d, "i"] \arrow[r, "j"] & E^{p+1,q+1}  \arrow[r, "k"] & D^{p+2,q+1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, "k"] & D^{p,q} \arrow[d, "i"] \arrow[r, "j"] & E^{p,q}  \arrow[r, "k"] & D^{p+1,q} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
+ \cdots \arrow[r, "k"] & D^{p-1,q-1}  \arrow[d, "i"] \arrow[r, "j"] & E^{p-1,q-1}  \arrow[r, "k"] & D^{p,q-1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  & \vdots &  & \vdots & 
 \end{tikzcd}\]
 
-\textcolour{teal}{[This is the same staircase diagram that Hatcher is talking about (set \(D^{*,*}=\pi_*^SX_*\) and \(E^{*,*}=\pi_*K_*\)) - just modulo some tweak of \(i\)'s bigrading because the bigrading is a bit weird in the Adams spectral sequence.]}
+%\textcolour{teal}{[This is the same staircase diagram that Hatcher is talking about (set \(D^{*,*}=\pi_*^SX_*\) and \(E^{*,*}=\pi_*K_*\)) - just modulo some tweak of \(i\)'s bigrading because the bigrading is a bit weird in the Adams spectral sequence.]}
 
 \subsection{\(\Ext\)}
 Before constructing the Adams spectral sequence, we briefly recall the definition of the Ext functor and some of its basic properties, which will be of importance later. We mainly follow \autocite{weibel}.
@@ -781,7 +808,7 @@ Continuing in this fashion, the computations for rows 4 and 5 are shown in \ref{
 \begin{figure}
 \centering
 \input{mini_ext.tex}
-\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 5\).}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 5\). Note that there is a generator \(\alpha^s_s\) at \((0,s)\) for every \(s\geq 0\), though only the first five are shown here.}
 \label{2504241018}
 \end{figure}
 
@@ -1399,8 +1426,6 @@ Now:
 \item Rewrite Sections \ref{2504041910} and \ref{2503301333} and fix the grading.
 
 \item Figure out how to state \ref{2504081125} without lying about \(2\)-completion.
-
-\item Finish the proof of \ref{2504151709}.
 \end{itemize}
 
 Eventually:
