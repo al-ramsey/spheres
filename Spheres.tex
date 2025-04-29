@@ -130,7 +130,7 @@
 
 \section{Introduction}
 
-\nathaniel{Some intro or first line, or whatever. What's below is the beginning of stable homotopy theory.}
+Calculating the higher homotopy groups of spheres is an important and famously difficult problem in homotopy theory. However, the Freudenthal suspension theorem, given below, is the beginning of the field of \textit{stable homotopy theory}, and in particular allows us to ask not about the homotopy groups of spheres in full generality, but to restrict to the colimits of these groups under suspension. This turns out to be a more approachable problem, and these `stable' groups will be the subject of this essay. 
 
 \begin{theorem}[{\autocite{cobordism}, Thm 1.1.4}, Freudenthal suspension theorem]\label{2504151046}
 If \(\pi_i(X)=0\) for \(i\leq k\) (i.e. \(X\) is \(k\)-connected) then the map 
@@ -145,11 +145,7 @@ Let \(X\) be any topological space, and let \(k\geq 0\) be such that \(X\) is \(
 \[\pi_n(X) \to \pi_{n+1}(\Sigma X) \to \pi_{n+2}(\Sigma^2 X)\to \cdots,\]
 which is equal to its stable value. 
 
-\nathaniel{Our main focus will be the groups \(\pi_k^S(S^0)\cong \pi^S_{n+k}(S^n)\), which we will denote by \(\pi_k^S\).}
-
-%\begin{corollary}
-%Let \(n \leq k+2\). Then the groups \(\pi_{n+k}(S^n)\) depend only on \(k\).
-%\end{corollary}
+We will denote the groups \(\pi_k^S(S^0)\cong \pi^S_{n+k}(S^n)\) by \(\pi_k^S\). The following classical theorem implies immediately that for \(k>0\), \(\pi_k^S\) is finite.
 
 %\item ?\autocite{ass}, Cor 1.9 [not 100\% convinced of how this follows, but believing it for now]: if \(X\) is a CW complex of dimension \(d\) and \(Y\) a \((k-1)\)-connected space, then the suspension homomorphism\footnote{Hang on, the what?? \(X\) isn't the suspension of anything, why on earth would this be a group?} \([X, Y]\to[\Sigma X, \Sigma Y]\) is bijective if \(d<2k-1\) and surjective if \(d=2k-1\). 
 
@@ -157,9 +153,7 @@ which is equal to its stable value.
 \(\pi_{n+k}(S^n)\) is finite for \(k>0\) except when \(n=2m\), \(k=2m-1\). 
 \end{theorem}
 
-\begin{corollary}
-\(\pi_i^S\) is finite for \(i>0\). 
-\end{corollary}
+Our main computational tool for computing \(\pi_k^S\), the Adams spectral sequence, will (in the form we present it here) give us information about the \(2\)-completion of these groups, which coincides for \(\geq 1\) with \(\pi_k^S\) modulo its odd torsion. The remainder of this essay will thus be dedicated to constructing this spectral sequence and using it to determine \(\pi_k^S\) modulo its odd torsion (in the case where \(k\neq 0\)) for \(k \leq 15\). 
 
 %Miscellaneous facts I might need later:
 %\begin{itemize}
@@ -189,7 +183,9 @@ which is equal to its stable value.
 
 \section{The Steenrod algebra}\label{2503221247}
 
-\textcolour{teal}{[Intro. We mostly follow \autocite{hatcher}. We're only doing things modulo 2, so this is the mod 2 Steenrod algebra. It's the algebra of stable cohomology operations, though we won't characterise it this way. The idea is basically that to compute \([X,Y]\) we could look at \(\Hom(H^*(Y), H^*(X))\) because there's a map \([X,Y] \to \Hom(H^*(X), H^*(Y))\). But that's not very much information. We want as much structure as we can possible get, so we replace \(\Hom(H^*(Y), H^*(X))\) by \(\Hom_{\A}(H^*(Y), H^*(X))\), and later we'll look at higher Ext groups and all that.}
+In this section, we give a very brief introduction to the mod 2 Steenrod algebra \(\A\), whose elements are characterised by a series of axioms. It can be shown (see e.g. \autocite{hatcher} p500) that \(\A\) consists exactly of the stable \(\bb{F}_2\) cohomology operations (i.e. the natural transformations \(H^m(-;\bb{F}_2)\to H^n(-; \bb{F}_2)\) for fixed \(n,m\)). 
+
+It will turn out to be useful in computing \(\pi_i^S(X)=\colim_k \pi_{i+k}(\Sigma^k X)\) to consider instead the group \(\Hom(H^*(X), H^*(S^i))\) to which there is a natural map; the Steenrod algebra gives us a way of obtaining more structure on this group, by restricting to \(\Hom_{\A}(H^*(X), H^*(S^i))\) (and later considering the higher Ext groups).  
 
 \begin{proposition}[{\autocite{hatcher}, p489}]\label{2504201153}
 There are maps \(Sq^i : H^n(-; \inte/2\inte)\to H^{n+i}(- ; \inte/2\inte)\) for each \(i\), and they satisfy the following properties: \begin{enumerate}
@@ -225,7 +221,7 @@ The admissible monomials are exactly those to which no Adem relations can be app
 
 \section{If spectra aren't your friends, I can introduce you}
 
-\textcolour{teal}{[Intro. Sections \ref{2504291244}-\ref{2504291245} closely follow \autocite{hatcher5}, Section 5.2, while \ref{2504291246} is a bit technical and just notes some things we'll need later when we look at convergence.  Some intuition on spectra and why we're doing this. Basically spectra are stable CW complexes, and they're nicer, because a lot of stuff about CW complexes carries over but you get extra stuff like cofibrations and fibrations being the same, \([X,Y]\) being an abelian group, etc.]}
+In this section, we introduce spectra, the stable analogue of CW complexes. These objects will turn out to have particularly nice properties; for example, in addition to many of the properties of CW complexes carrying over to spectra, we will see that the collection of maps between two spectra up to homotopy has a natural abelian group structure, and that suspension is an isomorphism. Sections \ref{2504291244}-\ref{2504291245} closely follow Section 5.2 of \autocite{hatcher5}, developing some basic facts about spectra which will be used in \ref{2504291248}, while in Section \ref{2504291246} we note some facts about \(p\)-completion which will be needed later. 
 
 \begin{comment}
 \subsection{?Categorical nonsense}
@@ -373,7 +369,8 @@ Given two maps \(f : X \to Y\), \(g : Y \to Z\) represented by \(f' : X' \to Y\)
 
 Since any strict map \(f' : X' \to Y\) can be taken to be cellular, a map \(f : X \to Y\) induces a well-defined map \(C_*(X)\to C_*(Y)\) (by cofinality), and thus maps on homology and cohomology. 
 
-Further, any map \(\Sigma^\infty S^i \to X\) can be represented by a map \(S^{i+n}\to X_n\), which has compact image and thus by \ref{25004081110} is contained in a finite subcomplex of \(\overline X_n\). Given any map \(f : X \to Y\) represented by a strict map \(f' : X' \to Y\), the \(k\)th suspension of the cells of \(\overline X_n\) lie in \(X'_{n+k}\), and thus \(f\) induces a map \(\pi_*(X) \to \pi_*(Y)\). % well-defined because of the same compactness argument about homotopies S^{i+n} x I --> X
+Further, any map \(\Sigma^\infty S^i \to X\) can be represented by a map \(S^{i+n}\to X_n\), which has compact image and thus %by \ref{25004081110} (which won't exist in the final version)
+is contained in a finite subcomplex of \(\overline X_n\). Given any map \(f : X \to Y\) represented by a strict map \(f' : X' \to Y\), the \(k\)th suspension of the cells of \(\overline X_n\) lie in \(X'_{n+k}\), and thus \(f\) induces a map \(\pi_*(X) \to \pi_*(Y)\). % well-defined because of the same compactness argument about homotopies S^{i+n} x I --> X
 
 \begin{definition}
 Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) and \(g : Y \to X\) such that \(fg=\id_{Y}\) and \(gf=\id_X\).
@@ -393,7 +390,7 @@ Note that \(\Sigma(X_n\times_{\text{red}}I)=\Sigma X_n\times_{\text{red}}I\). Th
 For any CW spectra \(Z\), \([\Sigma^\infty S^t, Z]=\pi_t(Z)\). %[they satisfy the same universal property]
 \end{remark}
 
-For any CW spectra \(X,Y\), the set \([X,Y]\) can the structure of an abelian group, since \(X\) has be written as a double suspension \(\Sigma^2X'\), and each set \([\Sigma^2X'_n, Y_n]\) has the structure of an abelian group by \ref{2504091052}. 
+For any CW spectra \(X,Y\), the set \([X,Y]\) can the structure of an abelian group, since \(X\) has be written as a double suspension \(\Sigma^2X'\), and each set \([\Sigma^2X'_n, Y_n]\) has the structure of an abelian group. %by \ref{2504091052} which also doesn't exist
 
 \begin{theorem}\label{2504151310}
 The suspension map \([X,Y]\to [\Sigma X, \Sigma Y]\) is an isomorphism of groups.
@@ -414,7 +411,8 @@ Recall that \(\Sigma^{-1}\Sigma X=\Sigma\Sigma^{-1}X\simeq X\). For any map \(f 
 \subsection{Cofibration sequences}\label{2503291211}
 
 \begin{definition}
-Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum} is \(X\vee Y :=\{X_n \vee Y_n\}\). Note that \ref{2502211505} gives us an inclusion \(\Sigma(X_n\vee Y_n)\inj X_{n+1}\vee Y_{n+1}\). 
+Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum} is \(X\vee Y :=\{X_n \vee Y_n\}\). Note that %\ref{2502211505} gives us 
+we have an inclusion \(\Sigma(X_n\vee Y_n)\inj X_{n+1}\vee Y_{n+1}\). 
 \end{definition}
 
 \begin{definition}
@@ -447,12 +445,12 @@ is exact.
 We first show exactness at \([Y,X/A]\). The composition \([Y, X]\to [Y, X/A]\to [Y, \Sigma A]\) is clearly zero. Now, if \(Y \xrightarrow{f} X\cup CA \to \Sigma A\) is homotopic to the constant map, then \(f\) must be homotopic to a map contained entirely in \(X\), and thus is in the image of \([Y,X]\to [Y,X/A]\).
 
 Now, we show exactness at \([Y,X]\). Again, the composition \([Y,A]\to [Y,X]\to [Y,X/A]\) is clearly zero. Suppose \(Y \xrightarrow{f} X \to X\cup CA\) is homotopic to the constant map. Then we have a map \(h : CY \to X\cup CA\) making the solid diagram below commute.
-\begin{equation*}\label{2504282249}
+\begin{equation}\label{2504282249}
 \begin{tikzcd} 
 Y \arrow[r, "\id"] \arrow[d, swap, "", dashrightarrow]  & Y \arrow[r, "", hookrightarrow] \arrow[d, "f"] & CY \arrow[d, "h"] \arrow[r, ""] & \Sigma Y \arrow[d, "", dashrightarrow] \arrow[r, "-\id"] & \Sigma Y \arrow[d, "\Sigma f", dashrightarrow]\\ 
  A \arrow[r, swap, "i", hookrightarrow]  & X \arrow[r, ""', hookrightarrow] & X\cup CA \arrow[r, ""'] & \Sigma A \arrow[r, "-\Sigma i"', hookrightarrow] & \Sigma X 
 \end{tikzcd}
-\end{equation*}
+\end{equation}
 We claim that we can fill in the two dotted maps on the right to make homotopy commutative squares. To see this, consider the diagram below,
 \[\begin{tikzcd} 
 Y \arrow[r, "\id"] \arrow[d, swap, "", dashrightarrow]  & Y \arrow[r, "", hookrightarrow] \arrow[d, "f"] & Y\cup CY \arrow[d, "h"] \arrow[r, "", hookrightarrow] & (Y\cup CY)\cup CY \arrow[d, "h\cup Cf"] \arrow[r, "", hookrightarrow] & ((Y\cup CY)\cup CY)\cup C(Y\cup CY) \arrow[d, "(h\cup Cf)\cup Ch"]\\ 
@@ -477,14 +475,16 @@ Let \(A \xinj f X \xrightarrow{i} C_f \xrightarrow{j} \Sigma A \to \cdots\) be a
 
 \subsection{Eilenberg-MacLane spectra}\label{2504291245}
 
+In this section, we briefly record two important facts about Eilenberg-MacLane spectra which will be used later in the construction of the Adams spectral sequence. The first is the analogue of the representability of cohomology by Eilenberg-MacLane spaces for CW complexes, and can be proven similarly.
+
 \begin{theorem}[{\autocite{hatcher5}, Prop 5.45}]\label{2503221328}
 There are natural isomorphisms \(H^m(X;G)\cong [X,K(G,m)]\) for all CW spectra.
 \end{theorem}
 
-Recall that giving a map into a product is equivalent to giving a map into each of its components. We have maps \(F_i : [X, \bigvee_i \bb{K}(G,n_i)]\to [X,\bb{K}(G,n_i)]\) .
+Now, recall that giving a map into a product is equivalent to giving a map into each of its components. We have maps \(F_i : [X, \bigvee_i \bb{K}(G,n_i)]\to [X,\bb{K}(G,n_i)]\) given by composition with the projections, giving a map \(F : [X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\).
 
 \begin{proposition}[{\autocite{hatcher5}, Prop 5.46}]\label{2503231218}
-The map \(F : [X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\) is an isomorphism if \(X\) is a connective spectrum of finite type and \(n_i\to \infty\) as \(i\to\infty\). 
+The map \(F : [X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\) described above is an isomorphism if \(X\) is a connective spectrum of finite type and \(n_i\to \infty\) as \(i\to\infty\). 
 \end{proposition}
 
 \subsection{\(p\)-completion of spectra}\label{2504291246}
@@ -589,7 +589,7 @@ Let \(M^*\) be a graded \(R\)-module, and suppose \(M^*\) has a filtration
 We define the \textit{associated graded} \(E^{*,*}_0(M^*, )\) of \(M\) to be the bigraded module whose degree \((p,q)\) summand is
 \[E^{p,q}_0(M)= F^pM^{p+q}/F^{p+1}M^{p+q}.\]
 
-\begin{definition}
+\begin{definition}\label{2504291808}
 A spectral sequence \(\{E_r^{*,*}\}\) \textit{converges} to a graded \(R\)-module \(M^*\) if there is a filtration \(F\) on \(M^*\) such that \(E_\infty^{p,q}\cong E^{p,q}_0(M^*, F)\).
 \end{definition}
 
@@ -618,7 +618,7 @@ We call \(\mathcal{C}'=\{D', E'. i', j', k'\}\) the \textit{derived couple} of \
 If \(\mathcal{C}=\{D, E, i, j, k\}\) is an exact couple, then \(\mathcal{C}'\) is also an exact couple.
 \end{proposition}
 
-\textcolour{violet}{Check that the theorem below is true as written; i.e., check that changing the grading has the effect you would hope it does.}
+The theorem below is proven in \autocite{spectral_sequences} when \(i\) has bidegree \((-1, 1)\) and the resulting spectral sequence has differentials of bidegree \((r, 1-r)\), however almost the exact same proof works in the case of the Adams grading. 
 
 \begin{theorem}[{\autocite{spectral_sequences}, Thm 2.8}]\label{2503301131}
 Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules equipped with homomorphisms \(i\) of bidegree \((-1,-1)\), \(j\) of bidegree \((0,0)\), and \(k\) of bidegree \((1,0)\), such that \(\{D^{*,*}, E^{*,*}, i, j, k\}\) is an exact couple. Then these data determine a spectral sequence \(\{E_r, d_r\}\) for \(r\in \inte_+\) of Adams type, with \(E_r=(E^{*,*})^{(r-1)}\), the \((r-1)\)st derived module of \(E^{*,*}\) and \(d_r=j^{(r-1)}\circ k^{(r-1)}\).
@@ -759,12 +759,14 @@ which is by construction the chain complex below.
 \[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots.\]
 The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).
 
-\begin{theorem}[{\autocite{hatcher5}, Thm 5.47}]\label{2504081125}
-There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\) and \(\{E_r, d_r\}\implies \pi_{t-s}^S\) modulo torsion of odd order. \textcolour{violet}{[which is probably a lie but let's worry about that later]}
+\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]\label{2504081125}
+The spectral sequence \(\{E_r, d_r\}\) constructed above, in the case where \(X=\bb{S}\), converges to \((\pi_{t-s}^S)^\wedge_2\) in the sense of \ref{2504291808}.
 \end{theorem}
 
 %\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]
 % I want to cite what's above, but it's in terms of X/2 instead of X, and X/2 is defined by taking a smash product, and I REALLY don't want to get into that...
+
+% compromise: I've stated it for X = S, since S/2 can just be defined in terms of a cofibration sequence and it definitely is connective of finite type. 
 
 \subsection{First computations}\label{2504291249}
 
@@ -969,7 +971,7 @@ Condition (\ref{2504241255}) of \ref{2504241258} ensures that if a product is co
 
 \section{Calculating stable homotopy groups}
 
-\nathaniel{Some intro. Let's calculate! We have the tools now! The Yoneda product is entirely algorithmic, so we'll sometimes just state a product - these can be checked using ext or sseq. The calculations are just lengthy. We'll see how far we can get without considering differentials (Sections \ref{2504291251} and \ref{2504291252}), then we'll compute a few (Section \ref{2504291253}). In the end, we'll compute \(\pi_{t-s}^S\) up to \(t-s=15\). We follow \autocite{ass} and \autocite{rognes2} throughout. By the way, once we compute one differential, we'll often get lots of them by linearity - it's very useful!}
+In this section, we will calculate the groups \((\pi_{t-s}^S)^\wedge_2\) for \(t-s\leq 15\). We saw in sections \ref{2504291249} and  \ref{2504171922} that computing \(\Ext^{s,t}_{\A}(H^*(X), \bb{F}_2)\) and Yoneda products is entirely algorithmic; for \(t-s\leq 5\) we will show how to use the Yoneda product to resolve by hand the ambiguities mentioned in Section \ref{2504291249}, and for \(t-s > 5\) we will use the Adams spectral sequence calculator (see \autocite{sseq}) to compute \(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\). We will see in sections \ref{2504291251} and \ref{2504291252} that the groups \((\pi_{t-s}^S)^\wedge_2\) can be completely determined this way for \(t-s \leq 13\). Section \ref{2504291253} will be dedicated to proving that certain differentials at \(t-s=15\) are nontrivial, and will culminate in the computation of \((\pi_{14}^S)^\wedge_2\) and \((\pi_{15}^S)^\wedge_2\). We follow \autocite{ass} and \autocite{rognes2} throughout. 
 
 \subsection{Resolving extensions}\label{2504291251}
 
@@ -1118,7 +1120,7 @@ satisfies \((f^*)^*(\alpha \beta)=(f^*)^*(\alpha)(f^*)^*(\beta)\). This follows 
 \end{lemma}
 
 \begin{ourproof}
-Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. \nathaniel{Using sseq or ext, we calculate \(h_4i=0\) and \(h_0h_3^2i\neq 0\), using the Yoneda product}. Now, \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Further, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).
+Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. One can calculate (using e.g. \autocite{ext}) that \(h_4i=0\) and \(h_0h_3^2i\neq 0\). Now, \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Further, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).
 
 Now, \(d_2(f_0)\neq 0\), so looking at Figure \ref{2504201924} we see that \(0\neq h_0d_2(f_0)=d_2(h_0f_0)=d_2(h_1e_0)=h_1d_2(e_0)\), and thus \(d_2(e_0)\neq 0\).\done
 \end{ourproof}
@@ -1140,13 +1142,6 @@ However, any map \(H^n(\bb{S})\to H^{n-1}(\bb{S}^8)\) must be zero, so we get sh
 \[0 \leftarrow H^n(\bb{S})\xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow 0.\]
 Taking a direct sum gives a short exact sequence
 \[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C_\sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0,\]
-and from this we get a short exact sequence of chain complexes
-\[0 \to \Hom(\bb{F}_2, I_\bullet) \xrightarrow{i^*} \Hom(H^*(C_\sigma), I_\bullet) \xrightarrow{j^*} \Hom(\bb{F}_2[8], I_\bullet)\to 0,\]
-for any injective resolution \(I\), and thus the long exact sequence below.
-\[\begin{tikzcd}[row sep=8ex, column sep=3ex]
-\cdots \arrow[r, ""] & \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext_{\A}^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
-\Ext_{\A}^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext_{\A}^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] & \Ext_{\A}^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
-\end{tikzcd}\]
 
 \begin{landscape}
 \begin{figure}
@@ -1157,10 +1152,18 @@ for any injective resolution \(I\), and thus the long exact sequence below.
 \end{figure}
 \end{landscape}
 
+and from this we get a short exact sequence of chain complexes
+\[0 \to \Hom(\bb{F}_2, I_\bullet) \xrightarrow{i^*} \Hom(H^*(C_\sigma), I_\bullet) \xrightarrow{j^*} \Hom(\bb{F}_2[8], I_\bullet)\to 0,\]
+for any injective resolution \(I\), and thus the long exact sequence below.
+\[\begin{tikzcd}[row sep=8ex, column sep=3ex]
+\cdots \arrow[r, ""] & \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext_{\A}^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
+\Ext_{\A}^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext_{\A}^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] & \Ext_{\A}^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
+\end{tikzcd}\]
 Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
 %\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 Now, \(f_0\in \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
 \[\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext_{\A}^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
+
 Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext_{\A}^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext_{\A}^{0,8}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication (by \ref{2504211139}), \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+\hat i(h_2)\hat{i}(h_4)\). Now, \(d_2(h_2h_4)=0\), since otherwise it would be equal to \(e_0\), and we would have \(d_2^2(h_2h_4)\neq 0\), contradicting the fact that \(d_2\) is a differential. Thus, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(\hat i (h_2)\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)).
 
 Finally, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext_{\A}^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(\hat i(h_2)d_2(\overline{\overline{h_0^2h_3}})= d_2(\hat i(h_2)\overline{\overline{h_0^2h_3}})=
@@ -1205,7 +1208,7 @@ Now, \((\pi_7^S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 \caption{The \(E_3\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the differentials are shown in green.}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 \centering
 \input{e4page.tex}
 \caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
@@ -1418,17 +1421,13 @@ A compact subspace of a CW complex is contained in a finite subcomplex.
 The plot thickens. From \href{https://ncatlab.org/nlab/show/Eilenberg-Mac+Lane+spectrum}{the nLab}: ``[some smash product] is non-canonically equivalent to a product of EM-spectra (hence a wedge sum of EM-spectra in the finite case)''. ???????
 
 \item I'm a bit suspicious of the proof of \ref{2504151310}, because the proof is more complicated in \autocite{hatcher5}. Maybe raise this.
+
+\item I'm not happy with \ref{2504081125}...
 \end{itemize}
 
 \subsection{To do}\label{2503221342}
 
 Now:
-
-\begin{itemize}
-\item Rewrite Sections \ref{2504041910} and \ref{2503301333} and fix the grading.
-
-\item Figure out how to state \ref{2504081125} without lying about \(2\)-completion.
-\end{itemize}
 
 Eventually:
 
