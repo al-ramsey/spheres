@@ -22,6 +22,8 @@
 \usepackage{pdflscape}
 %\usepackage{lscape}
 
+\usepackage{caption} % for making figure references point to the figure instead of the caption (why this is not the default is beyond me, like yes you're right LaTeX, my figures are purely decorative, they're only there to have something to attach a caption to).
+
 \usepackage{tikz}
 \usetikzlibrary{cd}
 \usetikzlibrary{tikzmark}
@@ -118,19 +120,17 @@
 
 \pagebreak
 
-Key:
+%Key:
 
-\textcolour{teal}{To do (likely straightforward)}
+%\textcolour{teal}{To do (likely straightforward)}
 
-\textcolour{violet}{To do (likely difficult)}
+%\textcolour{violet}{To do (likely difficult)}
 
-\textcolour{purple}{Problems}
+%\textcolour{purple}{Problems}
 
 \section{Introduction}
 
-\begin{itemize}
-\item Define homotopy groups
-\end{itemize}
+\nathaniel{Some intro or first line, or whatever. What's below is the beginning of stable homotopy theory.}
 
 \begin{theorem}[{\autocite{cobordism}, Thm 1.1.4}, Freudenthal suspension theorem]\label{2504151046}
 If \(\pi_i(X)=0\) for \(i\leq k\) (i.e. \(X\) is \(k\)-connected) then the map 
@@ -141,14 +141,17 @@ If \(\pi_i(X)=0\) for \(i\leq k\) (i.e. \(X\) is \(k\)-connected) then the map
 is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 \end{theorem}
 
-\begin{itemize}
-\item This implies \(\pi_{n+k}(S^n)\) depends only on \(k\) for \(n\geq k+2\)
-\item (Obviously be careful with basepoints above)
-\item Suppose \(X\) is \(k\)-connected. Then, for \(k\geq 0\), \(0=\pi_k(X)\cong \pi_{k+1}(\Sigma X)\), so whenever a space is \(k\)-connected its suspension is \(k+1\)-connected. 
-\item As you take suspensions, then, your successive bounds are \(n \leq 2k\), \(n+1\leq 2k+2\implies n \leq 2k+1\), \(n\leq 2k+2\), etc ... so the sequence \(\pi_n(X)\to \pi_{n+1}(\Sigma X)\to \cdots\) will eventually stabilise.  
-\item Thus, if you take the colimit of that direct system, it'll just equal the stable value, with the higher legs just being the inverse isomorphisms.
+Let \(X\) be any topological space, and let \(k\geq 0\) be such that \(X\) is \(k\)-connected. Then \ref{2504151046} implies that \(\Sigma X\) is \((k+1)\)-connected, since \(0=\pi_k(X)\cong \pi_{k+1}(\Sigma X)\). As we take suspensions of \(X\), the successive bounds are \(n \leq 2k\), \(n \leq 2k+1\), \(n\leq 2k+2\), and so on, so the sequence \(\pi_n(X)\to \pi_{n+1}(\Sigma X)\to \cdots\) will eventually stabilise. We thus define the \textit{stable homotopy group} \(\pi_n^S(X)\) to be the filtered colimit of the system
+\[\pi_n(X) \to \pi_{n+1}(\Sigma X) \to \pi_{n+2}(\Sigma^2 X)\to \cdots,\]
+which is equal to its stable value. 
+
+\nathaniel{Our main focus will be the groups \(\pi_k^S(S^0)\cong \pi^S_{n+k}(S^n)\), which we will denote by \(\pi_k^S\).}
+
+%\begin{corollary}
+%Let \(n \leq k+2\). Then the groups \(\pi_{n+k}(S^n)\) depend only on \(k\).
+%\end{corollary}
+
 %\item ?\autocite{ass}, Cor 1.9 [not 100\% convinced of how this follows, but believing it for now]: if \(X\) is a CW complex of dimension \(d\) and \(Y\) a \((k-1)\)-connected space, then the suspension homomorphism\footnote{Hang on, the what?? \(X\) isn't the suspension of anything, why on earth would this be a group?} \([X, Y]\to[\Sigma X, \Sigma Y]\) is bijective if \(d<2k-1\) and surjective if \(d=2k-1\). 
-\end{itemize}
 
 \begin{theorem}[{\autocite{cobordism}, Thm 1.1.8}]
 \(\pi_{n+k}(S^n)\) is finite for \(k>0\) except when \(n=2m\), \(k=2m-1\). 
@@ -184,11 +187,9 @@ is an isomorphism for \(n \leq 2k\) and surjective for \(n=2k+1\)
 %\item ?Stable homotopy groups are a homology theory.
 %\end{itemize}
 
-\autocite{ass}, \autocite{hatcher}
-
 \section{The Steenrod algebra}\label{2503221247}
 
-\textcolour{teal}{[Intro. Sources: \autocite{hatcher}]}
+\textcolour{teal}{[Intro. We mostly follow \autocite{hatcher}. We're only doing things modulo 2, so this is the mod 2 Steenrod algebra. It's the algebra of stable cohomology operations, though we won't characterise it this way. The idea is basically that to compute \([X,Y]\) we could look at \(\Hom(H^*(Y), H^*(X))\) because there's a map \([X,Y] \to \Hom(H^*(X), H^*(Y))\). But that's not very much information. We want as much structure as we can possible get, so we replace \(\Hom(H^*(Y), H^*(X))\) by \(\Hom_{\A}(H^*(Y), H^*(X))\), and later we'll look at higher Ext groups and all that.}
 
 \begin{proposition}[{\autocite{hatcher}, p489}]\label{2504201153}
 There are maps \(Sq^i : H^n(-; \inte/2\inte)\to H^{n+i}(- ; \inte/2\inte)\) for each \(i\), and they satisfy the following properties: \begin{enumerate}
@@ -204,7 +205,7 @@ There are maps \(Sq^i : H^n(-; \inte/2\inte)\to H^{n+i}(- ; \inte/2\inte)\) for 
 
 Define \(Sq:=Sq^0+Sq^1+\cdots\). Then \(Sq(\alpha\smile \beta)=Sq(\alpha)\smile Sq(\beta)\) (since \((Sq(\alpha\smile \beta))_n=\sum_iSq^i(\alpha)\smile Sq^{n-i}(\beta)=(Sq(\alpha)\smile Sq(\beta))_n\)). Thus, \(Sq\) is a ring homomorphism. 
 
-\begin{proposition}[{\autocite{hatcher}, p496}]
+\begin{proposition}[{\autocite{hatcher}, p496}]\label{2504291153}
 The Steenrod squares satisfy the following relations, known as the \textit{Adem relations}:
 \[Sq^aSq^b=\sum_j {b-j-1\choose a-2j}Sq^{a+b-j}Sq^j \quad \text{if } a<2b,\]
 where \({m \choose n}\) is zero if \(m\) or \(n\) is negative, or \(m<n\), and \({m \choose 0}=1\) for \(m \geq 0\).
@@ -222,9 +223,9 @@ Write \(Sq^I\) for the monomial \(Sq^{i_1}Sq^{i_2}\cdots Sq^{i_n}\). Then \(Sq^I
 
 The admissible monomials are exactly those to which no Adem relations can be applied. Thus, \(\A\) is generated as an \(\bb{F}_2\) module by admissible monomials. 
 
-\section{Spectra may not be your friends, but I can introduce you}
+\section{If spectra aren't your friends, I can introduce you}
 
-\textcolour{teal}{[Intro. Sources: \autocite{ass}, \autocite{hatcher5}, \autocite{concise}, \autocite{spectra}]}
+\textcolour{teal}{[Intro. Sections \ref{2504291244}-\ref{2504291245} closely follow \autocite{hatcher5}, Section 5.2, while \ref{2504291246} is a bit technical and just notes some things we'll need later when we look at convergence.  Some intuition on spectra and why we're doing this. Basically spectra are stable CW complexes, and they're nicer, because a lot of stuff about CW complexes carries over but you get extra stuff like cofibrations and fibrations being the same, \([X,Y]\) being an abelian group, etc.]}
 
 \begin{comment}
 \subsection{?Categorical nonsense}
@@ -241,9 +242,7 @@ based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of 
 \end{itemize}
 \end{comment}
 
-\subsection{Definitions and examples}
-
-\textcolour{teal}{[Some intro, below follows \autocite{hatcher5}, Section 5.2. Some intuition on spectra and why we're doing this.]}
+\subsection{Definitions and examples}\label{2504291244}
 
 %[Maybe I could also look at \autocite{hatcher} p454 onwards?]
 
@@ -419,7 +418,7 @@ Let \(X=\{X_n\}, Y=\{Y_n\}\) be spectra. Then their \textit{wedge sum} is \(X\ve
 \end{definition}
 
 \begin{definition}
-Let \(f : X \to Y\) be a map of CW spectra, and let \(f' : X' \to Y\) be a representative for \(f\), where \(X'\subq X\) is cofinal. The \textbf{mapping cylinder} \(M_f\) has components \((M_f)_n=M_{f'_n}\), where \(M_{f'_n}\) is the reduced mapping cylinder of \(f'_n\), and is independent of the choice of \(X'\) up to equivalence.
+Let \(f : X \to Y\) be a map of CW spectra, and let \(f' : X' \to Y\) be a representative for \(f\), where \(X'\subq X\) is cofinal. The \textit{mapping cylinder} \(M_f\) has components \((M_f)_n=M_{f'_n}\), where \(M_{f'_n}\) is the reduced mapping cylinder of \(f'_n\), and is independent of the choice of \(X'\) up to equivalence.
 \end{definition}
 
 \begin{remark}\label{2504231152}
@@ -459,12 +458,12 @@ We claim that we can fill in the two dotted maps on the right to make homotopy c
 Y \arrow[r, "\id"] \arrow[d, swap, "", dashrightarrow]  & Y \arrow[r, "", hookrightarrow] \arrow[d, "f"] & Y\cup CY \arrow[d, "h"] \arrow[r, "", hookrightarrow] & (Y\cup CY)\cup CY \arrow[d, "h\cup Cf"] \arrow[r, "", hookrightarrow] & ((Y\cup CY)\cup CY)\cup C(Y\cup CY) \arrow[d, "(h\cup Cf)\cup Ch"]\\ 
  A \arrow[r, swap, "i", hookrightarrow]  & X \arrow[r, ""', hookrightarrow] & X\cup CA \arrow[r, ""', hookrightarrow] & (X\cup CA)\cup CX \arrow[r, ""', hookrightarrow] & ((X\cup CA)\cup CX) \cup C(X\cup CA)
  \end{tikzcd}\] 
-where \(h\cup Cf\) is given by applying \(h\) to \(Y\cup CY\) and \(Cf\) to \(CY\) (which is well-defined since the maps agree on the intersection), and likewise for \((h\cup Cf)\cup Ch\). Now, the square below commutes, since the identification \(((Y\cup CY)\cup \textcolour{red}{CY})\cup C(Y\cup CY)\simeq \Sigma Y\) collapses everything except the factor in red, and similarly for \(X\). 
+where \(h\cup Cf\) is given by applying \(h\) to \(Y\cup CY\) and \(Cf\) to \(CY\) (which is well-defined since the maps agree on the intersection), and likewise for \((h\cup Cf)\cup Ch\). Now, the square below commutes, since the identification \(((Y\cup CY)\cup \textcolour{red}{CY})\cup C(Y\cup CY)\simeq \Sigma Y\) collapses everything except the factor in red (whose base is collapsed), and similarly for \(X\). 
 \[\begin{tikzcd}
 ((Y\cup CY)\cup CY)\cup C(Y\cup CY) \arrow[r, "\simeq", twoheadrightarrow] \arrow[d, swap, "h\cup Cf"]  & \Sigma Y \arrow[d, "\Sigma f"]  \\
 ((X\cup CA)\cup CX)\cup C(X\cup CA) \arrow[r, swap, "\simeq", twoheadrightarrow]  & \Sigma X
 \end{tikzcd}\]
-Now, let \(p_Y : (Y\cup CY)\cup CY \to \Sigma Y\) and \(p_A : (X\cup CA)\cup CX\to \Sigma A\) be the projections, with homotopy inverses \(h_Y\) and \(h_A\) respectively. We define \(g : \Sigma Y \to \Sigma A\) by \(g := p_A \circ (h\cup Cf)\circ h_Y^{-1}\). This \(g\) makes the diagram in (\ref{2504282249}) commute up to homotopy, where the minus signs arise from the fact that opposite hemispheres of the spaces \(((Y\cup CY)\cup CY)\cup C(Y\cup CY)\) and \((Y\cup CY)\cup CY\) are collapsed under the quotient map (and likewise for the bottom row). 
+Now, let \(p_Y : (Y\cup CY)\cup CY \to \Sigma Y\) and \(p_A : (X\cup CA)\cup CX\to \Sigma A\) be the projections, with homotopy inverses \(h_Y\) and \(h_A\) respectively. We define \(g : \Sigma Y \to \Sigma A\) by \(g := p_A \circ (h\cup Cf)\circ h_Y\). This \(g\) makes the diagram in (\ref{2504282249}) commute up to homotopy, where the minus signs arise from the fact that opposite hemispheres of the spaces \(((Y\cup CY)\cup CY)\cup C(Y\cup CY)\) and \((Y\cup CY)\cup CY\) are collapsed under the quotient map (and likewise for the bottom row). 
 
 By \ref{2504151310}, we can take the map \(g : \Sigma Y \to \Sigma A\) to be \(\Sigma k\) for some \(k : Y \to A\). Then \((\Sigma f)\circ (-\id) \simeq (-\Sigma i)(\Sigma k)\), so \(\Sigma f\simeq \Sigma(ik)\), and thus \(f \simeq ik\) as required.\done
 \end{ourproof}
@@ -476,7 +475,7 @@ Let \(A \xinj f X \xrightarrow{i} C_f \xrightarrow{j} \Sigma A \to \cdots\) be a
 \[\cdots \leftarrow H^{n-1}(\Sigma A) \leftarrow H^n(X) \xleftarrow{i^*} H^n(C_f) \xleftarrow{j^*} H^n(\Sigma A)\leftarrow H^{n+1}(X) \leftarrow \cdots.\]
 \end{lemma}
 
-\subsection{Eilenberg-MacLane spectra}
+\subsection{Eilenberg-MacLane spectra}\label{2504291245}
 
 \begin{theorem}[{\autocite{hatcher5}, Prop 5.45}]\label{2503221328}
 There are natural isomorphisms \(H^m(X;G)\cong [X,K(G,m)]\) for all CW spectra.
@@ -488,7 +487,7 @@ Recall that giving a map into a product is equivalent to giving a map into each 
 The map \(F : [X, \bigvee_i \bb{K}(G,n_i)]\to \prod_i [X,\bb{K}(G,n_i)]\) is an isomorphism if \(X\) is a connective spectrum of finite type and \(n_i\to \infty\) as \(i\to\infty\). 
 \end{proposition}
 
-\subsection{\(p\)-completion of spectra}
+\subsection{\(p\)-completion of spectra}\label{2504291246}
 
 \begin{definition}[{\autocite{concise}, Def 10.1.1}]
 Let \(A\) be an abelian group. Then its \textit{\(p\)-adic completion} is the limit 
@@ -527,25 +526,27 @@ Let \(X\) be a connective spectrum of finite type, and let \(Y\) be \(p\)-comple
 
 \section{The Adams spectral sequence}
 
-\textcolour{teal}{[Some intro. Following \autocite{spectral_sequences}, \autocite{hatcher5}, \autocite{weibel}, \autocite{hatcher}. From this point on, all homology and cohomology will be taken with \(\bb{F}_2\) coefficients, and we will thus ease notation by writing \(H^*(X)\) (resp. \(H_*(X)\)) for \(H^*(X, \bb{F}_2)\) (resp. \(H_*(X;\bb{F}_2)\)). ]}
+We will now turn to the main tool for computing stable homotopy groups of spheres - the Adams spectral sequence. Sections \ref{2504041910} and \ref{2503301333} give a very brief explanation of spectral sequences and one important way in which they arise, following Chapter 2 of \autocite{spectral_sequences}. Section \ref{2504291247} then covers some homological algebra which will be needed later, and is drawn mostly from \autocite{weibel}. In Section \ref{2504291248} we will finally construct the Adams spectral sequence, and in Section \ref{2504291249} we make some initial computations of the stable homotopy groups using the tools we have developed; both of these sections mostly follow \autocite{hatcher5}. Finally, Section \ref{2504291250} will explore further structure which can be put on the Adams spectral sequence, which will help narrow down possibilities for the stable homotopy groups; we will follow \autocite{ass} and \autocite{rognes2}. 
+
+From this section onwards, all homology and cohomology will be taken with \(\bb{F}_2\) coefficients, and we will thus ease notation by writing \(H^*(X)\) (resp. \(H_*(X)\)) for \(H^*(X, \bb{F}_2)\) (resp. \(H_*(X;\bb{F}_2)\)).
 
 \subsection{Spectral sequences}\label{2504041910}
 
-\textcolour{teal}{[Some notes from \autocite{spectral_sequences}, C2 - just here as a placeholder/reference and I'll probably completely rewrite this bit. Maybe add some notes from \autocite{ass}]}
+%\textcolour{teal}{[Some notes from \autocite{spectral_sequences}, C2 - just here as a placeholder/reference and I'll probably completely rewrite this bit. Maybe add some notes from \autocite{ass}]}
 
 % I made up the definition below but I mean come on. Why are people so weird about the gradings??
 \begin{definition}
 A \textit{differential bigraded module} \(E\) over a ring \(R\) is a collection of \(R\)-modules \(\{E^{p, q}\}\), \(p, q\in \inte\), together with a map \(d : E^{p, q} \to E^{p+s, q+r}\) for each \(p, q\) and some fixed \(s,r \in \inte\), satisfying \(d^2=0\). 
 \end{definition}
 
-We can take the homology\footnote{\textcolour{violet}{Cohomology or homology?}} of \((E, d)\):
-\[H^{p, q}(E^{*, *}, d)=\ker(d : E^{p, q}\to E^{p+s, q+r})/\im(d : E^{p-s, q-r}\to E^{p, q}).\]
+We can take the homology of \((E, d)\):
+\[H_{p, q}(E^{*, *}, d)=\ker(d : E^{p, q}\to E^{p+s, q+r})/\im(d : E^{p-s, q-r}\to E^{p, q}).\]
 
-\nathaniel{There are lots of different possible gradings but let's focus on the Adams grading since it's the only one we'll actually encounter.}
+In the definition of a spectral sequence below, we will specialise to a specific bigrading, the \textit{Adams grading}, since it is the one we will encounter in \ref{2504291248}. There are, however, different gradings which correspond to different types of spectral sequences, the most common of which are (co)homological spectral sequences. 
 
 \begin{definition}
 A \textit{spectral sequence} (of \textit{Adams type}%\footnote{\textcolour{violet}{I'll have to rewrite this section because the Adams spectral sequence is not a cohomological or a homological spectral sequence I don't think - the grading is \(d_r : E^{s,t}\to E^{s+r,t+r-1}\).}}
-) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, r-1)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
+) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, r-1)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H_{p, q}(E_r^{*, *}, d_r)\).
 \end{definition}
 
 We will sometimes write \(d^{p, q}_r\) for the differential \(d_r : E^{p, q}\to E^{p+r,q+r-1}\). 
@@ -594,8 +595,6 @@ A spectral sequence \(\{E_r^{*,*}\}\) \textit{converges} to a graded \(R\)-modul
 
 \subsection{Exact couples}\label{2503301333}
 
-\textcolour{teal}{[Following \autocite{spectral_sequences}, C2. The way in which our spectral sequence will arise is from an exact couple, so that's what we'll look at next.]}
-
 \begin{definition}
 Let \(D, E\) be \(R\)-modules, and let \(i : D \to D\), \(j : D\to E\), \(k : E \to D\) be module homomorphisms. We call \(\mathcal{C}=\{D, E, i, j, k\}\) an \textit{exact couple} if the diagram below is exact.
 \[\begin{tikzcd}
@@ -637,7 +636,7 @@ Such a bigraded exact couple may be displayed in the diagram below, known as a \
 
 %\textcolour{teal}{[This is the same staircase diagram that Hatcher is talking about (set \(D^{*,*}=\pi_*^SX_*\) and \(E^{*,*}=\pi_*K_*\)) - just modulo some tweak of \(i\)'s bigrading because the bigrading is a bit weird in the Adams spectral sequence.]}
 
-\subsection{\(\Ext\)}
+\subsection{The \(\Ext\) functor}\label{2504291247}
 Before constructing the Adams spectral sequence, we briefly recall the definition of the Ext functor and some of its basic properties, which will be of importance later. We mainly follow \autocite{weibel}.
 
 \begin{definition}\label{2504211942}
@@ -673,7 +672,7 @@ Let \(M, N\) be \(R\)-modules. For any projective resolution \(P\) and any injec
 
 We define \(\Ext^{n}_R(M,N):=H^n(\Hom_R(P_\bullet, N))=H^n(\Hom_R(N, I_\bullet))\). 
 
-\subsection{Setting up the Adams spectral sequence}
+\subsection{Setting up the Adams spectral sequence}\label{2504291248}
 
 Let \(X\) be a connective CW spectrum of finite type. Then \(H^*(X)\) is an \(\A\)-module, since \(H^i(X)\cong H^{i+n}(X_n)\) for sufficiently large \(n\), so we can define \(Sq^j : H^i(X)\to H^{i+j}(X)\) by evaluating \(Sq^j : H^{i+n}(X_n)\to H^{i+j+n}(X_n)\) followed by enough suspensions. Note that we could also have first suspended \(H^{i+n}(X_n)\) and \(H^{i+j+n}(X_n)\) until they were both stable, and then evaluated \(Sq^j\), but that these two \(\A\)-actions coincide by \ref{2504201153} (4). %\textcolour{violet}{[Is this an actual module action? Is the former one also a module action?]} A: Yes, because it was for normal CW complexes. 
 
@@ -729,7 +728,7 @@ which form the staircase diagram shown below.
 \end{tikzcd}
 \end{equation}
 %where the rows are given by applying \(\pi_*\) to the diagram (\ref{2503301114}), and the columns <-- actually you get the rows for free
-This gives rise to a spectral sequence, by \textcolour{teal}{[some version of]} \ref{2503301131}.
+This gives rise to a spectral sequence, by \ref{2503301131}.
 
 Now, since \(K_s = \bigvee_i \bb{K}(G, n_{s_i})\),  \ref{2503231218}, tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(G, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
 %talk about death by indices...
@@ -767,7 +766,9 @@ There is a spectral sequence \(\{E_r, d_r\}\) such that \(E_2^{s,t}=\Ext_{\A}^{s
 %\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]
 % I want to cite what's above, but it's in terms of X/2 instead of X, and X/2 is defined by taking a smash product, and I REALLY don't want to get into that...
 
-\subsection{First computations}
+\subsection{First computations}\label{2504291249}
+
+Before we begin any calculations, we first prove a small lemma which will make computing the \(E_2\) page much easier. 
 
 We will say that a free resolution
 \[\cdots \xrightarrow{f_3} F_2 \xrightarrow{f_2} F_1 \xrightarrow{f_1} F_0 \xrightarrow{f_0} H^*(X)\]
@@ -789,7 +790,7 @@ are all zero, so \(\Ext_{\A}^{s,t}(H^*(X), \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\
 
 Now, since \(\bb{F}_2\) is concentrated in degree 0, the only elements of \(F_s\) which can be sent to \(1 \in \bb{F}_2\) are the elements of degree \(t\), so for every generator of \(F_s\) in degree \(t\), there is an \(\bb{F}_2\) summand in \(\Hom^t_{\A}(F_s, \bb{F}_2)\). 
 
-Figure \ref{2504201106} shows part of a construction of a minimal free resolution of \(H^*(\bb{S})=\bb{F}_2\), where position \((t-s, s)\) consists of degree \(t-s\) elements of \(F_s\). Instead of inducting on \(s\) and calculating column by column, we will instead induct on \(t-s\), assuming the previous rows have been computed. Note that since we will add the minimum number of generators needed in each row, the addition of new generators in later rows will not affect the induction (because a new generator will not impact the kernel of any \(f_i\)). 
+Figure \ref{2504201106} shows part of a construction of a minimal free resolution of \(H^*(\bb{S})=\bb{F}_2\), where position \((t-s, s)\) consists of degree \(t-s\) elements of \(F_s\).  Instead of inducting on \(s\) and calculating column by column, we will instead induct on \(t-s\), assuming the previous rows have been computed. Note that since we will add the minimum number of generators needed in each row, the addition of new generators in later rows will not affect the induction (because a new generator will not impact the kernel of any \(f_i\)). 
 
 For the first row, at position \((0,0)\), we need a generator \(\iota\in F_0\) to map to \(1 \in \bb{F}_2\), in order to make \(f_0\) a surjection. The kernel of \(f_0\) thus contains every multiple of \(\iota\) by an element of \(\A\), which by exactness should be contained in the image of \(f_1\). Thus, we need a new generator \(\alpha^1_1\) at \((0,1)\) mapping to \(Sq^1\iota\). The element \(Sq^1\alpha^1_1\in F_1\) is therefore in the kernel of \(f_1\), since \(Sq^1Sq^1=0\), so we need a generator \(\alpha^2_2\) at \((0,2)\) mapping to \(Sq^1\alpha^1_1\). Now, it is clear that each position \((0,s)\) will require a new generator \(\alpha^s_s\), since each \(Sq^1\alpha^{s-1}_{s-1}\) maps to \(Sq^1Sq^1 \alpha^{s-2}_{s-2}=0\), so the first row is completely determined, and \(\Ext^{s,s}_{\A}(\bb{F}_2, \bb{F}_2)=\bb{F}_2\). 
 
@@ -797,7 +798,7 @@ In the second row, a generator \(\alpha^1_2\) is needed in position \((1,1)\) ma
 
 In row three, generators \(\alpha^1_4\), \(\alpha^2_5\), and \(\alpha^3_6\) are needed to map to \(Sq^4\iota\), \(Sq^4\alpha^1_1+Sq^2Sq^1\alpha^1_2+Sq^1 \alpha^1_4\), and \(Sq^4\alpha^2_2+Sq^2\alpha^2_4+Sq^1\alpha^2_5\) respectively, since the latter elements are in the kernel of their respective \(f_i\)'s. No new generators are needed after \(s=4\), since \(Sq^1\alpha^3_6\) maps to \(Sq^5\alpha^2_2+Sq^3\alpha^2_4\), \(Sq^4\alpha^s_s\) maps to \(Sq^4Sq^1\alpha^{s-1}_{s-1}\), and although \(Sq^3Sq^1\alpha^s_s\) maps to zero, it is hit by \(Sq^3\alpha^{s+1,s+1}\). 
 
-Continuing in this fashion, the computations for rows 4 and 5 are shown in \ref{2504201106}, though the Adem relations required to justify them are not. Note that although to compute each row, knowledge of maps involving the next two rows is required, rows 6 and 7 do not contain all the new generators needed. 
+Continuing in this fashion, the computations for rows 4 and 5 are shown in Figure \ref{2504201106}, though the Adem relations of \ref{2504291153} required to justify them are not. Note that although to compute each row, knowledge of maps involving the next two rows is required, rows 6 and 7 do not contain all the new generators needed. 
 
 \begin{figure}
 \centering
@@ -814,9 +815,7 @@ Continuing in this fashion, the computations for rows 4 and 5 are shown in \ref{
 
 From Figure \ref{2504241018}, we see that \((\pi_1^S)^\wedge_2\) has order dividing 2, \((\pi_2^S)^\wedge_2=\inte/2\inte\), \((\pi_3^S)^\wedge_2\) has order 8, and \((\pi_4^S)^\wedge_2=(\pi_5^S)^\wedge_2=0\). However, we do not currently have the tools to determine whether or not \(\alpha^1_2\) survives to the \(E_\infty\) page, or the isomorphism class of \((\pi_3^S)^\wedge_2\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
 
-\subsection{Multiplicative structure}
-
-\textcolour{teal}{[Intro. Sources: \autocite{ass}, \autocite{rognes2}, \autocite{hatcher}]}
+\subsection{Multiplicative structure}\label{2504291250}
 
 \subsubsection{The Yoneda product}\label{2504171922}
 
@@ -970,9 +969,9 @@ Condition (\ref{2504241255}) of \ref{2504241258} ensures that if a product is co
 
 \section{Calculating stable homotopy groups}
 
-\nathaniel{Some intro. Sources: \autocite{ass}, \autocite{rognes2}}
+\nathaniel{Some intro. Let's calculate! We have the tools now! The Yoneda product is entirely algorithmic, so we'll sometimes just state a product - these can be checked using ext or sseq. The calculations are just lengthy. We'll see how far we can get without considering differentials (Sections \ref{2504291251} and \ref{2504291252}), then we'll compute a few (Section \ref{2504291253}). In the end, we'll compute \(\pi_{t-s}^S\) up to \(t-s=15\). We follow \autocite{ass} and \autocite{rognes2} throughout. By the way, once we compute one differential, we'll often get lots of them by linearity - it's very useful!}
 
-\subsection{Resolving extensions}
+\subsection{Resolving extensions}\label{2504291251}
 
 \begin{proposition}[{\autocite{ass}, Cor 6.5}]
 We have the following relations:
@@ -985,7 +984,7 @@ We have the following relations:
 \end{proposition}
 
 \begin{ourproof}
-We show the first two relations; the final two are obtained similarly.
+We show the first two relations; the final two are obtained similarly. % I promise the only reason I left out the final two relations was because they both involve a sum of three elements in the image of one of the maps, and I couldn't get the tikz-cd diagrams to align. Also for page count reasons. Basically they're not any more difficult than the first two. 
 
 Consider the diagram below. 
 \[\begin{tikzcd}[row sep = 0.8ex, column sep=0.8ex]
@@ -1046,7 +1045,7 @@ First, note that the only possible nontrivial differentials in this range are th
 \end{align*}
 \end{theorem}
 
-\subsection{The \(E_2\) page for \(t-s\leq 15\)}
+\subsection{The \(E_2\) page for \(t-s\leq 15\)}\label{2504291252}
 
 \begin{figure}
 \centering
@@ -1076,7 +1075,7 @@ From Figure \ref{2504241227}, we see that \(E^{2, 10}_2(\bb{S})\) is generated b
 \end{cases}\]
 \end{theorem}
 
-\subsection{Differentials at \(14\leq t-s\leq 15\)}
+\subsection{Differentials at \(14\leq t-s\leq 15\)}\label{2504291253}
 
 For \(t-s<14\), the computation of \((\pi_{t-s}^S)^\wedge_2\) is purely mechanical, since there are no nontrivial differentials in this range.  However, the first nonzero differential will appear at \(t-s=15\), and in fact there are many differentials after this point, though we will only fully compute those in the range \(14\leq t-s\leq 15\). In general, the problem of computing differentials is much harder than  determining \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\), and is not algorithmic. 
 
@@ -1134,14 +1133,6 @@ Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator 
 % \end{tikzcd}\] 
 \end{lemma}
 
-\begin{landscape}
-\begin{figure}\label{2504201924}
-\centering
-\input{extra.tex}
-\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with naming conventions as in \autocite{rognes2}. The \(d_2\) differentials referenced in the proof of \ref{2504192017} are shown in green.}
-\end{figure}
-\end{landscape}
-
 \begin{ourproof}
 We first show that \(d_2(\hat i(h_2) \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By \ref{2504140954}, we have a long exact sequence
 \[\cdots \leftarrow H^{n-1}(\bb{S}^8) \leftarrow H^n(\bb{S}) \xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow H^{n+1}(\bb{S}) \leftarrow \cdots.\]
@@ -1156,6 +1147,16 @@ for any injective resolution \(I\), and thus the long exact sequence below.
 \cdots \arrow[r, ""] & \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext_{\A}^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
 \Ext_{\A}^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "i"] & \Ext_{\A}^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "j"] & \Ext_{\A}^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
 \end{tikzcd}\]
+
+\begin{landscape}
+\begin{figure}
+\centering
+\input{extra.tex}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with naming conventions as in \autocite{rognes2}. The \(d_2\) differentials referenced in the proof of \ref{2504192017} are shown in green.}
+\label{2504201924}
+\end{figure}
+\end{landscape}
+
 Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
 %\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 Now, \(f_0\in \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
@@ -1166,10 +1167,11 @@ Finally, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext_{\A}^{5,15}(\bb{F}_2, \bb{F}_2
 d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\), as required. \done
 \end{ourproof}
 
-\begin{figure}\label{2504131812}
+\begin{figure}
 \centering
 \input{ext_csigma.tex}
 \caption{The \(E_2\) page of the Adams spectral sequence for \(C_\sigma\), in the range \(t-s\leq 18\), with the generator \(\overline{\overline{h_0^2h_3}}\) shown in red, and two of the differentials shown in green.}
+\label{2504131812}
 \end{figure}
 
 \begin{theorem}[{\autocite{rognes2}, Table 14.2 (10)}]
@@ -1203,7 +1205,7 @@ Now, \((\pi_7^S)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 \caption{The \(E_3\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the differentials are shown in green.}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \input{e4page.tex}
 \caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
