@@ -464,7 +464,7 @@ Y \arrow[r, "\id"] \arrow[d, swap, "", dashrightarrow]  & Y \arrow[r, "", hookri
  \end{tikzcd}\] 
 where \(h\cup Cf\) is given by applying \(h\) to \(Y\cup CY\) and \(Cf\) to \(CY\) (which is well-defined since the maps agree on the intersection \(Y\times \{0\}\)), and likewise for \((h\cup Cf)\cup Ch\). Now, the square below commutes, since the identification \(((Y\cup CY)\cup \textcolour{red}{CY})\cup C(Y\cup CY)\simeq \Sigma Y\) collapses everything except the factor in red (whose base is collapsed), and similarly for \(X\). 
 \[\begin{tikzcd}
-((Y\cup CY)\cup CY)\cup C(Y\cup CY) \arrow[r, "\simeq", twoheadrightarrow] \arrow[d, swap, "h\cup Cf"]  & \Sigma Y \arrow[d, "\Sigma f"]  \\
+((Y\cup CY)\cup CY)\cup C(Y\cup CY) \arrow[r, "\simeq", twoheadrightarrow] \arrow[d, swap, "(h\cup Cf)\cup Ch"]  & \Sigma Y \arrow[d, "\Sigma f"]  \\
 ((X\cup CA)\cup CX)\cup C(X\cup CA) \arrow[r, swap, "\simeq", twoheadrightarrow]  & \Sigma X
 \end{tikzcd}\]
 Now, let \(p_Y : (Y\cup CY)\cup CY \to \Sigma Y\) and \(p_A : (X\cup CA)\cup CX\to \Sigma A\) be the projections, with homotopy inverses \(h_Y\) and \(h_A\) respectively. We define \(g : \Sigma Y \to \Sigma A\) by \(g := p_A \circ (h\cup Cf)\circ h_Y\). This \(g\) makes the diagram in (\ref{2504282249}) commute up to homotopy, where the minus signs arise from the fact that opposite hemispheres of the spaces \(((Y\cup CY)\cup CY)\cup C(Y\cup CY)\) and \((Y\cup CY)\cup CY\) are collapsed under the quotient map (and likewise for the bottom row). 
