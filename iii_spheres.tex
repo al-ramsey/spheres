@@ -277,7 +277,7 @@ The \textit{Steenrod algebra} \(\mathscr{A}_2\) is the algebra over \(\bb{F}_2\)
 Note that \(\mathscr A_2\) is graded, with elements of degree \(k\) those that map \(H^n(X; \bb{F}_2)\) to \(H^{n+k}(X, \bb{F}_2)\) for all \(n\). 
 
 \begin{definition}
-Write \(Sq^I\) for the monomial \(Sq^{i_1}Sq^{i_2}\cdots Sq^{i_n}\). Then \(Sq^I\) is \textit{admissible} if \(i_j\geq 2i_{j+1}\) for all \(0\leq j < n\). 
+Let \(I=(i_1, ..., i_n)\), and write \(Sq^I\) for the monomial \(Sq^{i_1}Sq^{i_2}\cdots Sq^{i_n}\). Then \(Sq^I\) is \textit{admissible} if \(i_j\geq 2i_{j+1}\) for all \(0\leq j < n\). 
 \end{definition}
 
 The admissible monomials are exactly those to which no Adem relations can be applied. Thus, \(\A\) is generated as an \(\bb{F}_2\) module by admissible monomials. 
@@ -322,7 +322,7 @@ We write \(\bb{S}\) for the suspension spectrum \(\Sigma^\infty S^0\), and call 
 % terrible definition above. The one below is much clearer!
 
 \begin{example}\label{2504251659}
-An \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\), and can be constructed inductively by attaching cells to \(\Sigma K(G, m+n))\) to kill \(\pi_i(\Sigma K(G, m+n))\) for \(i > m+n+1\). By Theorem \ref{2504151046}, \(\pi_i(K(G, m+n))\cong \pi_{i+1}(\Sigma K(G, m+n))\) for \(i \leq 2m+2n-2\), so the cells attached can be taken to have dimension \(\geq 2m+2n-1\). The maps \(\sigma_n\) are inclusions of subcomplexes. 
+Recall that an Eilenberg-MacLane space \(K(G, m)\) (for \(G\) an abelian group and \(n \in \inte_{\geq 0}\)) is a space for which \(\pi_i(K(G, n))=G\) if \(i=n\) and \(0\) otherwise, and that these can be constructed as CW complexes. An \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\), and can be constructed inductively by attaching cells to \(\Sigma K(G, m+n))\) to kill \(\pi_i(\Sigma K(G, m+n))\) for \(i > m+n+1\). By Theorem \ref{2504151046}, \(\pi_i(K(G, m+n))\cong \pi_{i+1}(\Sigma K(G, m+n))\) for \(i \leq 2m+2n-2\), so the cells attached can be taken to have dimension \(\geq 2m+2n-1\). The maps \(\sigma_n\) are inclusions of subcomplexes. 
 \end{example}
 
 % No it's ok Hatcher, just use the exact same notation for spaces and spectra, that's fine.
