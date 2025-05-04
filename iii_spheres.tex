@@ -891,9 +891,9 @@ From Figure \ref{2504241018}, we see that \((\pi_1^s)^\wedge_2\) has order divid
 
 \subsubsection{The Yoneda product}\label{2504171922}
 
-\begin{definition}[\autocite{rognes2}, Def 11.8.1]
+\begin{definition}[\autocite{rognes2}, Def 11.8.1]\label{2505042248yeahiknow}
 For any algebra \(A\) and \(A\)-modules \(L,M,N\), there is a product, the \textit{Yoneda product}
-\[\circ : \Ext_A^{s,t}(M,N)\otimes \Ext^{u,v}_A(L,M)\to \Ext_A^{s+u}(L,N),\]
+\[\circ : \Ext_A^{s,t}(M,N)\otimes \Ext^{u,v}_A(L,M)\to \Ext_A^{s+u, t+v}(L,N),\]
 defined as follows: let 
 \[\cdots \xrightarrow{f_3} F_2 \xrightarrow{f_2} F_1 \xrightarrow{f_1} F_0 \xrightarrow{f_0} L\to 0,\]
 \[\cdots \xrightarrow{f'_3} F'_2 \xrightarrow{f'_2} F'_1 \xrightarrow{f'_1} F'_0 \xrightarrow{f'_0} M\to 0\]
@@ -1173,10 +1173,12 @@ induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), converging
 \[f_* : \pi_*(Y) \to \pi_*(Z).\]
 \end{theorem}
 
+Let \(X\) be a connective spectrum of finite type. Then \(\Ext_{\A}^{*,*}(H^*(X), \bb{F}_2)\) is an \((\Ext_{\A}^{*,*}(\bb{F}_2, \bb{F}_2))\)-module, with action given by specialising the Yoneda product of Definition \ref{2505042248yeahiknow} to \(M=N=\bb{F}_2\), \(L=H^*(X)\).
+
 \begin{remark}\label{2504211139}
-For any map \(f : Y \to Z\) of connective spectra of finite type, the induced map 
-\[(f^*)^* : \Ext_{\A}^{s,t}(H^*(Y), \bb{F}_2)\to \Ext^{s,t}_{\A}(H^*(Z), \bb{F}_2)\]
-satisfies \((f^*)^*(\alpha \beta)=(f^*)^*(\alpha)(f^*)^*(\beta)\). This follows from the definition of the Yoneda product, since \(f^*\) induces a chain homotopy between resolutions of \(H^*(Z)\) and \(H^*(Y)\), so both \((f^*)^*(\alpha \beta)\) and \((f^*)^*(\alpha)(f^*)^*(\beta)\) arise from chain homotopies, and thus descend to same element in \(\Ext_{\A}^{*,*}(H^*(Z), \bb{F}_2)\).
+For any map \(f : \bb{S}\to X\), where \(X\) is a connective spectrum of finite type, the induced map 
+\[(f^*)^* : \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}_{\A}(H^*(X), \bb{F}_2)\]
+satisfies \((f^*)^*(\alpha \beta)=\alpha\cdot (f^*)^*(\beta)\) for any \(\alpha, \beta\in \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\). This follows from the definition of the Yoneda product, since  both \((f^*)^*(\alpha \beta)\) and \(\alpha\cdot(f^*)^*(\beta)\) arise filling in the same diagram with dotted lifts, forming the same chain maps up to chain homotopy. 
 \end{remark}
 
 \begin{lemma}[{\autocite{rognes2}, Table 14.1 (9)}]\label{2504192017}
@@ -1192,15 +1194,16 @@ Now, \(d_2(f_0)\neq 0\), so looking at Figure \ref{2504201924} we see that \(0\n
 \begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
 Consider the cofibration
 \[\bb{S}^7 \xrightarrow{\sigma} \bb{S} \xrightarrow{i} C_\sigma \xrightarrow{j} \bb{S}^8\to \cdots.\]
-Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\), where \(\hat i = (i^*)^* : \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{s,t}(C_\sigma, \bb{F}_2)\) is the map induced by \(i^* : H^*(C_\sigma)\to H^*(\bb{S})\). %filling in the diagram below with the unique dotted lifts.
+Let \(a\in E_2^{3,18}(C_\sigma)\) be the generator shown in Figure \ref{2504131812}. Then \(d_2(a)\neq 0\).
+\end{lemma}
+
+\begin{proof}
+Let \(\hat i = (i^*)^* : \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{s,t}(C_\sigma, \bb{F}_2)\) be the map induced by \(i^* : H^*(C_\sigma)\to H^*(\bb{S})\). %filling in the diagram below with the unique dotted lifts.
 %\[\begin{tikzcd} 
 % \cdots \arrow[r, ""] & F_2 \arrow[r, ""] \arrow[d, "", dashrightarrow] & F_1 \arrow[d, "", dashrightarrow] \arrow[r, ""] & F_0 \arrow[d, "", dashrightarrow] \arrow[r, ""] & H^*(C_\sigma) \arrow[d, "i^*"]\\ 
 % \cdots \arrow[r, swap, ""]  & P_2 \arrow[r, ""'] & P_1 \arrow[r, ""'] & P_0 \arrow[r, ""'] & H^*(\bb{S})
 % \end{tikzcd}\] 
-\end{lemma}
-
-\begin{proof}
-We first show that \(d_2(h_2\cdot \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By Lemma \ref{2504140954}, we have a long exact sequence
+We first show that \(d_2(h_2\cdot a)=d_2(\hat i(f_0))\). By Lemma \ref{2504140954}, we have a long exact sequence
 \[\cdots \leftarrow H^{n-1}(\bb{S}^8) \leftarrow H^n(\bb{S}) \xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow H^{n+1}(\bb{S}) \leftarrow \cdots.\]
 However, any map \(H^n(\bb{S})\to H^{n-1}(\bb{S}^8)\) must be zero, so we get short exact sequences 
 \[0 \leftarrow H^n(\bb{S})\xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow 0.\]
@@ -1213,11 +1216,11 @@ for any injective resolution \(I\), and thus the long exact sequence below.
 \cdots \arrow[r, ""] & \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "\hat i"] & \Ext_{\A}^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "\hat j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
 \Ext_{\A}^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "\hat i"] & \Ext_{\A}^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "\hat j"] & \Ext_{\A}^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
 \end{tikzcd}\]
-Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
+%Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
 %\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 Now, \(f_0\in \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
-\[\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext_{\A}^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
-Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext_{\A}^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext_{\A}^{0,8}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). \textcolour{teal}{Since \(E_2(C_\sigma)\) is a left [or maybe right] \(E_2(\bb{S})\)-module and \(\hat i\) is an \(E_2(\bb{S})\)-module homomorphism (by Remark \ref{2504211139})}, \(\hat i(h_0f_0)=h_0\cdot\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(h_2\cdot\overline{\overline{h_0^2h_3}}\) or \(h_2\cdot\overline{\overline{h_0^2h_3}}+h_0^2\cdot\hat{i}(h_2h_4)\). Now, \(d_2(h_2h_4)=0\), since otherwise it would be equal to \(e_0\), and we would have \(d_2^2(h_2h_4)\neq 0\), contradicting the fact that \(d_2\) is a differential. Thus, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(h_2\cdot\overline{\overline{h_0^2h_3}})\) (since \(d_2(\hat i (h_2h_4))=\hat i(d_2(h_2h_4))=0\)).
+\[\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{\hat i} \Ext_{\A}^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
+Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext_{\A}^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext_{\A}^{1,12}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_2h_4)\neq 0\). Since \(E_2(C_\sigma)\) is an \(E_2(\bb{S})\)-module and \(\hat i\) respects the \(E_2(\bb{S})\)-action (by Remark \ref{2504211139}), \(\hat i(h_0f_0)=h_0\cdot\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(h_2\cdot a\) or \(h_2\cdot a+h_0^2\cdot\hat{i}(h_2h_4)\). Now, \(d_2(h_2h_4)=0\), since otherwise it would be equal to \(e_0\), and we would have \(d_2^2(h_2h_4)\neq 0\), contradicting the fact that \(d_2\) is a differential. Thus, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(h_2\cdot a)\) (since \(d_2(h_0^2\cdot\hat i (h_2h_4))=d_2(\hat i(h_0^2h_2h_4))=\hat i(h_0^2d_2(h_2h_4))=0\)).
 
 \begin{landscape}
 \begin{figure}
@@ -1228,14 +1231,15 @@ Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\)
 \end{figure}
 \end{landscape}
 
-Finally, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext_{\A}^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(d_2(h_2\cdot\overline{\overline{h_0^2h_3}})=
-d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\). Therefore, \(d_2(\overline{\overline{ h_0^2h_3}})\neq 0\), and the only possibility is \(d_2(\overline{\overline h_0^2h_3})= h_0\cdot \hat i(d_0)\). %uhh I'm not sure I ever showed \hat i(d_0) =/= 0 but it doesn't matter actually for the argument later...
+Finally, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext_{\A}^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(d_2(h_2\cdot a)=
+d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\). Therefore, \(d_2(a)\neq 0\).
+% Supposedly \(d_2(a)= h_0\cdot \hat i(d_0)\), but d_0 \in Ext^{4,18} and \Ext^{3,10} is extremely nonzero. Presumably then the boundary map is still zero, but I can get away with never saying what the boundary map is for the purposes of this proof.
 \end{proof}
 
 \begin{figure}
 \centering
 \input{ext_csigma.tex}
-\caption{The \(E_2\) page of the Adams spectral sequence for \(C_\sigma\), in the range \(t-s\leq 18\), with the generator \(\overline{\overline{h_0^2h_3}}\) shown in red, and two of the differentials shown in green.}
+\caption{The \(E_2\) page of the Adams spectral sequence for \(C_\sigma\), in the range \(t-s\leq 18\), with the generator \(a\) shown in red, and two of the differentials shown in green.}
 \label{2504131812}
 \end{figure}
 
@@ -1250,7 +1254,7 @@ we get an exact sequence
 \[\pi_{7}^s \xrightarrow{\sigma_*} \pi_{14}^s \xrightarrow{i_*} \pi_{14}(C_\sigma) \xrightarrow{j_*} \pi_6^s \to \pi_{13}^s,\]
 by Theorem \ref{2504151709}. Since these stable homotopy groups are all finite\footnote{A priori \(\pi_{14}(C_\sigma)\) is only finitely generated, but from Figure \ref{2504131812} we see that its 2-completion is finite, so the group itself must be finite.}, this induces an exact sequence % explanation commented out below :-)
 \[(\pi_{7}^s)^\wedge_2 \xrightarrow{\sigma_*} (\pi_{14}^s)^\wedge_2 \xrightarrow{i_*} \pi_{14}(C_\sigma)^\wedge_2 \xrightarrow{j_*} (\pi_6^s)^\wedge_2 \xrightarrow{\sigma_*} (\pi_{13}^s)^\wedge_2=0.\]
-In \(E_2(C_\sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\) (by Lemma \ref{2504131851}), so \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing four. Let \(\nu \in (\pi_3^s)^\wedge_2\) be a representative for \(h_2\). Then \((\pi_6^s)^\wedge_2=\inte/2\inte \ang{\nu^2}\), and \(\nu^2 \sigma=0\). By exactness, we see that \(j_*\) is surjective, so \((\pi_6^s)^\wedge_2\cong \pi_{14}(C_\sigma)^\wedge_2/\ker j_*=\pi_{14}(C_\sigma)^\wedge_2/\im i_*\). We know \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing 4 and \((\pi_6^s)^\wedge_2\) has order 2, so \(\im i_*\) has order dividing 2. 
+In \(E_2(C_\sigma)\) we have \(d_2(a)=b\), where \(b\) is the generator shown in Figure \ref{2504131812} (by Lemma \ref{2504131851}), so \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing four. Let \(\nu \in (\pi_3^s)^\wedge_2\) be a representative for \(h_2\). Then \((\pi_6^s)^\wedge_2=\inte/2\inte \ang{\nu^2}\), and \(\nu^2 \sigma=0\). By exactness, we see that \(j_*\) is surjective, so \((\pi_6^s)^\wedge_2\cong \pi_{14}(C_\sigma)^\wedge_2/\ker j_*=\pi_{14}(C_\sigma)^\wedge_2/\im i_*\). We know \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing 4 and \((\pi_6^s)^\wedge_2\) has order 2, so \(\im i_*\) has order dividing 2. 
 
 Now, \((\pi_7^s)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by graded commutativity, so the first isomorphism theorem implies that \((\pi_{14}^s)^\wedge_2\) has order dividing four. Thus, \(h_0d_0\) and \(h_0^2d_0\) must be boundaries, and \(d_3(h_0h_4)=h_0d_0\) is the only possibility.
 \end{proof}
