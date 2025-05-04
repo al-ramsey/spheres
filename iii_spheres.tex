@@ -1200,7 +1200,7 @@ Let \(\overline{\overline{h_0^2h_3}}\in E_2^{3,18}(C_\sigma)\) be the generator 
 \end{lemma}
 
 \begin{proof}
-We first show that \(d_2(\hat i(h_2) \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By Lemma \ref{2504140954}, we have a long exact sequence
+We first show that \(d_2(h_2\cdot \overline{\overline{h_0^2h_3}})=d_2(\hat i(f_0))\). By Lemma \ref{2504140954}, we have a long exact sequence
 \[\cdots \leftarrow H^{n-1}(\bb{S}^8) \leftarrow H^n(\bb{S}) \xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow H^{n+1}(\bb{S}) \leftarrow \cdots.\]
 However, any map \(H^n(\bb{S})\to H^{n-1}(\bb{S}^8)\) must be zero, so we get short exact sequences 
 \[0 \leftarrow H^n(\bb{S})\xleftarrow{i^*} H^n(C_\sigma) \xleftarrow{j^*} H^n(\bb{S}^8)\leftarrow 0.\]
@@ -1217,7 +1217,7 @@ Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}
 %\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 Now, \(f_0\in \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
 \[\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext_{\A}^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
-Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext_{\A}^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext_{\A}^{0,8}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). Since \(\hat i\) respects multiplication (by Remark \ref{2504211139}), \(\hat i(h_0f_0)=\hat i(h_0)\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(\overline{\overline{h_0^2h_3}}\) or \(\overline{\overline{h_0^2h_3}}+\hat i(h_2)\hat{i}(h_4)\). Now, \(d_2(h_2h_4)=0\), since otherwise it would be equal to \(e_0\), and we would have \(d_2^2(h_2h_4)\neq 0\), contradicting the fact that \(d_2\) is a differential. Thus, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(\overline{\overline{h_0^2h_3}})\) (since \(d_2(\hat i (h_2)\hat i (h_4))=\hat i(d_2(h_2h_4))=0\)).
+Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext_{\A}^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext_{\A}^{0,8}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_4)\neq 0\). \textcolour{teal}{Since \(E_2(C_\sigma)\) is a left [or maybe right] \(E_2(\bb{S})\)-module and \(\hat i\) is an \(E_2(\bb{S})\)-module homomorphism (by Remark \ref{2504211139})}, \(\hat i(h_0f_0)=h_0\cdot\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(h_2\cdot\overline{\overline{h_0^2h_3}}\) or \(h_2\cdot\overline{\overline{h_0^2h_3}}+h_0^2\cdot\hat{i}(h_2h_4)\). Now, \(d_2(h_2h_4)=0\), since otherwise it would be equal to \(e_0\), and we would have \(d_2^2(h_2h_4)\neq 0\), contradicting the fact that \(d_2\) is a differential. Thus, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(h_2\cdot\overline{\overline{h_0^2h_3}})\) (since \(d_2(\hat i (h_2h_4))=\hat i(d_2(h_2h_4))=0\)).
 
 \begin{landscape}
 \begin{figure}
@@ -1228,8 +1228,8 @@ Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\)
 \end{figure}
 \end{landscape}
 
-Finally, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext_{\A}^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(\hat i(h_2)d_2(\overline{\overline{h_0^2h_3}})= d_2(\hat i(h_2)\overline{\overline{h_0^2h_3}})=
-d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\), as required. 
+Finally, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext_{\A}^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(d_2(h_2\cdot\overline{\overline{h_0^2h_3}})=
+d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\). Therefore, \(d_2(\overline{\overline{ h_0^2h_3}})\neq 0\), and the only possibility is \(d_2(\overline{\overline h_0^2h_3})= h_0\cdot \hat i(d_0)\). %uhh I'm not sure I ever showed \hat i(d_0) =/= 0 but it doesn't matter actually for the argument later...
 \end{proof}
 
 \begin{figure}
