@@ -1115,20 +1115,20 @@ would also give rise to three dots unconnected by vertical lines on the \(E_2\) 
 % If this were the case for our example, it would be known as a `hidden extension'. But it isn't, so it's not.
 The situation described above is known as a `hidden extension', since it cannot be read off from the spectral sequence diagram. However, we can often determine by other methods whether or not they arise. 
 
-In our case, let \(h_3\in E_2^{1,8}\) be represented by \(\sigma\in (\pi_7^s)^\wedge_2\), and let \(h_1\in E_2^{1,2}\) be represented by \(\eta \in (\pi_1^s)^\wedge_2\). Then \(h_1h_3\) is represented by \(\eta \sigma\), and \(2(\eta \sigma)=(2\eta)\sigma=0\), since \((\pi_1^s)^\wedge_2\cong \inte/2\inte\). Thus, \((\pi_9^s)^\wedge_2\cong (\inte/2\inte)^3\). 
+In our case, this does not in fact occur; let \(h_3\in E_2^{1,8}\) be represented by \(\sigma\in (\pi_7^s)^\wedge_2\), and let \(h_1\in E_2^{1,2}\) be represented by \(\eta \in (\pi_1^s)^\wedge_2\). Then \(h_1h_3\) is represented by \(\eta \sigma\), and \(2(\eta \sigma)=(2\eta)\sigma=0\), since \((\pi_1^s)^\wedge_2\cong \inte/2\inte\). Thus, \((\pi_9^s)^\wedge_2\cong (\inte/2\inte)^3\). 
 \done
 \end{ourproof}
 
 \subsection{Differentials at \(14\leq t-s\leq 15\)}\label{2504291253}
 
-For \(t-s<14\), the computation of \((\pi_{t-s}^s)^\wedge_2\) is purely mechanical, since there are no nontrivial differentials in this range.  However, the first nonzero differential will appear in the range \(14\leq t-s\leq15\), and in fact there are many differentials after this point, though we will only fully compute those in this range. In general, the problem of computing differentials is much harder than  determining \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\), and is not algorithmic. 
+For \(t-s<14\), the computation of \((\pi_{t-s}^s)^\wedge_2\) involves only the \(E_2\) page of the spectral sequence, since there are no nontrivial differentials in this range. However, the first nonzero differential will appear in the range \(14\leq t-s\leq15\), and in fact there are many differentials after this point, though we will only fully compute those in this range. In general, the problem of computing differentials is much harder than  determining \(\Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\), and is not algorithmic. 
 
 \begin{theorem}[{\autocite{rognes2}, Thm 11.10.2}]
 \(d_2(h_4)=h_0h_3^2\neq 0\).
 \end{theorem}
 
 \begin{ourproof}
-We have shown that \(h_0\) detects \(2\in (\pi_*^s)^\wedge_2\) (i.e. \(2\) is a representative for \(h_0\)). Let \(\sigma\in (\pi_7^s)^\wedge_2\) be a representative for \(h_3\). Then \(2 \sigma^2\) is a representative for \(h_0h_3^2\). By graded commutativity of \((\pi_*^s)^\wedge_2\), \(\sigma^2=-\sigma^2\), so \(2 \sigma^2=0\), and thus \(h_0h_3^2=0\) in \(E_\infty^{3,17}(\bb{S})\). Therefore, \(h_0h_3^2\) is the boundary of a differential, so we must have \(d_2(h_4)=h_0h_3^2\).\done
+We have shown that \(h_0\) detects \(2\in (\pi_*^s)^\wedge_2\) (i.e. \(2\) is a representative for \(h_0\)). Let \(\sigma\in (\pi_7^s)^\wedge_2\) be a representative for \(h_3\). Then \(2 \sigma^2\) is a representative for \(h_0h_3^2\). By graded commutativity of \((\pi_*^s)^\wedge_2\), \(\sigma^2=-\sigma^2\), so \(2 \sigma^2=0\), and thus \(h_0h_3^2=0\) in \(E_\infty^{3,17}(\bb{S})\) (since \(2\sigma^2=0\) is a representative for it). Therefore, \(h_0h_3^2\) is the boundary of a differential, so we must have \(d_2(h_4)=h_0h_3^2\).\done
 \end{ourproof}
 
 Note that the \(d_2\) differentials at \(E_2^{2, 17}(\bb{S}),  E_2^{3, 18}(\bb{S}), E_2^{4, 19}(\bb{S})\) are all trivial, since \(d_2(h_0^nh_4)=h_0^nd_2(h_4)=h_0^{n-1}(h_0h_3^2)=0\). 
@@ -1232,7 +1232,7 @@ we get an exact sequence
 \[\pi_{7}^s \xrightarrow{\sigma_*} \pi_{14}^s \xrightarrow{i_*} \pi_{14}(C_\sigma) \xrightarrow{j_*} \pi_6^s \to \pi_{13}^s,\]
 by \ref{2504151709}. Since these stable homotopy groups are all finite\footnote{A priori \(\pi_{14}(C_\sigma)\) is only finitely generated, but from Figure \ref{2504131812} we see that its 2-completion is finite, so the group itself must be finite.}, this induces an exact sequence % explanation commented out below :-)
 \[(\pi_{7}^s)^\wedge_2 \xrightarrow{\sigma_*} (\pi_{14}^s)^\wedge_2 \xrightarrow{i_*} \pi_{14}(C_\sigma)^\wedge_2 \xrightarrow{j_*} (\pi_6^s)^\wedge_2 \xrightarrow{\sigma_*} (\pi_{13}^s)^\wedge_2=0.\]
-In \(E_2(C_\sigma)\) we have \(d_2(\overline{\overline{h_0^2h_3}})=\hat i(h_0d_0)\) (by \ref{2504131851}), so \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing four. Let \(\nu \in (\pi_3^s)^\wedge_2\) be a representative for \(h_2\). Then \((\pi_6^s)^\wedge_2=\inte/2\inte \ang{\nu^2}\), and \(\nu^2 \sigma=0\). By exactness, we see that \(j_*\) is surjective, so \((\pi_6^s)^\wedge_2\cong \pi_{14}(C_\sigma)^\wedge_2/\ker j_*=\pi_{14}(C_\sigma)^\wedge_2/\im i_*\). We know \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing 4 and \((\pi_6^s)^\wedge_2\) has order 2, so \(\im i_*\) has order dividing 2. 
+In \(E_2(C_\sigma)\) we have \(d_2(a)=b\), where \(b\) is the generator shown in Figure \ref{2504131812} (by \ref{2504131851}), so \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing four. Let \(\nu \in (\pi_3^s)^\wedge_2\) be a representative for \(h_2\). Then \((\pi_6^s)^\wedge_2=\inte/2\inte \ang{\nu^2}\), and \(\nu^2 \sigma=0\). By exactness, we see that \(j_*\) is surjective, so \((\pi_6^s)^\wedge_2\cong \pi_{14}(C_\sigma)^\wedge_2/\ker j_*=\pi_{14}(C_\sigma)^\wedge_2/\im i_*\). We know \(\pi_{14}(C_\sigma)^\wedge_2\) has order dividing 4 and \((\pi_6^s)^\wedge_2\) has order 2, so \(\im i_*\) has order dividing 2. 
 
 Now, \((\pi_7^s)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by graded commutativity, so the first isomorphism theorem implies that \((\pi_{14}^s)^\wedge_2\) has order dividing four. Thus, \(h_0d_0\) and \(h_0^2d_0\) must be boundaries, and \(d_3(h_0h_4)=h_0d_0\) is the only possibility.
 \done
@@ -1256,6 +1256,7 @@ Now, \((\pi_7^s)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 \centering
 \input{e4page.tex}
 \caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
+\label{2505051617}
 \end{figure}
 
 \begin{theorem}
@@ -1264,6 +1265,10 @@ Now, \((\pi_7^s)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 \inte/32\inte \oplus \inte/2\inte & i = 15.
 \end{cases}\]
 \end{theorem}
+
+\begin{ourproof}
+From Figure \ref{2505051617}, we see that \((\pi_{15}^s)^\wedge_2=\inte/32\inte\oplus\inte/2\inte\), and that \(\abs{(\pi_{14}^s)^\wedge_2}=2\). Now, if \(h_3\) is represented by \(\sigma\in (\pi_7^s)^\wedge_2\), then \(h_3^2\) is represented by \(\sigma^2\). By graded commutativity, \(\sigma^2=-\sigma^2\), so \(2\sigma^2=0\). Thus, since \(h_3^2\) is represented by a generator of \((\pi_{14}^s)^\wedge_2\), we have \((\pi_{14}^s)^\wedge_2\cong (\inte/2\inte)^2\). \done
+\end{ourproof}
 
 \clearpage
 
