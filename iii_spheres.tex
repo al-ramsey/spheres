@@ -885,7 +885,14 @@ Continuing in this fashion, the computations for \(t-s=4,5\) are shown in Figure
 \label{2504241018}
 \end{figure}
 
-From Figure \ref{2504241018}, we see that \((\pi_1^s)^\wedge_2\) has order dividing 2, \((\pi_2^s)^\wedge_2=\inte/2\inte\), \((\pi_3^s)^\wedge_2\) has order 8, and \((\pi_4^s)^\wedge_2=(\pi_5^s)^\wedge_2=0\). However, we do not currently have the tools to determine whether or not \(\alpha^1_2\) survives to the \(E_\infty\) page, or the isomorphism class of \((\pi_3^s)^\wedge_2\). We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
+Figure \ref{2504241018} shows the \(E_2\) page of the Adams spectral sequence for \(\bb{S}\) for \(t-s\leq 5\). Recall that the Adams grading is \((r, r-1)\), and thus on Figure \ref{2504241018} the \(d_r\) differentials go one unit left and \(r\) units up. Now, from Figure \ref{2504241018}, we see that \((\pi_1^s)^\wedge_2\) has order dividing 2, but a priori there could be a \(d_r\) differential mapping \(\alpha^1_2\) to \(\alpha^{r+1}_{r+1}\), in which case \(\alpha^1_2\) would not survive to the \(E_\infty\) page. On the other hand, any differential emanating from or entering position \((2,2)\) either enters or leaves 0, so \(\alpha^2_4\) must survive to the \(E_\infty\) page, and we see that \((\pi_2^s)^\wedge_2=\inte/2\inte\). 
+
+Similarly, we see that all of the generators in the column \(t-s=3\) survive to \(E_\infty\) (since there are no possible nonzero differentials interacting with them), so \(\abs{(\pi_3^s)^\wedge_2}=8\). However, we do not currently have the tools to determine the isomorphism class of \((\pi_3^s)^\wedge_2\), since any of the filtrations below are possible:
+\[\{0\}\subq \inte/2\inte\subq \inte/4\inte\subq \inte/8\inte,\]
+\[\{0\}\subq \inte/2\inte\subq \inte/4\inte\subq \inte/4\inte\oplus \inte/2\inte,\]
+\[\{0\}\subq \inte/2\inte\subq (\inte/2\inte)^2\subq \inte/4\inte\oplus \inte/2\inte,\]
+\[\{0\}\subq \inte/2\inte\subq (\inte/2\inte)^2\subq (\inte/2\inte)^3.\]
+We will therefore spend some time describing a multiplication on the Adams spectral sequence which will allow us to resolve such ambiguities.
 
 \subsection{Multiplicative structure}\label{2504291250}
 
