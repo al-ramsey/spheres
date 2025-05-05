@@ -304,11 +304,17 @@ Let \(X\) be a connective spectrum of finite type. Then the groups \(\pi_{i+n}(X
 \end{lemma}
 
 \begin{ourproof}
-First, note that that maps \(\pi_{i+n}(X_n) \xrightarrow{\Sigma} \pi_{i+n+1}(\Sigma X_n)\) are eventually isomorphisms by \ref{2504151046}. 
+%First, note that that maps \(\pi_{i+n}(X_n) \xrightarrow{\Sigma} \pi_{i+n+1}(\Sigma X_n)\) are eventually isomorphisms by Theorem \ref{2504151046}. <-- bad and wrong
+Recall that whenever \((X_{n+1}, \Sigma X_n)\) are such that \(X_{n+1}\setminus \Sigma X_n\) has no cells in dimension \(\leq k\), the map \(\pi_i(\Sigma X_n)\to \pi_i(X_{n+1})\) induced by the inclusion is an isomorphism for \(i<k\) (see \autocite{hatcher}, Cor 4.12 and the long exact sequence of relative homotopy groups). Thus, if \((\sigma_n)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}(X_{n+1})\) never stabilises, there must be infinitely many natural numbers \(N_j\) such that \((X_{N_j+1}, \Sigma X_{N_j})\) is not \((i+N_j+1)\)-connected, and thus that \(X_{N_j+1}\setminus \Sigma X_{N_j}\) has cells of dimension \(\leq i+N_j+2\). By connectivity, there is some fixed \(l\) such that these cells are of dimension \(N_j+k+1\) for \(-l\leq k \leq i+1\). Thus, there must be some \(k\) such that infinitely many of the \(X_{N_j+1}\) have a \((k+N_j+1)\)-cell not included in \(\Sigma X_{N_j}\). This then contradicts the assumption that \(X\) is of finite type, since it has infinitely many \(k\)-cells. 
 
-Recall that whenever \((X_{n+1}, \Sigma X_n)\) are such that \(X_{n+1}\setminus X_n\) has no cells in dimension \(\leq k\), the map \(\pi_i(\Sigma X_n)\to \pi_i(X_{n+1})\) induced by the inclusion is an isomorphism (see \autocite{hatcher}, Cor 4.12 and the long exact sequence of relative homotopy groups). Thus, if \((\sigma_n)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}(X_{n+1})\) never stabilises, there must be infinitely many natural numbers \(N_j\) such that \((X_{N_j+1}, \Sigma X_{N_j})\) is not \((i+N_j+1)\)-connected, and thus that \(X_{N_j+1}\setminus \Sigma X_{N_j}\) has cells of dimension \(\leq i+N_j+2\). By connectivity, there is some fixed \(l\) such that these cells are of dimension \(N_j+k+1\) for \(-l\leq k \leq i+1\). Thus, there must be some \(k\) such that infinitely many of the \(X_{N_j+1}\) have a \((k+N_j+1)\)-cell not included in \(\Sigma X_{N_j}\). This then contradicts the assumption that \(X\) is of finite type, since it has infinitely many \(k\)-cells. 
+Thus, the maps \((\sigma_n)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}(X_{n+1})\) are eventually isomorphisms. The argument above also shows that in the stable range, the maps \((\Sigma^j \sigma_n)_* : \pi_{i+n+1}(\Sigma^{j+1}X_n)\to \pi_{i+n+1}(\Sigma^j X_{n+1})\) are also isomorphisms for \(j>0\), since \(\Sigma^j X_{n+1}\setminus\Sigma^{j+1}X_n\) has no cells in dimension \(\leq k\) whenever \(X_{n+1}\setminus\Sigma X_n\) doesn't.
 
-Thus, the maps \((\sigma_n)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}(X_{n+1})\) are also eventually isomorphisms, so the groups \(\pi_{i+n}(X_n)\) do stabilise.\done
+Now, fix \(m >0\) such that \((\sigma_n)_*\) is an isomorphism for \(n\geq m\). By Theorem \ref{2504151046}, there exists some \(m'> 0\) such that \(\Sigma : \pi_{i+m+n'}(\Sigma^{n'}X_m)\to \pi_{i+m+n'+1}(\Sigma^{n'+1}X_m)\) is an isomorphism for all \(n'\geq m'\). Consider the  commutative diagram below. % I know. I'm sorry. But please do consider it.
+\[\begin{tikzcd}[column sep=9ex]
+ \pi_{i+m+n'}(\Sigma^{n'}X_m) \arrow[r, "(\Sigma^{n'-1}\sigma_m)_*"] \arrow{d}{\Sigma}[swap]{\cong}  & \pi_{i+m+n'}(\Sigma^{n'-1}X_{m+1}) \arrow[r, "(\Sigma^{n'-2}\sigma_{m+1})_*"] \arrow[d, "\Sigma"] & \cdots \arrow[r, "(\sigma_{m+n'})_*"] & \pi_{i+m+n'}(X_{m+n'}) \arrow[d, "\Sigma"]\\
+ \pi_{i+m+n'+1}(\Sigma^{n'+1}X_m) \arrow[r, swap, "(\Sigma^{n'}\sigma_m)_*"]  & \pi_{i+m+n'}(\Sigma^{n'}X_{m+1}) \arrow[r, "(\Sigma^{n'-1}\sigma_{m+1})_*"'] & \cdots \arrow[r, "(\Sigma \sigma_{m+n'-1})_*"'] & \pi_{i+m+n'+1}(\Sigma X_{m+n'}) 
+ \end{tikzcd}\]
+The horizontal maps are all isomorphisms by the previous paragraphs, and the leftmost vertical map is an isomorphism by assumption, so the rightmost vertical map must also be an isomorphism for all \(n' \geq m'\). Therefore, for sufficiently large \(n\), the composite \(\pi_{i+n}(X_n) \xrightarrow{\Sigma}\pi_{i+n+1}(\Sigma X_{n})\xrightarrow{(\sigma_n)_*}\pi_{i+n+1}(X_{n+1})\) is an isomorphism, as required. \done
 \end{ourproof}
 
 \subsection{Homology and cohomology}
@@ -1198,9 +1204,6 @@ for any injective resolution \(I\), and thus the long exact sequence below.
 \end{tikzcd}\]
 %Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
 %\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
-Now, \(f_0\in \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
-\[\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{\hat i} \Ext_{\A}^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
-Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext_{\A}^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext_{\A}^{1,12}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_2h_4)\neq 0\). Since \(E_2(C_\sigma)\) is an \(E_2(\bb{S})\)-module and \(\hat i\) respects the \(E_2(\bb{S})\) action (by \ref{2504211139}), \(\hat i(h_0f_0)=h_0\cdot\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(h_2\cdot a\) or \(h_2\cdot a+h_0^2\cdot\hat{i}(h_2h_4)\). Now, \(d_2(h_2h_4)=0\), since otherwise it would be equal to \(e_0\), and we would have \(d_2^2(h_2h_4)\neq 0\), contradicting the fact that \(d_2\) is a differential. Thus, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(h_2\cdot a)\) (since \(d_2(h_0^2\cdot\hat i (h_2h_4))=d_2(\hat i(h_0^2h_2h_4))=\hat i(h_0^2d_2(h_2h_4))=0\)).
 
 \begin{landscape}
 \begin{figure}
@@ -1210,6 +1213,10 @@ Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\)
 \label{2504201924}
 \end{figure}
 \end{landscape}
+
+Now, \(f_0\in \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
+\[\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{\hat i} \Ext_{\A}^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
+Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext_{\A}^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext_{\A}^{1,12}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_2h_4)\neq 0\). Since \(E_2(C_\sigma)\) is an \(E_2(\bb{S})\)-module and \(\hat i\) respects the \(E_2(\bb{S})\) action (by \ref{2504211139}), \(\hat i(h_0f_0)=h_0\cdot\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(h_2\cdot a\) or \(h_2\cdot a+h_0^2\cdot\hat{i}(h_2h_4)\). Now, \(d_2(h_2h_4)=0\), since otherwise it would be equal to \(e_0\), and we would have \(d_2^2(h_2h_4)\neq 0\), contradicting the fact that \(d_2\) is a differential. Thus, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(h_2\cdot a)\) (since \(d_2(h_0^2\cdot\hat i (h_2h_4))=d_2(\hat i(h_0^2h_2h_4))=\hat i(h_0^2d_2(h_2h_4))=0\)).
 
 Finally, \(\hat i(h_0^2e_0)\neq 0\), since \(\Ext_{\A}^{5,15}(\bb{F}_2, \bb{F}_2)=0\) (using the long exact sequence in \(\Ext\) again). Thus, \(d_2(h_2\cdot a)=
 d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\). Therefore, \(d_2(a)\neq 0\).\done
