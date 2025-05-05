@@ -208,39 +208,11 @@ will eventually stabilise. We thus define the \textit{stable homotopy group} \(\
 
 We will denote the groups \(\pi_k^s(S^0)\cong \pi^s_{n+k}(S^n)\) by \(\pi_k^s\). The following classical theorem implies immediately that for \(k>0\), \(\pi_k^s\) is finite.
 
-%\item ?\autocite{ass}, Cor 1.9 [not 100\% convinced of how this follows, but believing it for now]: if \(X\) is a CW complex of dimension \(d\) and \(Y\) a \((k-1)\)-connected space, then the suspension homomorphism\footnote{Hang on, the what?? \(X\) isn't the suspension of anything, why on earth would this be a group?} \([X, Y]\to[\Sigma X, \Sigma Y]\) is bijective if \(d<2k-1\) and surjective if \(d=2k-1\). 
-
 \begin{theorem}[{\autocite{cobordism}, Thm 1.1.8}]
 \(\pi_{n+k}(S^n)\) is finite for \(k>0\) except when \(n=2m\), \(k=2m-1\). 
 \end{theorem}
 
 Our main computational tool for computing \(\pi_k^s\), the Adams spectral sequence, will (in the form we present it here) give us information about the \(2\)-completion of these groups, which for a finite abelian group \(A\) coincides with \(A\) modulo its odd torsion. The remainder of this essay will thus be dedicated to constructing this spectral sequence and using it to determine \(\pi_k^s\) modulo its odd torsion (in the case where \(k\neq 0\)) for \(k \leq 15\). 
-
-%Miscellaneous facts I might need later:
-%\begin{itemize}
-%\item Cohomology [possibly only of pointed %\footnote{What's the relevance of the `pointedness' when you're only taking cohomology?} %I think it's just that it's reduced
-%CW complexes] is representable\footnote{\autocite{hatcher} says on p394 that there is a natural group structure on \(\Hom(X,K(G,n))\) such that the natural isomorphism \(\Hom(X,K(G,n))\to H^n(X;G)\) is in fact an isomorphism of abelian groups.}, and its representing object is the Eilenberg-MacLane space.  i.e. \(H^n(-; G)\cong \Hom(-, K(G, n))\). 
-%\item \(\mathscr A_2\) is generated as an algebra by elements \(Sq^{2^k}\) (\autocite{hatcher}, Prop 4L.8).
-%\item The map \(\mathscr A_2 \to \widetilde H^*(K(\inte/2\inte, n); \inte/2\inte)\), \(Sq^I\mapsto Sq^I(\iota_n)\) is an isomorphism from the degree \(d\) part of \(\mathscr A_2\) onto \(H^{n+d}(K(\inte/2\inte, n); \inte/2\inte)\) for \(d \geq n\). In particular, the admissible monomials \(Sq^I\) form an additive basis for \(\mathscr A_2\). Thus, \(\mathscr A_2\) is exactly the algebra of all \(\inte/2\inte\) cohomology operations that are stable, commuting with suspension (\autocite{hatcher5}, Cor 5.38). 
-
-%\item ?Hurewicz theorem: for any path-connected space \(X\) and \(n>0\) there exists a group homomorphism \(h_* : \pi_n(X)\to H_n(X)\). For \(n=1\) this induces an isomorphism \(\pi_1^{\text{ab}}(X)\cong H_1(X)\). For \(n \geq 2\), if \(X\) is \((n-1)\)-connected then \(\widetilde H_i(X)=0\) for all \(i<n\), and the map \(h_* : \pi_n(X)\to H_n(X)\) is an isomorphism. 
-
-%\item ?Axioms for a homology theory \(h_*\):
-%\begin{enumerate}
-%\item If \(f\simeq g : X \to Y\), then \(f_*=g_* : h_n(X)\to h_n(Y)\).
-%\item For each \(A\subq X\), there is a long exact sequence
-%\[\cdots \xleftarrow{\del}h_n(X/A)\xleftarrow{q_*}h_n(X) \xleftarrow{i_*}h_n(A) \xleftarrow{\del} h_{n+1}(X/A)\xleftarrow{q_*}\cdots.\]
-%\item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the coproduct map \(\bigoplus_\alpha (i_\alpha)_* : \bigoplus_\alpha h_n(X_\alpha) \to  h_n(X)\) is an isomorphism for each \(n\). 
-%\end{enumerate}
-%?Axioms for a (reduced) cohomology theory \(h^*\):
-%\begin{enumerate}
-%\item If \(f\simeq g : X \to Y\), then \(f^*=g^* : h^n(Y)\to h^n(X)\).
-%\item For each \(A\subq X\), there is a long exact sequence
-%\[\cdots \xrightarrow{\delta}h^n(X/A)\xrightarrow{q^*}h^n(X) \xrightarrow{i^*}h^n(A) \xrightarrow{\delta} h^{n+1}(X/A)\xrightarrow{q^*}\cdots.\]
-%\item For a wedge sum \(X=\bigvee_\alpha X_\alpha\) with inclusions \(i_\alpha : X_\alpha \inj X\), the product map \((i^*_\alpha) : h^n(X) \to \prod_\alpha h^n(X_\alpha)\) is an isomorphism for each \(n\).
-%\end{enumerate}
-%\item ?Stable homotopy groups are a homology theory.
-%\end{itemize}
 
 \section{The Steenrod algebra}\label{2503221247}
 
@@ -253,10 +225,9 @@ For all \(X\) and each \(n\), there are maps \(Sq^i : H^n(X; \bb{F}_2)\to H^{n+i
 \item \(Sq^i(f^*(\alpha))=f^*(Sq^i(\alpha))\) for \(f : X \to Y\) (i.e. \(Sq^i\) is a natural transformation).
 \item \(Sq^i(\alpha + \beta)=Sq^i(\alpha)+Sq^i(\beta)\) (i.e. \(Sq^i\) respects the group operation).
 \item \(Sq^i(\alpha \smile \beta)=\sum\limits_{0\leq j \leq i} (Sq^j(\alpha)\smile Sq^{i-j}(\beta))\) (the Cartan formula).
-\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \bb{F}_2)\to \widetilde{H}^{n+1}(\Sigma X; \bb{F}_2)\) is the suspension isomorphism given by reduced cross product with a generator of \(\widetilde{H}^1(S^1; \bb{F}_2)\).%\footnote{Something is a little strange here, I think maybe it doesn't matter which suspension isomorphism you pick, though it's not immediately clear why. It's just that the wikipedia page that \(\sigma\) is the connecting homomorphism of the long exact sequence in cohomology. \autocite{rognes2} just says it's the suspension isomorphism \(:\hspace{-0.75ex}|\). Something interesting: on p219 of \autocite{hatcher}, it says ``the suspension isomorphisms \(\widetilde H^n(X;R)\cong \widetilde H^{n+k}(\Sigma^kX;R)\) derivable by elementary exact sequence arguments can also be obtained via cross product with a generator of \(\wildetilde H^*(S^k; R)\)''. Does he mean the \textit{same} isomorphism, or just the fact that there is (at least) one?.}
+\item \(Sq^i(\sigma(\alpha))=\sigma(Sq^i(\alpha))\) where \(\sigma : H^n(X; \bb{F}_2)\to \widetilde{H}^{n+1}(\Sigma X; \bb{F}_2)\) is the suspension isomorphism given by reduced cross product with a generator of \(\widetilde{H}^1(S^1; \bb{F}_2)\).
 \item \(Sq^i(\alpha)=\alpha^2\) if \(i=\deg(\alpha)\) and \(Sq^i(\alpha)=0\) if \(i> \deg(\alpha)\). 
 \item \(Sq^0=\id.\)
-%\item \(Sq^1\) is the \(\inte/2\inte\) Bockstein homomorphism \(\beta\) associated with the coefficient sequence \(0 \to \inte/2\inte \to \inte/4\inte \to \inte/2\inte \to 0\).\footnote{Check properties 4 and 7 are actually needed, because \autocite{rognes2} only takes 1-3 and 5-6, giving 4 as Prop 7.2.4 and 7 as as consequence of Prop 7.6.5. In particular, I don't think I actually ever use property 7.}
 \end{enumerate}
 \end{proposition}
 
@@ -302,8 +273,6 @@ based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of 
 \end{comment}
 
 \subsection{Definitions and examples}\label{2504291244}
-
-%[Maybe I could also look at \autocite{hatcher} p454 onwards?]
 
 \begin{definition}
 A \textit{spectrum} is a collection of pointed topological spaces \(\{X_n\}_{n\in \nat}\), together with basepoint-preserving maps \(\sigma_n : \Sigma X_n \to X_{n+1}\).
@@ -443,8 +412,6 @@ is contained in a finite subcomplex \(\overline X_n \subq X_n\). Given any map \
 Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) and \(g : Y \to X\) such that \(fg=\id_{Y}\) and \(gf=\id_X\).
 \end{definition}
 
-%?[maybe something on weak equivalence?]
-
 Note that a spectrum is equivalent to any of its cofinal subspectra. In particular, if \(X=\{X_n\}\) is a spectrum, then \(X'=\{\Sigma X_{n-1}\}\) is a cofinal subspectrum of \(X\) (where we take \(X_{-1}\) to be the basepoint of \(X_0\)). We define \(\Sigma^{-1}X:=\{X_{n-1}\}\), noting that \(\Sigma \Sigma^{-1}X=\Sigma^{-1}\Sigma=X'\simeq X\). Thus, a spectrum is always equivalent to the suspension of some other spectrum.
 
 \begin{definition}
@@ -468,12 +435,6 @@ The suspension map is a homomorphism, since it is a homomorphism on maps between
 
 Recall that \(\Sigma^{-1}\Sigma X=\Sigma\Sigma^{-1}X\simeq X\). For any map \(f : X \to Y\) given by strict maps \(f_n : X_n'\to Y_n\), define \(\Sigma^{-1}f : \Sigma^{-1}X \to \Sigma^{-1}Y\) by \(\{f_{n-1} : X'_{n-1}\to Y_{n-1}\}\). Then \(\Sigma\Sigma^{-1}f=\{\Sigma f_{n-1}\}=\{f_n|_{\Sigma X_{n-1}}\}=f\), and similarly \(\Sigma^{-1}\Sigma f =f\). Thus, we have bijections \([X,Y]\cong [\Sigma\Sigma^{-1}X, \Sigma\Sigma^{-1}Y]\cong [\Sigma^{-1}\Sigma X, \Sigma^{-1}\Sigma Y]\), so \(\Sigma\) has a two-sided inverse.
 \end{proof}
-
-%?[\ref{2502211419} and \ref{2502211420} are both true for CW spectra too]
-
-%?[Whitehead's theorem: a map between CW spectra that induces isomorphisms on all homotopy groups is a homotopy equivalence.]
-
-%?[Prop: If a CW spectrum \(X\) is \(n\)-connected in the sense that \(\pi_i(X)=0\) for \(i\leq n\), then \(X\) is homotopy equivalent to a CW spectrum with no cells of dimension \(\leq n\)]
 
 \subsection{Cofibration sequences}\label{2503291211}
 
@@ -561,7 +522,6 @@ Let \(A\) be an abelian group. Then its \textit{\(p\)-adic completion} is the li
 
 If \(A=\inte\), we instead write \(\inte_p:= \inte^\wedge_p\) for the \(p\)-adic integers. There is a natural map \(A \to A^\wedge_p\), whose component at \(n\) is reduction modulo \(p^nA\). 
 
-%[\autocite{concise} p154]:
 When \(A\) is finitely generated, its \(p\)-adic completion is given by the map \(A \to A\otimes \inte_p\); \(a\mapsto a\otimes 1\). 
 
 
@@ -595,8 +555,6 @@ From this section onwards, all homology and cohomology will be taken with \(\bb{
 
 \subsection{Spectral sequences}\label{2504041910}
 
-%\textcolour{teal}{[Some notes from \autocite{spectral_sequences}, C2 - just here as a placeholder/reference and I'll probably completely rewrite this bit. Maybe add some notes from \autocite{ass}]}
-
 % I made up the definition below but I mean come on. Why are people so weird about the gradings??
 \begin{definition}
 A \textit{differential bigraded module} \(E\) over a ring \(R\) is a collection of \(R\)-modules \(\{E^{p, q}\}\), \(p, q\in \inte\), together with a map \(d : E^{p, q} \to E^{p+s, q+r}\) for each \(p, q\) and some fixed \(s,r \in \inte\), satisfying \(d^2=0\). 
@@ -609,8 +567,7 @@ We can take the homology of \((E, d)\):
 In the definition of a spectral sequence below, we will specialise to a specific bigrading, the \textit{Adams grading}, since it is the one we will encounter in Section \ref{2504291248}. There are, however, different gradings which correspond to different types of spectral sequences, the most common of which are (co)homological spectral sequences. 
 
 \begin{definition}
-A \textit{spectral sequence} (of \textit{Adams type}%\footnote{\textcolour{violet}{I'll have to rewrite this section because the Adams spectral sequence is not a cohomological or a homological spectral sequence I don't think - the grading is \(d_r : E^{s,t}\to E^{s+r,t+r-1}\).}}
-) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, r-1)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
+A \textit{spectral sequence} (of \textit{Adams type}) is a collection of differential bigraded \(R\)-modules \(\{E^{*, *}_r, d_r\}, r \in \nat\), with the differentials \(d_r\) of bidegree \((r, r-1)\). These satisfy the further condition that for all \(p, q, r\), \(E^{p, q}_{r+1}\cong H^{p, q}(E_r^{*, *}, d_r)\).
 \end{definition}
 
 Consider the term \(E_2\). Define 
@@ -794,8 +751,7 @@ which form the staircase diagram shown below.
  & \vdots &  & \vdots & & \vdots &
 \end{tikzcd}
 \end{equation}
-%where the rows are given by applying \(\pi_*\) to the diagram (\ref{2503301114}), and the columns <-- actually you get the rows for free
-This gives rise to a spectral sequence, by Theorem  \ref{2503301131}.
+This gives rise to a spectral sequence, by Theorem \ref{2503301131}.
 
 Now, since \(K_s = \bigvee_i \bb{K}(\bb{F}_2, n_{s_i})\), Proposition \ref{2503231218} tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(\bb{F}_2, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; \bb{F}_2)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
 %talk about death by indices...
@@ -1091,7 +1047,7 @@ Suppose \(\alpha \in (\pi_i^s)^\wedge_2\) represents \(a \in E_\infty\). Then \(
 \begin{proof}
 Recall that \(\pi_0^s=\inte\), since \(\pi_1S^1=\inte\) and \(n=1\leq 2=2(1)\), so this lies in the stable region. Now, \(E^{s,s}_r(\bb{S})\) converges to some filtration of \((\pi_0^s)^\wedge_2=\inte_2\) whose quotients are all \(\inte/2\inte\). The filtration must therefore be 
 \[\cdots\subq 4\inte_2 \subq 2\inte_2 \subq \inte_2,\]
-since finite index subgroups of \(\inte_p\) are of the form \(p^k\inte_p\). %\footnote{Here is an absolutely ridiculous argument for that: \((\inte_2, +)\) is a topological group. For any subgroup \(H\) of finite index \(n=2^km\), \(H\) is open (since by Lagrange's theorem \(n\inte_2\subq H\) and thus \(n\inte_2=2^k\inte_2\), so \(x+2^k\inte_2\) is an open ball around any \(x\in H\)). Now, every open subgroup of \(\inte_2\) is also closed (since it's complement is a union of open cosets), and it's apparently the case [elaborate] that the closed subgroups of \(\inte_2\) are the ideals \(2^k\inte_2\). These facts then imply that the filtration I give is the only possible one.} 
+since finite index subgroups of \(\inte_p\) are of the form \(p^k\inte_p\). %\footnote{Here is an absolutely ridiculous argument for that: \((\inte_2, +)\) is a topological group. For any subgroup \(H\) of finite index \(n=2^km\), \(H\) is open (since by Lagrange's theorem \(n\inte_2\subq H\) and thus \(n\inte_2=2^k\inte_2\), so \(x+2^k\inte_2\) is an open ball around any \(x\in H\)). Now, every open subgroup of \(\inte_2\) is also closed (since it's complement is a union of open cosets), and the closed subgroups of \(\inte_2\) are the ideals \(2^k\inte_2\) [elaborate]. These facts then imply that the filtration I give is the only possible one.} 
 
 Thus, \(\iota=[1]\in \inte_2/2\inte_2\), and by computing the Yoneda product we see that \(\iota\) is a unit. We also have \(h_0=[2]\in 2\inte_2/4\inte_2\) so \([2]=h_0=h_0\cdot \iota\), and hence \(h_0\) acts on \(\iota\) by multiplication by 2. 
 
@@ -1252,8 +1208,6 @@ for any injective resolution \(I\), and thus the long exact sequence below.
 \cdots \arrow[r, ""] & \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "\hat i"] & \Ext_{\A}^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "\hat j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
 \Ext_{\A}^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "\hat i"] & \Ext_{\A}^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "\hat j"] & \Ext_{\A}^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
 \end{tikzcd}\]
-%Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
-%\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 
 \begin{landscape}
 \begin{figure}
