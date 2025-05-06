@@ -687,15 +687,13 @@ Suppose \(D^{*,*}=\{D^{p,q}\}\) and \(E^{*,*}=\{E^{p,q}\}\) are bigraded modules
 \end{theorem}
 
 Such a bigraded exact couple may be displayed in the diagram below, known as a \textit{staircase diagram}.
-
-\[\begin{tikzcd} 
+\[\begin{tikzcd}[row sep=4ex, column sep=5ex]
    &  \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] & \\
  \cdots \arrow[r, "k"] & D^{p+1, q+1} \arrow[d, "i"] \arrow[r, "j"] & E^{p+1,q+1}  \arrow[r, "k"] & D^{p+2,q+1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  \cdots \arrow[r, "k"] & D^{p,q} \arrow[d, "i"] \arrow[r, "j"] & E^{p,q}  \arrow[r, "k"] & D^{p+1,q} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  \cdots \arrow[r, "k"] & D^{p-1,q-1}  \arrow[d, "i"] \arrow[r, "j"] & E^{p-1,q-1}  \arrow[r, "k"] & D^{p,q-1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  & \vdots &  & \vdots & 
 \end{tikzcd}\]
-
 \subsection{The \(\Ext\) functor}\label{2504291247}
 Before constructing the Adams spectral sequence, we briefly recall the definition of the Ext functor and some of its basic properties, which will be of importance later. We mainly follow \autocite{weibel}.
 
@@ -745,7 +743,7 @@ We can pick generators \(\alpha_i\) for \(H^*(X)\) as an \(\mathscr{A}_2\)-modul
 
 Now, we set \(X_1=K_0/X\), and repeat the construction to get a diagram:
 \begin{equation}\label{2503301114}
-\begin{tikzcd}[column sep=3ex] 
+\begin{tikzcd}[column sep=3ex, row sep=4ex] 
  X \arrow[rr, ""]  & & K_0 \arrow[rr, ""] \arrow[dr, ""] & & K_1 \arrow[dr, ""] \arrow[rr, ""] & & K_2 \arrow[dr, ""] \arrow[rr, ""] & & \cdots \\ 
   &&& K_0/X=X_1 \arrow[ur, ""] & & K_1/X_1=X_2 \arrow[ur, ""] & & K_2/X_2=X_3 \arrow[ur, ""] &  &
  \end{tikzcd}\nonumber
@@ -758,7 +756,6 @@ Taking cohomology, we get a diagram
 &&&& 0 \arrow[ur] && 0 \arrow[ur] && 0 \arrow[ur] && 0
  \end{tikzcd}
 \end{equation}
-
 The induced map \(H^*(X)\leftarrow H^*(K_0)\) is surjective by construction, and thus each map \(H^*(X_i)\leftarrow H^*(K_i)\) is surjective. 
 % The above is sort of obvious but also extremely painful to write out. 
 
@@ -780,7 +777,7 @@ Using the isomorphism \([Y,Z]\cong [\Sigma Y, \Sigma Z]\), we get long exact seq
 \[\cdots \to \pi_{t+1}X_s \to \pi_{t+1}K_s \to \pi_{t+1}X_{s+1}\to \pi_t X_s\to \pi_t K_s \to \cdots,\]
 which form the staircase diagram shown below.
 \begin{equation}\label{2504201907}
-\begin{tikzcd}[column sep=4ex]
+\begin{tikzcd}[column sep=4ex, row sep=4ex]
    &  \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] &  & \vdots \arrow[d, "i"] & \\
  \cdots \arrow[r, "k"] & \pi_{t+1}X_s \arrow[d, "i"] \arrow[r, "j"] & \pi_{t+1}K_s  \arrow[r, "k"] & \pi_{t+1}X_{s+1} \arrow[d, "i"] \arrow[r, "j"] & \pi_{t+1}K_{s+1} \arrow[r, "k"] & \pi_{t+1}X_{s+2} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
  \cdots \arrow[r, "k"] & \pi_t X_{s-1} \arrow[d, "i"] \arrow[r, "j"] & \pi_t K_{s-1}  \arrow[r, "k"] & \pi_t X_s \arrow[d, "i"] \arrow[r, "j"] & \pi_t K_s \arrow[r, "k"] & \pi_t X_{s+1} \arrow[d, "i"] \arrow[r, "j"] & \cdots \\
@@ -793,12 +790,7 @@ This gives rise to a spectral sequence, by Theorem \ref{2503301131}.
 Now, since \(K_s = \bigvee_i \bb{K}(\bb{F}_2, n_{s_i})\), Proposition \ref{2503231218} tells us that \([\bb{S}, K_s]\cong \prod_i[\bb{S}, \bb{K}(\bb{F}_2, n_{s_i})]\), which is naturally isomorphic to \(\prod_i H^{n_{s_i}}(\bb{S}; \bb{F}_2)\). Thus, elements of \([\bb{S}, K_s]\) are tuples of elements of \(H^*(\bb{S})\).
 %talk about death by indices...
 
-We have a map 
-\begin{align*}
-[\bb{S}, K_s]&\to \Hom_{\A}^0(H^*(K_s), H^*(\bb{S}))\\
-f \;\;&\mapsto\;\; f^*,
-\end{align*}
-since \(f^*\) is an \(\A\)-module homomorphism by Proposition \ref{2504201153} (1), and the fact that \(H^*(K_s)\) is free implies that it is an isomorphism.
+We have a map \([\bb{S}, K_s]\to \Hom_{\A}^0(H^*(K_s), H^*(\bb{S}))\) sending \(f \in [\bb{S}, K_s]\) to \(f^*\), since \(f^*\) is an \(\A\)-module homomorphism by Proposition \ref{2504201153} (1). The fact that \(H^*(K_s)\) is free implies that it is an isomorphism.
 % Here's the rough idea: we have identifications \([\bb{S}, K_s]\xrightarrow{\sim} \prod_i [\bb{S}, \bb{K}(G, n_{s_i})] \xrightarrow{\sim} \prod_i H^{n_{s_i}}(\bb{S}; G)\), and under these identifications a map \(f\) gets sent to a tuple \((f_i^*(\alpha_{n_{si}}))\), where the \(\alpha_{n_{s_i}}\) are fundamental classes. But they're exactly the generators of \(H^*(K_s)\) as an \(\A\)-module, and the fact that \(H^*(K_s)\) is a free \(\A\)-module implies that any \(\A\)-module homomorphism \(H^*(K_s)\to H^*(\bb{S})\) is determined exactly by where its generators go, so we can also identify \(\Hom^0_{\A}(H^*(K_s), H^*(\bb{S}))\) with \(\prod_i H^{n_{s_i}}(\bb{S}; G)\). The square commutes and 3 of the maps are isomorphisms so the last one is too. 
 
 We thus have
@@ -1222,7 +1214,14 @@ satisfies \((f^*)^*(\alpha \beta)=\alpha\cdot (f^*)^*(\beta)\) for any \(\alpha,
 
 \begin{proof}
 Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. One can calculate (using e.g. \autocite{ext}) that \(h_4i=0\) and \(h_0h_3^2i\neq 0\). Now, \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Further, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).
-
+\begin{landscape}
+\begin{figure}
+\centering
+\input{extra_iii.tex}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with naming conventions as in \autocite{rognes2}. The \(d_2\) differentials referenced in the proof of Lemma \ref{2504192017} are shown in green.}
+\label{2504201924}
+\end{figure}
+\end{landscape}
 Now, \(d_2(f_0)\neq 0\), so looking at Figure \ref{2504201924} we see that \(0\neq h_0d_2(f_0)=d_2(h_0f_0)=d_2(h_1e_0)=h_1d_2(e_0)\), and thus \(d_2(e_0)\neq 0\).
 \end{proof}
 
@@ -1248,16 +1247,6 @@ Taking a direct sum gives a short exact sequence
 \[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C_\sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0,\]
 and from this we get a short exact sequence of chain complexes
 \[0 \to \Hom(\bb{F}_2, I_\bullet) \xrightarrow{i^*} \Hom(H^*(C_\sigma), I_\bullet) \xrightarrow{j^*} \Hom(\bb{F}_2[8], I_\bullet)\to 0,\]
-
-\begin{landscape}
-\begin{figure}
-\centering
-\input{extra_iii.tex}
-\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with naming conventions as in \autocite{rognes2}. The \(d_2\) differentials referenced in the proof of Lemma \ref{2504192017} are shown in green.}
-\label{2504201924}
-\end{figure}
-\end{landscape}
-
 for any injective resolution \(I\), and thus the long exact sequence below.
 \[\begin{tikzcd}[row sep=8ex, column sep=3ex]
 \cdots \arrow[r, ""] & \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "\hat i"] & \Ext_{\A}^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "\hat j"] \arrow[draw=none]{d}[name=ar, anchor=center]{} & \Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2) \arrow[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (ar.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
@@ -1303,20 +1292,6 @@ Now, \((\pi_7^s)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 %where \(T_i\) is the torsion in \(G_i\) coprime to some fixed \(p\). It's well defined, because group homomorphisms send elements of order \(k\) to elements of order dividing \(k\), and exact, which can be seen as follows: 
 
 %Let \([g']\in \im \overline\phi\). Then \([g']=\overline\phi[g]=[\phi g]\), so \(\overline\psi[g']=[\psi\phi g]=[0]\). Thus, \(\im\overline \phi \subq \overline\psi\). On the other hand, if \([\psi g']=[0]\) then \(\psi g' = t\in T_2\). We then have \(\psi(o(t)g')=o(t)\psi(g')=0\), so \(o(t)g'\in \ker\psi=\im\phi\). Write \(\phi(g)=o(t)g'\), so \([\phi g]=[o(t)g']\in G_2/T_2\). Since multiplication by \(o(t)\) is an isomorphism in \(G_2/T_2\), \([g']=\left[\phi \left(\frac{g}{o(t)}\right)\right]=\overline\phi \left[\frac{g}{o(t)}\right]\), so \([g']\in\im\overline\phi\). Thus, \(\im\overline\phi=\ker\overline\psi\). 
-
-\begin{figure}
-\centering
-\input{e3page.tex}
-\caption{The \(E_3\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the differentials are shown in green.}
-\end{figure}
-
-\begin{figure}
-\centering
-\input{e4page.tex}
-\caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
-\label{2505051617}
-\end{figure}
-
 \begin{theorem}
 \[(\pi_i^s)^\wedge_2=\begin{cases}
 (\inte/2\inte)^2 & i = 14,\\
@@ -1327,6 +1302,17 @@ Now, \((\pi_7^s)^\wedge_2=\inte/16\inte \ang{\sigma}\), and \(2 \sigma^2=0\) by 
 \begin{proof}
 From Figure \ref{2505051617}, we see that \((\pi_{15}^s)^\wedge_2=\inte/32\inte\oplus\inte/2\inte\), and that \(\abs{(\pi_{14}^s)^\wedge_2}=2\). Now, if \(h_3\) is represented by \(\sigma\in (\pi_7^s)^\wedge_2\), then \(h_3^2\) is represented by \(\sigma^2\). By graded commutativity, \(\sigma^2=-\sigma^2\), so \(2\sigma^2=0\). Thus, since \(h_3^2\) is represented by a generator of \((\pi_{14}^s)^\wedge_2\), we have \((\pi_{14}^s)^\wedge_2\cong (\inte/2\inte)^2\). 
 \end{proof}
+\begin{figure}
+\centering
+\input{e3page.tex}
+\caption{The \(E_3\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\); the differentials are shown in green.}
+\end{figure}
+\begin{figure}
+\centering
+\input{e4page.tex}
+\caption{The \(E_4\) page of the Adams spectral sequence for \(\bb{S}\), in the range \(t-s\leq 15\). There are no possible higher differentials, so this coincides with the \(E_\infty\) page for \(t-s\leq 15\).}
+\label{2505051617}
+\end{figure}
 
 %This is how you can start a new page
 \vfill \eject
