@@ -549,8 +549,17 @@ If \(X\) has finite type, then it has a \(p\)-completion unique up to equivalenc
 \end{theorem}
 
 \begin{theorem}[{\autocite{spectra}, Prop 9.2.22}]\label{2504180925}
-Let \(X\) be a connective spectrum of finite type, and let \(Y\) be \(p\)-complete. Then the map \([X^\wedge_p, Y]\to [X, Y]\) is an isomorphism. That is, given any map \(X \xrightarrow{f} Y\), there exists a unique (up to homotopy) map \(X^\wedge_p \xrightarrow{\overline f} Y\) such that \(f\) factors as \(X \to X^\wedge_p \xrightarrow{\overline f} Y\). 
+Let \(X\) be a connective spectrum of finite type, and let \(Y\) be \(p\)-complete. Then the map \([X^\wedge_p, Y]\to [X, Y]\) is an isomorphism.
 \end{theorem}
+
+Equivalently, we have the following universal property: given any map \(X \xrightarrow{f} Y\), there exists a unique (up to homotopy) map \(X^\wedge_p \xrightarrow{\overline f} Y\) such that \(f\) factors as \(X \to X^\wedge_p \xrightarrow{\overline f} Y\). 
+
+Note that this property holds for abelian groups \(A\) and \(B\), with \(B=B^\wedge_p\), where the component \(\overline f_n : A^\wedge_p\to B/p^nB\) is defined by projecting onto \(A/p^nA\) and composing with the map induced by \(f\) (uniqueness follows from the fact that group homomorphisms are continuous with respect to the \(p\)-adic topology, and the image of \(A\) is dense in \(A^\wedge_p\)).
+% the argument:
+% Any abelian group \(A\) has a topology with basis \(\{x+p^nA : x \in A, n \in \inte^+\}\). Now, let \(f : A \to B\) be a group homomorphism. We claim \(f\) is continuous with respect to the \(p\)-adic topologies on \(A\) and \(B\). It suffices to show that \(f^{-1}(x+p^nB)\) is open for any \(x\in B\), \(n\in \inte^+\). Let \(y \in f^{-1}(x+p^nB)\), so that \(f(y)=x+p^nb\). Then \(y + p^nA\) is contained in \(f^{-1}(x+p^nB)\), since \(f(y+p^na)=f(y)+p^nf(a)=x+p^n(b+f(a))\). Thus, we have \(y \in y+p^nA \subq f^{-1}(x+p^nB)\). 
+% Now, we show that \(c(A)\) is dense in \(A^\wedge_p\). Suppose not. Then \(A^\wedge_p\setminus \overline{c(A)}\) is open and nonempty, so contains a ball \(x+p^nA^\wedge_p\). Now, we can replace \(x\) by \(c(y)\) for any lift in \(y \in A\) of its projection onto \(p^nA\). But now \(c(y)\in c(y)+p^nA^\wedge_p\) and \(c(y) \in c(A)\), contradicting the assumption that the ball is contained entirely within the complement of c(A).
+% These two facts then imply that the map \(\overline f\) is unique; it has to be continuous if it's going to be a group homomorphism, and it has to be determined by what it does to c(A) if it's going to be continuous. And what it does to c(A) is completely determined by the fact that the diagram has to commute.
+We have already seen that maps between spectra always form an abelian group, and the theorems above thus give another way in which (under certain hypotheses) spectra behave like abelian groups. 
 
 \section{The Adams spectral sequence}
 
@@ -624,6 +633,8 @@ A spectral sequence \(\{E_r^{*,*}\}\) \textit{converges} to a graded \(R\)-modul
 \end{definition}
 
 \subsection{Exact couples}\label{2503301333}
+
+We have seen that certain towers of submodules give rise to spectral sequences; now, we describe a different structure from which a spectral sequence can be obtained, which will in fact be how the Adams spectral sequence arises.
 
 \begin{definition}
 Let \(D, E\) be \(R\)-modules, and let \(i : D \to D\), \(j : D\to E\), \(k : E \to D\) be module homomorphisms. We call \(\mathcal{C}=\{D, E, i, j, k\}\) an \textit{exact couple} if the diagram below is exact.
