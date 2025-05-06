@@ -819,9 +819,17 @@ which is by construction the chain complex below.
 \[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots.\]
 The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).
 
-\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]\label{2504081125}
-The spectral sequence \(\{E_r, d_r\}\) constructed above, in the case where \(X=\bb{S}\), converges to \((\pi_{t-s}^s)^\wedge_2\) in the sense of Definition \ref{2504291808}.
+\begin{theorem}[{\autocite{ass}, Thm 4.29}]\label{2504081125}
+The spectral sequence \(\{E_r, d_r\}\) constructed above converges to \(\pi_{t-s}(X)^\wedge_2\) in the sense of Definition \ref{2504291808}.
 \end{theorem}
+
+In particular, when \(X=\bb{S}\), the Adams spectral sequence above converges to the stable homotopy groups \((\pi_*^s)^\wedge_2\). In other words, there are filtrations
+\[\cdots \subq F^{s+1,t+1}\subq F^{s,t}\subq F^{s-1,t-1}\subq \cdots \subq (\pi_{t-s}^s)^\wedge_2,\]
+for \(t-s\geq 0\), and we have isomorphisms \(E^{s,t}_\infty \cong F^{s,t}/F^{s+1,t+1}\). Note that it is possible for a spectral sequence to converge to several different groups, since the \(E_\infty\) page only gives information about the associated graded of a group, and thus other arguments may be needed to determine the groups \((\pi_{t-s}^s)^\wedge_2\) themselves. 
+
+%\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]\label{2504081125}
+%The spectral sequence \(\{E_r, d_r\}\) constructed above, in the case where \(X=\bb{S}\), converges to \((\pi_{t-s}^s)^\wedge_2\) in the sense of Definition \ref{2504291808}.
+%\end{theorem}
 
 %\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]
 % I want to cite what's above, but it's in terms of X/2 instead of X, and X/2 is defined by taking a smash product, and I REALLY don't want to get into that...
@@ -1221,6 +1229,8 @@ Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. One can calculate (us
 
 Now, \(d_2(f_0)\neq 0\), so looking at Figure \ref{2504201924} we see that \(0\neq h_0d_2(f_0)=d_2(h_0f_0)=d_2(h_1e_0)=h_1d_2(e_0)\), and thus \(d_2(e_0)\neq 0\).
 \end{proof}
+
+In the following proof, we write \(\sigma\in \pi_7^s\) for the stable class of the octonionic Hopf fibration \(S^{15}\to S^8\), which can be shown to detected by \(h_3\) (recall that we previously denoted by \(\sigma\) an arbitrary generator of \(\pi_7^s\)). 
 
 \begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
 Consider the cofibration

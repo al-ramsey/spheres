@@ -803,9 +803,13 @@ which is by construction the chain complex below.
 \[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots.\]
 The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).
 
-\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]\label{2504081125}
-The spectral sequence \(\{E_r, d_r\}\) constructed above, in the case where \(X=\bb{S}\), converges to \((\pi_{t-s}^s)^\wedge_2\) in the sense of \ref{2504291808}.
+\begin{theorem}[{\autocite{ass}, Thm 4.29}]\label{2504081125}
+The spectral sequence \(\{E_r, d_r\}\) constructed above converges to \(\pi_{t-s}(X)^\wedge_2\) in the sense of Definition \ref{2504291808}.
 \end{theorem}
+
+In particular, when \(X=\bb{S}\), the Adams spectral sequence above converges to the stable homotopy groups \((\pi_*^s)^\wedge_2\). In other words, there are filtrations
+\[\cdots\subq F^{s+1,t+1}\subq F^{s,t}\subq F^{s-1,t-1}\subq \cdots \subq (\pi_{t-s}^s)^\wedge_2,\]
+for \(t-s\geq 0\), and we have isomorphisms \(E^{s,t}_\infty \cong F^{s,t}/F^{s+1,t+1}\). Note that it is possible for a spectral sequence to converge to several different groups, since the \(E_\infty\) page only gives information about the associated graded of a group, and thus other arguments may be needed to determine the groups \((\pi_{t-s}^s)^\wedge_2\) themselves. 
 
 %\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]
 % I want to cite what's above, but it's in terms of X/2 instead of X, and X/2 is defined by taking a smash product, and I REALLY don't want to get into that...
@@ -1208,6 +1212,8 @@ Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. One can calculate (us
 Now, \(d_2(f_0)\neq 0\), so looking at Figure \ref{2504201924} we see that \(0\neq h_0d_2(f_0)=d_2(h_0f_0)=d_2(h_1e_0)=h_1d_2(e_0)\), and thus \(d_2(e_0)\neq 0\).\done
 \end{ourproof}
 
+In the following proof, we write \(\sigma\in \pi_7^s\) for the stable class of the octonionic Hopf fibration \(S^{15}\to S^8\), which can be shown to detected by \(h_3\) (recall that we previously denoted by \(\sigma\) an arbitrary generator of \(\pi_7^s\)).  
+
 \begin{lemma}[{\autocite{rognes2}, Table 14.9 (4)}]\label{2504131851}
 Consider the cofibration
 \[\bb{S}^7 \xrightarrow{\sigma} \bb{S} \xrightarrow{i} C_\sigma \xrightarrow{j} \bb{S}^8\to \cdots.\]
@@ -1228,13 +1234,6 @@ Taking a direct sum gives a short exact sequence
 \[0 \leftarrow \bb{F}_2 \xleftarrow{i^*} H^*(C_\sigma) \xleftarrow{j^*} \bb{F}_2[8] \leftarrow 0,\]
 and from this we get a short exact sequence of chain complexes
 \[0 \to \Hom(\bb{F}_2, I_\bullet) \xrightarrow{i^*} \Hom(H^*(C_\sigma), I_\bullet) \xrightarrow{j^*} \Hom(\bb{F}_2[8], I_\bullet)\to 0,\]
-for any injective resolution \(I\), and thus the long exact sequence below.
-\[\begin{tikzcd}[row sep=8ex, column sep=3ex]
-\cdots \arrow[r, ""] & \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "\hat i"] & \Ext_{\A}^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "\hat j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
-\Ext_{\A}^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "\hat i"] & \Ext_{\A}^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "\hat j"] & \Ext_{\A}^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
-\end{tikzcd}\]
-%Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
-%\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 
 \begin{landscape}
 \begin{figure}
@@ -1245,6 +1244,13 @@ for any injective resolution \(I\), and thus the long exact sequence below.
 \end{figure}
 \end{landscape}
 
+for any injective resolution \(I\), and thus the long exact sequence below.
+\[\begin{tikzcd}[row sep=8ex, column sep=3ex]
+\cdots \arrow[r, ""] & \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "\hat i"] & \Ext_{\A}^{s,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "\hat j"] \ar[draw=none]{d}[name=X, anchor=center]{} & \Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2) \ar[rounded corners, to path={ -- ([xshift=2ex]\tikztostart.east) |- (X.center) \tikztonodes -| ([xshift=-2ex]\tikztotarget.west) -- (\tikztotarget)}]{dlll}[at end]{} \\
+\Ext_{\A}^{s+1,t}(\bb{F}_2, \bb{F}_2) \arrow[r, "\hat i"] & \Ext_{\A}^{s+1,t}(H^*(C_\sigma), \bb{F}_2) \arrow[r, "\hat j"] & \Ext_{\A}^{s+1,t-8}(\bb{F}_2, \bb{F}_2) \arrow[r, ""] & \cdots
+\end{tikzcd}\]
+%Note that for \(t-s<7\), the map \(\hat i\) must be injective, since \(\Ext_{\A}^{s,t-8}(\bb{F}_2, \bb{F}_2)=0\). In particular, \(\hat i(h_0), \hat i(h_2)\neq 0\). 
+%\[\cdots \to \Ext^{s-1,t-8}(\bb{F}_2, \bb{F}_2) \to \Ext^{s,t}(\bb{F}_2, \bb{F}_2) \xrightarrow{i} \Ext^{s,t}(H^*(C \sigma), \bb{F}_2) \xrightarrow{j} \Ext^{s,t-8}(\bb{F}_2, \bb{F}_2)\to\Ext^{s+1,t}(\bb{F}_2, \bb{F}_2)\to \cdots.\]
 Now, \(f_0\in \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2)\); we consider the exact sequence
 \[\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)\to \Ext_{\A}^{4,22}(\bb{F}_2, \bb{F}_2) \xrightarrow{\hat i} \Ext_{\A}^{4,22}(H^*(C_\sigma), \bb{F}_2).\]
 Figure \ref{1304251243} shows us that \(\Ext_{\A}^{3,14}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i\) is injective at this point, and thus \(\hat i(f_0)\neq 0\). Similarly, \(\Ext_{\A}^{4,15}(\bb{F}_2, \bb{F}_2)=0\) and \(\Ext_{\A}^{1,12}(\bb{F}_2, \bb{F}_2)=0\), so \(\hat i(h_0f_0), \hat i(h_2h_4)\neq 0\). Since \(E_2(C_\sigma)\) is an \(E_2(\bb{S})\)-module and \(\hat i\) respects the \(E_2(\bb{S})\) action (by \ref{2504211139}), \(\hat i(h_0f_0)=h_0\cdot\hat i(f_0)\neq 0\), so \(\hat i(f_0)\) is equal to either \(h_2\cdot a\) or \(h_2\cdot a+h_0^2\cdot\hat{i}(h_2h_4)\). Now, \(d_2(h_2h_4)=0\), since otherwise it would be equal to \(e_0\), and we would have \(d_2^2(h_2h_4)\neq 0\), contradicting the fact that \(d_2\) is a differential. Thus, by linearity of \(d_2\), we have \(d_2(\hat i(f_0))=d_2(h_2\cdot a)\) (since \(d_2(h_0^2\cdot\hat i (h_2h_4))=d_2(\hat i(h_0^2h_2h_4))=\hat i(h_0^2d_2(h_2h_4))=0\)).
