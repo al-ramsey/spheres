@@ -803,18 +803,18 @@ which is by construction the chain complex below.
 \[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots.\]
 The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).
 
-\begin{theorem}[{\autocite{ass}, Thm 4.29}]\label{2504081125}
-The spectral sequence \(\{E_r, d_r\}\) constructed above converges to \(\pi_{t-s}(X)^\wedge_2\) in the sense of Definition \ref{2504291808}.
+%\begin{theorem}[{\autocite{ass}, Thm 4.29}]\label{2504081125}
+\begin{theorem}\label{2504081125}
+The spectral sequence \(\{E_r, d_r\}\) constructed above converges to \(\pi_{t-s}(X)^\wedge_2\), in the sense of Definition \ref{2504291808}. 
 \end{theorem}
 
-In particular, when \(X=\bb{S}\), the Adams spectral sequence above converges to the stable homotopy groups \((\pi_*^s)^\wedge_2\). In other words, there are filtrations
-\[\cdots\subq F^{s+1,t+1}\subq F^{s,t}\subq F^{s-1,t-1}\subq \cdots \subq (\pi_{t-s}^s)^\wedge_2,\]
-for \(t-s\geq 0\), and we have isomorphisms \(E^{s,t}_\infty \cong F^{s,t}/F^{s+1,t+1}\). Note that it is possible for a spectral sequence to converge to several different groups, since the \(E_\infty\) page only gives information about the associated graded of a group, and thus other arguments may be needed to determine the groups \((\pi_{t-s}^s)^\wedge_2\) themselves. 
+The version of the theorem above stated in \autocite{hatcher5} (Thm 4.29) says instead that \(\{E_r, d_r\}\) converges to \(\pi_{t-s}^s\) modulo its odd torsion, however, these two statements are equivalent. First, recall that \(\pi_{t-s}^s\) modulo its odd torsion is isomorphic to \((\pi^s_{t-s})^\wedge_2\) whenever \(\pi_{t-s}^s\) is finite. Now, all the terms \(E_\infty^{s,t}\) are finitely generated \(\bb{F}_2\)-vector spaces, so each term of the filtration must be a finite index subgroup of whichever group the spectral sequence converges to. The finite index subgroups of \(\inte_2\) are of the form \(2^k\inte_2\) 
+% argument for why that is later, commented out
+and the finite index subgroups of \(\inte\) (giving quotients of order a power of 2) are of the form \(2^k\inte\). The associated graded thus cannot tell the difference between a \(\inte\) summand and a \(\inte_2\) summand in the group the spectral sequence converges to, so the two theorems are equivalent.
 
-%\begin{theorem}[{\autocite{rognes2}, Thm 11.5.14}]
-% I want to cite what's above, but it's in terms of X/2 instead of X, and X/2 is defined by taking a smash product, and I REALLY don't want to get into that...
-
-% compromise: I've stated it for X = S, since S/2 can just be defined in terms of a cofibration sequence and it definitely is connective of finite type. 
+%In particular, when \(X=\bb{S}\), the Adams spectral sequence above converges to the stable homotopy groups \((\pi_*^s)^\wedge_2\). In other words, there are filtrations
+%\[\cdots \subq F^{s+1,t+1}\subq F^{s,t}\subq F^{s-1,t-1}\subq \cdots \subq (\pi_{t-s}^s)^\wedge_2,\]
+%for \(t-s\geq 0\), and we have isomorphisms \(E^{s,t}_\infty \cong F^{s,t}/F^{s+1,t+1}\). Note that it is possible for a spectral sequence to converge to several different groups, since the \(E_\infty\) page only gives information about the associated graded of a group, and thus other arguments may be needed to determine the groups \((\pi_{t-s}^s)^\wedge_2\) themselves. 
 
 \subsection{First computations}\label{2504291249}
 
