@@ -132,7 +132,9 @@
 
 Calculating the higher homotopy groups of spheres is an important and famously difficult problem in homotopy theory. However, the Freudenthal suspension theorem, given below, is the beginning of the field of \textit{stable homotopy theory}, and in particular allows us to ask not about the homotopy groups of spheres in full generality, but to restrict to the colimits of these groups under suspension. This turns out to be a more approachable problem, and these `stable' groups will be the subject of this essay. 
 
-\begin{theorem}[{\autocite{cobordism}, Thm 1.1.4}, Freudenthal suspension theorem]\label{2504151046}
+Before stating the theorem below, we note that we will be working throughout with based spaces and maps, and reduced suspension; this ensures that the suspension of any based space has a canonical basepoint, and that the suspension of any pointed map is again a pointed map. We will, however, omit the basepoint from notation to reduce clutter. 
+
+\begin{theorem}[{\autocite{ass}, Thm 1.8}, Freudenthal suspension theorem]\label{2504151046}
 If \(\pi_i(X)=0\) for \(i\leq k\) (i.e. \(X\) is \(k\)-connected) then the map 
 \begin{align*}
 \pi_n(X) \;\;&\to\;\; \pi_{n+1}(\Sigma X)\\
@@ -223,6 +225,23 @@ Let \(I=(i_1, ..., i_n)\), and write \(Sq^I\) for the monomial \(Sq^{i_1}Sq^{i_2
 
 The admissible monomials are exactly those to which no Adem relations can be applied. Thus, \(\A\) is generated as an \(\bb{F}_2\) module by admissible monomials. 
 
+Finally, recall that an Eilenberg-MacLane space \(K(G, n)\) (for \(G\) an abelian group and \(n \in \inte_{\geq 0}\)) is a space for which \(\pi_i(K(G, n))=G\) if \(i=n\) and \(0\) otherwise. The following result says the cohomology of an Eilenberg-MacLane space \(K(\bb{F}_2, n)\) is free over \(\A\) below dimension \(2n\).
+
+\begin{proposition}[{\autocite{rognes2}, Cor 7.5.6}]
+The homomorphism
+\begin{align*}
+\A[n] &\to \widetilde H^*(K(\bb{F}_2, n); \bb{F}_2)\\
+Sq^I[n] &\mapsto Sq^I(u_n),
+\end{align*}
+where \([n]\) denotes a shift in degree by \(n\), is an isomorphism in degrees \(*\leq 2n\). 
+\end{proposition}
+
+\begin{remark}\label{2505061746gettingclosenow}
+The above result combined with the wedge axiom implies that for a fixed \(n\), the cohomology of a wedge \(\bigvee_i K(\bb{F}_2, n_i)\) (with each \(n_i \geq n\) and only finitely many \(n_i\) in each dimension) is also free over \(\A\) below dimension \(2n\).
+\end{remark}
+
+Thus, though no space \(X\) can have cohomology a free \(\A\)-module (since for any \(\alpha \in H^*(X;\bb{F}_2)\) of degree \(n\), \(Sq^{n+1}(\alpha)=0\) by \ref{2504201153} (5)), the cohomology of an Eilenberg-MacLane space is free in sufficiently low degree. This fact will be vital to the construction of the Adams spectral sequence in Section \ref{2504291248}. 
+
 \section{If spectra aren't your friends, I can introduce you}
 
 In this section, we introduce spectra, the stable analogue of CW complexes. These objects will turn out to have particularly nice properties; for example, in addition to many of the properties of CW complexes carrying over to spectra, we will see that the collection of maps between two spectra up to homotopy has a natural abelian group structure, and that the suspension map between these groups is an isomorphism. Sections \ref{2504291244}-\ref{2504291245} closely follow Section 5.2 of \autocite{hatcher5}, developing some basic properties of spectra which will be used in \ref{2504291248}, while in Section \ref{2504291246} we note some facts about \(p\)-completion which will be needed later. 
@@ -263,7 +282,7 @@ We write \(\bb{S}\) for the suspension spectrum \(\Sigma^\infty S^0\), and call 
 % terrible definition above. The one below is much clearer!
 
 \begin{example}\label{2504251659}
-Recall that an Eilenberg-MacLane space \(K(G, m)\) (for \(G\) an abelian group and \(n \in \inte_{\geq 0}\)) is a space for which \(\pi_i(K(G, n))=G\) if \(i=n\) and \(0\) otherwise, and that these can be constructed as CW complexes. An \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\), and can be constructed inductively by attaching cells to \(\Sigma K(G, m+n))\) to kill \(\pi_i(\Sigma K(G, m+n))\) for \(i > m+n+1\). By \ref{2504151046}, \(\pi_i(K(G, m+n))\cong \pi_{i+1}(\Sigma K(G, m+n))\) for \(i \leq 2m+2n-2\), so the cells attached can be taken to have dimension \(\geq 2m+2n-1\). The maps \(\sigma_n\) are inclusions of subcomplexes. 
+An \textit{Eilenberg-MacLane spectrum} \(\bb{K}(G,m)\) has \((\bb{K}(G,m))_n\) a CW complex \(K(G,m+n)\), and can be constructed inductively by attaching cells to \(\Sigma K(G, m+n))\) to kill \(\pi_i(\Sigma K(G, m+n))\) for \(i > m+n+1\). By \ref{2504151046}, \(\pi_i(K(G, m+n))\cong \pi_{i+1}(\Sigma K(G, m+n))\) for \(i \leq 2m+2n-2\), so the cells attached can be taken to have dimension \(\geq 2m+2n-1\). The maps \(\sigma_n\) are inclusions of subcomplexes. 
 \end{example}
 
 % No it's ok Hatcher, just use the exact same notation for spaces and spectra, that's fine.
@@ -392,6 +411,8 @@ Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) a
 %?[maybe something on weak equivalence?]
 
 Note that a spectrum is equivalent to any of its cofinal subspectra. In particular, if \(X=\{X_n\}\) is a spectrum, then \(X'=\{\Sigma X_{n-1}\}\) is a cofinal subspectrum of \(X\) (where we take \(X_{-1}\) to be the basepoint of \(X_0\)). We define \(\Sigma^{-1}X:=\{X_{n-1}\}\), noting that \(\Sigma \Sigma^{-1}X=\Sigma^{-1}\Sigma=X'\simeq X\). Thus, a spectrum is always equivalent to the suspension of some other spectrum.
+
+Recall that for \(i>0\), we write \(\bb{S}^i\) for the spectrum \(\Sigma^\infty S^i=\Sigma^i \bb{S}\). We have just seen that spectra can always be desuspended, so we will extend this notation and write \(\bb{S}^i:=\Sigma^i \bb{S}\) for any nonzero \(i\in \inte\). 
 
 \begin{definition}
 A \textit{homotopy} of maps between spectra is a map \(X\times I \to Y\), where \(X\times I\) is the spectrum with \((X\times I)_n=X_n\times_{\text{red}} I:= (X_n\times I)/(x_0\times I)\).
@@ -732,7 +753,7 @@ giving rise to a short exact sequence
 \[0\leftarrow H^*(X_{s})\leftarrow H^*(K_s)\leftarrow H^*(X_{s+1})\leftarrow0,\]
 for each \(s\). This then implies that the top row of (\ref{2504251239}) is exact.
 
-Each \(H^*(K_s)\) is a free \(\A\)-module, since \(K_s\) has finite type and the cohomology of a wedge of Eilenberg-MacLane spaces \(K(\bb{F}_2, n_i)\) (with \(n_i \geq n\) and only finitely many \(n_i\) of each dimension) is free below dimension \(2n\) (this can be shown by combining \autocite{rognes2} Cor 7.5.6 and the wedge axiom). Thus, the top row of (\ref{2504251239}) gives a free resolution of \(H^*(X)\). 
+Each \(H^*(K_s)\) is a free \(\A\)-module, by \ref{2505061746gettingclosenow} and the fact that \(K_s\) has finite type. Thus, the top row of (\ref{2504251239}) gives a free resolution of \(H^*(X)\). 
 
 % essentially if you have a minimal generating set \(\{x_i\}\) and some sum \(a_1x_1+\cdots + a_kx_k=0\), then just look far enough along the limit that the x_i are all in degrees small enough, so that that sum being zero implies that either the a_i are all zero or the x_i weren't minimal.
 
