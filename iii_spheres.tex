@@ -627,7 +627,8 @@ Thus, \(E_\infty=E_N\).
 Let \(M^*\) be a graded \(R\)-module, and suppose \(M^*\) has a filtration
 \[\cdots \subq F^{n+1}M^*\subq F^nM^* \subq F^{n-1}M^*\subq \cdots \subq M^*.\]
 We define the \textit{associated graded} \(E^{*,*}_0(M^*, F)\) of \(M\) to be the bigraded module whose degree \((p,q)\) summand is
-\[E^{p,q}_0(M)= F^pM^{p-q}/F^{p+1}M^{p-q}.\]
+\[E^{p,q}_0(M)= F^{p,q}M/F^{p+1,q+1}M,\]
+where \(F^{p,q}M:=F^pM^{p-q}\). 
 
 \begin{definition}\label{2504291808}
 A spectral sequence \(\{E_r^{*,*}\}\) \textit{converges} to a graded \(R\)-module \(M^*\) if there is a filtration \(F\) on \(M^*\) such that the following conditions hold:
@@ -1099,7 +1100,7 @@ First, note from Figure \ref{2504241018} that the only possible nontrivial diffe
 \begin{proof}
 We have already shown that \((\pi_4^s)_2^\wedge=(\pi_5^s)^\wedge_2=0\) and that \((\pi_2^s)^\wedge_2=\inte/2\inte\). Further, Lemma \ref{2504241225} implies that \((\pi_1^s)^\wedge_2=\inte/2\inte\), since \(h_1\) survives to \(E_\infty\). Now, we have some filtration
 \[\{0\}\subq F^{3,6}\subq F^{2,5}\subq F^{1,4}= (\pi_3^s)^\wedge_2,\]
-where \(F^{3,6}\), \(F^{2,5}/F^{3,6}, (\pi_3^s)^\wedge_2/F^{2,5}\cong \inte/2\inte\). Let \(h_2\in E^{1,4}=(\pi_3^s)^\wedge_2/F^{2,5}\) be represented by \(\nu\in (\pi_3^s)^\wedge_2\). Then \(0\neq h_0^2\cdot h_2\in F^{3,6}\) is represented by \(4\nu\), so \(4\nu \neq 0\) in \((\pi_3^s)^\wedge_2\). Thus, \((\pi_3^s)^\wedge_2\cong \inte/8\inte\).
+where \(F^{3,6}\), \(F^{2,5}/F^{3,6}, (\pi_3^s)^\wedge_2/F^{2,5}\cong \inte/2\inte\). Let \(h_2\in E^{1,4}=(\pi_3^s)^\wedge_2/F^{2,5}\) be represented by \(\nu\in (\pi_3^s)^\wedge_2\). Then \(0\neq h_0^2\cdot h_2\in F^{3,6}\) is equal to \(4\nu\), so \(4\nu \neq 0\) in \((\pi_3^s)^\wedge_2\). Thus, \((\pi_3^s)^\wedge_2\cong \inte/8\inte\).
 \end{proof}
 
 \subsection{The \(E_2\) page for \(t-s\leq 15\)}\label{2504291252}
