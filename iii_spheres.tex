@@ -371,7 +371,7 @@ Let \(X\) be a connective CW spectrum of finite type. Then \(H_i(X;G)\), \(H^i(X
 \end{lemma}
 
 \begin{proof}
-First, note that \(H_i(X;G)=H_{i+n}(X_n;G)\) for sufficiently large \(n\), since for large enough \(n\), \(X_n\) contains all the cells of \(X\) of  dimension \(\leq i\) (which are the \((i+n)\)-cells of \(X_n\)). Similarly, \(H^i(X;G)=H^{i+n}(X_n;G)\) for sufficiently large \(n\). Each \(H_{i+n}(X_n;G)\) is finitely generated, since \(X_n\) has only finitely many cells in each dimension, and thus each \(H^{i+n}(X_n;G)\) is also finitely generated (see \autocite{hatcher} Cor 3.3). Therefore, \(H_i(X;G)\) and \(H^i(X;G)\) are finitely generated. 
+First, note that \(H_i(X;G)=H_{i+n}(X_n;G)\) for sufficiently large \(n\), since for large enough \(n\), \(X_n\) contains all the cells of \(X\) of  dimension \(\leq i\) (which are the cells of \(X_n\) of dimension \(\leq i+n\)). Similarly, \(H^i(X;G)=H^{i+n}(X_n;G)\) for sufficiently large \(n\). Each \(H_{i+n}(X_n;G)\) is finitely generated, since \(X_n\) has only finitely many cells in each dimension, and thus each \(H^{i+n}(X_n;G)\) is also finitely generated (see \autocite{hatcher} Cor 3.3). Therefore, \(H_i(X;G)\) and \(H^i(X;G)\) are finitely generated. 
 
 Now, \(\pi_i(X)=\colim_n \pi_{i+n}(X_n)\), and the groups \(\pi_{i+n}(X_n)\) stabilise by Lemma \ref{2504151105}. The \(X_n\) must eventually be simply-connected, since \(X\) is connective. %\footnote{Claim: if a CW complex \(Y\) is not simply-connected, it has at least one 1-cell. Proof: suppose \(Y\) has no 1-cells, and let \(f : S^1 \to Y\). By \ref{2502211420}, \(f\simeq g : S^1 \to Y\), where \(g\) is cellular. We have \(g(S^1)=g(S^1_{(1)})\subq Y_{(1)}=Y_{(0)}\), so \(g\) is constant. Thus, \(\pi_1(Y)\) is trivial. Now, suppose each \(X_n\) has at least one 1-cell. Then for every \(n <0\), \(X\) has an \(n\)-cell: the \(1\)-cell of \(X_{1-n}\), so \(X\) is not connective. \label{2504071143}}. 
 A simply-connected space has finitely generated homotopy groups if and only if it has finitely generated homology groups (see e.g. \autocite{hatcher}, Thm 5.7), and we have just seen that the \(H_{i+n}(X_n;G)\) are finitely generated, so \(\pi_i(X)=\pi_{i+n}(X_n)\) is finitely generated. 
@@ -435,7 +435,7 @@ Note that \(\Sigma(X_n\times_{\text{red}}I)=\Sigma X_n\times_{\text{red}}I\). Th
 For any CW spectra \(Z\), \([\bb{S}^t, Z]=\pi_t(Z)\). %[they satisfy the same universal property]
 \end{remark}
 
-For any CW spectra \(X,Y\), the set \([X,Y]\) can the structure of an abelian group, since \(X\) has be written as a double suspension \(\Sigma^2X'\), and each set \([\Sigma^2X'_n, Y_n]\) has the structure of an abelian group. %by \ref{2504091052} which also doesn't exist
+For any CW spectra \(X,Y\), the set \([X,Y]\) has the structure of an abelian group, since \(X\) can be written as a double suspension \(\Sigma^2X'\), and each set \([\Sigma^2X'_n, Y_n]\) has the structure of an abelian group. %by \ref{2504091052} which also doesn't exist
 
 \begin{theorem}\label{2504151310}
 The suspension map \([X,Y]\to [\Sigma X, \Sigma Y]\) is an isomorphism of groups.
@@ -560,16 +560,16 @@ Let \(X\) be a connective spectrum of finite type, and let \(Y\) be \(p\)-comple
 
 Equivalently, we have the following universal property: given any map \(X \xrightarrow{f} Y\), there exists a unique (up to homotopy) map \(X^\wedge_p \xrightarrow{\overline f} Y\) such that \(f\) factors as \(X \to X^\wedge_p \xrightarrow{\overline f} Y\). 
 
-Note that this property holds for abelian groups \(A\) and \(B\), with \(B=B^\wedge_p\), where the component \(\overline f_n : A^\wedge_p\to B/p^nB\) is defined by projecting onto \(A/p^nA\) and composing with the map induced by \(f\) (uniqueness follows from the fact that group homomorphisms are continuous with respect to the \(p\)-adic topology, and the image of \(A\) is dense in \(A^\wedge_p\)).
+Note that this property holds for abelian groups \(A\) and \(B\), with \(B=B^\wedge_p\), where the component \(\overline f_n : A^\wedge_p\to B/p^nB\) is defined by projecting onto \(A/p^nA\) and composing with the map induced by \(f\) (uniqueness follows from the fact that group homomorphisms are continuous with respect to the \(p\)-adic topology, and that the image of \(A\) is dense in \(A^\wedge_p\)).
 % the argument:
 % Any abelian group \(A\) has a topology with basis \(\{x+p^nA : x \in A, n \in \inte^+\}\). Now, let \(f : A \to B\) be a group homomorphism. We claim \(f\) is continuous with respect to the \(p\)-adic topologies on \(A\) and \(B\). It suffices to show that \(f^{-1}(x+p^nB)\) is open for any \(x\in B\), \(n\in \inte^+\). Let \(y \in f^{-1}(x+p^nB)\), so that \(f(y)=x+p^nb\). Then \(y + p^nA\) is contained in \(f^{-1}(x+p^nB)\), since \(f(y+p^na)=f(y)+p^nf(a)=x+p^n(b+f(a))\). Thus, we have \(y \in y+p^nA \subq f^{-1}(x+p^nB)\). 
 % Now, we show that \(c(A)\) is dense in \(A^\wedge_p\). Suppose not. Then \(A^\wedge_p\setminus \overline{c(A)}\) is open and nonempty, so contains a ball \(x+p^nA^\wedge_p\). Now, we can replace \(x\) by \(c(y)\) for any lift in \(y \in A\) of its projection onto \(p^nA\). But now \(c(y)\in c(y)+p^nA^\wedge_p\) and \(c(y) \in c(A)\), contradicting the assumption that the ball is contained entirely within the complement of c(A).
 % These two facts then imply that the map \(\overline f\) is unique; it has to be continuous if it's going to be a group homomorphism, and it has to be determined by what it does to c(A) if it's going to be continuous. And what it does to c(A) is completely determined by the fact that the diagram has to commute.
-We have already seen that maps between spectra always form an abelian group, and the theorems above thus give another way in which (under certain hypotheses) spectra behave like abelian groups. 
+We have already seen that maps between spectra always form an abelian group, and the theorems above give another way in which (under certain hypotheses) spectra behave like abelian groups. 
 
 \section{The Adams spectral sequence}
 
-We will now turn our attention to the main tool for computing stable homotopy groups of spheres - the Adams spectral sequence. Sections \ref{2504041910} and \ref{2503301333} give a very brief explanation of spectral sequences and one important way in which they arise, following Chapter 2 of \autocite{spectral_sequences}. Section \ref{2504291247} then covers some homological algebra which will be needed later, and is drawn mostly from \autocite{weibel}. In Section \ref{2504291248} we will finally construct the Adams spectral sequence, and in Section \ref{2504291249} we make some initial computations of the stable homotopy groups using the tools we have developed; both of these sections mostly follow \autocite{hatcher5}. Finally, Section \ref{2504291250} will explore further structure which can be put on the Adams spectral sequence, which will help narrow down possibilities for the stable homotopy groups; we will follow \autocite{ass} and \autocite{rognes2}. 
+We now turn our attention to the main tool for computing stable homotopy groups of spheres - the Adams spectral sequence. Sections \ref{2504041910} and \ref{2503301333} give a very brief introduction to spectral sequences and one important way in which they arise, following Chapter 2 of \autocite{spectral_sequences}. Section \ref{2504291247} then covers some homological algebra which will be needed later, and is drawn mostly from \autocite{weibel}. In Section \ref{2504291248} we will finally construct the Adams spectral sequence, and in Section \ref{2504291249} we make some initial computations of the stable homotopy groups using the tools we have developed; both of these sections mostly follow \autocite{hatcher5}. Finally, Section \ref{2504291250} will explore further structure which can be put on the Adams spectral sequence, which will help narrow down possibilities for the stable homotopy groups; we will follow \autocite{ass} and \autocite{rognes2}. 
 
 From this section onwards, all homology and cohomology will be taken with \(\bb{F}_2\) coefficients, and we will thus ease notation by writing \(H^*(X)\) (resp. \(H_*(X)\)) for \(H^*(X; \bb{F}_2)\) (resp. \(H_*(X;\bb{F}_2)\)).
 
@@ -597,7 +597,7 @@ The condition \(d^2=0\) implies that \(B_2\subq Z_2\subq E_2\), and by definitio
 Now, write 
 \[Z_3:=\ker d_3 \quad \text{and} \quad B_3:=\im d_3.\]
 Since \(Z_3\subq E_3\), it can be written as \(\overline{Z}_3/B_2\) for some \(\overline{Z}_3\subq Z_2\). Similarly, \(B_3\cong \overline B_3/B_2\) for some \(\overline B_3\subq Z_2\). Thus,
-\[E_4\cong Z_3/B_3\cong \frac{\overline Z_2/B_2}{\overline B_3/B_2}\cong \overline Z_3/\overline B_3.\]
+\[E_4\cong Z_3/B_3\cong \frac{\overline Z_3/B_2}{\overline B_3/B_2}\cong \overline Z_3/\overline B_3.\]
 
 Iterating this process, we present the spectral sequence as an infinite tower of submodules of \(E_2\):
 \[B_2\subq \overline B_3\subq \cdots \subq \overline B_n\subq \cdots \subq \overline Z_n\subq \cdots \subq \overline Z_3\subq Z_2\subq E_2,\]
@@ -733,7 +733,7 @@ Now, we set \(X_1=K_0/X\), and repeat the construction to get a diagram:
   &&& K_0/X=X_1 \arrow[ur, ""] & & K_1/X_1=X_2 \arrow[ur, ""] & & K_2/X_2=X_3 \arrow[ur, ""] &  &
  \end{tikzcd}\nonumber
 \end{equation}
-Taking cohomology, we get a diagram
+Taking cohomology, we get the diagram below.
 \begin{equation}\label{2504251239}
 \begin{tikzcd}[column sep=1.5ex, row sep = 2ex, arrows=<-]
  0 \arrow[rr, ""] && H^*(X) \arrow[rr,""] & & H^*(K_0) \arrow[rr, ""] \arrow[dr, ""] & & H^*(K_1) \arrow[dr, ""] \arrow[rr, ""] & & H^*(K_2) \arrow[dr, ""] \arrow[rr, ""] & & \cdots \\ 
@@ -801,7 +801,7 @@ The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), 
 The spectral sequence \(\{E_r, d_r\}\) constructed above converges to \(\pi_{t-s}(X)^\wedge_2\), in the sense of Definition \ref{2504291808}. 
 \end{theorem}
 
-The version of the theorem above stated in \autocite{hatcher5} (Thm 4.29) says instead that \(\{E_r, d_r\}\) converges to \(\pi_{t-s}^s\) modulo its odd torsion, however, these two statements are equivalent. First, recall that \(\pi_{t-s}^s\) modulo its odd torsion is isomorphic to \((\pi^s_{t-s})^\wedge_2\) whenever \(\pi_{t-s}^s\) is finite. Now, all the terms \(E_\infty^{s,t}\) are finitely generated \(\bb{F}_2\)-vector spaces, so each term of the filtration must be a finite index subgroup of whichever group the spectral sequence converges to. The finite index subgroups of \(\inte_2\) are of the form \(2^k\inte_2\) 
+The version of the theorem above stated in \autocite{hatcher5} (Thm 4.29) says instead that \(\{E_r, d_r\}\) converges to \(\pi_{t-s}(X)\) modulo its odd torsion, however, these two statements are equivalent. First, recall that \(\pi_{t-s}(X)\) modulo its odd torsion is isomorphic to \(\pi_{t-s}(X)^\wedge_2\) whenever \(\pi_{t-s}(X)\) is finite. Now, all the terms \(E_\infty^{s,t}\) are finitely generated \(\bb{F}_2\)-vector spaces, so each term of the filtration must be a finite index subgroup of whichever group the spectral sequence converges to. The finite index subgroups of \(\inte_2\) are of the form \(2^k\inte_2\) 
 % argument for why that is later, commented out
 and the finite index subgroups of \(\inte\) (giving quotients of order a power of 2) are of the form \(2^k\inte\). The associated graded thus cannot tell the difference between a \(\inte\) summand and a \(\inte_2\) summand in the group the spectral sequence converges to, so the two theorems are equivalent.
 
