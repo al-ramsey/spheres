@@ -831,7 +831,7 @@ Thus, the boundary maps in the complex
 are all zero, so \(\Ext_{\A}^{s,t}(H^*(X), \bb{F}_2)=\Hom^t_{\A}(F_s, \bb{F}_2)\).
 \end{proof}
 
-Now, since \(\bb{F}_2\) is concentrated in degree 0, the only elements of \(F_s\) which can be sent to \(1 \in \bb{F}_2\) are the elements of degree \(t\), so for every generator of \(F_s\) in degree \(t\), there is an \(\bb{F}_2\) summand in \(\Hom^t_{\A}(F_s, \bb{F}_2)\). 
+Note that since \(\bb{F}_2\) is concentrated in degree 0, the only elements of \(F_s\) which can be sent to \(1 \in \bb{F}_2\) are the elements of degree \(t\), so for every generator of \(F_s\) in degree \(t\), there is an \(\bb{F}_2\) summand in \(\Hom^t_{\A}(F_s, \bb{F}_2)\). 
 
 Figure \ref{2504201106} shows part of a construction of a minimal free resolution of \(H^*(\bb{S})=\bb{F}_2\), where position \((t-s, s)\) consists of degree \(t\) elements of \(F_s\).  Instead of inducting on \(s\) and calculating column by column, we will instead induct on \(t-s\), assuming the previous rows have been computed. Note that since we will add the minimum number of generators needed in each row, the addition of new generators in later rows will not affect the induction (because a new generator will not impact the kernel of any \(f_i\)). 
 
@@ -842,7 +842,7 @@ Sq^1\iota=0\) but \(Sq^2\iota\in \ker f_0\). No other generators are needed, sin
 
 For \(t-s=2\), no generator is needed at \((2,1)\), since \(f_1(Sq^2\alpha^1_1)=Sq^2Sq^1\iota\neq 0\) and \(f_1(Sq^1\alpha^1_2)=Sq^3\iota\neq 0\). A generator \(\alpha^2_4\) is needed at \((2, 2)\) to map to \(S^3\alpha^1_1+Sq^2\alpha^1_2\), since \(f_1(Sq^3\alpha^1_1+Sq^2\alpha^1_2)=2Sq^3 Sq^1\iota=0\). No further generators are needed, as \(Sq^1\alpha^2_4\) maps to \(Sq^3\alpha^1_2\neq 0\) and \(Sq^3\alpha^s_s\) maps to \(Sq^3Sq^1\alpha^{s-1}_{s-1}\neq 0\) for all \(s>1\).
 
-When \(t-s=3\), generators \(\alpha^1_4\), \(\alpha^2_5\), and \(\alpha^3_6\) are needed to map to \(Sq^4\iota\), \(Sq^4\alpha^1_1+Sq^2Sq^1\alpha^1_2+Sq^1 \alpha^1_4\), and \(Sq^4\alpha^2_2+Sq^2\alpha^2_4+Sq^1\alpha^2_5\) respectively, since the latter elements are in the kernel of their respective \(f_i\)'s. No new generators are needed after \(s=4\), since \(Sq^1\alpha^3_6\) maps to \(Sq^5\alpha^2_2+Sq^3\alpha^2_4\), \(Sq^4\alpha^s_s\) maps to \(Sq^4Sq^1\alpha^{s-1}_{s-1}\), and although \(Sq^3Sq^1\alpha^s_s\) maps to zero, it is hit by \(Sq^3\alpha^{s+1,s+1}\). 
+When \(t-s=3\), generators \(\alpha^1_4\), \(\alpha^2_5\), and \(\alpha^3_6\) are needed to map to \(Sq^4\iota\), \(Sq^4\alpha^1_1+Sq^2Sq^1\alpha^1_2+Sq^1 \alpha^1_4\), and \(Sq^4\alpha^2_2+Sq^2\alpha^2_4+Sq^1\alpha^2_5\) respectively, since the latter elements are in the kernel of their respective \(f_i\)'s. No new generators are needed after \(s=4\), since \(Sq^1\alpha^3_6\) maps to \(Sq^5\alpha^2_2+Sq^3\alpha^2_4\neq 0\), \(Sq^4\alpha^s_s\) maps to \(Sq^4Sq^1\alpha^{s-1}_{s-1}\neq 0\), and although \(Sq^3Sq^1\alpha^s_s\) maps to zero, it is hit by \(Sq^3\alpha^{s+1,s+1}\). 
 
 Continuing in this fashion, the computations for \(t-s=4,5\) are shown in Figure \ref{2504201106}, though the Adem relations of Proposition \ref{2504291153} required to justify them are not. Note that although to compute each row, knowledge of maps involving the next two rows is required, the rows \(t-s=6,7\) do not contain all the new generators needed. 
 
@@ -855,7 +855,7 @@ Continuing in this fashion, the computations for \(t-s=4,5\) are shown in Figure
 \begin{figure}
 \centering
 \input{mini_ext.tex}
-\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 5\). Note that there is a generator \(\alpha^s_s\) at \((0,s)\) for every \(s\geq 0\), though only the first five are shown here.}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 5\). Note that there is a generator \(\alpha^s_s\) at \((0,s)\) for every \(s> 0\), though only the first four (and \(\iota\)) are shown here.}
 \label{2504241018}
 \end{figure}
 
@@ -897,7 +897,7 @@ F_{u+s+1} \arrow[r, "f_{u+s+1}"] \arrow[d, swap, "h_{s+1}", dashrightarrow]  & F
 F'_{s+1}[v] \arrow[r, swap, "f'_{s+1}"]  & F'_{s}[v] \arrow[d, "g"]\\
 & N[v+t]
 \end{tikzcd}\]
-We have \(gh_sf_{u+s+1}=gf'_{s+1}h_{s+1}=0\), since \([g] \in \Ext_A^{s,t}(F'_s, N)\), so \([gh_s]\in \Ext_A^{u+s, v+t}\). We thus define \([g]\cdot  [h]=[gh_s]\). 
+We have \(gh_sf_{u+s+1}=gf'_{s+1}h_{s+1}=0\), since \([g] \in \Ext_A^{s,t}(M, N)\), so \(gh_s\in \ker(-\circ f_{u+s+1})\) and thus \([gh_s]\in \Ext_A^{u+s, v+t}(L, N)\). We therefore define \([g]\cdot  [h]=[gh_s]\). 
 \end{definition}
 
 This definition is independent of the lifts chosen, which can be seen as follows. Suppose we have two chain maps \(\{h_i\}, \{h'_i\}\); we will construct a chain homotopy between them. Define \(k_0 : F_{u-1}\to F_0'[v]\) to be the zero map. By construction, \(f'_0h_0=f'_0h'_0=h\), so \(f'_0(h_0-h_0')=0\). Thus, \(\im(h_0-h'_0)\subq \ker f'_0=\im f'_1\), so \(h_0-h'_0=f'_1k_1=f'_1k_1+k_0f_{u}\) for some map \(k_1 : F_u \to F_1'[v]\). Now, suppose we have \(k_i, k_{i-1}\) such that \(h_{i-1}-h'_{i-1} = f'_{i}k_i+k_{i-1}f_{u+i-1}\). Then \(f'_ih_i=h_{i-1}f_{u+i}\) and \(f'_ih'_i=h'_{i-1}f_{u+i}\), so \(f'_i(h_i-h'_i)=(h_{i-1}-h'_{i-1})f_{u+i}=(f'_{i}k_i+k_{i-1}f_{u+i-1})f_{u+i}=f'_ik_if_{u+i}\), and thus we can construct \(k_{i+1}\) such that \(h_i-h'_i=f'_{i+1}k_{i+1}+k_if_{u+i}\). Now, \(g(h_s-h'_s)=g(f'_{s+1}k_{s+1}+k_sf_{u+s})=gk_sf_{u+s}\), and therefore \([g(h_s-h'_s)]=[gk_sf_{u+s}]=[0]\).
@@ -923,7 +923,7 @@ Let \(f, g : S^n \to S^n\) be pointed maps such that \(\deg f = \deg g\). Then \
 \end{lemma}
 
 \begin{proof}
-We prove the contrapositive. Suppose \(f \not\simeq g\). Then \(f, g\) represent two different elements in \(\pi_nS^n \simeq \inte\), say \([f]=n\neq m=[g]\) for \(n, m \in \inte\). The Hurewicz theorem then implies that for a fixed generator \(u_n \in H^n(S^n)\), \(f_*(u_n)\neq g_*(u_n)\in H^n(S^n)\), so \(\deg f \neq \deg g\), as required.
+We prove the contrapositive. Suppose \(f \not\simeq g\). Then \(f, g\) represent two different elements in \(\pi_nS^n \simeq \inte\), say \([f]=n\neq m=[g]\) for \(n, m \in \inte\). The Hurewicz theorem then implies that for a fixed generator \(u_n \in H_n(S^n)\), \(f_*(u_n)\neq g_*(u_n)\in H_n(S^n)\), so \(\deg f \neq \deg g\), as required.
 \end{proof}
 
 \begin{lemma}[{\autocite{hatcher}, Prop 4.56}]
@@ -1139,7 +1139,7 @@ The cases where \(i=6,10\), \(i=7, 11\), and \(i=12,13\) are proven analogously 
 
 When \(i=8\), we have a filtration
 \[\{0\}\subq F^{3,11}\subq F^{2,10}=(\pi^s_8)^\wedge_2,\]
-where each quotient is isomorphic to \(\inte/2\inte\). If \((\pi^s_8)^\wedge_2\cong \inte/4\inte\), then \(h_1h_3\in (\pi^s_8)^\wedge_2/F^{3,11}\) is represented by \(\alpha\in (\pi^s_8)^\wedge_2\) of order 4. However, \(0=h_0h_1h_3\in F^{3,11}\), so \(2\alpha=0\), contradicting the assumption that it had order 4. Thus \((\pi^s_8)^\wedge_2 \cong (\inte/2\inte)^2\).
+where each quotient is isomorphic to \(\inte/2\inte\). If \((\pi^s_8)^\wedge_2\cong \inte/4\inte\), then \(h_1h_3\in (\pi^s_8)^\wedge_2/F^{3,11}\) is represented by \(\alpha\in (\pi^s_8)^\wedge_2\) of order 4. However, this is impossible, since \(0=h_0h_1h_3\in F^{3,11}\) is equal to \(2\alpha\), so \(2\alpha=0\). Thus \((\pi^s_8)^\wedge_2 \cong (\inte/2\inte)^2\).
 
 For \(i=9\), we again have a filtration
 \[\{0\}\subq F^{5,14}\subq F^{4,13}\subq F^{3, 12}=(\pi^s_9)^\wedge_2,\]
@@ -1148,7 +1148,7 @@ with quotients isomorphic to \(\inte/2\inte\). From Figure \ref{1304251243} we s
 would also give rise to a tower of three nodes unconnected by vertical lines on the \(E_2\) page. This is because a generator \(a \in (\inte/4\inte\oplus\inte/2\inte)/(\inte/2\inte)^2\cong \inte/2\inte\) can be represented by \((1,0)\in \inte/4\inte\oplus\inte/2\inte\), so \([(2,0)]\in (\inte/2\inte)^2/(\inte/2\inte)\cong \inte/2\inte\) is a representative for \(h_0\cdot a\). However, the final copy of \(\inte/2\inte\) in the filtration is generated by \((2,0)\), so \([(2,0)]=0\) in \((\inte/2\inte)^2/(\inte/2\inte)\), meaning that \(h_0\cdot a=0\). Also, any generator \(\beta\) of \((\inte/2\inte)^2\) doubles to zero, so any element \(b\in (\inte/2\inte)^2/(\inte/2\inte)\) satisfies \(h_0\cdot b =0\). 
 
 % If this were the case for our example, it would be known as a `hidden extension'. But it isn't, so it's not.
-The situation described above is known as a `hidden extension', since it cannot be read off from the spectral sequence diagram. However, we can often determine by other methods whether or not they arise. 
+The situation described above is known as a `hidden extension', since it cannot be read off from the spectral sequence diagram. However, we can often determine by other methods whether or not such an extension arises. 
 
 In our case, this does not in fact occur; let \(h_3\in E_2^{1,8}\) be represented by \(\sigma\in (\pi_7^s)^\wedge_2\), and let \(h_1\in E_2^{1,2}\) be represented by \(\eta \in (\pi_1^s)^\wedge_2\). Then \(h_1h_3\) is represented by \(\eta \sigma\), and \(2(\eta \sigma)=(2\eta)\sigma=0\), since \((\pi_1^s)^\wedge_2\cong \inte/2\inte\). Thus, \((\pi_9^s)^\wedge_2\cong (\inte/2\inte)^3\). 
 \end{proof}
