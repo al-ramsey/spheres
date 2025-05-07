@@ -45,10 +45,7 @@
 \usepackage{comment} % use this package to comment things out \begin{comment} blah \end{comment}
 
 % maths/symbols
-\usepackage{amssymb} 
-\usepackage{amsthm} 
 \usepackage{mathtools} 
-\usepackage{amsmath} 
 \usepackage{mathrsfs}
 
 \usepackage{parskip} % removes all indents 
@@ -74,18 +71,6 @@
 
 \usepackage[backend=bibtex]{biblatex} % references
 \addbibresource{References.bib}
-
-\newcommand{\surj}{\rightarrow\mathrel{\mkern-14mu}\rightarrow} % shortcut for surjections
-
-\newcommand{\xsurj}[2][]{%
-  \xrightarrow[#1]{#2}\mathrel{\mkern-14mu}\rightarrow
-} % \xrightarrow for surjections
-
-\newcommand\xmono[2][]{\ensurestackMath{\mathrel{%
-  \stackengine{1pt}{%
-    \stackengine{0pt}{\rightarrowtail}{\scriptstyle#2}{O}{c}{F}{F}{S}%
-  }{\scriptstyle#1}{U}{c}{F}{F}{S}%
-}}} % \xrightarrow for injections
 
 \def\bb{\ensuremath\mathbb}
 \def\la{\ensuremath\langle}
