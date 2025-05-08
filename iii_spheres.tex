@@ -58,7 +58,8 @@
 \usepackage{enumitem} % more control over lists
 \usepackage{xcolor} % colours
 \usepackage{pdflscape} % landscape page (otherwise a figure is sideways)
-\usepackage{caption} % for making figure references point to the figure instead of the caption (why this is not the default is beyond me, like yes you're right LaTeX, my figures are purely decorative, they're only there to have something to attach a caption to).
+\usepackage{caption} % for making figure references point to the figure instead of the caption (why this is not the default is beyond me).
+\usepackage[british]{babel} % corrects wrong date format in bibliography
 
 % spectral sequences
 \usepackage{spectralsequences}
@@ -203,9 +204,9 @@ Our main computational tool for computing \(\pi_k^s\), the Adams spectral sequen
 
 \section{The Steenrod algebra}\label{2503221247}
 
-In this section, we give a very brief introduction to the mod 2 Steenrod algebra \(\A\), whose elements are characterised by the axioms below. It can be shown (see e.g. \autocite{hatcher} p500) that \(\A\) consists exactly of the stable \(\bb{F}_2\) cohomology operations (i.e. the natural transformations \(H^m(-;\bb{F}_2)\to H^n(-; \bb{F}_2)\) for fixed \(n,m\)). 
+In this section, we give a very brief introduction to the mod 2 Steenrod algebra \(\A\), whose elements are characterised by the axioms below; we mostly follow Section 4.L of \autocite{hatcher}. It can be shown (see e.g. \autocite{hatcher} p500) that \(\A\) consists exactly of the stable \(\bb{F}_2\) cohomology operations (i.e. the natural transformations \(H^m(-;\bb{F}_2)\to H^n(-; \bb{F}_2)\) for fixed \(n,m\)). 
 
-It will turn out to be useful in computing \(\pi_i^s(X)=\colim_k \pi_{i+k}(\Sigma^k X)\) to consider instead the group \(\Hom(H^*(X), H^*(S^i))\) to which there is a natural map; the Steenrod algebra gives us a way of obtaining more structure on this group (and thus more information about \(\pi_i^s(X)\)), by restricting to \(\Hom_{\A}(H^*(X), H^*(S^i))\) (and later considering the higher Ext groups).  
+It will turn out to be useful in computing \(\pi_i^s(X)=\colim_k \pi_{i+k}(\Sigma^k X)\) to consider instead the group \(\Hom(H^*(X), H^*(S^i))\) to which there is a natural map; the Steenrod algebra will give us a way of obtaining more structure on this group (and thus more information about \(\pi_i^s(X)\)), by restricting to \(\Hom_{\A}(H^*(X), H^*(S^i))\) (and later considering the higher Ext groups).  
 
 \begin{proposition}[{\autocite{hatcher}, p489}]\label{2504201153}
 For all \(X\) and each \(n\), there are maps \(Sq^i : H^n(X; \bb{F}_2)\to H^{n+i}(X; \bb{F}_2)\) for each \(i\), and they satisfy the following properties: \begin{enumerate}
@@ -261,21 +262,6 @@ Thus, though no space \(X\) can have cohomology a free \(\A\)-module (since for 
 
 In this section, we introduce spectra, the stable analogue of CW complexes. These objects will turn out to have particularly nice properties; for example, in addition to many of the properties of CW complexes carrying over to spectra, we will see that the collection of maps between two spectra up to homotopy has a natural abelian group structure, and that the suspension map between these groups is an isomorphism. Sections \ref{2504291244}-\ref{2504291245} closely follow Section 5.2 of \autocite{hatcher5}, developing some basic properties of spectra which will be used in \ref{2504291248}, while in Section \ref{2504291246} we note some facts about \(p\)-completion which will be needed later. 
 
-\begin{comment}
-\subsection{?Categorical nonsense}
-
-\begin{itemize}
-\item \autocite{ass}: There is a category \(\mathcal{H}\) of finite %[because the corollary wanted f.d. CW complexes] 
-based CW  complexes, with \(\Hom(X, Y)=:[X, Y]\) the set of homotopy classes of base-point preserving maps \(X\to Y\).
-\item There is a category \textbf{St}(\(\mathcal{H}\)) of finite based CW complexes, with \(\Hom(X, Y)=:\{X, Y\}\) the  set \(\colim_i [\Sigma^iX, \Sigma^iY]\) [it's just a colimit of sets, and \textbf{Set} is cocomplete, so we should be fine. \autocite{ass} says it's a group\footnote{The colimit is equal to the stable value (which exists, by the corollary). After \(\Sigma^2\), these guys are all groups, so the colimit also has a group structure inherited from whatever \([\Sigma^k X, \Sigma^k Y]\) it's equal to. N.B: Remarks about cocompleteness of \textbf{Set} are misleading because that doesn't actually matter - any sequence that stabilises in any category will have a filtered colimit equal to that stable value, you don't need any extra conditions.}] [Also, how do these guys compose?]
-\item There is a functor \(\mathcal{H}\to \textbf{St}(\mathcal{H})\). \autocite{ass} doesn't say what this is but it's presumably the one that is the identity on objects and sends \([f : X \to Y]\in [\Sigma^0X, \Sigma^0Y]\) to whatever it gets sent to in \(\{X, Y\}\) using the universal property of the colimit. Uniqueness makes it functorial, etc.
-\item We have a fully faithful functor \(\textbf{St}(\mathcal{H})\to \textbf{St}(\mathcal{H})\) given by the suspension on objects, and the unique isomorphism \(\{X, Y\}\to\{\Sigma X, \Sigma Y\}\) on maps (such an isomorphism exists, since both of those things are colimits for \([\Sigma^i X, \Sigma^i Y]\) - one of the sequences is cut off at the beginning, but it doesn't matter because both reach the stable value (see above discussion and \autocite{ass} 1.9), aka the colimit). 
-\item It's not an equivalence, because not every object is isomorphic to a suspension (e.g. anything not connected, since suspensions always connected)
-\item We can formally adjoin desuspensions \(\Sigma^{-n}X\) for all \(n\) [does this mean just putting the objects there and defining \(\Hom(Y, \Sigma^{-n}X):=\Hom(\Sigma^nY, X)\) and \(\Hom(\Sigma^{-n}X, Y):=\Hom(X, \Sigma^n Y)\)?], but this category does not have weak colimits (i.e. colimits w/o uniqueness property). [why does it not, and why do we even want that?]
-\item We instead consider formal sequences of desuspensions \(X_0 \to \Sigma^{-1}X_1 \to \cdots\), or sequences \((X_n)\) and maps \(\Sigma X_n \to X_{n+1}\), i.e. spectra. [and this fixes the problem?]
-\end{itemize}
-\end{comment}
-
 \subsection{Definitions and examples}\label{2504291244}
 
 \begin{definition}
@@ -317,8 +303,6 @@ A CW spectrum is a spectrum \(X\) consisting of CW complexes \(X_n\) with the ma
 Let \(X\) be a CW spectrum. Then the \textit{\(k\)-cells} of \(X\) are the equivalence classes of non-basepoint \((k+n)\)-cells in \(X_n\), where two cells are equivalent if one is an \(m\)-fold suspension of the other, for some \(m>0\). 
 \end{definition}
 
-%[\autocite{hatcher} says on p12 (god, way to make me feel stupid) that ``in \(\Sigma X\) there is a single 0-cell and an \((n+1)\)-cell for each \(n\)-cell of \(X\) other than [the basepoint]''.]
-
 We will say that a CW spectrum \(X\) is \textit{connective} if it has no cells below a given dimension, \textit{finite} if it has only finitely many cells, and \textit{of finite type} if it has only finitely many cells in each dimension. The following two classes of examples will be particularly important for us.
 
 \begin{example}
@@ -335,8 +319,7 @@ Let \(X\) be a connective spectrum of finite type. Then the groups \(\pi_{i+n}(X
 
 \begin{proof}
 %First, note that that maps \(\pi_{i+n}(X_n) \xrightarrow{\Sigma} \pi_{i+n+1}(\Sigma X_n)\) are eventually isomorphisms by Theorem \ref{2504151046}. <-- bad and wrong
-Recall that whenever \((X_{n+1}, \Sigma X_n)\) are such that \(X_{n+1}\setminus \Sigma X_n\) has no cells in dimension \(\leq k\), the map \(\pi_i(\Sigma X_n)\to \pi_i(X_{n+1})\) induced by the inclusion is an isomorphism for \(i<k\) (%see \autocite{hatcher}, Cor 4.12
-this follows from cellular approximation and the long exact sequence of relative homotopy groups). Thus, if \((\sigma_n)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}(X_{n+1})\) never stabilises, there must be infinitely many natural numbers \(N_j\) such that \((X_{N_j+1}, \Sigma X_{N_j})\) is not \((i+N_j+1)\)-connected, and thus that \(X_{N_j+1}\setminus \Sigma X_{N_j}\) has cells of dimension \(\leq i+N_j+2\). By connectivity, there is some fixed \(l\) such that these cells are of dimension \(N_j+k+1\) for \(-l\leq k \leq i+1\). Thus, there must be some \(k\) such that infinitely many of the \(X_{N_j+1}\) have a \((k+N_j+1)\)-cell not included in \(\Sigma X_{N_j}\). This then contradicts the assumption that \(X\) is of finite type, since it has infinitely many \(k\)-cells. 
+Recall that whenever \((X_{n+1}, \Sigma X_n)\) are such that \(X_{n+1}\setminus \Sigma X_n\) has no cells in dimension \(\leq k\), the map \(\pi_i(\Sigma X_n)\to \pi_i(X_{n+1})\) induced by the inclusion is an isomorphism for \(i<k\) (this follows from cellular approximation and the long exact sequence of relative homotopy groups). Thus, if \((\sigma_n)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}(X_{n+1})\) never stabilises, there must be infinitely many natural numbers \(N_j\) such that \((X_{N_j+1}, \Sigma X_{N_j})\) is not \((i+N_j+1)\)-connected, and thus that \(X_{N_j+1}\setminus \Sigma X_{N_j}\) has cells of dimension \(\leq i+N_j+2\). By connectivity, there is some fixed \(l\) such that these cells are of dimension \(N_j+k+1\) for \(-l\leq k \leq i+1\). Thus, there must be some \(k\) such that infinitely many of the \(X_{N_j+1}\) have a \((k+N_j+1)\)-cell not included in \(\Sigma X_{N_j}\). This then contradicts the assumption that \(X\) is of finite type, since it has infinitely many \(k\)-cells. 
 
 Thus, the maps \((\sigma_n)_* : \pi_{i+n+1}(\Sigma X_n)\to \pi_{i+n+1}(X_{n+1})\) are eventually isomorphisms. The argument above also shows that in the stable range, the maps \((\Sigma^j \sigma_n)_* : \pi_{i+n+1}(\Sigma^{j+1}X_n)\to \pi_{i+n+1}(\Sigma^j X_{n+1})\) are also isomorphisms for \(j>0\), since \(\Sigma^j X_{n+1}\setminus\Sigma^{j+1}X_n\) has no cells in dimension \(\leq k\) whenever \(X_{n+1}\setminus\Sigma X_n\) doesn't.
 
@@ -350,8 +333,6 @@ The horizontal maps are all isomorphisms by the previous paragraphs, and the lef
 
 \subsection{Homology and cohomology}
 
-%[From Hatcher: ``the inclusions \(\Sigma X_n \inj X_{n+1}\) induce inclusions \(C_*(X_n; G)\inj C_*(X_{n+1}; G)\) with a dimension shift to account for the suspension''.
-
 We now move on to define \(H^*(X)\) and \(H_*(X)\) for any CW spectrum \(X=\{X_n\}\).
 
 Recall that \(C^\text{cell}_i(X_n; G)\) has a \(G\)-summand for every \(i\)-cell of \(X_n\). We have an injection
@@ -361,7 +342,6 @@ e^i_\alpha &\mapsto \Sigma e^i_\alpha,
 \end{align*}
 and an injection \(C^\text{cell}_{i+1}(\Sigma X_n; G)\to C^\text{cell}_{i+1}(X_{n+1}; G)\) induced by the structure map \(\sigma_n\), so we get an injection \(C^\text{cell}_i(X_n;G)\inj C^\text{cell}_{i+1}(X_{n+1};G)\).
 
-%We then have that ``the union \(C_*(X ; G)\) of this increasing sequence of chain complexes is then a chain complex having one \(G\) summand for each cell of \(X\)''. I think that 
 We define
 \[C_n(X ; G):=\bigcup_{i\in \inte}C^\text{cell}_{i+n}(X_i; G).\] 
 Note that there is a \(G\) summand for every \(i+n\) cell of \(X_i\) up to treating suspensions of cells as equivalent to the cells themselves, i.e. a \(G\) summand for every \(n\)-cell of \(X\). We define \(H^*(X;G)\) and \(H_*(X;G)\) to be the cohomology and homology of this chain complex, respectively.
@@ -414,8 +394,7 @@ Given two maps \(f : X \to Y\), \(g : Y \to Z\) represented by \(f' : X' \to Y\)
 
 Since any strict map \(f' : X' \to Y\) can be taken to be cellular, a map \(f : X \to Y\) induces a well-defined map \(C_*(X)\to C_*(Y)\) (by cofinality), and thus maps on homology and cohomology. 
 
-Further, any map \(\bb{S}^i\to X\) can be represented by a map \(S^{i+n}\to X_n\), which has compact image and thus %by \ref{25004081110} (which won't exist in the final version)
-is contained in a finite subcomplex \(\overline X_n \subq X_n\). Given any map \(f : X \to Y\) represented by a strict map \(f' : X' \to Y\), the \(k\)th suspension of the cells of \(\overline X_n\) lie in \(X'_{n+k}\), and thus \(f\) induces a map \(\pi_*(X) \to \pi_*(Y)\). % well-defined because of the same compactness argument about homotopies S^{i+n} x I --> X
+Further, any map \(\bb{S}^i\to X\) can be represented by a map \(S^{i+n}\to X_n\), which has compact image and thus is contained in a finite subcomplex \(\overline X_n \subq X_n\). Given any map \(f : X \to Y\) represented by a strict map \(f' : X' \to Y\), the \(k\)th suspension of the cells of \(\overline X_n\) lie in \(X'_{n+k}\), and thus \(f\) induces a map \(\pi_*(X) \to \pi_*(Y)\). % well-defined because of the same compactness argument about homotopies S^{i+n} x I --> X
 
 \begin{definition}
 Two spectra \(X, Y\) are \textit{equivalent} if there are maps \(f : X \to Y\) and \(g : Y \to X\) such that \(fg=\id_{Y}\) and \(gf=\id_X\).
@@ -575,7 +554,6 @@ From this section onwards, all homology and cohomology will be taken with \(\bb{
 
 \subsection{Spectral sequences}\label{2504041910}
 
-% I made up the definition below but I mean come on. Why are people so weird about the gradings??
 \begin{definition}
 A \textit{differential bigraded module} \(E\) over a ring \(R\) is a collection of \(R\)-modules \(\{E^{p, q}\}\), \(p, q\in \inte\), together with a map \(d : E^{p, q} \to E^{p+s, q+r}\) for each \(p, q\) and some fixed \(s,r \in \inte\), satisfying \(d^2=0\). 
 \end{definition}
@@ -604,7 +582,6 @@ Iterating this process, we present the spectral sequence as an infinite tower of
 with the property that \(E_{n+1}\cong \overline Z_n/\overline B_n\). The differential \(d_{n+1}\) can be taken as a map \(\overline Z_n/\overline B_n\to\overline Z_n/\overline B_n\) with kernel \(\overline Z_{n+1}/\overline B_n\) and image \(\overline B_{n+1}/\overline B_n\). The short exact sequence induced by \(d_{n+1}\),
 \[0 \to \overline Z_{n+1}/\overline B_n\to \overline Z_n/\overline B_n \xrightarrow{d_{n+1}} \overline B_{n+1}/\overline{B}_n\to 0,\]
 gives rise to isomorphisms \(\overline{Z}_n/\overline{Z}_{n+1}\cong \overline{B}_{n+1}/\overline{B}_n\) for all \(n\). Conversely, a tower of submodules of \(E_2\), together with a set of isomorphisms, gives rise to a spectral sequence. 
-% talk about wrong solutions to trivial problems...
 
 \begin{definition}
 An element of \(E_2\) \textit{survives to the \(r\)th stage} if lies in \(\overline{Z}_r\), having been in the kernel of the previous \(r-2\) differentials, and is \textit{bounded by the \(r\)th stage} if it lies in \(\overline{B}_r\). The bigraded module \(E_r^{*,*}\) is called the \textit{\(E_r\)-term} of the spectral sequence. 
@@ -693,7 +670,7 @@ Dually, an \textit{injective resolution} \(I\) of \(M\) is a exact sequence
 where each \(I_i\) is injective.
 \end{definition}
 
-The following result can be obtained from \autocite{weibel}, Lemmas 2.2.5, 2.3.6, and Exercise 2.3.5. 
+The following result is a combination of \autocite{weibel}, Lemmas 2.2.5, 2.3.6, and Exercise 2.3.5. 
 
 \begin{lemma}
 Every \(R\)-module \(M\) has a projective resolution and an injective resolution. 
@@ -797,7 +774,6 @@ which is by construction the chain complex below.
 \[0 \to \Hom^t_{\A}(H^*(K_0), H^*(\bb{S}))\to \Hom^t_{\A}(H^*(K_1), H^*(\bb{S}))\to \cdots.\]
 The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), so \(E_2^{s,t}=\Ext^{s,t}_{\A}(H^*(X), H^*(\bb{S}))\).
 
-%\begin{theorem}[{\autocite{ass}, Thm 4.29}]\label{2504081125}
 \begin{theorem}\label{2504081125}
 The spectral sequence \(\{E_r, d_r\}\) constructed above converges to \(\pi_{t-s}(X)^\wedge_2\), in the sense of Definition \ref{2504291808}. 
 \end{theorem}
@@ -805,10 +781,6 @@ The spectral sequence \(\{E_r, d_r\}\) constructed above converges to \(\pi_{t-s
 The version of the theorem above stated in \autocite{hatcher5} (Thm 5.47) says instead that \(\{E_r, d_r\}\) converges to \(\pi_{t-s}(X)\) modulo its odd torsion, however, these two statements are equivalent. First, recall that \(\pi_{t-s}(X)\) modulo its odd torsion is isomorphic to \(\pi_{t-s}(X)^\wedge_2\) whenever \(\pi_{t-s}(X)\) is finite. Now, all the terms \(E_\infty^{s,t}\) are finitely generated \(\bb{F}_2\)-vector spaces, so each term of the filtration must be a finite index subgroup of whichever group the spectral sequence converges to. The finite index subgroups of \(\inte_2\) are of the form \(2^k\inte_2\) 
 % argument for why that is later, commented out
 and the finite index subgroups of \(\inte\) (giving quotients of order a power of 2) are of the form \(2^k\inte\). The associated graded thus cannot tell the difference between a \(\inte\) summand and a \(\inte_2\) summand in the group the spectral sequence converges to, so the two theorems are equivalent.
-
-%In particular, when \(X=\bb{S}\), the Adams spectral sequence above converges to the stable homotopy groups \((\pi_*^s)^\wedge_2\). In other words, there are filtrations
-%\[\cdots \subq F^{s+1,t+1}\subq F^{s,t}\subq F^{s-1,t-1}\subq \cdots \subq (\pi_{t-s}^s)^\wedge_2,\]
-%for \(t-s\geq 0\), and we have isomorphisms \(E^{s,t}_\infty \cong F^{s,t}/F^{s+1,t+1}\). Note that it is possible for a spectral sequence to converge to several different groups, since the \(E_\infty\) page only gives information about the associated graded of a group, and thus other arguments may be needed to determine the groups \((\pi_{t-s}^s)^\wedge_2\) themselves. 
 
 \subsection{First computations}\label{2504291249}
 
@@ -913,7 +885,7 @@ Let \(X, Y, Z\) be spectra. The \textit{composition pairing} \(\circ : [Y, Z]_* 
 \circ :\; [Y, Z]_v\; \otimes \;[X,Y]_t\; &\to\; [X,Z]_{v+t}\\
 [g : \Sigma^v Y \to Z]\otimes [f : \Sigma^t X\to Y] &\mapsto [g \circ \Sigma^v f : \Sigma^{v+t}X\to Z],
 \end{align*}
-%sort of appalling, I'm sorry. I'll fix it later.
+%looks sort of appalling, I'm sorry. 
 where \([X,Y]_n=[\Sigma^n X, Y]\).
 \end{definition}
 
@@ -1033,7 +1005,7 @@ We have the following relations:
 \end{proposition}
 
 \begin{proof}
-We show the first two relations; the final two are obtained similarly. % I promise the only reason I left out the final two relations was because they both involve a sum of three elements in the image of one of the maps, and I couldn't get the tikz-cd diagrams to align. Also for page count reasons. Basically they're not any more difficult than the first two. 
+We show the first two relations; the final two are obtained similarly. % but more difficult to typeset in tikz...
 
 Consider the diagram below, where \(F_\bullet\) is the free resolution in Figure \ref{2504201106}.
 \[\begin{tikzcd}[row sep = 0.5ex, column sep=0.8ex]
@@ -1072,10 +1044,6 @@ Thus, \(h_0=[2]\in 2\inte_2/4\inte_2\). Now, \((\pi_{t-s}^s)^\wedge_2=G\) has a 
 \[\cdots \subq F^{s+1, t+1}G\subq F^{s,t}G \subq F^{s-1,t-1}G\subq \cdots \subq G,\]
 with \(E_\infty^{s,t}(\bb{S})\cong F^{s,t}/F^{s+1,t+1}\). For any \(a \in E^{s,t}_\infty(\bb{S})\) represented by \(\alpha\in F^{s,t}G\), \(h_0\cdot a \in E_\infty^{s+1,t+1}(\bb{S})\) is represented by \(2\alpha \in F^{s+1,t+1}\), since the Yoneda product coincides with the product induced by the composition product (by Theorem \ref{2505080302dontjudge} and Remark \ref{2505080303}). 
 \end{proof}
-
-%\nathaniel{[The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\). <-- Chekhov's gun
-
-%All this is to say if I start multiplying higher things by \(h_0\), that \textit{is} multiplying by 2. So I can start resolving extensions this way.]}
 
 \begin{lemma}\label{2504241225}
 There are no nontrivial differentials for \(t-s\leq 5\). 
