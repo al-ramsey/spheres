@@ -1194,12 +1194,12 @@ induced by the \(\A\)-module homomorphism \(f^* : H^*(Z)\to H^*(Y)\), converging
 \[f_* : \pi_*(Y) \to \pi_*(Z).\]
 \end{theorem}
 
-Let \(X\) be a connective spectrum of finite type. Then \(\Ext_{\A}^{*,*}(H^*(X), \bb{F}_2)\) is an \((\Ext_{\A}^{*,*}(\bb{F}_2, \bb{F}_2))\)-module, with action given by specialising the Yoneda product of \ref{2505042248yeahiknow} to \(M=N=\bb{F}_2\), \(L=H^*(X)\).
+Let \(X\) be a connective spectrum of finite type. Then \(\Ext_{\A}^{*,*}(H^*(X), \bb{F}_2)\) is an \((\Ext_{\A}^{*,*}(\bb{F}_2, \bb{F}_2))\)-module, with action given by the Yoneda product \(\Ext_{\A}^{*,*}(\bb{F}_2, \bb{F}_2)\otimes \Ext_{\A}^{*,*}(H^*(X), \bb{F}_2)\to \Ext_{\A}^{*,*}(H^*(X), \bb{F}_2)\) of \ref{2505042248yeahiknow}. 
 
 \begin{remark}\label{2504211139}
 For any map \(f : \bb{S}\to X\), where \(X\) is a connective spectrum of finite type, the induced map 
-\[(f^*)^* : \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\to \Ext^{s,t}_{\A}(H^*(X), \bb{F}_2)\]
-satisfies \((f^*)^*(\alpha \beta)=\alpha\cdot (f^*)^*(\beta)\) for any \(\alpha, \beta\in \Ext_{\A}^{s,t}(\bb{F}_2, \bb{F}_2)\). This follows from the definition of the Yoneda product, since  both \((f^*)^*(\alpha \beta)\) and \(\alpha\cdot(f^*)^*(\beta)\) arise filling in the same diagram with dotted lifts, forming the same chain maps up to chain homotopy. 
+\[(f^*)^* : \Ext_{\A}^{*,*}(\bb{F}_2, \bb{F}_2)\to \Ext^{*,*}_{\A}(H^*(X), \bb{F}_2)\]
+satisfies \((f^*)^*(\alpha \beta)=\alpha\cdot (f^*)^*(\beta)\) for any \(\alpha, \beta\in \Ext_{\A}^{*,*}(\bb{F}_2, \bb{F}_2)\). This follows from the definition of the Yoneda product, since  both \((f^*)^*(\alpha \beta)\) and \(\alpha\cdot(f^*)^*(\beta)\) arise filling in the same diagram with dotted lifts, forming the same chain maps up to chain homotopy. 
 \end{remark}
 
 \begin{lemma}[{\autocite{rognes2}, Table 14.1 (9)}]\label{2504192017}
@@ -1207,7 +1207,7 @@ satisfies \((f^*)^*(\alpha \beta)=\alpha\cdot (f^*)^*(\beta)\) for any \(\alpha,
 \end{lemma}
 
 \begin{ourproof}
-Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. One can calculate (using e.g. \autocite{ext}) that \(h_4i=0\) and \(h_0h_3^2i\neq 0\). Now, \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Further, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), d_2(l)\neq0\), and thus \(d_2(h_0l)=h_0d_2(l)\neq 0\). Finally, we have \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).
+Let \(i, j, k, l\) be as shown in Figure \ref{2504201924}. One can calculate (using e.g. \autocite{ext}) that \(h_4i=0\), \(h_0h_3^2i\neq 0\), \(h_0j=h_2i\), \(h_0k=h_2j\), and \(h_0l=h_2k\). Now, \(d_2(i)\) is nontrivial, since \(h_4i=0\) and \(h_0h_3^2i\neq 0\), so \(0=d_2(h_4i)=h_0h_3^2i+h_4d_2(i)\) implies that \(d_2(i)\neq 0\). Further, \(d_2(j)\neq 0\) since \(h_0d_2(j)=d_2(h_0j)=d_2(h_2i)=h_2d_2(i)\neq 0\). An almost identical argument shows that \(d_2(k), h_0d_2(l)\neq0\). Finally, one can calculate \(h_0l=d_0f_0\), so \(0\neq d_2(h_0l)=d_2(d_0f_0)=d_0d_2(f_0)\).
 
 Now, \(d_2(f_0)\neq 0\), so looking at Figure \ref{2504201924} we see that \(0\neq h_0d_2(f_0)=d_2(h_0f_0)=d_2(h_1e_0)=h_1d_2(e_0)\), and thus \(d_2(e_0)\neq 0\).\done
 \end{ourproof}
