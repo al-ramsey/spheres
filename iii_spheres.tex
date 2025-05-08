@@ -471,7 +471,7 @@ Any subspectrum is cofinal in (and thus equivalent to) its closure. We define \(
 The map \(X\cup CA\to X/A\) is a homotopy equivalence of spectra, since each quotient \(X_n \cup CA_n \to X_n/A_n\) is, so we have a cofibration sequence
 \[A \inj X \to X\cup CA \to \Sigma A \inj \Sigma X \to \cdots.\]
 
-\begin{theorem}\label{2504151709}
+\begin{theorem}[{\autocite{hatcher5}, p591}]\label{2504151709}
 Let \(X,Y\) be spectra, and \(A\subq X\) a subspectrum. Then there is an exact sequence
 \[[Y,A]\to[Y,X]\to[Y,X/A]\to[Y,\Sigma A]\to[Y,\Sigma X]\to\cdots.\]
 \end{theorem}
@@ -569,7 +569,7 @@ We have already seen that maps between spectra always form an abelian group, and
 
 \section{The Adams spectral sequence}
 
-We now turn our attention to the main tool for computing stable homotopy groups of spheres - the Adams spectral sequence. Sections \ref{2504041910} and \ref{2503301333} give a very brief introduction to spectral sequences and one important way in which they arise, following Chapter 2 of \autocite{spectral_sequences}. Section \ref{2504291247} then covers some homological algebra which will be needed later, and is drawn mostly from \autocite{weibel}. In Section \ref{2504291248} we will finally construct the Adams spectral sequence, and in Section \ref{2504291249} we make some initial computations of the stable homotopy groups using the tools we have developed; both of these sections mostly follow \autocite{hatcher5}. Finally, Section \ref{2504291250} will explore further structure which can be put on the Adams spectral sequence, which will help narrow down possibilities for the stable homotopy groups; we will follow \autocite{ass} and \autocite{rognes2}. 
+We now turn our attention to the main tool for computing stable homotopy groups of spheres - the Adams spectral sequence. Sections \ref{2504041910} and \ref{2503301333} give a very brief introduction to spectral sequences and one important way in which they arise, following Chapter 2 of \autocite{spectral_sequences}. Section \ref{2504291247} then covers some homological algebra which will be needed later, and is drawn mostly from \autocite{weibel}. In Section \ref{2504291248} we will finally construct the Adams spectral sequence, and in Section \ref{2504291249} we make some initial computations of the stable homotopy groups using the tools we have developed; both of these sections mostly follow \autocite{hatcher5}, Section 5.2. Finally, Section \ref{2504291250} will explore further structure which can be put on the Adams spectral sequence, which will help narrow down possibilities for the stable homotopy groups; we will follow \autocite{ass} and \autocite{rognes2}. 
 
 From this section onwards, all homology and cohomology will be taken with \(\bb{F}_2\) coefficients, and we will thus ease notation by writing \(H^*(X)\) (resp. \(H_*(X)\)) for \(H^*(X; \bb{F}_2)\) (resp. \(H_*(X;\bb{F}_2)\)).
 
@@ -802,7 +802,7 @@ The homology of this is by definition \(\Ext_{\A}^{s,t}(H^*(X), H^*(\bb{S}))\), 
 The spectral sequence \(\{E_r, d_r\}\) constructed above converges to \(\pi_{t-s}(X)^\wedge_2\), in the sense of Definition \ref{2504291808}. 
 \end{theorem}
 
-The version of the theorem above stated in \autocite{hatcher5} (Thm 4.29) says instead that \(\{E_r, d_r\}\) converges to \(\pi_{t-s}(X)\) modulo its odd torsion, however, these two statements are equivalent. First, recall that \(\pi_{t-s}(X)\) modulo its odd torsion is isomorphic to \(\pi_{t-s}(X)^\wedge_2\) whenever \(\pi_{t-s}(X)\) is finite. Now, all the terms \(E_\infty^{s,t}\) are finitely generated \(\bb{F}_2\)-vector spaces, so each term of the filtration must be a finite index subgroup of whichever group the spectral sequence converges to. The finite index subgroups of \(\inte_2\) are of the form \(2^k\inte_2\) 
+The version of the theorem above stated in \autocite{hatcher5} (Thm 5.47) says instead that \(\{E_r, d_r\}\) converges to \(\pi_{t-s}(X)\) modulo its odd torsion, however, these two statements are equivalent. First, recall that \(\pi_{t-s}(X)\) modulo its odd torsion is isomorphic to \(\pi_{t-s}(X)^\wedge_2\) whenever \(\pi_{t-s}(X)\) is finite. Now, all the terms \(E_\infty^{s,t}\) are finitely generated \(\bb{F}_2\)-vector spaces, so each term of the filtration must be a finite index subgroup of whichever group the spectral sequence converges to. The finite index subgroups of \(\inte_2\) are of the form \(2^k\inte_2\) 
 % argument for why that is later, commented out
 and the finite index subgroups of \(\inte\) (giving quotients of order a power of 2) are of the form \(2^k\inte\). The associated graded thus cannot tell the difference between a \(\inte\) summand and a \(\inte_2\) summand in the group the spectral sequence converges to, so the two theorems are equivalent.
 
@@ -1002,7 +1002,7 @@ where \([x]\in \text{}'E_{r+1}^{*,*}\) is the homology class of a \(d_r\)-cycle 
 A spectral sequence pairing \(\{\phi_r\}\) induces a pairing 
 \[\phi_\infty : \text{}'E_\infty^{*,*}\otimes \text{}''E^{*,*}_\infty \to E^{*,*}_\infty.\]
 
-\begin{theorem}[{\autocite{ass}, Thm 5.8}]
+\begin{theorem}[{\autocite{ass}, Thm 5.8}]\label{2505080302dontjudge}
 Let \(X,Y,Z\) be spectra, with \(Y, Z\) connective and of finite type. There is a pairing of spectral sequences
 \[E^{*,*}_r(Y,Z)\otimes E^{*,*}_r(X,Y)\to E^{*,*}_r(X,Z)\]
 which agrees for \(r=2\) with the Yoneda pairing
@@ -1012,7 +1012,7 @@ and which converges to the composition pairing
 The pairing is associative and unital.
 \end{theorem}
 
-\begin{remark}
+\begin{remark}\label{2505080303}
 Condition (\ref{2504241255}) of Definition \ref{2504241258} ensures that if a product is computed on the \(E_2\) page, and both terms survive to the \(E_r\) page for some \(r>2\), then the computation is still valid on that page.
 \end{remark}
 
@@ -1068,11 +1068,9 @@ Recall that \(\pi_0^s=\inte\), since \(\pi_1S^1=\inte\) and \(n=1\leq 2=2(1)\), 
 \[\cdots\subq 4\inte_2 \subq 2\inte_2 \subq \inte_2,\]
 since finite index subgroups of \(\inte_p\) are of the form \(p^k\inte_p\). %\footnote{Here is an absolutely ridiculous argument for that: \((\inte_2, +)\) is a topological group. For any subgroup \(H\) of finite index \(n=2^km\), \(H\) is open (since by Lagrange's theorem \(n\inte_2\subq H\) and thus \(n\inte_2=2^k\inte_2\), so \(x+2^k\inte_2\) is an open ball around any \(x\in H\)). Now, every open subgroup of \(\inte_2\) is also closed (since it's complement is a union of open cosets), and the closed subgroups of \(\inte_2\) are the ideals \(2^k\inte_2\) [elaborate]. These facts then imply that the filtration I give is the only possible one.} 
 
-Thus, \(\iota=[1]\in \inte_2/2\inte_2\), and by computing the Yoneda product we see that \(\iota\) is a unit. We also have \(h_0=[2]\in 2\inte_2/4\inte_2\) so \([2]=h_0=h_0\cdot \iota\), and hence \(h_0\) acts on \(\iota\) by multiplication by 2. 
-
-Now, suppose \((\pi_{t-s}^s)^\wedge_2=G\) has a filtration
+Thus, \(h_0=[2]\in 2\inte_2/4\inte_2\). Now, \((\pi_{t-s}^s)^\wedge_2=G\) has a filtration
 \[\cdots \subq F^{s+1, t+1}G\subq F^{s,t}G \subq F^{s-1,t-1}G\subq \cdots \subq G,\]
-with \(E_\infty^{s,t}(\bb{S})\cong F^{s,t}/F^{s+1,t+1}\). For any \(a \in E^{s,t}_\infty(\bb{S})\) represented by \(\alpha\in F^{s,t}G\), \(h_0\cdot a = (h_0 \cdot \iota)\cdot a \in E_\infty^{s+1,t+1}(\bb{S})\) is represented by \(2\alpha \in F^{s+1,t+1}\). 
+with \(E_\infty^{s,t}(\bb{S})\cong F^{s,t}/F^{s+1,t+1}\). For any \(a \in E^{s,t}_\infty(\bb{S})\) represented by \(\alpha\in F^{s,t}G\), \(h_0\cdot a \in E_\infty^{s+1,t+1}(\bb{S})\) is represented by \(2\alpha \in F^{s+1,t+1}\), since the Yoneda product coincides with the product induced by the composition product (by Theorem \ref{2505080302dontjudge} and Remark \ref{2505080303}). 
 \end{proof}
 
 %\nathaniel{[The notation's a bit weird above, when I say `multiplication by 2' I mean: take \(\kappa \in E^{s,t}=F^{s,t}/F^{s+1,t+1}\). Then \(2\kappa \in F^{s+1,t+1}\) since it's a bunch of \(\bb{F}_2\)'s. Take it's equivalence class to get an element of \(F^{s+1, t+1}/F^{s+2,t+2}\). That's what I really mean by \(2\kappa\) and it's in \(E^{s+1,t+1}\). <-- Chekhov's gun
@@ -1205,7 +1203,7 @@ In the following proof, we write \(\sigma\in \pi_7^s\) for the stable class of t
 \begin{figure}
 \centering
 \input{extra_iii.tex}
-\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with naming conventions as in \autocite{rognes2}. The \(d_2\) differentials referenced in the proof of Lemma \ref{2504192017} are shown in green.}
+\caption{\(\Ext^{s,t}_{\A}(\bb{F}_2, \bb{F}_2)\) for \(t-s\leq 32\). The vertical and diagonal lines indicate multiplication by \(h_0\) and \(h_1\) respectively. Some of the algebra generators are shown in red, with naming conventions as in \autocite{rognes2}. The \(d_2\) differentials referenced in the proof of Lemma \ref{2504192017} are shown in green, and the remainder of the chart was computed using \autocite{sseq}.}
 \label{2504201924}
 \end{figure}
 \end{landscape}
@@ -1248,7 +1246,7 @@ d_2(\hat i(f_0))=\hat i(d_2(f_0))=\hat i(h_0^2e_0)\neq 0\). Therefore, \(d_2(a)\
 \begin{figure}
 \centering
 \input{ext_csigma.tex}
-\caption{The \(E_2\) page of the Adams spectral sequence for \(C_\sigma\), in the range \(t-s\leq 18\), with the generator \(a\) shown in red, and two of the differentials shown in green.}
+\caption{The \(E_2\) page of the Adams spectral sequence for \(C_\sigma\) (computed with \autocite{sseq}), in the range \(t-s\leq 18\), with the generator \(a\) shown in red, and two of the differentials shown in green.}
 \label{2504131812}
 \end{figure}
 
@@ -1315,7 +1313,7 @@ From Figure \ref{2505051617}, we see that \((\pi_{15}^s)^\wedge_2=\inte/32\inte\
 % When submitting the essay, you must upload your .bib file alongside this .tex file.
 
 \printbibliography
-\let\thefootnote\relax\footnotetext{Note: the TeX code used to generate the arrows in the long exact sequence on p28, and the arrows/axis labels in Figure \ref{2504201106}, was adapted from suggestions given at the links below (all last visited on 07/05/2025).\\
+\let\thefootnote\relax\footnotetext{Note: the LaTeX code used to generate the arrows in the long exact sequence on p28, and the arrows/axis labels in Figure \ref{2504201106}, was adapted from suggestions given at the links below (all last visited on 07/05/2025).\\
 \href{https://tex.stackexchange.com/questions/3892/how-do-you-draw-the-snake-arrow-for-the-connecting-homomorphism-in-the-snake-l}{https://tex.stackexchange.com/questions/3892/how-do-you-draw-the-snake-arrow-for-the-connecting-homomorphism-in-the-snake-l}\\
 \href{https://tex.stackexchange.com/questions/248447/how-to-draw-such-arrows-in-the-table}{https://tex.stackexchange.com/questions/248447/how-to-draw-such-arrows-in-the-table}\\
 \href{https://tex.stackexchange.com/questions/339535/what-to-put-into-the-intersection-of-the-row-column-labels-of-a-table
